@@ -28,7 +28,7 @@ public final class Consola {
 				+ "\n- Los posibles comandos son:"
 				+ "\n Ver Reglas -> Se mostrarán las reglas en cualquier momento del juego"
 				+ "\n Norte -> Moverá al jugador en la dirección Norte"
-				+ "\n Sur   -> Moverá aal jugador en la dirección Sur"
+				+ "\n Sur   -> Moverá al jugador en la dirección Sur"
 				+ "");
 	}
 	
