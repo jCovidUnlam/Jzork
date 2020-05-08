@@ -18,7 +18,7 @@ public class Observer {
 			System.out.println();
 			System.out.print(">> ");
 			scan = (in.nextLine());
-			
+
 			if(scan.contains(" ")) {
 				nombreObjeto = scan.substring(scan.indexOf(" ")+1); // Aca deberia buscar el objeto con ese nombre
 				scan = scan.substring(0,scan.indexOf(" ")); // Aca separa comando de objeto				

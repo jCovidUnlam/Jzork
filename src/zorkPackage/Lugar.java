@@ -8,18 +8,12 @@ public class Lugar {
 	private String nombre;
 	private String descripcion;
 	private List<Objeto> objetos;
+	private List<Obstaculo> obstaculos;
 	
-	//Podriamos ver de meter las restricciones del lugar en otro lado, x ahora podrian ir aca
-	private boolean existeNorte;
-	private String msjExisteNorte;
-	
-	public Lugar(String nombre, String descripcion, List<Objeto> objetos, boolean existeNorte, String msjExisteNorte) {
+	public Lugar(String nombre, String descripcion) {
 		super();
 		this.nombre = nombre;
 		this.descripcion = descripcion;
-		this.objetos = objetos;
-		this.existeNorte = existeNorte;
-		this.msjExisteNorte = msjExisteNorte;
 	}
 
 	public Lugar(String nombre, String descripcion, List<Objeto> objetos) {
@@ -27,7 +21,7 @@ public class Lugar {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.objetos = objetos;
-		this.existeNorte = true;
+
 	}
 	
 	public String getNombre() {
@@ -48,21 +42,7 @@ public class Lugar {
 	public void setObjetos(ArrayList<Objeto> objetos) {
 		this.objetos = objetos;
 	}
-	public boolean existeNorte() {
-		return existeNorte;
-	}
-	public void setExisteNorte(boolean existeNorte) {
-		this.existeNorte = existeNorte;
-	}
 
-	public String getMsjExisteNorte() {
-		return msjExisteNorte;
-	}
-
-	public void setMsjExisteNorte(String msjExisteNorte) {
-		this.msjExisteNorte = msjExisteNorte;
-	}
-	
 	/**
 	 * Esta funcion busca el objeto por su nombre en el lugar.
 	 * @param nombreObjeto representa el nombre del objeto que se busca.

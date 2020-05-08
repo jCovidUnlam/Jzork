@@ -7,13 +7,20 @@ public final class Consola {
 	 */
 	public static void mostrarMenuInicio() {
 		System.out.println("\n########################");
-		System.out.println("  Mundo de JZork");
+		System.out.println("     Mundo de JZork");
 		System.out.println("########################\n");
 		System.out.println("Bienvenido a JZork Aventurero!");
 		System.out.println("Por favor, elija entre las siguientes opciontes:\n");
 		System.out.println("1 - Iniciar Aventura");
 		System.out.println("2 - Reglas");
 		System.out.println("3 - Salir");
+	}
+	
+	public static void imprimirMenuAventuras() {
+		System.out.println("\nPor favor, seleccione alguna de las Aventuras:");
+		System.out.println("1 - Aventura 1");
+		System.out.println("2 - Aventura 2");
+		System.out.println("3 - Volver al menu inicial");
 	}
 	
 	/**
@@ -38,6 +45,13 @@ public final class Consola {
 	
 	public static void mostrarComandoErroneo() {
 		System.out.println("\nComando erróneo!");
+	}
+	
+	public static void iniciarAventura(Aventura aventura) {
+		System.out.println("\n########################");
+		System.out.println("     " + aventura.getNombre());
+		System.out.println("########################\n");
+		System.out.println(aventura.getDescripcion());
 	}
 	
 	/*public static void mostrarLugar(Lugar lugar) {

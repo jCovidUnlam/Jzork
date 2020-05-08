@@ -8,7 +8,7 @@ public final class Mensaje {
 			msj = "\nNo hay lugar donde ir!";
 		else {
 			msj += "\n########################\n";
-			msj += lugar.getNombre() + "\n";
+			msj += "     " + lugar.getNombre() + "\n";
 			msj += "########################\n";
 			msj += "\n" + lugar.getDescripcion();
 		}

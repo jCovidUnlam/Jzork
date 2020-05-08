@@ -1,20 +1,55 @@
 package zorkPackage;
 
+import java.util.Arrays;
+import java.util.Comparator;
+
 public class Mapa {
 	
-	private String nombre;
-	private Lugar[][][] lugares;
 	private Posicion posicionActual;
+	private Lugar[][][] lugares;
 	private int cantidadMovimientos;
 	
-	public Mapa(String nombre, Lugar[][][] lugares, Posicion posicionActual, int cantidadMovimientos) {
-		super();
-		this.nombre = nombre;
-		this.lugares = lugares;
-		this.posicionActual = posicionActual;
-		this.cantidadMovimientos = cantidadMovimientos;
+	public int getCantidadMovimientos() {
+		return cantidadMovimientos;
 	}
 	
+	public Posicion getPosicionActual() {
+		return posicionActual;
+	}
+
+	public void setPosicionActual(Posicion posicionActual) {
+		this.posicionActual = posicionActual;
+	}
+	
+	public Mapa(Posicion posicionActual) {
+		super();
+
+		this.lugares = new Lugar[20][20][2];
+		this.posicionActual = posicionActual;
+		this.cantidadMovimientos = 0;
+	}
+	
+	public void addLugar(Lugar lugar, Posicion posicion) {
+		this.lugares[posicion.getX()][posicion.getY()][posicion.getZ()] = lugar;
+	}
+	
+	//Esto por ahora lo dejo para testear, dp se lo podemos dar al loco cuando encuentre un mapa o algo asi
+	public void verMapa() {
+		
+		for (int i = 0; i < 19; i++) {
+			System.out.println();
+			for (int j = 0; j < 19; j++) {
+				if(lugares[j][i][0] == null)
+					System.out.format("%10s", " ");
+				else {
+					System.out.print("[ " + lugares[j][i][0].getNombre() +" ]");
+				}
+
+			}
+		}
+	}
+	
+	//testeo
 	private void imprimirPosicion() {
 		System.out.println(this.posicionActual);
 	}
@@ -38,16 +73,18 @@ public class Mapa {
 	
 	public String moverNorte() {
 		
-		Lugar lugar = getLugarActual();
-		
-		if(!lugar.existeNorte())
-			return lugar.getMsjExisteNorte();
-
 		if(getPosibleLugar(0,1,0) == null) {
 			//Esto seria para testear
 			imprimirPosicion();
 			return Mensaje.fueraLimite();
 		}
+		
+		Lugar lugar = getLugarActual();
+		
+		/*if(lugar.getNorte() == null)
+			return lugar.getNoExisteNorte();*/
+
+
 		
 		this.cantidadMovimientos++;
 		this.posicionActual.setY(this.posicionActual.getY() + 1);
@@ -97,5 +134,7 @@ public class Mapa {
 	public Objeto tomarObjeto(String nombreObjeto) {
 		return getLugarActual().tomarObjeto(nombreObjeto);
 	}
+
+
 	
 }

@@ -1,22 +1,22 @@
 package zorkPackage;
 
-import java.util.List;
 import java.util.LinkedList;
+import java.util.List;
 
 public class Personaje {
 	private String nombre;
-	private List<Objeto> objetos;
+	private List<Objeto> inventario;
 	
 	public Personaje(String nombre) {
 		super();
 		this.nombre = nombre;
-		this.objetos = new LinkedList<>();
+		this.inventario = new LinkedList<>();
 	}
 	
 	public Personaje(String nombre, List<Objeto> list) {
 		super();
 		this.nombre = nombre;
-		this.objetos = list;
+		this.inventario = list;
 	}
 
 	public String getNombre() {
@@ -28,7 +28,7 @@ public class Personaje {
 	}
 	
 	public void addObjeto(Objeto obj) {
-		this.objetos.add(obj);
+		this.inventario.add(obj);
 	}
 	
 	

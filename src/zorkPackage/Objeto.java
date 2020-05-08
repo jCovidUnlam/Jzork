@@ -1,6 +1,7 @@
 package zorkPackage;
 
 public class Objeto {
+	
 	private String nombre;
 	private String descripcion;
 	private boolean tomable;

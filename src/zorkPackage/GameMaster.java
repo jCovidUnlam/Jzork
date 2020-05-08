@@ -1,36 +1,36 @@
 package zorkPackage;
 
 public class GameMaster {
-	private Mapa mapa;
-	private Personaje personaje;
 	
-	public GameMaster(Mapa mapa, Personaje personaje) {
+	private Aventura aventura;
+
+	public GameMaster(Aventura aventura) {
 		super();
-		this.mapa = mapa;
-		this.personaje = personaje;
-		Consola.mostrar(mapa.lugarActual());
+		this.aventura = aventura;
+		Consola.iniciarAventura(aventura);
+		Consola.mostrar(Mensaje.mensajeLugar(aventura.getMapa().getLugarActual()));
 	}
 	
 	public void ejecutar(Comando comando) {
 		
 		switch(comando.nombre.toLowerCase()) {
 		case "norte":
-			Consola.mostrar(mapa.moverNorte());
+			Consola.mostrar(aventura.getMapa().moverNorte());
 			break;
 		case "sur":
-			Consola.mostrar(mapa.moverSur());
+			Consola.mostrar(aventura.getMapa().moverSur());
 			break;
 		case "este":
-			Consola.mostrar(mapa.moverEste());
+			Consola.mostrar(aventura.getMapa().moverEste());
 			break;
 		case "oeste":
-			Consola.mostrar(mapa.moverOeste());
+			Consola.mostrar(aventura.getMapa().moverOeste());
 			break;
 		case "mirar alrededor":
-			Consola.mostrar(mapa.lugarActual());
+			Consola.mostrar(aventura.getMapa().lugarActual());
 			break;
 		case "tomar":
-			Objeto obj = mapa.tomarObjeto(comando.nombreObjeto);
+			Objeto obj = aventura.getMapa().tomarObjeto(comando.nombreObjeto);
 			if(obj == null) {
 				Consola.mostrar(Mensaje.noExisteObjeto());
 				break;
@@ -41,7 +41,7 @@ public class GameMaster {
 				break;
 			}
 			
-			personaje.addObjeto(obj);
+			aventura.getPersonaje().addObjeto(obj);
 			Consola.mostrar(Mensaje.tomarObjeto(obj));
 			break;
 			
