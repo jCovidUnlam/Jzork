@@ -24,15 +24,21 @@ public final class Mensaje {
 		return "\nEse objeto no está en este lugar.";
 	}
 	
-	public static String tomarObjeto(Objeto obj) {
+	public static String tomarItem(Item item) {
 		String msj = "";
-		msj = "\nHas adquirido "+ obj.getNombre();
+		msj = "\nHas adquirido "+ item.getNombre();
 		return msj;
 	}
 	
-	public static String noTomable(Objeto obj) {
+	public static String noTomable(Item item) {
 		String msj = "";
-		msj = "\n" + obj.getDescTomable();
+		msj = "\n" + item.getDescTomable();
+		return msj;
+	}
+	
+	public static String existeObstaculo(Obstaculo obstaculo) {
+		String msj = "";
+		msj = "\n" + obstaculo.getMensaje();
 		return msj;
 	}
 }

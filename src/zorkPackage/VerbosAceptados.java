@@ -20,6 +20,11 @@ public final class VerbosAceptados {
 	//Esta lista contiene los verbos aceptables a la hora de usar algo que este en el inventario o no
 	private static final String[] usable = {"usar","utilizar"};
 	
+	private static final String[] movimiento = {"norte","sur","este","oeste","arriba","abajo","sureste","noreste","suroeste","noroeste","ir"};
+	
+	public static boolean inMovimiento(String verbo) {
+		return Arrays.asList(movimiento).contains(verbo);
+	}
 	
 	public static boolean inAdquirible(String verbo) {
 		return Arrays.asList(adquirible).contains(verbo);

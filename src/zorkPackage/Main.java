@@ -1,17 +1,11 @@
 package zorkPackage;
 
-import java.io.Console;
 import java.io.IOException;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
 
 	public static void main(String[] args) throws IOException {
-		
-		//JsonReader.startAdventure("adventureTest.txt");
-		//JsonReader.test("jsonPropio.txt");
 		
 		Consola.mostrarMenuInicio();
 		Scanner in = new Scanner(System.in);
@@ -55,11 +49,7 @@ public class Main {
 
 				} while(!scan.equals("3") && init == false);
 	
-				
-				//GameMaster gm = new GameMaster(mapa,personaje);
-				//Observer obs = new Observer(gm);
-//				if(scan2 != "3")
-//					in.close();
+
 				if(init == true) {
 					scan = "3";
 					in.close();

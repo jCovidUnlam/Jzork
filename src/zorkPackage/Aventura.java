@@ -15,7 +15,7 @@ public class Aventura {
 		mapa.verMapa();
 		//
 		GameMaster gm = new GameMaster(this);
-		new Observer(gm);
+		new Observador(gm);
 	}
 	
 	public String getNombre() {

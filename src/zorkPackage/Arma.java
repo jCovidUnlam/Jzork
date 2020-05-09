@@ -1,5 +1,5 @@
 package zorkPackage;
 
-public class Arma extends Objeto{
+public class Arma extends Item{
 
 }

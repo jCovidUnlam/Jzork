@@ -1,6 +1,6 @@
 package zorkPackage;
 
-public class Consumible extends Objeto{
+public class Consumible extends Item{
 
 
 

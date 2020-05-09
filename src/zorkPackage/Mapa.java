@@ -1,8 +1,5 @@
 package zorkPackage;
 
-import java.util.Arrays;
-import java.util.Comparator;
-
 public class Mapa {
 	
 	private Posicion posicionActual;
@@ -44,7 +41,6 @@ public class Mapa {
 				else {
 					System.out.print("[ " + lugares[j][i][0].getNombre() +" ]");
 				}
-
 			}
 		}
 	}
@@ -71,64 +67,130 @@ public class Mapa {
 			}
 	}
 	
-	public String moverNorte() {
+	public Object moverNorte() {
 		
+		//Se fija sino esta fuera del mapa.
 		if(getPosibleLugar(0,1,0) == null) {
 			//Esto seria para testear
 			imprimirPosicion();
-			return Mensaje.fueraLimite();
+			return null;
 		}
 		
-		Lugar lugar = getLugarActual();
+		//Se fija si el lugar donde esta parado tiene obstaculos en esa direccion.
+		Obstaculo obstaculo = getLugarActual().existeObstaculo("norte");
+		if(obstaculo != null)
+			return obstaculo;
 		
-		/*if(lugar.getNorte() == null)
-			return lugar.getNoExisteNorte();*/
-
-
-		
+		//Si todo sale bien, suma movimientos, se mueve y devuelve el lugar pa q lo imprima el GM.
 		this.cantidadMovimientos++;
 		this.posicionActual.setY(this.posicionActual.getY() + 1);
 		//Esto seria para testear
 		imprimirPosicion();
-		return Mensaje.mensajeLugar(getLugarActual());
+		return getLugarActual();
 	}
 	
-	public String moverSur() {
+	public Object moverSur() {
 		
-		if(getPosibleLugar(0,-1,0) == null) 
-		    return Mensaje.fueraLimite();
+		if(getPosibleLugar(0,-1,0) == null) {
+			//Esto seria para testear
+			imprimirPosicion();
+			return null;
+		}
+		
+		Obstaculo obstaculo = getLugarActual().existeObstaculo("sur");
+		if(obstaculo != null)
+			return obstaculo;
 		
 		this.cantidadMovimientos++;
 		this.posicionActual.setY(this.posicionActual.getY() - 1);
-		
 		//Esto seria para testear
 		imprimirPosicion();
-		return Mensaje.mensajeLugar(getLugarActual());
+		return getLugarActual();
 	}
 	
-	public String moverEste() {
-		if(getPosibleLugar(1,0,0) == null) 
-		    return Mensaje.fueraLimite();
-
+	public Object moverEste() {
+		
+		if(getPosibleLugar(1,0,0) == null)  {
+			//Esto seria para testear
+			imprimirPosicion();
+			return null;
+		}
+		
+		Obstaculo obstaculo = getLugarActual().existeObstaculo("este");
+		if(obstaculo != null)
+			return obstaculo;
+		
 		this.cantidadMovimientos++;
 		this.posicionActual.setX(this.posicionActual.getX() + 1);
-		
 		//Esto seria para testear
 		imprimirPosicion();
-		return Mensaje.mensajeLugar(getLugarActual());
+		return getLugarActual();
 	}
 	
-	public String moverOeste() {
-		if(getPosibleLugar(-1,0,0) == null) 
-		    return Mensaje.fueraLimite();
-			
+	public Object moverOeste() {
+		
+		if(getPosibleLugar(-1,0,0) == null) {
+			//Esto seria para testear
+			imprimirPosicion();
+			return null;
+		}
+		
+		Obstaculo obstaculo = getLugarActual().existeObstaculo("oeste");
+		if(obstaculo != null)
+			return obstaculo;
+		
 		this.cantidadMovimientos++;
 		this.posicionActual.setX(this.posicionActual.getX() -1);
-		
 		//Esto seria para testear
 		imprimirPosicion();
+		return getLugarActual();
+	}
+	
+	public Object irHacia(String nombreLugar) {
 		
-		return Mensaje.mensajeLugar(getLugarActual());
+		Lugar lugar;
+		
+		//Norte
+		lugar = getPosibleLugar(0,1,0);
+		if(lugar != null && lugar.getNombre().toLowerCase().equals(nombreLugar))
+		{
+			Obstaculo obs = lugar.existeObstaculo("norte");
+			if(obs != null)
+				return obs;
+			return lugar;
+		}
+		
+		//Sur
+		lugar = getPosibleLugar(0,-1,0);
+		if(lugar != null && lugar.getNombre().toLowerCase().equals(nombreLugar))
+		{
+			Obstaculo obs = lugar.existeObstaculo("sur");
+			if(obs != null)
+				return obs;
+			return lugar;
+		}
+			
+		//Este
+		lugar = getPosibleLugar(1,0,0);
+		if(lugar != null && lugar.getNombre().toLowerCase().equals(nombreLugar))
+		{
+			Obstaculo obs = lugar.existeObstaculo("este");
+			if(obs != null)
+				return obs;
+			return lugar;
+		}
+		
+		//Oeste
+		lugar = getPosibleLugar(-1,0,0);
+		if(lugar != null && lugar.getNombre().toLowerCase().equals(nombreLugar))
+		{
+			Obstaculo obs = lugar.existeObstaculo("oeste");
+			if(obs != null)
+				return obs;
+			return lugar;
+		}
+		
+		return null;
 	}
 	
 	public Objeto tomarObjeto(String nombreObjeto) {

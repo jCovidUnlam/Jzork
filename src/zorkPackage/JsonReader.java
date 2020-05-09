@@ -34,7 +34,6 @@ public class JsonReader {
 			List<Map<String, Object>> lugares = JsonPath.read(jsonString,"$.lugares.*");
 			
 	
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

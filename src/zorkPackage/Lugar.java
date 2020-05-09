@@ -7,9 +7,9 @@ public class Lugar {
 	
 	private String nombre;
 	private String descripcion;
-	private List<Objeto> objetos;
-	private List<Obstaculo> obstaculos;
-	
+	private List<Objeto> objetos = new ArrayList<Objeto>();
+	private List<Obstaculo> obstaculos = new ArrayList<Obstaculo>();
+
 	public Lugar(String nombre, String descripcion) {
 		super();
 		this.nombre = nombre;
@@ -60,6 +60,14 @@ public class Lugar {
 		//Si hay, lo saca de la lista y lo devuelve.
 		this.objetos.remove(obj);
 		return obj;
+	}
+	
+	public Obstaculo existeObstaculo(String direccion) {
+		//Busca el obstaculo en el lugar
+		return this.obstaculos
+				.stream().filter(x -> x.getDireccion().toLowerCase().equals(direccion))
+				.findFirst()
+				.orElse(null);
 	}
 	
 	

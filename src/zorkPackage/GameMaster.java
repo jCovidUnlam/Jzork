@@ -13,24 +13,22 @@ public class GameMaster {
 	
 	public void ejecutar(Comando comando) {
 		
-		switch(comando.nombre.toLowerCase()) {
-		case "norte":
-			Consola.mostrar(aventura.getMapa().moverNorte());
+		switch(comando.getTipo()) {
+		case Mover:
+			moverPersonaje(comando);
 			break;
-		case "sur":
-			Consola.mostrar(aventura.getMapa().moverSur());
+		case Invalido:
+		default:
+			Consola.mostrarComandoErroneo();
 			break;
-		case "este":
-			Consola.mostrar(aventura.getMapa().moverEste());
-			break;
-		case "oeste":
-			Consola.mostrar(aventura.getMapa().moverOeste());
-			break;
-		case "mirar alrededor":
+		}
+		
+		
+		/*case "mirar alrededor":
 			Consola.mostrar(aventura.getMapa().lugarActual());
 			break;
 		case "tomar":
-			Objeto obj = aventura.getMapa().tomarObjeto(comando.nombreObjeto);
+			Objeto obj = aventura.getMapa().tomarObjeto(comando.getNombreObjeto());
 			if(obj == null) {
 				Consola.mostrar(Mensaje.noExisteObjeto());
 				break;
@@ -44,9 +42,43 @@ public class GameMaster {
 			aventura.getPersonaje().addObjeto(obj);
 			Consola.mostrar(Mensaje.tomarObjeto(obj));
 			break;
-			
-		default:
-			Consola.mostrarComandoErroneo();
+		}*/
+	}
+	
+	private void moverPersonaje(Comando comando) {
+		Object obj = null;
+		
+		switch(comando.getNombre()) {
+		case "norte":
+			obj = aventura.getMapa().moverNorte();			
+			break;
+		case "sur":
+			obj =  aventura.getMapa().moverSur();
+			break;
+		case "este":
+			obj = aventura.getMapa().moverEste();
+			break;
+		case "oeste":
+			obj = aventura.getMapa().moverOeste();
+			break;
+		case "ir":
+			obj = aventura.getMapa().irHacia(comando.getNombreObjeto());
+			break;
+		}
+		
+		if(obj == null)
+		{
+			Consola.mostrar(Mensaje.fueraLimite());
+			return;
+		}
+		
+		//No me cambien un nombre de las clases porque esto no funca
+		switch(obj.getClass().getSimpleName()) {
+		case "Lugar":
+			Consola.mostrar(Mensaje.mensajeLugar((Lugar)obj));
+			break;
+		case "Obstaculo":
+			Consola.mostrar(Mensaje.existeObstaculo((Obstaculo)obj));
 			break;
 		}
 	}
