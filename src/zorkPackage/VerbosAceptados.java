@@ -22,8 +22,14 @@ public final class VerbosAceptados {
 	
 	private static final String[] movimiento = {"norte","sur","este","oeste","arriba","abajo","sureste","noreste","suroeste","noroeste","ir"};
 	
+	private static final String[] usuario = {"inventario","reglas"};
+	
 	public static boolean inMovimiento(String verbo) {
 		return Arrays.asList(movimiento).contains(verbo);
+	}
+	
+	public static boolean inUsuario(String verbo) {
+		return Arrays.asList(usuario).contains(verbo);
 	}
 	
 	public static boolean inAdquirible(String verbo) {

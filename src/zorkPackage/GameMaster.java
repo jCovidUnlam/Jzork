@@ -80,6 +80,10 @@ public class GameMaster {
 		case "Obstaculo":
 			Consola.mostrar(Mensaje.existeObstaculo((Obstaculo)obj));
 			break;
+			//Esto es por si tengo que devolver algo raro
+		case "String":
+			Consola.mostrar((String)obj);
+		break;
 		}
 	}
 	

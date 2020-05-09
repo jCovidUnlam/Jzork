@@ -67,6 +67,7 @@ public class Mapa {
 			}
 	}
 	
+	
 	public Object moverNorte() {
 		
 		//Se fija sino esta fuera del mapa.
@@ -150,6 +151,9 @@ public class Mapa {
 		
 		Lugar lugar;
 		
+		if(getLugarActual().getNombre().equals(nombreLugar))
+			return "Ya te encuentras en este lugar!";
+		
 		//Norte
 		lugar = getPosibleLugar(0,1,0);
 		if(lugar != null && lugar.getNombre().toLowerCase().equals(nombreLugar))
@@ -157,6 +161,11 @@ public class Mapa {
 			Obstaculo obs = lugar.existeObstaculo("norte");
 			if(obs != null)
 				return obs;
+			
+			this.cantidadMovimientos++;
+			this.posicionActual.setY(this.posicionActual.getY() + 1);
+			//Esto seria para testear
+			imprimirPosicion();
 			return lugar;
 		}
 		
@@ -167,6 +176,11 @@ public class Mapa {
 			Obstaculo obs = lugar.existeObstaculo("sur");
 			if(obs != null)
 				return obs;
+			
+			this.cantidadMovimientos++;
+			this.posicionActual.setY(this.posicionActual.getY() - 1);
+			//Esto seria para testear
+			imprimirPosicion();
 			return lugar;
 		}
 			
@@ -177,6 +191,11 @@ public class Mapa {
 			Obstaculo obs = lugar.existeObstaculo("este");
 			if(obs != null)
 				return obs;
+			
+			this.cantidadMovimientos++;
+			this.posicionActual.setX(this.posicionActual.getX() + 1);
+			//Esto seria para testear
+			imprimirPosicion();
 			return lugar;
 		}
 		
@@ -187,6 +206,9 @@ public class Mapa {
 			Obstaculo obs = lugar.existeObstaculo("oeste");
 			if(obs != null)
 				return obs;
+			
+			this.cantidadMovimientos++;
+			this.posicionActual.setX(this.posicionActual.getX() - 1);
 			return lugar;
 		}
 		

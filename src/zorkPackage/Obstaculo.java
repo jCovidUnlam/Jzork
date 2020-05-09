@@ -4,9 +4,9 @@ public class Obstaculo extends Objeto{
 
 	private String mensaje;
 	private String direccion;
-	
-	public Obstaculo(String mensaje, String direccion) {
-		super();
+		
+	public Obstaculo(int objetoID, String nombre, String descripcion, String mensaje, String direccion) {
+		super(objetoID, nombre, descripcion);
 		this.mensaje = mensaje;
 		this.direccion = direccion;
 	}
