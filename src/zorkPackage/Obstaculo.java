@@ -2,15 +2,29 @@ package zorkPackage;
 
 public class Obstaculo extends Objeto{
 
+	private boolean estado;
 	private String mensaje;
 	private String direccion;
+	private Objeto objeto;
 		
-	public Obstaculo(int objetoID, String nombre, String descripcion, String mensaje, String direccion) {
-		super(objetoID, nombre, descripcion);
+	public Obstaculo(String mensaje, String direccion) {
 		this.mensaje = mensaje;
 		this.direccion = direccion;
+		this.estado = true;
 	}
 	
+	public boolean isEstado() {
+		return estado;
+	}
+	public void setEstado(boolean estado) {
+		this.estado = estado;
+	}
+	public Objeto getObjeto() {
+		return objeto;
+	}
+	public void setObjeto(Objeto objeto) {
+		this.objeto = objeto;
+	}
 	public String getMensaje() {
 		return mensaje;
 	}

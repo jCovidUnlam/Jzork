@@ -40,7 +40,7 @@ public final class Consola {
 	}
 	
 	public static void mostrar(String msj) {
-		System.out.println(msj);
+		System.out.println("\n" + msj);
 	}
 	
 	public static void mostrarComandoErroneo() {

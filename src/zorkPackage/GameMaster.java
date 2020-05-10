@@ -17,6 +17,12 @@ public class GameMaster {
 		case Mover:
 			moverPersonaje(comando);
 			break;
+		case Adquirir:
+			adquirirItem(comando);
+			break;
+		case Usuario:
+			ejecutarComandoUsuario(comando);
+			break;
 		case Invalido:
 		default:
 			Consola.mostrarComandoErroneo();
@@ -84,6 +90,39 @@ public class GameMaster {
 		case "String":
 			Consola.mostrar((String)obj);
 		break;
+		}
+	}
+	
+	private void adquirirItem(Comando comando) {
+		//Lo busca en el lugar
+		Item item = aventura.getMapa().tomarItem(comando.getNombreObjeto());
+		
+		//Si es nulo, muetra que no existe
+		if(item == null)
+			Consola.mostrar(Mensaje.noExisteObjeto());
+		
+		//Sino es tomable, le manda una descripcion de porque no lo es
+		if(item.isTomable() == false)
+			Consola.mostrar(item.getDescNoTomable());
+		else {
+			//Remueve el atributo descripcionMapa del item en el Lugar.
+			aventura.getMapa().cambiarDescripcionLugarActual(item);
+			//Si es tomable, lo agrega al inventario
+			aventura.getPersonaje().addObjeto(item);
+			//Finalmente, muetra mensaje de que lo tomo.
+			Consola.mostrar(item.getDescTomable());
+		}
+	}
+	
+	private void ejecutarComandoUsuario(Comando comando)
+	{
+		switch (comando.getNombre()) {
+		case "inventario":
+			Consola.mostrar(Mensaje.inventario(aventura.getPersonaje().getInventario(), aventura.getPersonaje().getNombre()));
+			break;
+
+		default:
+			break;
 		}
 	}
 	

@@ -1,11 +1,13 @@
 package zorkPackage;
 
+import java.util.List;
+
 public final class Mensaje {
 	
 	public static String mensajeLugar(Lugar lugar) {
 		String msj = "";
 		if(lugar == null)
-			msj = "\nNo hay lugar donde ir!";
+			msj = "No hay lugar donde ir!";
 		else {
 			msj += "\n########################\n";
 			msj += "     " + lugar.getNombre() + "\n";
@@ -24,21 +26,25 @@ public final class Mensaje {
 		return "\nEse objeto no está en este lugar.";
 	}
 	
-	public static String tomarItem(Item item) {
-		String msj = "";
-		msj = "\nHas adquirido "+ item.getNombre();
-		return msj;
+	public static String tomarItem(Item item) { 
+		return "Has adquirido "+ item.getNombre();
 	}
 	
 	public static String noTomable(Item item) {
-		String msj = "";
-		msj = "\n" + item.getDescTomable();
-		return msj;
+		return item.getDescTomable();
 	}
 	
 	public static String existeObstaculo(Obstaculo obstaculo) {
-		String msj = "";
-		msj = "\n" + obstaculo.getMensaje();
+		return obstaculo.getMensaje();
+	}
+	
+	public static String inventario(List<Item> items, String nombrePJ) {
+		String msj = "El inventario de " + nombrePJ + " es:";
+		
+		for (Item item : items) {
+			msj += "\n - " + item.getNombre(); 
+		}
+		
 		return msj;
 	}
 }

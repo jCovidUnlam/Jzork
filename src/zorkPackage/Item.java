@@ -6,14 +6,33 @@ public class Item extends Objeto{
 	private String descRompible;
 	private boolean tomable;
 	private String descTomable;
+	private String descNoTomable;
 
-	public Item(int objetoID, String nombre, String descripcion, boolean rompible, String descRompible, boolean tomable,
-			String descTomable) {
-		super(objetoID, nombre, descripcion);
+	public Item() {}
+
+	public Item(boolean rompible, String descRompible, boolean tomable, String descTomable, String descNoTomable) {
+		super();
 		this.rompible = rompible;
 		this.descRompible = descRompible;
 		this.tomable = tomable;
 		this.descTomable = descTomable;
+		this.descNoTomable = descNoTomable;
+	}
+
+	public boolean isRompible() {
+		return rompible;
+	}
+
+	public void setRompible(boolean rompible) {
+		this.rompible = rompible;
+	}
+
+	public String getDescRompible() {
+		return descRompible;
+	}
+
+	public void setDescRompible(String descRompible) {
+		this.descRompible = descRompible;
 	}
 
 	public boolean isTomable() {
@@ -24,14 +43,6 @@ public class Item extends Objeto{
 		this.tomable = tomable;
 	}
 
-	public boolean isRompible() {
-		return rompible;
-	}
-
-	public void setRompible(boolean rompible) {
-		this.rompible = rompible;
-	}
-	
 	public String getDescTomable() {
 		return descTomable;
 	}
@@ -39,11 +50,14 @@ public class Item extends Objeto{
 	public void setDescTomable(String descTomable) {
 		this.descTomable = descTomable;
 	}
-	public String getDescRompible() {
-		return descRompible;
+
+	public String getDescNoTomable() {
+		return descNoTomable;
 	}
 
-	public void setDescRompible(String descRompible) {
-		this.descRompible = descRompible;
-	}
+	public void setDescNoTomable(String descNoTomable) {
+		this.descNoTomable = descNoTomable;
+	};
+	
+
 }

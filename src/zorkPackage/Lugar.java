@@ -7,7 +7,7 @@ public class Lugar {
 	
 	private String nombre;
 	private String descripcion;
-	private List<Objeto> objetos = new ArrayList<Objeto>();
+	private List<Item> items = new ArrayList<Item>();
 	private List<Obstaculo> obstaculos = new ArrayList<Obstaculo>();
 
 	public Lugar(String nombre, String descripcion) {
@@ -16,11 +16,11 @@ public class Lugar {
 		this.descripcion = descripcion;
 	}
 
-	public Lugar(String nombre, String descripcion, List<Objeto> objetos) {
+	public Lugar(String nombre, String descripcion, List<Item> items) {
 		super();
 		this.nombre = nombre;
 		this.descripcion = descripcion;
-		this.objetos = objetos;
+		this.items = items;
 
 	}
 	
@@ -36,11 +36,11 @@ public class Lugar {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	public List<Objeto> getObjetos() {
-		return objetos;
+	public List<Item> getObjetos() {
+		return items;
 	}
-	public void setObjetos(ArrayList<Objeto> objetos) {
-		this.objetos = objetos;
+	public void setObjetos(ArrayList<Item> items) {
+		this.items = items;
 	}
 
 	/**
@@ -48,9 +48,9 @@ public class Lugar {
 	 * @param nombreObjeto representa el nombre del objeto que se busca.
 	 * @return El objeto buscado o nulo en caso de no encontrarlo.
 	 */
-	public Objeto tomarObjeto(String nombreObjeto){
+	public Item tomarItem(String nombreObjeto){
 		//Busca el objeto en el lugar
-		Objeto obj = this.objetos
+		Item obj = this.items
 				.stream().filter(x -> x.getNombre().toLowerCase().equals(nombreObjeto))
 				.findFirst()
 				.orElse(null);
@@ -58,7 +58,7 @@ public class Lugar {
 		if(obj == null)
 			return null;
 		//Si hay, lo saca de la lista y lo devuelve.
-		this.objetos.remove(obj);
+		this.items.remove(obj);
 		return obj;
 	}
 	
@@ -68,6 +68,10 @@ public class Lugar {
 				.stream().filter(x -> x.getDireccion().toLowerCase().equals(direccion))
 				.findFirst()
 				.orElse(null);
+	}
+	
+	public void cambiarDescripcion(Item item) {
+		this.descripcion = this.descripcion.replace(item.getDescripcionMapa(), "");
 	}
 	
 	

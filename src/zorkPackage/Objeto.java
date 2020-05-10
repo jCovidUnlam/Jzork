@@ -2,22 +2,26 @@ package zorkPackage;
 
 public class Objeto {
 	
-	private int ObjetoID;
+	private String ObjetoID;
 	private String nombre;
 	private String descripcion;
+	private String descripcionMapa;
 	
-	public Objeto(int objetoID, String nombre, String descripcion) {
+	public Objeto() {};
+	
+	public Objeto(String objetoID, String nombre, String descripcion, String descripcionMapa) {
 		super();
 		ObjetoID = objetoID;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
+		this.descripcionMapa = descripcionMapa;
 	}
 
-	public int getObjetoID() {
+	public String getObjetoID() {
 		return ObjetoID;
 	}
 
-	public void setObjetoID(int objetoID) {
+	public void setObjetoID(String objetoID) {
 		ObjetoID = objetoID;
 	}
 	public String getNombre() {
@@ -34,6 +38,13 @@ public class Objeto {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+	public String getDescripcionMapa() {
+		return descripcionMapa;
+	}
+
+	public void setDescripcionMapa(String descripcionMapa) {
+		this.descripcionMapa = descripcionMapa;
 	}
 
 

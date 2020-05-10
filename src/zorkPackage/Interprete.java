@@ -8,7 +8,7 @@ public final class Interprete {
 	public static Comando interpretar(ArrayList<String> cadena) {
 		
 		//Hay que revisar esto, si pasa uno espacio o varios espacios y nada mas podria romper
-		if(cadena == null || cadena.size() == 0 || cadena.get(0) == "")
+		if(cadena == null || cadena.size() == 0)
 			return new Comando(Comando.Tipo.Invalido);
 		
 		Comando comando = new Comando();
@@ -18,7 +18,11 @@ public final class Interprete {
 		if(VerbosAceptados.inMovimiento(verbo))
 			comando = esDeMovimiento(cadena);
 		
+		if(VerbosAceptados.inAdquirible(verbo))
+			comando = esDeAdquirir(cadena);
 		
+		if(VerbosAceptados.inUsuario(verbo))
+			comando = esDeUsuario(cadena);
 		
 		//Habria que hacer lo mismo con cada tipo de verbo y pensar las excepciones de cada uno.
 		
@@ -41,6 +45,25 @@ public final class Interprete {
 		return new Comando(verbo, "", Comando.Tipo.Mover);
 	}
 	
+	private static Comando esDeAdquirir(List<String> cadena) {
+		
+		//No existen hasta donde entiendo, comandos de este tipo que no involucren al menos 2 palabras
+		if(cadena.size() != 2)
+			return new Comando(Comando.Tipo.Invalido);
+		
+		String verbo = cadena.get(0);
+		String objeto = cadena.get(1);
+		
+		return new Comando(verbo, objeto, Comando.Tipo.Adquirir);
+	}
+	
+	private static Comando esDeUsuario(List<String> cadena)
+	{
+		//Por el momento, solo veo la primer palabra
+		String verbo = cadena.get(0);
+		
+		return new Comando(verbo, "", Comando.Tipo.Usuario);
+	}
 	
 	
 }

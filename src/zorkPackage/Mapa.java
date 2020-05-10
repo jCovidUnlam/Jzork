@@ -147,6 +147,142 @@ public class Mapa {
 		return getLugarActual();
 	}
 	
+	public Object moverAbajo() {
+		
+		//Se fija sino esta fuera del mapa.
+		if(getPosibleLugar(0,0,-1) == null) {
+			//Esto seria para testear
+			imprimirPosicion();
+			return null;
+		}
+		
+		//Se fija si el lugar donde esta parado tiene obstaculos en esa direccion.
+		Obstaculo obstaculo = getLugarActual().existeObstaculo("abajo");
+		if(obstaculo != null)
+			return obstaculo;
+		
+		//Si todo sale bien, suma movimientos, se mueve y devuelve el lugar pa q lo imprima el GM.
+		this.cantidadMovimientos++;
+		this.posicionActual.setZ(this.posicionActual.getZ() - 1);
+		//Esto seria para testear
+		imprimirPosicion();
+		return getLugarActual();
+	}
+	
+	public Object moverArriba() {
+		
+		//Se fija sino esta fuera del mapa.
+		if(getPosibleLugar(0,0,1) == null) {
+			//Esto seria para testear
+			imprimirPosicion();
+			return null;
+		}
+		
+		//Se fija si el lugar donde esta parado tiene obstaculos en esa direccion.
+		Obstaculo obstaculo = getLugarActual().existeObstaculo("arriba");
+		if(obstaculo != null)
+			return obstaculo;
+		
+		//Si todo sale bien, suma movimientos, se mueve y devuelve el lugar pa q lo imprima el GM.
+		this.cantidadMovimientos++;
+		this.posicionActual.setZ(this.posicionActual.getZ() + 1);
+		//Esto seria para testear
+		imprimirPosicion();
+		return getLugarActual();
+	}
+	
+	public Object moverSurEste() {
+		
+		//Se fija sino esta fuera del mapa.
+		if(getPosibleLugar(1,-1,0) == null) {
+			//Esto seria para testear
+			imprimirPosicion();
+			return null;
+		}
+		
+		//Se fija si el lugar donde esta parado tiene obstaculos en esa direccion.
+		Obstaculo obstaculo = getLugarActual().existeObstaculo("sureste");
+		if(obstaculo != null)
+			return obstaculo;
+		
+		//Si todo sale bien, suma movimientos, se mueve y devuelve el lugar pa q lo imprima el GM.
+		this.cantidadMovimientos++;
+		this.posicionActual.setX(this.posicionActual.getX() + 1);
+		this.posicionActual.setY(this.posicionActual.getY() - 1);
+		//Esto seria para testear
+		imprimirPosicion();
+		return getLugarActual();
+	}
+	
+	public Object moverSurOeste() {
+		
+		//Se fija sino esta fuera del mapa.
+		if(getPosibleLugar(-1,-1,0) == null) {
+			//Esto seria para testear
+			imprimirPosicion();
+			return null;
+		}
+		
+		//Se fija si el lugar donde esta parado tiene obstaculos en esa direccion.
+		Obstaculo obstaculo = getLugarActual().existeObstaculo("suroeste");
+		if(obstaculo != null)
+			return obstaculo;
+		
+		//Si todo sale bien, suma movimientos, se mueve y devuelve el lugar pa q lo imprima el GM.
+		this.cantidadMovimientos++;
+		this.posicionActual.setX(this.posicionActual.getX() - 1);
+		this.posicionActual.setY(this.posicionActual.getY() - 1);
+		//Esto seria para testear
+		imprimirPosicion();
+		return getLugarActual();
+	}
+	
+	public Object moverNorEste() {
+		
+		//Se fija sino esta fuera del mapa.
+		if(getPosibleLugar(1,1,0) == null) {
+			//Esto seria para testear
+			imprimirPosicion();
+			return null;
+		}
+		
+		//Se fija si el lugar donde esta parado tiene obstaculos en esa direccion.
+		Obstaculo obstaculo = getLugarActual().existeObstaculo("noreste");
+		if(obstaculo != null)
+			return obstaculo;
+		
+		//Si todo sale bien, suma movimientos, se mueve y devuelve el lugar pa q lo imprima el GM.
+		this.cantidadMovimientos++;
+		this.posicionActual.setX(this.posicionActual.getX() + 1);
+		this.posicionActual.setY(this.posicionActual.getY() + 1);
+		//Esto seria para testear
+		imprimirPosicion();
+		return getLugarActual();
+	}
+	
+	public Object moverNorOeste() {
+		
+		//Se fija sino esta fuera del mapa.
+		if(getPosibleLugar(-1,1,0) == null) {
+			//Esto seria para testear
+			imprimirPosicion();
+			return null;
+		}
+		
+		//Se fija si el lugar donde esta parado tiene obstaculos en esa direccion.
+		Obstaculo obstaculo = getLugarActual().existeObstaculo("noroeste");
+		if(obstaculo != null)
+			return obstaculo;
+		
+		//Si todo sale bien, suma movimientos, se mueve y devuelve el lugar pa q lo imprima el GM.
+		this.cantidadMovimientos++;
+		this.posicionActual.setX(this.posicionActual.getX() - 1);
+		this.posicionActual.setY(this.posicionActual.getY() + 1);
+		//Esto seria para testear
+		imprimirPosicion();
+		return getLugarActual();
+	}
+	
 	public Object irHacia(String nombreLugar) {
 		
 		Lugar lugar;
@@ -215,8 +351,14 @@ public class Mapa {
 		return null;
 	}
 	
-	public Objeto tomarObjeto(String nombreObjeto) {
-		return getLugarActual().tomarObjeto(nombreObjeto);
+	//Esto esta armado solo para respetar que GAMEMASTER llame solo al mapa.
+	public Item tomarItem(String nombreObjeto) {
+		return getLugarActual().tomarItem(nombreObjeto);
+	}
+	
+	//Esto tambien
+	public void cambiarDescripcionLugarActual(Item item) {
+		getLugarActual().cambiarDescripcion(item);
 	}
 
 

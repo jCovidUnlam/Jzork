@@ -5,11 +5,13 @@ public class Comando {
 	public enum Tipo {
 		Invalido,
 		Mover,
-		Tomar,
+		Adquirir,
 		Ver,
 		Romper,
 		Mezclar,
 		Usar,
+		Usuario,
+		Otro,
 	}
 	
 	private String nombre;
