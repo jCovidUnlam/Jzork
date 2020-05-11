@@ -19,11 +19,11 @@ public final class Mensaje {
 	}
 	
 	public static String fueraLimite() {
-		return "\nNo hay lugar donde ir!";
+		return "No hay lugar donde ir!";
 	}
 	
 	public static String noExisteObjeto() {
-		return "\nEse objeto no está en este lugar.";
+		return "Ese objeto no está en este lugar.";
 	}
 	
 	public static String tomarItem(Item item) { 
@@ -31,7 +31,7 @@ public final class Mensaje {
 	}
 	
 	public static String noTomable(Item item) {
-		return item.getDescTomable();
+		return item.getMensajeNoTomable();
 	}
 	
 	public static String existeObstaculo(Obstaculo obstaculo) {
@@ -46,5 +46,22 @@ public final class Mensaje {
 		}
 		
 		return msj;
+	}
+	
+	public static String mostrarObjeto(Objeto objeto)
+	{
+		return objeto.getDescripcion();
+	}
+	
+	public static String comandoErroneo() {
+		return "Comando erróneo!";
+	}
+	
+	public static String noExisteNPC() {
+		return "No existe ese NPC en este lugar!";
+	}
+	
+	public static String ncpMensaje(NPC npc) {
+		return npc.getNombre() + "responde: " + npc.getHablar();
 	}
 }

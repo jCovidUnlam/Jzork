@@ -6,11 +6,12 @@ public class Comando {
 		Invalido,
 		Mover,
 		Adquirir,
-		Ver,
+		Inspeccionar,
 		Romper,
 		Mezclar,
 		Usar,
 		Usuario,
+		NPC,
 		Otro,
 	}
 	

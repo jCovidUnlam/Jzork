@@ -360,6 +360,14 @@ public class Mapa {
 	public void cambiarDescripcionLugarActual(Item item) {
 		getLugarActual().cambiarDescripcion(item);
 	}
+	
+	public Objeto mostrarObjeto(String nombreObjeto) {
+		return getLugarActual().mostrarDescripcion(nombreObjeto);
+	}
+	
+	public NPC getNPC(String nombreNPC) {
+		return getLugarActual().getNPC(nombreNPC);
+	}
 
 
 	

@@ -6,6 +6,8 @@ public class Obstaculo extends Objeto{
 	private String mensaje;
 	private String direccion;
 	private Objeto objeto;
+	
+	public Obstaculo() {};
 		
 	public Obstaculo(String mensaje, String direccion) {
 		this.mensaje = mensaje;

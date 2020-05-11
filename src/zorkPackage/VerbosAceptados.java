@@ -15,7 +15,7 @@ public final class VerbosAceptados {
 	private static final String[] consumible = {"tomar","beber","ingerir","comer"};
 	
 	//Esta lista contiene los verbos aceptables a la hora de inspeccionar algo que tendra algun efecto.
-	private static final String[] inspeccionable = {"inspeccionar", "mirar", "observar"};
+	private static final String[] inspeccionable = {"inspeccionar", "mirar", "observar", "ver"};
 	
 	//Esta lista contiene los verbos aceptables a la hora de usar algo que este en el inventario o no
 	private static final String[] usable = {"usar","utilizar"};
@@ -23,6 +23,12 @@ public final class VerbosAceptados {
 	private static final String[] movimiento = {"norte","sur","este","oeste","arriba","abajo","sureste","noreste","suroeste","noroeste","ir"};
 	
 	private static final String[] usuario = {"inventario","reglas"};
+	
+	private static final String[] NPC = {"hablar","charlar"};
+	
+	public static boolean inNPC(String verbo) {
+		return Arrays.asList(NPC).contains(verbo);
+	}
 	
 	public static boolean inMovimiento(String verbo) {
 		return Arrays.asList(movimiento).contains(verbo);

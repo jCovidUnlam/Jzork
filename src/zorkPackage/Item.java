@@ -5,8 +5,8 @@ public class Item extends Objeto{
 	private boolean rompible;
 	private String descRompible;
 	private boolean tomable;
-	private String descTomable;
-	private String descNoTomable;
+	private String mensajeTomable;
+	private String mensajeNoTomable;
 
 	public Item() {}
 
@@ -15,8 +15,8 @@ public class Item extends Objeto{
 		this.rompible = rompible;
 		this.descRompible = descRompible;
 		this.tomable = tomable;
-		this.descTomable = descTomable;
-		this.descNoTomable = descNoTomable;
+		this.mensajeTomable = descTomable;
+		this.mensajeNoTomable = descNoTomable;
 	}
 
 	public boolean isRompible() {
@@ -42,22 +42,22 @@ public class Item extends Objeto{
 	public void setTomable(boolean tomable) {
 		this.tomable = tomable;
 	}
-
-	public String getDescTomable() {
-		return descTomable;
+	public String getMensajeTomable() {
+		return mensajeTomable;
 	}
 
-	public void setDescTomable(String descTomable) {
-		this.descTomable = descTomable;
+	public void setMensajeTomable(String mensajeTomable) {
+		this.mensajeTomable = mensajeTomable;
 	}
 
-	public String getDescNoTomable() {
-		return descNoTomable;
+	public String getMensajeNoTomable() {
+		return mensajeNoTomable;
 	}
 
-	public void setDescNoTomable(String descNoTomable) {
-		this.descNoTomable = descNoTomable;
-	};
-	
+	public void setMensajeNoTomable(String mensajeNoTomable) {
+		this.mensajeNoTomable = mensajeNoTomable;
+	}
+
+
 
 }

@@ -43,10 +43,6 @@ public final class Consola {
 		System.out.println("\n" + msj);
 	}
 	
-	public static void mostrarComandoErroneo() {
-		System.out.println("\nComando erróneo!");
-	}
-	
 	public static void iniciarAventura(Aventura aventura) {
 		System.out.println("\n########################");
 		System.out.println("     " + aventura.getNombre());

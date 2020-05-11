@@ -8,7 +8,14 @@ import java.util.Map;
 
 import org.json.simple.parser.JSONParser;
 
+import com.google.gson.Gson;
+import com.jayway.jsonpath.Configuration;
 import com.jayway.jsonpath.JsonPath;
+import com.jayway.jsonpath.TypeRef;
+import com.jayway.jsonpath.spi.json.JacksonJsonProvider;
+import com.jayway.jsonpath.spi.mapper.JacksonMappingProvider;
+
+import net.minidev.json.JSONArray;
 
 public class JsonReader {
 
@@ -19,20 +26,27 @@ public class JsonReader {
 			String jsonString = json.toString();
 			
 			//Aventura
-			aventura.setNombre(JsonPath.read(jsonString, "$.map.Nombre"));
-			aventura.setDescripcion(JsonPath.read(jsonString, "$.map.Descripcion"));
+			aventura.setNombre(JsonPath.read(jsonString, "$.map.nombre"));
+			aventura.setDescripcion(JsonPath.read(jsonString, "$.map.descripcion"));
 			
 			//Mapa
 			aventura.setMapa(construirMapa(jsonString));
 			
+			//Objetos
+			List<Objeto> objetos = new ArrayList<Objeto>();
 			//Items
-			List<Item> items = agregarItems(jsonString);
+			objetos.addAll(agregarItems(jsonString));
+			//Npcs
+			objetos.addAll(agregarNPCs(jsonString));
+			//Obstaculos
+			objetos.addAll(agregarObstaculos(jsonString, objetos));
+			//Triggers
+			List<Trigger> triggers = new ArrayList<Trigger>();
+			//triggers.addAll(agregarTriggers(jsonString));
+			
 			
 			//Lugares
-			agregarLugares(aventura.getMapa(), jsonString, items);
-			
-
-			List<Map<String, Object>> lugares = JsonPath.read(jsonString,"$.lugares.*");
+			agregarLugares(aventura.getMapa(), jsonString, objetos);
 			
 	
 		} catch (Exception e) {
@@ -48,21 +62,27 @@ public class JsonReader {
 		return new Mapa(new Posicion(x, y, z));
 	}
 	
-	private static void agregarLugares(Mapa mapa, String jsonString, List<Item> items) {
+	private static void agregarLugares(Mapa mapa, String jsonString, List<Objeto> objetos) {
 		
 		int i = 0;
-		List<String> nombres = JsonPath.read(jsonString,"$.lugares[*].Nombre");
-		List<String> descripciones = JsonPath.read(jsonString,"$.lugares[*].Descripcion");
-		List<String> itemIds = JsonPath.read(jsonString, "$.lugares[*].items");
-		
+		List<String> nombres = JsonPath.read(jsonString,"$.lugares[*].nombre");
+		List<String> descripciones = JsonPath.read(jsonString,"$.lugares[*].descripcion");
+		ArrayList<String> ids = new ArrayList<String>();
+		ids.addAll(JsonPath.read(jsonString, "$.lugares[*].items"));
+		ids.addAll(JsonPath.read(jsonString, "$.lugares[*].obstaculos"));
+		ids.addAll(JsonPath.read(jsonString, "$.lugares[*].npcs"));
+//		ArrayList<String> itemIds = JsonPath.read(jsonString, "$.lugares[*].items");
+//		ArrayList<String> obstaculosIds = JsonPath.read(jsonString, "$.lugares[*].obstaculos");
+//		
 		List<Lugar> lugares = new ArrayList<Lugar>();
 		
 		for (String nombre : nombres) {
 			
-			List<Item> added = new ArrayList<Item>();
-			List<String> auxItems = Arrays.asList(itemIds.get(i).split(" "));
-			
-			for (Item item : items) {
+			List<Objeto> added = new ArrayList<Objeto>();
+//			List<String> auxItems = Arrays.asList(itemIds.get(i).split(" "));
+//			auxItems.addAll(Arrays.asList(obstaculosIds.get(i).split(" ")));
+//			
+			for (Objeto item : objetos) {
 				
 				String id = "{" + item.getObjetoID() + "}";
 				
@@ -70,23 +90,22 @@ public class JsonReader {
 				if(descripciones.get(i).contains(id)) 
 					descripciones.set(i, descripciones.get(i).replace(id , item.getDescripcionMapa()));
 				
-				if(auxItems.contains(item.getObjetoID()))
+				if(ids.contains(item.getObjetoID()))
 					added.add(item);
+				
 				
 			}
 			
 			lugares.add(new Lugar(nombre, descripciones.get(i), added));
-			
-			
 			i++;
 		}
 		
 		i=0;
 		for (Lugar lugar : lugares) {
 			int j = 0;
-			List<String> xs = JsonPath.read(jsonString,"$.lugares["+ i +"].Posiciones[*].x");
-			List<String> ys = JsonPath.read(jsonString,"$.lugares["+ i +"].Posiciones[*].y");
-			List<String> zs = JsonPath.read(jsonString,"$.lugares["+ i +"].Posiciones[*].z");
+			List<String> xs = JsonPath.read(jsonString,"$.lugares["+ i +"].posiciones[*].x");
+			List<String> ys = JsonPath.read(jsonString,"$.lugares["+ i +"].posiciones[*].y");
+			List<String> zs = JsonPath.read(jsonString,"$.lugares["+ i +"].posiciones[*].z");
 			
 			for (String x : xs) {
 				mapa.addLugar(lugar, new Posicion(Integer.parseInt(x),Integer.parseInt(ys.get(j)),Integer.parseInt(zs.get(j))));
@@ -94,43 +113,129 @@ public class JsonReader {
 			}
 			i++;
 			
-			
-			
 		}
 	}
 	
-	private static List<Item> agregarItems(String jsonString){
-		List<Item> aux = new ArrayList<Item>();
+//	private static List<Trigger> agregarTriggers(String jsonString){
+//		List<Trigger> returned = new ArrayList<Trigger>();
+//		List<Map<String, Object>> triggerList = JsonPath.read(jsonString,"$.triggers[*]");
+//	
+//		
+//		for (Map<String, Object> trigger : triggerList) {
+//			
+//			Trigger newTrigger;
+//			
+//			switch((String)trigger.get("tipo")) {
+//			case "item":
+//				newTrigger = addNewItemTrigger(trigger);
+//				break;
+//			default:
+//				newTrigger = null;
+//				break;
+//			}
+//			
+//			returned.add(newTrigger);
+//		}
+//		return returned;
+//	}
+//	
+//	private static TriggerItem addNewItemTrigger(Map<String,Object> trigger) {
+//		TriggerItem returned = new TriggerItem();
+//		
+//		for (Map.Entry<String,Object> entry : trigger.entrySet()) {
+//			
+//			switch (entry.getKey()) {
+//			case "idObjeto":
+//				returned.setObjetoID((String)entry.getValue());
+//				break;
+//			case "item":
+//				returned.setTrigges(Arrays.asList(entry.getValue().toString().toLowerCase().split(" ")));
+//				break;
+//			case "descripcion":
+//				newObject.setDescripcion((String)entry.getValue());
+//				break;
+//			case "descripcionMapa":
+//				newObject.setDescripcionMapa((String)entry.getValue());
+//				break;
+//			case "hablar":
+//				newObject.setHablar((String)entry.getValue());
+//				break;
+//			default:
+//				break;
+//			}	
+//		}
+//	}
+	
+	
+	private static List<Objeto> agregarItems(String jsonString){
+		List<Objeto> aux = new ArrayList<Objeto>();
+//		Configuration configuration = Configuration
+//		        .builder()
+//		        .jsonProvider(new JacksonJsonProvider())
+//		        .mappingProvider(new JacksonMappingProvider())
+//		        .build();
+//		
+//		System.out.println(Item.class);
+//		
+//		List<Item> allItems = JsonPath.using(configuration)
+//		        .parse(jsonString)
+//		        .read("$.items[*]", new TypeRef<List<Item>>() {});
+//		
+//		
+//		
+//		JSONArray items = JsonPath.read(jsonString,"$.items[*]");
+//		Gson gson = new Gson();
+//		
+//		String ss = items.toJSONString();
 
-		List<Map<String, Object>> itemList = JsonPath.read(jsonString,"$.items[*]");
+//		
+//	for (int i = 0; i < items.toJSONString().length(); i++) {
+//			System.out.println(items.get(i));
+//		Item item = gson.fromJson(items.get(i).toString(),Item.class);			
+//	}
+//		
+//		System.out.println(items.toJSONString());
+//		
 		
-		for (Map<String, Object> item : itemList) {
+
+//		for (String a : items.toJSONString()) {
+//			String ss = (String)a;
+//		}
+		
+		//List<Map<String, Object>> objetcList = new ArrayList<Map<String, Object>>();		
+		List<Map<String, Object>> itemList = JsonPath.read(jsonString,"$.items[*]");
+		//List<Map<String, Object>> npcList = JsonPath.read(jsonString,"$.npcs[*]");
+		//objetcList.addAll(itemList);
+		//objetcList.addAll(npcList);
+		
+
+		for (Map<String, Object> objeto : itemList) {
 			
 			Item newItem = new Item();
 
-			for (Map.Entry<String,Object> entry : item.entrySet()) {
+			for (Map.Entry<String,Object> entry : objeto.entrySet()) {
 				
 				switch (entry.getKey()) {
-				case "Id":
+				case "id":
 					newItem.setObjetoID((String)entry.getValue());
 					break;
-				case "Nombre":
+				case "nombre":
 					newItem.setNombre((String)entry.getValue());
 					break;
-				case "Descripcion":
+				case "descripcion":
 					newItem.setDescripcion((String)entry.getValue());
 					break;
-				case "DescripcionMapa":
+				case "descripcionMapa":
 					newItem.setDescripcionMapa((String)entry.getValue());
 					break;
-				case "Tomable":
+				case "tomable":
 					newItem.setTomable(Boolean.parseBoolean((String)entry.getValue()));
 					break;
-				case "MensajeTomable":
-					newItem.setDescTomable((String)entry.getValue());
+				case "mensajeTomable":
+					newItem.setMensajeTomable((String)entry.getValue());
 					break;
-				case "MensajeNoTomable":
-					newItem.setDescNoTomable((String)entry.getValue());
+				case "mensajeNoTomable":
+					newItem.setMensajeNoTomable((String)entry.getValue());
 					break;
 				default:
 					break;
@@ -141,16 +246,78 @@ public class JsonReader {
 		}
 		
 		return aux;
-//		List<String> ids = JsonPath.read(jsonString,"$.items[*].id");
-//		List<String> nombres = JsonPath.read(jsonString,"$.items[*].nombre");
-//		List<String> descripciones = JsonPath.read(jsonString,"$.items[*].descripcion");
-//		List<String> descripcionesMapa = JsonPath.read(jsonString,"$.items[*].descripcionMapa");
-//		List<String> tomable = JsonPath.read(jsonString,"$.items[*].tomable");
-//		List<String> tomableDesc = JsonPath.read(jsonString,"$.items[*].descripcionTomable");
-		
-
 	}
 	
+	private static List<Objeto> agregarNPCs(String jsonString){
+		List<Objeto> aux = new ArrayList<Objeto>();
+		List<Map<String, Object>> objectList = JsonPath.read(jsonString,"$.npcs[*]");
+	
+		
+		for (Map<String, Object> objeto : objectList) {
+			
+			NPC newObject = new NPC();
+			
+			for (Map.Entry<String,Object> entry : objeto.entrySet()) {
+				
+				switch (entry.getKey()) {
+				case "id":
+					newObject.setObjetoID((String)entry.getValue());
+					break;
+				case "nombre":
+					newObject.setNombre((String)entry.getValue());
+					break;
+				case "descripcion":
+					newObject.setDescripcion((String)entry.getValue());
+					break;
+				case "descripcionMapa":
+					newObject.setDescripcionMapa((String)entry.getValue());
+					break;
+				case "hablar":
+					newObject.setHablar((String)entry.getValue());
+					break;
+				default:
+					break;
+				}	
+			}
+
+			aux.add(newObject);
+		}
+		return aux;
+	}
+		
+	
+	private static List<Objeto> agregarObstaculos(String jsonString, List<Objeto> objetos){
+		List<Objeto> aux = new ArrayList<Objeto>();
+		List<Map<String, Object>> objectList = JsonPath.read(jsonString,"$.obstaculos[*]");
+		
+		for (Map<String, Object> objeto : objectList) {
+			
+			Obstaculo newObject = new Obstaculo();
+
+			for (Map.Entry<String,Object> entry : objeto.entrySet()) {
+				
+				switch (entry.getKey()) {
+				case "id":
+					newObject.setObjetoID((String)entry.getValue());
+					break;
+				case "mensaje":
+					newObject.setMensaje((String)entry.getValue());
+					break;
+				case "direccion":
+					newObject.setDireccion((String)entry.getValue());
+					break;
+				case "objeto":
+					newObject.setObjeto(objetos.stream().filter(x->x.getObjetoID().equals((String)entry.getValue())).findFirst().orElse(null));
+					break;
+				default:
+					break;
+				}	
+			}
+			
+			aux.add(newObject);
+		}
+		return aux;
+	}
 	
 	
 

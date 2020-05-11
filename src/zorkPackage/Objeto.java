@@ -1,28 +1,35 @@
 package zorkPackage;
 
+import java.util.List;
+
 public class Objeto {
 	
-	private String ObjetoID;
+	private String id;
 	private String nombre;
 	private String descripcion;
 	private String descripcionMapa;
+	private List<Trigger> triggers;
 	
 	public Objeto() {};
 	
 	public Objeto(String objetoID, String nombre, String descripcion, String descripcionMapa) {
 		super();
-		ObjetoID = objetoID;
+		id = objetoID;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.descripcionMapa = descripcionMapa;
 	}
+	
+	public void addTrigger(Trigger trigger) {
+		this.triggers.add(trigger);
+	}
 
 	public String getObjetoID() {
-		return ObjetoID;
+		return id;
 	}
 
 	public void setObjetoID(String objetoID) {
-		ObjetoID = objetoID;
+		id = objetoID;
 	}
 	public String getNombre() {
 		return nombre;

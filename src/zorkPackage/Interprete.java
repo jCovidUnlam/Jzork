@@ -11,7 +11,7 @@ public final class Interprete {
 		if(cadena == null || cadena.size() == 0)
 			return new Comando(Comando.Tipo.Invalido);
 		
-		Comando comando = new Comando();
+		Comando comando = new Comando(Comando.Tipo.Invalido);
 		String verbo = cadena.get(0);
 		
 		//Esto significaría que se encuentra en la lista de comandos de movimientos
@@ -23,6 +23,12 @@ public final class Interprete {
 		
 		if(VerbosAceptados.inUsuario(verbo))
 			comando = esDeUsuario(cadena);
+		
+		if(VerbosAceptados.inInspeccionable(verbo))
+			comando = esDeInspeccionar(cadena);
+		
+		if(VerbosAceptados.inNPC(verbo))
+			comando = esDeNPC(cadena);
 		
 		//Habria que hacer lo mismo con cada tipo de verbo y pensar las excepciones de cada uno.
 		
@@ -48,7 +54,7 @@ public final class Interprete {
 	private static Comando esDeAdquirir(List<String> cadena) {
 		
 		//No existen hasta donde entiendo, comandos de este tipo que no involucren al menos 2 palabras
-		if(cadena.size() != 2)
+		if(cadena.size() < 2)
 			return new Comando(Comando.Tipo.Invalido);
 		
 		String verbo = cadena.get(0);
@@ -59,10 +65,33 @@ public final class Interprete {
 	
 	private static Comando esDeUsuario(List<String> cadena)
 	{
-		//Por el momento, solo veo la primer palabra
+		//Por el momento, solo veo la primer palabra, no hay excepciones por ahora
 		String verbo = cadena.get(0);
 		
 		return new Comando(verbo, "", Comando.Tipo.Usuario);
+	}
+	
+	private static Comando esDeInspeccionar(List<String> cadena) {
+		
+		//Aca pasa el comando y el objeto si o si por ahora, si pasa algo mas esta mal
+		if(cadena.size() < 2)
+			return new Comando(Comando.Tipo.Invalido);
+		
+		String verbo = cadena.get(0);
+		String objeto = cadena.get(1);
+		
+		return new Comando(verbo, objeto, Comando.Tipo.Inspeccionar);
+	}
+	
+	private static Comando esDeNPC(List<String> cadena) {
+		
+		if(cadena.size() < 2)
+			return new Comando(Comando.Tipo.Invalido);
+		
+		String verbo = cadena.get(0);
+		String objeto = cadena.get(1);
+		
+		return new Comando(verbo, objeto, Comando.Tipo.NPC);
 	}
 	
 	
