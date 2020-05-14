@@ -109,7 +109,7 @@
 			"afterTriggerDesc": "Alf dice: - Oh!, un aperitivo!. Luego ves que toma el gato y huye hacia el bosque",
 			"exito": "REMOVEROBJETO",
 			"error": "ATACAR",
-			"errorTriggerDesc": "Alf responde: Que haces guachin?, y te pega un tucumano a la napia, sacandote 15 de vida.",
+			"errorTriggerDesc": "Alf responde: Que haces guachin?, y te pega un tucumano a la napia, sacandote 15 de vida.\n No parece ser posible lastimarlo.",
 			"after": "REMOVERITEM"
 		},
 			
