@@ -71,8 +71,11 @@ public final class Interprete {
 	{
 		//Por el momento, solo veo la primer palabra, no hay excepciones por ahora
 		String verbo = cadena.get(0);
+		String objeto = "";
+		if(cadena.size() > 1)
+			objeto = cadena.get(1);
 		
-		return new Comando(verbo, "", Comando.Tipo.USUARIO);
+		return new Comando(verbo, objeto, Comando.Tipo.USUARIO);
 	}
 	
 	private static Comando esDeInspeccionar(List<String> cadena) {

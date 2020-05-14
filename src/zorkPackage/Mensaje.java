@@ -48,6 +48,23 @@ public final class Mensaje {
 		return msj;
 	}
 	
+	public static String estadoPersonaje(Personaje personaje) {
+		Arma armaEquipada = personaje.getArmaEquipada();
+		String msj = "El estado de " + personaje.getNombre() + " es: \n";
+		msj += "Salud: " + personaje.getSalud() + "\n";
+		if(armaEquipada == null)
+			msj += "Daño: " + personaje.getDanio();
+		else {
+			msj += "Daño: " + armaEquipada.getDanio();			
+			msj += "\nArma equipada: " + personaje.getArmaEquipada().getNombre();
+		}
+		return msj;
+	}
+	
+	public static String armaEquipada(Arma arma) {
+		return "El arma: " + arma.getNombre() + " ha sido equipada.";
+	}
+	
 	public static String mostrarObjeto(Objeto objeto)
 	{
 		return objeto.getDescripcion();

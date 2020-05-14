@@ -22,7 +22,7 @@ public final class VerbosAceptados {
 	
 	private static final String[] movimiento = {"norte","sur","este","oeste","arriba","abajo","sureste","noreste","suroeste","noroeste","ir"};
 	
-	private static final String[] usuario = {"inventario","reglas"};
+	private static final String[] usuario = {"inventario","reglas","estado","equipar"};
 	
 	private static final String[] NPC = {"hablar","charlar"};
 	

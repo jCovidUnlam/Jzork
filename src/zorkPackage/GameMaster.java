@@ -63,6 +63,8 @@ public class GameMaster {
 			obj = aventura.getMapa().moverOeste();
 			break;
 		case "ir":
+			//Esto contemplaria el "ir sur" o el "ir taberna".
+			//Se puede cambiar en la funcion irHacia del mapa, pero ejecutaria algo mas complejo
 			switch(comando.getNombreObjeto())
 			{
 			case "norte":
@@ -126,6 +128,16 @@ public class GameMaster {
 		switch (comando.getNombre()) {
 		case "inventario":
 			return Mensaje.inventario(aventura.getPersonaje().getInventario(), aventura.getPersonaje().getNombre());
+		case "estado":
+			return Mensaje.estadoPersonaje(aventura.getPersonaje());
+		case "equipar":
+			Arma arma = aventura.getPersonaje().equiparArma(comando.getNombreObjeto());
+			
+			if(arma == null)
+				return Mensaje.noTienesItem(aventura.getPersonaje().getNombre());
+			else
+				return Mensaje.armaEquipada(arma);
+			
 		default:
 			return Mensaje.comandoErroneo();
 		}

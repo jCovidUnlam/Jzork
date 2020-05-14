@@ -235,6 +235,18 @@ public class JsonReader {
 		for (Map<String, Object> objeto : itemList) {
 			
 			Item newItem = new Item();
+			
+			if(objeto.get("tipo") != null)
+			{
+				switch((String)objeto.get("tipo")) {
+				case "arma":
+					newItem = new Arma();
+					newItem.setDanio(Double.parseDouble(objeto.get("danio").toString()));
+					break;
+				}
+			}
+			
+
 
 			for (Map.Entry<String,Object> entry : objeto.entrySet()) {
 				
@@ -270,6 +282,8 @@ public class JsonReader {
 		
 		return aux;
 	}
+		
+
 	
 	private static List<Objeto> agregarNPCs(String jsonString){
 		List<Objeto> aux = new ArrayList<Objeto>();
@@ -297,6 +311,12 @@ public class JsonReader {
 					break;
 				case "hablar":
 					newObject.setHablar((String)entry.getValue());
+					break;
+				case "danio":
+					newObject.setDanio(Double.parseDouble(entry.getValue().toString()));
+					break;
+				case "salud":
+					newObject.setSalud(Double.parseDouble(entry.getValue().toString()));
 					break;
 				default:
 					break;

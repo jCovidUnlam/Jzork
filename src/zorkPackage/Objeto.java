@@ -10,9 +10,13 @@ public class Objeto {
 	private String descripcion;
 	private String descripcionMapa;
 	private List<Trigger> triggers;
+	private double salud;
+	private double danio;
 	
 	public Objeto(){
 		this.triggers = new ArrayList<Trigger>();
+		this.salud = 100; // Salud por defecto
+		this.danio = 5; // danio por defecto
 	};
 		
 	public Objeto(String objetoID, String nombre, String descripcion, String descripcionMapa) {
@@ -56,6 +60,30 @@ public class Objeto {
 
 	public void setDescripcionMapa(String descripcionMapa) {
 		this.descripcionMapa = descripcionMapa;
+	}
+	
+	public double getSalud() {
+		return salud;
+	}
+
+	public void setSalud(double salud) {
+		this.salud = salud;
+	}
+
+	public double getDanio() {
+		return danio;
+	}
+
+	public void setDanio(double danio) {
+		this.danio = danio;
+	}
+
+	public void atacar(Objeto atacado) {
+		atacado.recibirAtaque(this.danio);
+	}
+	
+	public void recibirAtaque(double danio) {
+		this.salud -= danio;
 	}
 
 	public TriggerItem getTriggerItem() {

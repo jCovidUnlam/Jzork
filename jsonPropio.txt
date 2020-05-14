@@ -71,6 +71,8 @@
 		},
 		{
 			"id": "i2",
+			"tipo" : "arma",
+			"danio" : "10",
 			"nombre": "palo",
 			"descripcion": "es un palo de madera",
 			"descripcionMapa": "En el piso hay un palo de madera.",
@@ -95,6 +97,8 @@
 			"descripcion": "Es un Alf, te acuerda de Alf? Volvio! en forma de obstaculo!",
 			"hablar": "No hay problemaaa",
 			"descripcionMapa": "pero entre el muelle y la taberna hay.... un Alf?",
+			"danio" : "15",
+			"salud" : "500",
 		}
 	],
 	"triggers": [
@@ -104,9 +108,10 @@
 			"items": "i1",
 			"afterTriggerDesc": "Alf dice: - Oh!, un aperitivo!. Luego ves que toma el gato y huye hacia el bosque",
 			"exito": "REMOVEROBJETO",
-			"error": "RESPONDER",
-			"errorTriggerDesc": "Alf responde: Que me das guacho?, Tengo hambre",
+			"error": "ATACAR",
+			"errorTriggerDesc": "Alf responde: Que haces guachin?, y te pega un tucumano a la napia, sacandote 15 de vida.",
 			"after": "REMOVERITEM"
-		}			
+		},
+			
 	]	
 }

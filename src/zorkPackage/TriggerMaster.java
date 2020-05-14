@@ -16,6 +16,9 @@ public final class TriggerMaster {
 			{
 			case RESPONDER:
 				return trigger.getErrorTriggerDesc();
+			case ATACAR:
+				afectado.atacar(aventura.getPersonaje());// Alf ataca
+				return trigger.getErrorTriggerDesc();// Retorna mensaje
 			default:
 				return trigger.getErrorTriggerDesc();
 			}
