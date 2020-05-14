@@ -63,7 +63,23 @@ public class GameMaster {
 			obj = aventura.getMapa().moverOeste();
 			break;
 		case "ir":
-			obj = aventura.getMapa().irHacia(comando.getNombreObjeto());
+			switch(comando.getNombreObjeto())
+			{
+			case "norte":
+				obj = aventura.getMapa().moverNorte();			
+				break;
+			case "sur":
+				obj =  aventura.getMapa().moverSur();
+				break;
+			case "este":
+				obj = aventura.getMapa().moverEste();
+				break;
+			case "oeste":
+				obj = aventura.getMapa().moverOeste();
+			default:
+				obj = aventura.getMapa().irHacia(comando.getNombreObjeto());
+				break;
+			}
 			break;
 		}
 		
