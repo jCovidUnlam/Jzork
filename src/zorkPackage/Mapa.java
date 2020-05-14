@@ -49,10 +49,6 @@ public class Mapa {
 	private void imprimirPosicion() {
 		System.out.println(this.posicionActual);
 	}
-	
-	public String lugarActual() {
-		return Mensaje.mensajeLugar(getLugarActual());
-	}
 
 	public Lugar getLugarActual() {
 		return lugares[this.posicionActual.getX()][this.posicionActual.getY()][this.posicionActual.getZ()];
@@ -67,13 +63,10 @@ public class Mapa {
 			}
 	}
 	
-	
 	public Object moverNorte() {
 		
 		//Se fija sino esta fuera del mapa.
 		if(getPosibleLugar(0,1,0) == null) {
-			//Esto seria para testear
-			imprimirPosicion();
 			return null;
 		}
 		

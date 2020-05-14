@@ -35,21 +35,29 @@
 		},
 		{
 			"nombre": "bosque",
-			"descripcion": "es un fucking bosque",
+			"descripcion": "Es un bosque, no puedes percibir nada fuera de lo normal.",
 			"posiciones":[
 				{	
 					"x": "4",
 					"y": "10",
 					"z": "0",
 				},
-				{
-					"x": "6",
-					"y": "10",
-					"z": "0",
-				}
 			],
 			"items": ""
-		}
+		},
+		{
+			"nombre": "bosque oeste",
+			"descripcion": "Solo puedes ver árboles y escuchar ruido de animales.\n Al este se extiende el bosque.",
+			"posiciones":[
+				{	
+					"x": "4",
+					"y": "10",
+					"z": "0",
+				},
+			],
+			"items": ""
+		},
+		
 	],
 	"items" :[
 		{
