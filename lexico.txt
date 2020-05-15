@@ -1,0 +1,8 @@
+adquiribles;tomar;obtener;agarrar;adquirir
+rompibles;romper;destruir;golper;patear;estallar
+consumible;tomar;beber;ingerir;comer
+inspeccionable;inspeccionar;mirar;observar;ver
+usable;usar;utilizar
+movimiento;norte;sur;este;oeste;arriba;abajo;sureste;suroeste;noreste;noreste;ir
+usuario;inventario;reglas;estado;equipar
+NPC;hablar;charlar			
