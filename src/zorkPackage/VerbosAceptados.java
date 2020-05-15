@@ -44,6 +44,8 @@ public final class VerbosAceptados {
 	public static  String[] NPC; 
 	
 	public static  String[] ataque;
+	
+	public static String [] atributos;
 
 	public static boolean inAtacar(String verbo) {
 		return Arrays.asList(ataque).contains(verbo);
