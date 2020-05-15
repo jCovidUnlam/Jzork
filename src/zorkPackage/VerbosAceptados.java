@@ -5,26 +5,42 @@ import java.util.Arrays;
 public final class VerbosAceptados {
 	
 	//Esta lista contiene los verbos aceptables a la hora de tomar un objeto.
-	private static final String[] adquirible = {"tomar","obtener","agarrar","adquirir"
-			, /*No sean mal pensados con estas ultimas*/"recoger","coger"};
+//	private static final String[] adquirible = {"tomar","obtener","agarrar","adquirir"
+//			, /*No sean mal pensados con estas ultimas*/"recoger","coger"};
+//	
+//	//Esta lista contiene los verbos aceptables a la hora de romper/golpear algo que tenga efecto.
+//	private static final String[] rompibles = {"romper","destruir","golpear","patear","estallar"};
+//	
+//	//Esta lista contiene los verbos aceptables a la hora de consumir algo.
+//	private static final String[] consumible = {"tomar","beber","ingerir","comer"};
+//	
+//	//Esta lista contiene los verbos aceptables a la hora de inspeccionar algo que tendra algun efecto.
+//	private static final String[] inspeccionable = {"inspeccionar", "mirar", "observar", "ver"};
+//	
+//	//Esta lista contiene los verbos aceptables a la hora de usar algo que este en el inventario o no
+//	private static final String[] usable = {"usar","utilizar"};
+//	
+//	private static final String[] movimiento = {"norte","sur","este","oeste","arriba","abajo","sureste","noreste","suroeste","noroeste","ir"};
+//	
+//	private static final String[] usuario = {"inventario","reglas","estado","equipar"};
+//	
+//	private static final String[] NPC = {"hablar","charlar"};
 	
-	//Esta lista contiene los verbos aceptables a la hora de romper/golpear algo que tenga efecto.
-	private static final String[] rompibles = {"romper","destruir","golpear","patear","estallar"};
+	public static  String[] adquirible;
 	
-	//Esta lista contiene los verbos aceptables a la hora de consumir algo.
-	private static final String[] consumible = {"tomar","beber","ingerir","comer"};
+	public static  String[] rompibles;
 	
-	//Esta lista contiene los verbos aceptables a la hora de inspeccionar algo que tendra algun efecto.
-	private static final String[] inspeccionable = {"inspeccionar", "mirar", "observar", "ver"};
+	public static  String[] consumible;
 	
-	//Esta lista contiene los verbos aceptables a la hora de usar algo que este en el inventario o no
-	private static final String[] usable = {"usar","utilizar"};
+	public static  String[] inspeccionable;
 	
-	private static final String[] movimiento = {"norte","sur","este","oeste","arriba","abajo","sureste","noreste","suroeste","noroeste","ir"};
+	public static  String[] usable; 
 	
-	private static final String[] usuario = {"inventario","reglas","estado","equipar"};
+	public static  String[] movimiento; 
 	
-	private static final String[] NPC = {"hablar","charlar"};
+	public static  String[] usuario;
+	
+	public static  String[] NPC; 
 	
 	public static boolean inNPC(String verbo) {
 		return Arrays.asList(NPC).contains(verbo);
