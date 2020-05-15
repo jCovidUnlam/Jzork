@@ -12,11 +12,13 @@ public class Objeto {
 	private List<Trigger> triggers;
 	private double salud;
 	private double danio;
+	private boolean muerto;
 	
 	public Objeto(){
 		this.triggers = new ArrayList<Trigger>();
 		this.salud = 100; // Salud por defecto
 		this.danio = 5; // danio por defecto
+		this.muerto = false;
 	};
 		
 	public Objeto(String objetoID, String nombre, String descripcion, String descripcionMapa) {
@@ -65,9 +67,21 @@ public class Objeto {
 	public double getSalud() {
 		return salud;
 	}
+	public boolean isMuerto() {
+		return muerto;
+	}
+	public void setMuerto(boolean muerto) {
+		this.muerto = muerto;
+	}
 
 	public void setSalud(double salud) {
 		this.salud = salud;
+	}
+	
+	public void restarSalud(double danio) {
+		this.salud -= danio;
+		if(this.salud >= 0)
+			this.setMuerto(true);
 	}
 
 	public double getDanio() {
@@ -78,12 +92,23 @@ public class Objeto {
 		this.danio = danio;
 	}
 
-	public void atacar(Objeto atacado) {
-		atacado.recibirAtaque(this.danio);
+	public TriggerAtaque atacar(Objeto atacado) {
+		return atacado.recibirAtaque(this.danio);
 	}
 	
-	public void recibirAtaque(double danio) {
-		this.salud -= danio;
+	public TriggerAtaque recibirAtaque(double danio) {
+	
+		TriggerAtaque ataque = this.triggers.stream()
+			    .filter(x -> x instanceof TriggerAtaque)//Esto pregunta para q filter por tipo
+			    .map (x -> (TriggerAtaque) x)//Esto castea
+			    .findAny()// Esto devuelve si existe al menos un trigger. Por favor que no haya mas de 1 porque me vuelvo puto
+				.orElse(null);//Sino encuentra, retorna null.
+	
+		if(ataque == null)
+			return null;
+		
+		ataque.setDanioRecibido(danio);
+		return ataque;
 	}
 
 	public TriggerItem getTriggerItem() {

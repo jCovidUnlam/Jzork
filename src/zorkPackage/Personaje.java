@@ -45,10 +45,15 @@ public class Personaje extends Objeto{
 		this.armaEquipada = armaEquipada;
 	}
 
+	@Override
+	public TriggerAtaque atacar(Objeto atacado) {
+		return this.recibirAtaque(this.getDanio() + this.armaEquipada.getDanio());
+	}
 	
 	@Override
-	public void atacar(Objeto atacado) {
-		this.recibirAtaque(this.getDanio() + this.armaEquipada.getDanio());
+	public TriggerAtaque recibirAtaque(double danio) {
+		this.restarSalud(danio);
+		return null;
 	}
 	
 	public Arma equiparArma(String nombreArma) {

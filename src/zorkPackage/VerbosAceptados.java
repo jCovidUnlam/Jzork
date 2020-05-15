@@ -24,7 +24,13 @@ public final class VerbosAceptados {
 	
 	private static final String[] usuario = {"inventario","reglas","estado","equipar"};
 	
-	private static final String[] NPC = {"hablar","charlar"};
+	private static final String[] NPC = {"hablar", "charlar"};
+	
+	private static final String[] ataque = {"atacar", "golpear", "achurrar", "darle"};
+	
+	public static boolean inAtacar(String verbo) {
+		return Arrays.asList(ataque).contains(verbo);
+	}
 	
 	public static boolean inNPC(String verbo) {
 		return Arrays.asList(NPC).contains(verbo);

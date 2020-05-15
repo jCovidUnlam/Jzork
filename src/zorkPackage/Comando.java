@@ -13,6 +13,7 @@ public class Comando {
 		USUARIO,
 		NPC,
 		TRIGGER,
+		ATACAR,
 		OTRO,
 	}
 	

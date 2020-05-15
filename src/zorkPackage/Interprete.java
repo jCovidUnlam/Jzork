@@ -34,6 +34,9 @@ public final class Interprete {
 		if(VerbosAceptados.inUsable(verbo))
 			comando = esDeUsar(cadena);
 		
+		if(VerbosAceptados.inAtacar(verbo))
+			comando = esDeAtaque(cadena);
+		
 		//Habria que hacer lo mismo con cada tipo de verbo y pensar las excepciones de cada uno.
 		
 		
@@ -118,6 +121,18 @@ public final class Interprete {
 		//Usar palo npc - usar serrucho ventana
 		String afectado = cadena.get(2);
 		return new Comando(verbo, objeto, afectado, Comando.Tipo.TRIGGER);
+	}
+	
+	private static Comando esDeAtaque(List<String> cadena) {
+		
+		//Minimo un verbo y algo que atacar
+		if(cadena.size() < 2)
+			return new Comando(Comando.Tipo.INVALIDO);
+	
+		String verbo = cadena.get(0);
+		String objeto = cadena.get(1);
+		
+		return new Comando(verbo, objeto,"", Comando.Tipo.ATACAR);
 	}
 	
 	

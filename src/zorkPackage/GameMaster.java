@@ -37,6 +37,8 @@ public class GameMaster {
 		case TRIGGER:
 			devolucion = ejecutarTrigger(comando);
 			break;
+		case ATACAR:
+			devolucion = atacarObjeto(comando);
 		case INVALIDO:
 		default:
 			devolucion = Mensaje.comandoErroneo();
@@ -179,7 +181,7 @@ public class GameMaster {
 		if(afectado == null)
 			return Mensaje.noExisteObjeto();
 		
-		return TriggerMaster.EjecutarTriggerItem(aventura, comando, afectado, item);
+		return TriggerMaster.EjecutarTriggerItem(aventura, afectado, item);
 	}
 	
 	public String usarObjeto(Comando comando) {
@@ -199,5 +201,19 @@ public class GameMaster {
 		return "trigerItem";
 	}
 	
-	
+	public String atacarObjeto(Comando comando) {
+		
+		//Se puede atacar a cualquier cosa, luego se chequea si es atacable o no.
+		Objeto atacado = aventura.getMapa().getObjeto(comando.getNombreObjeto());
+		if(atacado == null)
+			return Mensaje.noExisteObjeto();
+		
+		//Si no hay ninguna secuencia loca al atacar, retorna msj por defecto.
+		TriggerAtaque trigger = aventura.getPersonaje().atacar(atacado);
+		if(trigger == null)
+			return Mensaje.noEsAtacable(comando.getNombreObjeto());
+		
+		//Ataca
+		return TriggerMaster.EjecutarTriggerAtacar(aventura,trigger,atacado);
+	}
 }

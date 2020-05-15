@@ -89,4 +89,8 @@ public final class Mensaje {
 	public static String noTieneEfecto(String nombreItem, String nombreAfectado) {
 		return "El item " + nombreItem + " no tiene efecto sobre " + nombreAfectado;
 	}
+	
+	public static String noEsAtacable(String nombreObjeto) {
+		return nombreObjeto + " no es atacable!";
+	}
 }

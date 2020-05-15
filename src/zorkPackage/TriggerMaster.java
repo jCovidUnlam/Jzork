@@ -2,7 +2,7 @@ package zorkPackage;
 
 public final class TriggerMaster {
 
-	public static String EjecutarTriggerItem(Aventura aventura, Comando comando, Objeto afectado, Item item ) {
+	public static String EjecutarTriggerItem(Aventura aventura, Objeto afectado, Item item ) {
 
 		TriggerItem trigger = afectado.getTriggerItem();
 		
@@ -41,8 +41,28 @@ public final class TriggerMaster {
 			}
 			
 			return trigger.getAfterTriggerDesc();
-			
 		}
+	}
+	
+	public static String EjecutarTriggerAtacar(Aventura aventura, TriggerAtaque trigger, Objeto atacado) {
+		
+		switch(trigger.exito)
+		{
+		case CONTRAATACAR:
+			atacado.setSalud(atacado.getSalud() - trigger.getDanioRecibido());
+			if(atacado.isMuerto()) {
+				//Si el atacado muere, se va del lugar... esto podriamos ver como hacerlo.
+				aventura.getMapa().removerObjeto(atacado);
+			}
+			else {
+				atacado.atacar(aventura.getPersonaje());
+			}
+			break;
+		default:
+			break;
+		}
+		
+		return "";
 	}
 	
 }
