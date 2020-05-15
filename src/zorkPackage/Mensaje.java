@@ -93,4 +93,9 @@ public final class Mensaje {
 	public static String noEsAtacable(String nombreObjeto) {
 		return nombreObjeto + " no es atacable!";
 	}
+	
+	public static String personajeAtacado(Personaje personaje, Objeto atacante) {
+		return atacante.getNombre() + " te ha atacado causandote un daño de " + atacante.getDanio(); 
+	}
+	
 }

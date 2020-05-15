@@ -26,16 +26,14 @@ public class Aventura {
 	}
 
 	public static void cargarLexico() throws IOException {
-		
-		
-	    //File archivo = new File(‪‪);
+
+		//File archivo = new File(‪‪);
 		FileReader fr = new FileReader("./lexico.txt");
 		BufferedReader bf = new BufferedReader(fr);
 		String linea;
 
 		while ((linea = bf.readLine()) != null) {
 
-		
 			String[] lexico = linea.split(";");
 	
 			EnumTipoLexico tipolexico = EnumTipoLexico.valueOf(lexico[0].toUpperCase());
@@ -72,6 +70,10 @@ public class Aventura {
 			case NPC:
 				VerbosAceptados.NPC = new String[lexico.length-1];
 				System.arraycopy(lexico,1,VerbosAceptados.NPC,0,lexico.length-1);
+				break;
+			case ATAQUE:
+				VerbosAceptados.ataque = new String[lexico.length-1];
+				System.arraycopy(lexico,1,VerbosAceptados.ataque,0,lexico.length-1);
 				break;
 			default:
 				break;

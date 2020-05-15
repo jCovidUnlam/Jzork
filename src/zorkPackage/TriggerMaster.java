@@ -53,11 +53,13 @@ public final class TriggerMaster {
 			if(atacado.isMuerto()) {
 				//Si el atacado muere, se va del lugar... esto podriamos ver como hacerlo.
 				aventura.getMapa().removerObjeto(atacado);
+				return trigger.getMsjMuerte();
 			}
 			else {
+				//Sino se muere, te la da.
 				atacado.atacar(aventura.getPersonaje());
+				return Mensaje.personajeAtacado(aventura.getPersonaje(), atacado);
 			}
-			break;
 		default:
 			break;
 		}
