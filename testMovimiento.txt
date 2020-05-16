@@ -1,0 +1,93 @@
+{
+	"map":{
+		"nombre": "Aventura de testeo de movimiento",
+		"descripcion": "Testo",
+		"x": "5",
+		"y": "10",
+		"z": "1",
+	}
+	"lugares" :[
+		{
+			"nombre": "Bosque",
+			"descripcion": "Esto es un bosque",
+			"x": "5",
+			"y": "5",
+			"z": "1",
+			"items": "",
+			"obstaculos" : "",
+			"npcs" : ""
+		},
+		{
+			"nombre": "Cabania",
+			"descripcion": "Esto ser una cabania",
+			"x": "5",
+			"y": "6",
+			"z": "1",
+			"items": "",
+			"obstaculos" : "",
+			"npcs" : ""
+		},
+		{
+			"nombre": "Claro templado",
+			"descripcion": "Esto es un claro",
+			"x": "4",
+			"y": "5",
+			"z": "1",
+			"items": "",
+			"obstaculos" : "",
+			"npcs" : ""
+		},
+		{
+			"nombre": "Risco peligroso",
+			"descripcion": "Esto es un risco",
+			"x": "6",
+			"y": "5",
+			"z": "1",
+			"items": "",
+			"obstaculos" : "",
+			"npcs" : ""
+		},
+		{
+			"nombre": "Interior cabania",
+			"descripcion": "En el interior de la cabania se ve un gnomo",
+			"x": "5",
+			"y": "7",
+			"z": "1",
+			"items": "",
+			"obstaculos" : "",
+			"npcs" : ""
+		},
+		{
+			"nombre": "Sotano de cabania",
+			"descripcion": "Te encuentras en un sotano oscuro",
+			"x": "5",
+			"y": "7",
+			"z": "0",
+			"items": "",
+			"obstaculos" : "",
+			"npcs" : ""
+		},
+		{
+			"nombre": "Atico tenebroso",
+			"descripcion": "EEs un atico viejo",
+			"x": "5",
+			"y": "7",
+			"z": "2",
+			"items": "",
+			"obstaculos" : "",
+			"npcs" : ""
+		},	
+	],
+	"items" :[
+
+	],
+	"obstaculos":[
+
+	],
+	"npcs":[
+
+	],
+	"triggers": [
+			
+	]	
+}

@@ -139,7 +139,7 @@ public final class Interprete {
 		return new Comando(verbo, objeto,"", Comando.Tipo.ATACAR);
 	}
 	
-private static Comando esDeDescartar(List<String> cadena) {
+	private static Comando esDeDescartar(List<String> cadena) {
 		
 		//Minimo un verbo y algo que descartar
 		if(cadena.size() < 2)
