@@ -1,7 +1,7 @@
 package zorkPackage;
 
 public class GameMaster {
-	
+
 	private Aventura aventura;
 
 	public GameMaster(Aventura aventura) {
@@ -10,17 +10,20 @@ public class GameMaster {
 		Consola.iniciarAventura(aventura);
 		Consola.mostrar(Mensaje.mensajeLugar(aventura.getMapa().getLugarActual()));
 	}
-	
+
 	public void ejecutar(Comando comando) {
-		
+
 		String devolucion = "";
-		
-		switch(comando.getTipo()) {
+
+		switch (comando.getTipo()) {
 		case MOVER:
 			devolucion = moverPersonaje(comando);
 			break;
 		case ADQUIRIR:
 			devolucion = adquirirItem(comando);
+			break;
+		case DESCARTAR:
+			devolucion = soltarItem(comando);
 			break;
 		case USUARIO:
 			devolucion = ejecutarComandoUsuario(comando);
@@ -44,19 +47,19 @@ public class GameMaster {
 			devolucion = Mensaje.comandoErroneo();
 			break;
 		}
-		
+
 		Consola.mostrar(devolucion);
 	}
-	
+
 	private String moverPersonaje(Comando comando) {
 		Object obj = null;
-		
-		switch(comando.getNombre()) {
+
+		switch (comando.getNombre()) {
 		case "norte":
-			obj = aventura.getMapa().moverNorte();			
+			obj = aventura.getMapa().moverNorte();
 			break;
 		case "sur":
-			obj =  aventura.getMapa().moverSur();
+			obj = aventura.getMapa().moverSur();
 			break;
 		case "este":
 			obj = aventura.getMapa().moverEste();
@@ -65,15 +68,15 @@ public class GameMaster {
 			obj = aventura.getMapa().moverOeste();
 			break;
 		case "ir":
-			//Esto contemplaria el "ir sur" o el "ir taberna".
-			//Se puede cambiar en la funcion irHacia del mapa, pero ejecutaria algo mas complejo
-			switch(comando.getNombreObjeto())
-			{
+			// Esto contemplaria el "ir sur" o el "ir taberna".
+			// Se puede cambiar en la funcion irHacia del mapa, pero ejecutaria algo mas
+			// complejo
+			switch (comando.getNombreObjeto()) {
 			case "norte":
-				obj = aventura.getMapa().moverNorte();			
+				obj = aventura.getMapa().moverNorte();
 				break;
 			case "sur":
-				obj =  aventura.getMapa().moverSur();
+				obj = aventura.getMapa().moverSur();
 				break;
 			case "este":
 				obj = aventura.getMapa().moverEste();
@@ -86,47 +89,63 @@ public class GameMaster {
 			}
 			break;
 		}
-		
-		if(obj == null)
+
+		if (obj == null)
 			return Mensaje.fueraLimite();
-		
-		//No me cambien un nombre de las clases porque esto no funca
-		switch(obj.getClass().getSimpleName()) {
+
+		// No me cambien un nombre de las clases porque esto no funca
+		switch (obj.getClass().getSimpleName()) {
 		case "Lugar":
-			return Mensaje.mensajeLugar((Lugar)obj);
+			return Mensaje.mensajeLugar((Lugar) obj);
 		case "Obstaculo":
-			return Mensaje.existeObstaculo((Obstaculo)obj);
-			//Esto es por si tengo que devolver algo raro
+			return Mensaje.existeObstaculo((Obstaculo) obj);
+		// Esto es por si tengo que devolver algo raro
 		case "String":
-			return (String)obj;
+			return (String) obj;
 		}
-		
+
 		return Mensaje.comandoErroneo();
 	}
-	
+
 	private String adquirirItem(Comando comando) {
-		//Lo busca en el lugar
+		// Lo busca en el lugar
 		Item item = aventura.getMapa().tomarItem(comando.getNombreObjeto());
-		
-		//Si es nulo, muetra que no existe
-		if(item == null)
+
+		// Si es nulo, muetra que no existe
+		if (item == null)
 			return Mensaje.noExisteObjeto();
-		
-		//Sino es tomable, le manda una descripcion de porque no lo es
-		if(item.isTomable() == false)
+
+		// Sino es tomable, le manda una descripcion de porque no lo es
+		if (item.isTomable() == false)
 			return item.getMensajeNoTomable();
 		else {
-			//Remueve el atributo descripcionMapa del item en el Lugar.
+			// Remueve el atributo descripcionMapa del item en el Lugar.
 			aventura.getMapa().cambiarDescripcionLugarActual(item);
-			//Si es tomable, lo agrega al inventario
+			// Si es tomable, lo agrega al inventario
 			aventura.getPersonaje().addObjeto(item);
-			//Finalmente, muetra mensaje de que lo tomo.
+			// Finalmente, muetra mensaje de que lo tomo.
 			return item.getMensajeTomable();
 		}
 	}
-	
-	private String ejecutarComandoUsuario(Comando comando)
-	{
+
+	private String soltarItem(Comando comando) {
+
+		// obtenemos el objeto de nuestro inventario
+		Item item = aventura.getPersonaje().getObjetoInventario(comando.getNombreObjeto());
+		
+		// Si es nulo, muetra que no existe
+		if (item == null)
+			return Mensaje.noExisteObjeto();
+		
+		aventura.getPersonaje().removerDeInventario(item);
+		aventura.getMapa().agregarObjeto(item);
+		
+		
+		return Mensaje.soltoItem(item);
+
+	}
+
+	private String ejecutarComandoUsuario(Comando comando) {
 		switch (comando.getNombre()) {
 		case "inventario":
 			return Mensaje.inventario(aventura.getPersonaje().getInventario(), aventura.getPersonaje().getNombre());
@@ -134,89 +153,86 @@ public class GameMaster {
 			return Mensaje.estadoPersonaje(aventura.getPersonaje());
 		case "equipar":
 			Arma arma = aventura.getPersonaje().equiparArma(comando.getNombreObjeto());
-			
-			if(arma == null)
+
+			if (arma == null)
 				return Mensaje.noTienesItem(aventura.getPersonaje().getNombre());
 			else
 				return Mensaje.armaEquipada(arma);
-			
+
 		default:
 			return Mensaje.comandoErroneo();
 		}
 	}
-	
+
 	private String mostrarObjeto(Comando comando) {
-		
-		//Si el comando es "mirar alrededor" muestra el mensaje del mapa
-		if(comando.getNombreObjeto().toLowerCase().equals("alrededor"))
+
+		// Si el comando es "mirar alrededor" muestra el mensaje del mapa
+		if (comando.getNombreObjeto().toLowerCase().equals("alrededor"))
 			return Mensaje.mensajeLugar(aventura.getMapa().getLugarActual());
 		else {
 			Objeto obj = aventura.getMapa().mostrarObjeto(comando.getNombreObjeto());
-			if(obj != null)
+			if (obj != null)
 				return Mensaje.mostrarObjeto(obj);
 			return Mensaje.noExisteObjeto();
 		}
-		
+
 	}
-	
+
 	private String hablarNPC(Comando comando) {
-		
+
 		NPC npc = aventura.getMapa().getNPC(comando.getNombreObjeto());
-		if(npc == null)
+		if (npc == null)
 			return Mensaje.noExisteNPC();
-		
+
 		return Mensaje.ncpMensaje(npc);
 	}
-	
-	public String ejecutarTrigger(Comando comando) {		
-		
-		//El personaje tiene que tener el objeto en el inventario
+
+	public String ejecutarTrigger(Comando comando) {
+
+		// El personaje tiene que tener el objeto en el inventario
 		Item item = aventura.getPersonaje().getObjetoInventario(comando.getNombreObjeto());
-		//El lugar tiene que tener el objeto con el que voy a interactuar
+		// El lugar tiene que tener el objeto con el que voy a interactuar
 		Objeto afectado = aventura.getMapa().getObjeto(comando.getNombreAfectado());
-		
-		if(item == null)
+
+		if (item == null)
 			return Mensaje.noTienesItem(aventura.getPersonaje().getNombre());
-		
-		if(afectado == null)
+
+		if (afectado == null)
 			return Mensaje.noExisteObjeto();
-		
+
 		return TriggerMaster.EjecutarTriggerItem(aventura, afectado, item);
 	}
-	
+
 	public String usarObjeto(Comando comando) {
-		
-		//El personaje tiene que tener el objeto en el inventario
+
+		// El personaje tiene que tener el objeto en el inventario
 		Item item = aventura.getPersonaje().getObjetoInventario(comando.getNombreObjeto());
-	
-		if(item == null)
+
+		if (item == null)
 			return Mensaje.noTienesItem(aventura.getPersonaje().getNombre());
-	
-		//Aca se dispara el trigger propio del item hacia el jugador.
-		//Tomar pocion
-		//Usar espejo
-		//Equipar arma
-		//....
-		
+
+		// Aca se dispara el trigger propio del item hacia el jugador.
+		// Tomar pocion
+		// Usar espejo
+		// Equipar arma
+		// ....
+
 		return "trigerItem";
 	}
-	
+
 	public String atacarObjeto(Comando comando) {
-		
-		//Se puede atacar a cualquier cosa, luego se chequea si es atacable o no.
+
+		// Se puede atacar a cualquier cosa, luego se chequea si es atacable o no.
 		Objeto atacado = aventura.getMapa().getObjeto(comando.getNombreObjeto());
-		if(atacado == null)
+		if (atacado == null)
 			return Mensaje.noExisteObjeto();
-		
-		if(aventura.getPersonaje().getArmaEquipada() == null)
-			return Mensaje.sinArma(aventura.getPersonaje().getNombre());
-		
-		//Si no hay ninguna secuencia loca al atacar, retorna msj por defecto.
+
+		// Si no hay ninguna secuencia loca al atacar, retorna msj por defecto.
 		TriggerAtaque trigger = aventura.getPersonaje().atacar(atacado);
-		if(trigger == null)
+		if (trigger == null)
 			return Mensaje.noEsAtacable(comando.getNombreObjeto());
-		
-		//Ataca
-		return TriggerMaster.EjecutarTriggerAtacar(aventura,trigger,atacado);
+
+		// Ataca
+		return TriggerMaster.EjecutarTriggerAtacar(aventura, trigger, atacado);
 	}
 }

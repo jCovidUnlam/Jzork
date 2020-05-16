@@ -370,6 +370,9 @@ public class Mapa {
 		getLugarActual().removerObjeto(objeto);
 	}
 	
+	public void agregarObjeto(Objeto objeto) {
+		getLugarActual().agregarObjeto(objeto);
+	}
 	
 	
 }

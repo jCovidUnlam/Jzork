@@ -1,6 +1,5 @@
 package zorkPackage;
 
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -15,30 +14,29 @@ public class Observador {
 		super();
 		this.gameMaster = gameMaster;
 		in = new Scanner(System.in);
-	
-		do
-		{
+
+		do {
 			System.out.println();
-			System.out.print(">> ");
+			System.out.print(">>");
 			scan = (in.nextLine());
-			
+
 			ArrayList<String> cadena = new ArrayList<String>(Arrays.asList(scan.toLowerCase().split(" ")));
-			
-			//Esto saca vacios por ahora.
+
+			// Esto saca vacios por ahora.
 			removerErrores(cadena);
-			//Hay que ver si esto aplica, si nos lo dejan hacer, creeria es lo mas comodo.
+			// Hay que ver si esto aplica, si nos lo dejan hacer, creeria es lo mas comodo.
 			removerArticulos(cadena);
-			
+
 			Comando com = Interprete.interpretar(cadena);
 			gameMaster.ejecutar(com);
-			
-		}while(!scan.equals("exit".toLowerCase()));
-		
+
+		} while (!scan.equals("exit".toLowerCase()));
+
 		in.close();
-	}	
-	
+	}
+
 	private static void removerErrores(ArrayList<String> cadena) {
-		
+
 		List<String> articulos = new ArrayList<String>() {
 			/**
 			 * Esto me lo hace agregar sino tira warninig.... anda a saber que mierda es
@@ -48,33 +46,36 @@ public class Observador {
 			{
 				add(" ");
 				add("");
-			}		
+			}
 		};
-		
-		cadena.removeAll(articulos);
-	}
-	
-	private static void removerArticulos(ArrayList<String> cadena) {
-		
-		List<String> articulos = new ArrayList<String>() {
-			/**
-			 * Esto me lo hace agregar sino tira warninig.... anda a saber que mierda es
-			 */
-			private static final long serialVersionUID = 1L;
 
-			{
-				add("el");
-				add("la");
-				add("ellos");
-				add("ellas");
-				add("hacia");
-				add("a");
-				add("al");
-				add("en");
-			}		
-		};
-		
 		cadena.removeAll(articulos);
 	}
-	
+
+	private static void removerArticulos(ArrayList<String> cadena) {
+
+//		List<String> articulos = new ArrayList<String>() {
+//			/**
+//			 * Esto me lo hace agregar sino tira warninig.... anda a saber que mierda es
+//			 */
+//			private static final long serialVersionUID = 1L;
+//
+//			{
+//				add("el");
+//				add("la");
+//				add("ellos");
+//				add("ellas");
+//				add("hacia");
+//				add("a");
+//				add("al");
+//				add("en");
+//			}		
+//		};
+
+
+		List<String> articulos = new ArrayList<String>(Arrays.asList(VerbosAceptados.atributos));
+
+		cadena.removeAll(articulos);
+
+	}
 }

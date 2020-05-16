@@ -7,9 +7,13 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 		
-		Consola.mostrarMenuInicio();
 		Scanner in = new Scanner(System.in);
 		String scan;
+		String name;
+		Consola.mostrarMensajeBienvenida();
+		System.out.print("\nIngrese su nombre: ");
+		name = (in.next());
+		Consola.mostrarMenuInicio(name);
 		boolean init = false;
 		do
 		{
@@ -26,21 +30,19 @@ public class Main {
 
 					switch(scan) {
 					case "1":
-						System.out.print("\nIngrese su nombre: ");
-						scan = (in.next());
-						Consola.iniciarAventura(new Aventura(scan, "jsonPropio.txt"));
+						
+						Consola.iniciarAventura(new Aventura(name, "jsonPropio.txt"));
 						in.close();
 						init = true;
 						break;
 					case "2":
-						System.out.print("\nIngrese su nombre: ");
-						scan = (in.next());
-						Consola.iniciarAventura(new Aventura(scan, "otroJson.txt"));
+						
+						Consola.iniciarAventura(new Aventura(name, "otroJson.txt"));
 						in.close();
 						init = true;
 						break;
 					case "3":
-						Consola.mostrarMenuInicio();
+						Consola.mostrarMenuInicio(name);
 						break;
 					default:
 						System.out.println("\nPor favor, elija alguna de las opciones disponibles.");

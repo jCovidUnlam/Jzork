@@ -98,10 +98,8 @@ public final class Mensaje {
 		return atacante.getNombre() + " te ha atacado causandote un daño de " + atacante.getDanio(); 
 	}
 	
-	public static String sinArma(String nombrePersonaje)
-	{
-		String msj = nombrePersonaje + " nota que no posee un arma, no va a ensuciarse las manos...\n";
-		return msj += "Es conveniente que te equipes un arma de tu inventario antes de atacar.";
+	public static String soltoItem(Item item) {
+		return "Has soltado el item:" + item.getNombre();
 	}
 	
 }
