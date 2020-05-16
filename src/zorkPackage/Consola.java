@@ -12,7 +12,7 @@ public final class Consola {
 	}
 
 	public static void mostrarMenuInicio(String name) {
-		System.out.println("########################\n");
+		System.out.println("\n########################\n");
 		System.out.println("Bienvenidx a JZork " + name + "!");
 		System.out.println("Por favor, elija entre las siguientes opciones:\n");
 		System.out.println("1 - Iniciar Aventura");

@@ -10,13 +10,9 @@
 		{
 			"nombre": "muelle",
 			"descripcion": "Es un fucking muelle{i1}. Al sur puedes ver una taberna{n1}.\n{i2}",
-			"posiciones":[
-				{
-					"x": "5",
-					"y": "10",
-					"z": "0",
-				}
-			],
+			"x": "5",
+			"y": "10",
+			"z": "0",
 			"items": "i1 i2",
 			"obstaculos" : "o1",
 			"npcs" : "n1"
@@ -24,38 +20,32 @@
 		{
 			"nombre": "taberna",
 			"descripcion": "Es una fucking taberna",
-			"posiciones":[
-				{
-					"x": "5",
-					"y": "9",
-					"z": "0",
-				}
-			],
-			"items": ""
+			"x": "5",
+			"y": "9",
+			"z": "0",
+			"items": "",
+			"obstaculos" : "",
+			"npcs" : ""
 		},
 		{
-			"nombre": "bosque",
+			"nombre": "bosque este",
 			"descripcion": "Es un bosque, no puedes percibir nada fuera de lo normal.",
-			"posiciones":[
-				{	
-					"x": "4",
-					"y": "10",
-					"z": "0",
-				},
-			],
-			"items": ""
+			"x": "6",
+			"y": "10",
+			"z": "0",
+			"items": "",
+			"obstaculos" : "",
+			"npcs" : ""
 		},
 		{
 			"nombre": "bosque oeste",
 			"descripcion": "Solo puedes ver árboles y escuchar ruido de animales.\n Al este se extiende el bosque.",
-			"posiciones":[
-				{	
-					"x": "4",
-					"y": "10",
-					"z": "0",
-				},
-			],
-			"items": ""
+			"x": "4",
+			"y": "10",
+			"z": "0",
+			"items": "",
+			"obstaculos" : "",
+			"npcs" : ""
 		},
 		
 	],
@@ -109,13 +99,12 @@
 			"afterTriggerDesc": "Alf dice: - Oh!, un aperitivo!. Luego ves que toma el gato y huye hacia el bosque",
 			"exito": "REMOVEROBJETO",
 			"error": "ATACAR",
-			"errorTriggerDesc": "Alf responde: Que haces guachin?, y te pega un tucumano a la napia, sacandote 15 de vida.\n No parece ser posible lastimarlo.",
+			"errorTriggerDesc": "Alf responde: Que haces guachin?, y te pega un tucumano a la napia, sacandote 15 de vida.\nNo parece ser posible ganarle a mano limpia.",
 			"after": "REMOVERITEM"
 		},
 		{
 			"tipo" : "ataque",
 			"idObjeto" : "n1",
-			"esMatable" : "true",
 			"afterTriggerDesc" : "Alf se para de manos, corre guachin!",
 			"exito": "CONTRAATACAR",
 			"error": "RESPONDER",

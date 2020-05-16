@@ -38,10 +38,11 @@ public class GameMaster {
 			devolucion = usarObjeto(comando);
 			break;
 		case TRIGGER:
-			devolucion = ejecutarTrigger(comando);
+			devolucion = ejecutarTriggerItem(comando);
 			break;
 		case ATACAR:
 			devolucion = atacarObjeto(comando);
+			break;
 		case INVALIDO:
 		default:
 			devolucion = Mensaje.comandoErroneo();
@@ -185,7 +186,7 @@ public class GameMaster {
 		return Mensaje.ncpMensaje(npc);
 	}
 
-	public String ejecutarTrigger(Comando comando) {
+	public String ejecutarTriggerItem(Comando comando) {
 
 		// El personaje tiene que tener el objeto en el inventario
 		Item item = aventura.getPersonaje().getObjetoInventario(comando.getNombreObjeto());
@@ -226,7 +227,7 @@ public class GameMaster {
 			return Mensaje.noExisteObjeto();
 
 		// Si no hay ninguna secuencia loca al atacar, retorna msj por defecto.
-		TriggerAtaque trigger = aventura.getPersonaje().atacar(atacado);
+		TriggerAtaque trigger = atacado.getTriggerAtaque();
 		if (trigger == null)
 			return Mensaje.noEsAtacable(comando.getNombreObjeto());
 

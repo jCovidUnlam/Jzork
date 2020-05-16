@@ -8,8 +8,12 @@ public class Lugar {
 
 	private String nombre;
 	private String descripcion;
-	private List<Objeto> objetos = new ArrayList<Objeto>();
+	private List<Objeto> objetos;
 
+	public Lugar() {
+		objetos = new ArrayList<Objeto>();
+	};
+	
 	public Lugar(String nombre, String descripcion) {
 		super();
 		this.nombre = nombre;

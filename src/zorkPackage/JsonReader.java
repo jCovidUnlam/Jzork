@@ -63,72 +63,6 @@ public class JsonReader {
 		return new Mapa(new Posicion(x, y, z));
 	}
 	
-	private static void agregarLugares(Mapa mapa, String jsonString, List<Objeto> objetos, List<Trigger> triggers) {
-		
-		int i = 0;
-		List<String> nombres = JsonPath.read(jsonString,"$.lugares[*].nombre");
-		List<String> descripciones = JsonPath.read(jsonString,"$.lugares[*].descripcion");
-		ArrayList<String> ids = new ArrayList<String>();
-		List<String> items = JsonPath.read(jsonString, "$.lugares[*].items");
-		for (String string : items) {
-			ids.addAll(Arrays.asList(string.split(" ")));
-		}
-		//ids.addAll(JsonPath.read(jsonString, "$.lugares[*].items"));
-		ids.addAll(JsonPath.read(jsonString, "$.lugares[*].obstaculos"));
-		ids.addAll(JsonPath.read(jsonString, "$.lugares[*].npcs"));
-//		ArrayList<String> itemIds = JsonPath.read(jsonString, "$.lugares[*].items");
-//		ArrayList<String> obstaculosIds = JsonPath.read(jsonString, "$.lugares[*].obstaculos");
-//		
-		List<Lugar> lugares = new ArrayList<Lugar>();
-		
-		for (String nombre : nombres) {
-			
-			List<Objeto> added = new ArrayList<Objeto>();
-//			List<String> auxItems = Arrays.asList(itemIds.get(i).split(" "));
-//			auxItems.addAll(Arrays.asList(obstaculosIds.get(i).split(" ")));
-//			
-			for (Objeto item : objetos) {
-				
-				String id = "{" + item.getObjetoID() + "}";
-				
-				//Esto haria el replace en el mapa
-				if(descripciones.get(i).contains(id)) 
-					descripciones.set(i, descripciones.get(i).replace(id , item.getDescripcionMapa()));
-				
-				for (Trigger trigger : triggers) {
-					if(trigger.getTriggerClassName().equals("TriggerItem"))
-					{
-						TriggerItem aux = (TriggerItem)trigger;
-						if(aux.getObjetoID().equals(item.getObjetoID()))
-							item.addTrigger(aux);
-					}
-				}
-				
-				
-				if(ids.contains(item.getObjetoID()))
-					added.add(item);	
-			}
-			
-			lugares.add(new Lugar(nombre, descripciones.get(i), added));
-			i++;
-		}
-		
-		i=0;
-		for (Lugar lugar : lugares) {
-			int j = 0;
-			List<String> xs = JsonPath.read(jsonString,"$.lugares["+ i +"].posiciones[*].x");
-			List<String> ys = JsonPath.read(jsonString,"$.lugares["+ i +"].posiciones[*].y");
-			List<String> zs = JsonPath.read(jsonString,"$.lugares["+ i +"].posiciones[*].z");
-			
-			for (String x : xs) {
-				mapa.addLugar(lugar, new Posicion(Integer.parseInt(x),Integer.parseInt(ys.get(j)),Integer.parseInt(zs.get(j))));
-				j++;
-			}
-			i++;
-			
-		}
-	}
-	
 	private static List<Trigger> agregarTriggers(String jsonString, List<Objeto> objetos){
 		List<Trigger> returned = new ArrayList<Trigger>();
 		List<Map<String, Object>> triggerList = JsonPath.read(jsonString,"$.triggers[*]");
@@ -143,6 +77,7 @@ public class JsonReader {
 				break;
 			case "ataque":
 				newTrigger = addNewAtaqueTrigger(trigger);
+				break;
 			default:
 				newTrigger = null;
 				break;
@@ -222,6 +157,62 @@ public class JsonReader {
 		
 		return returned;
 	}
+	
+	private static void agregarLugares(Mapa mapa, String jsonString, List<Objeto> objetos, List<Trigger> triggers) {
+		
+		//Listo todo lo referente a todos los lugares.
+		List<String> nombres = JsonPath.read(jsonString,"$.lugares[*].nombre");
+		List<String> descripciones = JsonPath.read(jsonString,"$.lugares[*].descripcion");
+		List<String> xs = JsonPath.read(jsonString,"$.lugares[*].x");
+		List<String> ys = JsonPath.read(jsonString,"$.lugares[*].y");
+		List<String> zs = JsonPath.read(jsonString,"$.lugares[*].z");
+		
+		int i = 0;
+		for (String nombre : nombres) {
+			
+			//Aca guardo todos los ids del lugar.
+			ArrayList<String> ids = new ArrayList<String>();
+			
+			Lugar lugar = new Lugar();
+			lugar.setNombre(nombre);
+			
+			//Agrego todos los items
+		    String cadenaIds = JsonPath.read(jsonString, "$.lugares[" + i + "].items");
+		    cadenaIds += " ";//Esto separa... una villereada mas, una menos
+		    cadenaIds += JsonPath.read(jsonString, "$.lugares[" + i + "].obstaculos");
+		    cadenaIds += " ";//Esto separa... una villereada mas, una menos
+		    cadenaIds += JsonPath.read(jsonString, "$.lugares[" + i + "].npcs");
+			ids.addAll(Arrays.asList(cadenaIds.split(" ")));
+			
+			for (Objeto objeto : objetos) {
+				
+				String id = "{" + objeto.getObjetoID() + "}";
+				
+				//Esto haria el replace en el mapa
+				if(descripciones.get(i).contains(id)) 
+					descripciones.set(i, descripciones.get(i).replace(id , objeto.getDescripcionMapa()));
+				
+				//Agrego triggers a los items.... esto podria ir en otro lado pero bue
+				for (Trigger trigger : triggers) {
+					if(trigger.getObjetoID().equals(objeto.getObjetoID()))
+						objeto.addTrigger(trigger);
+				}
+				
+				//finalmente, agrego el objeto al lugar
+				if(ids.contains(objeto.getObjetoID()))
+					lugar.agregarObjeto(objeto);	
+			}
+			
+			//Agrego descripcion piola
+			lugar.setDescripcion(descripciones.get(i));
+			
+			//Lo agrego al mapa con la posicion.
+			mapa.addLugar(lugar, new Posicion(Integer.parseInt(xs.get(i)),Integer.parseInt(ys.get(i)),Integer.parseInt(zs.get(i))));
+			i++;
+		}
+	}
+	
+	
 	
 	private static List<Objeto> agregarItems(String jsonString){
 		List<Objeto> aux = new ArrayList<Objeto>();

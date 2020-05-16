@@ -12,7 +12,7 @@ public class Personaje extends Objeto{
 		super();
 		this.nombre = nombre;
 		this.inventario = new LinkedList<>();
-		this.setDanio(5);//Sin arma no pega
+		this.setDanio(5);//Sin arma pega esto
 	}
 	
 	public Personaje(String nombre, List<Item> list) {
@@ -45,19 +45,6 @@ public class Personaje extends Objeto{
 		this.armaEquipada = armaEquipada;
 	}
 
-	@Override
-	public TriggerAtaque atacar(Objeto atacado) {
-		if(armaEquipada == null)
-			return null;
-		return this.recibirAtaque(this.getDanio() + this.armaEquipada.getDanio());
-	}
-	
-	@Override
-	public TriggerAtaque recibirAtaque(double danio) {
-		this.restarSalud(danio);
-		return null;
-	}
-	
 	public Arma equiparArma(String nombreArma) {
 		if(inventario.size() == 0)
 			return null;
@@ -70,13 +57,22 @@ public class Personaje extends Objeto{
 			    .findAny()// Esto devuelve si existe al menos un obstaculo. Por favor que no haya mas de 1 en una misma direccion jaja
 				.orElse(null);//Sino encuentra, retorna null.
 	
-		//Sino hay palo retorno
+		//Sino hay palo retorno nulo y el GM devuelve mensaje
 		if(arma == null)
 			return null;
 		
-		//Si hay palo equipo
+		//Si hay palo equipo y seteo danio
+		this.setDanio(this.getDanio() + arma.getDanio());
 		this.armaEquipada = arma;
 		
+		return arma;
+	}
+	
+	public Arma desequiparArma(Arma arma) {
+		//Esto puede crecer mucho, supongamos que tengo mas de un arma o un escudo...
+		//Por ahora sirve asi
+		this.setDanio(this.getDanio() - this.armaEquipada.getDanio());
+		this.armaEquipada = null;
 		return arma;
 	}
 	

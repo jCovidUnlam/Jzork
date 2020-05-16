@@ -18,9 +18,9 @@ public class Objeto {
 	public Objeto(){
 		this.triggers = new ArrayList<Trigger>();
 		this.salud = 100; // Salud por defecto
-		this.danio = 5; // danio por defecto
-		this.muerto = false;
-		this.matable = false;
+		this.danio = 0; // danio por defecto de cualquier objeto
+		this.muerto = false;// los objetos deberian comenzar vivos
+		this.matable = false;// los objetos no deberian ser matables a menos que se indique lo contratio.
 	};
 		
 	public Objeto(String objetoID, String nombre, String descripcion, String descripcionMapa) {
@@ -102,27 +102,22 @@ public class Objeto {
 		this.matable = matable;
 	}
 
-	public TriggerAtaque atacar(Objeto atacado) {
-		return atacado.recibirAtaque(this.danio);
+	public void atacar(Objeto atacado) {
+		atacado.recibirAtaque(this.danio);
 	}
 	
-	public TriggerAtaque recibirAtaque(double danio) {
+	public void recibirAtaque(double danio) {
+		this.restarSalud(danio);
+	}
 	
+	public TriggerAtaque getTriggerAtaque() {
 		//Lo primero que hace es buscar si tiene un trigger de ataque
-		TriggerAtaque trigger = this.triggers.stream()
+		return this.triggers.stream()
 			    .filter(x -> x instanceof TriggerAtaque)//Esto pregunta para q filter por tipo
 			    .map (x -> (TriggerAtaque) x)//Esto castea
 			    .findAny()// Esto devuelve si existe al menos un trigger. Por favor que no haya mas de 1 porque me vuelvo puto
 				.orElse(null);//Sino encuentra, retorna null.
-	
-		if(trigger == null) 
-			return null;
-		
-		trigger.setDanioRecibido(danio);
-		return trigger;
 	}
-	
-
 
 	public TriggerItem getTriggerItem() {
 		//Si tiene mas de un triggerItem, hay q pensar como separarlo............ ni en pedo.
@@ -132,9 +127,4 @@ public class Objeto {
 			    .findAny()// Esto devuelve si existe al menos un obstaculo. Por favor que no haya mas de 1 en una misma direccion jaja
 				.orElse(null);//Sino encuentra, retorna null.
 	}
-	
-
-
-
-	
 }
