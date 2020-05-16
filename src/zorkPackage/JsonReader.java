@@ -141,6 +141,8 @@ public class JsonReader {
 			case "item":
 				newTrigger = addNewItemTrigger(trigger, objetos);
 				break;
+			case "ataque":
+				newTrigger = addNewAtaqueTrigger(trigger);
 			default:
 				newTrigger = null;
 				break;
@@ -189,6 +191,43 @@ public class JsonReader {
 		return returned;
 	}
 	
+	private static TriggerAtaque addNewAtaqueTrigger(Map<String,Object> trigger) {
+		TriggerAtaque returned = new TriggerAtaque();
+		
+		for (Map.Entry<String,Object> entry : trigger.entrySet()) {
+			
+			switch (entry.getKey()) {
+			case "idObjeto":
+				returned.setObjetoID((String)entry.getValue());
+				break;
+			case "items":
+				returned.setTrigges(objetos
+						.stream()
+						.filter(x -> Arrays.asList(entry.getValue().toString().split(" ")).contains(x.getObjetoID()))
+						.collect(Collectors.toList()));
+				break;
+			case "afterTriggerDesc":
+				returned.setAfterTriggerDesc((String)entry.getValue());
+				break;
+			case "exito":
+				returned.setExito(Trigger.AccionExito.valueOf((String)entry.getValue().toString().toUpperCase()));
+				break;
+			case "error":
+				returned.setError(Trigger.AccionError.valueOf((String)entry.getValue().toString().toUpperCase()));
+				break;
+			case "after":
+				returned.setAfter(Trigger.AccionFinal.valueOf((String)entry.getValue().toString().toUpperCase()));
+				break;
+			case "errorTriggerDesc":
+				returned.setErrorTriggerDesc((String)entry.getValue());
+				break;
+			default:
+				break;
+			}	
+		}
+		
+		return returned;
+	}
 	
 	private static List<Objeto> agregarItems(String jsonString){
 		List<Objeto> aux = new ArrayList<Objeto>();
@@ -246,7 +285,6 @@ public class JsonReader {
 				}
 			}
 			
-
 
 			for (Map.Entry<String,Object> entry : objeto.entrySet()) {
 				

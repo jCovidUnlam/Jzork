@@ -46,6 +46,10 @@ public final class TriggerMaster {
 	
 	public static String EjecutarTriggerAtacar(Aventura aventura, TriggerAtaque trigger, Objeto atacado) {
 		
+		String msj;
+		
+		if(trigger.isEsMatable())
+		
 		switch(trigger.exito)
 		{
 		case CONTRAATACAR:
@@ -63,6 +67,7 @@ public final class TriggerMaster {
 		default:
 			break;
 		}
+	
 		
 		return "";
 	}

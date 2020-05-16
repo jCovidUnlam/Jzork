@@ -47,6 +47,8 @@ public class Personaje extends Objeto{
 
 	@Override
 	public TriggerAtaque atacar(Objeto atacado) {
+		if(armaEquipada == null)
+			return null;
 		return this.recibirAtaque(this.getDanio() + this.armaEquipada.getDanio());
 	}
 	
