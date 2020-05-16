@@ -12,5 +12,6 @@ public enum  EnumTipoLexico {
 	NPC,
 	ATAQUE,
 	ATRIBUTO,
+	DESCARTABLES,
 
 }

@@ -78,6 +78,10 @@ public class Aventura {
 				VerbosAceptados.atributos = new String[lexico.length - 1];
 				System.arraycopy(lexico, 1, VerbosAceptados.atributos, 0, lexico.length - 1);
 				break;
+			case DESCARTABLES:
+				VerbosAceptados.descartables = new String[lexico.length - 1];
+				System.arraycopy(lexico, 1, VerbosAceptados.descartables, 0, lexico.length - 1);
+				break;	
 
 			default:
 				break;

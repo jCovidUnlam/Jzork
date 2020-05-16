@@ -15,6 +15,7 @@ public class Comando {
 		TRIGGER,
 		ATACAR,
 		OTRO,
+		DESCARTAR,
 	}
 	
 	private String nombre;

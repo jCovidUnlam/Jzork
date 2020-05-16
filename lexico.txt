@@ -8,6 +8,6 @@ usuario;inventario;reglas;estado;equipar
 NPC;hablar;charlar			
 ataque;atacar;achurrar;darle
 atributo;el;la;ellos;ellas;hacia;a;al;en
-
+descartables;soltar;descartar;desechar;tirar
 
 

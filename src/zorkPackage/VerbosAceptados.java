@@ -46,6 +46,8 @@ public final class VerbosAceptados {
 	public static  String[] ataque;
 	
 	public static String [] atributos;
+	
+	public static String [] descartables;
 
 	public static boolean inAtacar(String verbo) {
 		return Arrays.asList(ataque).contains(verbo);
@@ -82,6 +84,11 @@ public final class VerbosAceptados {
 	public static boolean inUsable(String verbo) {
 		return Arrays.asList(usable).contains(verbo);
 	}
+	
+	public static boolean inDescartar(String verbo) {
+		return Arrays.asList(descartables).contains(verbo);
+	}
+	
 	
 }
 

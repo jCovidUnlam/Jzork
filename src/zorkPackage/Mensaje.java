@@ -98,4 +98,8 @@ public final class Mensaje {
 		return atacante.getNombre() + " te ha atacado causandote un daño de " + atacante.getDanio(); 
 	}
 	
+	public static String soltoItem(Item item) {
+		return "Has soltado el item:" + item.getNombre();
+	}
+	
 }
