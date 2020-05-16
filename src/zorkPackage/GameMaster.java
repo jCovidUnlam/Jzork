@@ -208,6 +208,9 @@ public class GameMaster {
 		if(atacado == null)
 			return Mensaje.noExisteObjeto();
 		
+		if(aventura.getPersonaje().getArmaEquipada() == null)
+			return Mensaje.sinArma(aventura.getPersonaje().getNombre());
+		
 		//Si no hay ninguna secuencia loca al atacar, retorna msj por defecto.
 		TriggerAtaque trigger = aventura.getPersonaje().atacar(atacado);
 		if(trigger == null)

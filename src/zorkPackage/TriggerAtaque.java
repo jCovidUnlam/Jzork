@@ -3,7 +3,6 @@ package zorkPackage;
 public class TriggerAtaque extends Trigger{
 
 	private double danioLimite;
-	private boolean esMatable;
 	private double danioRecibido;
 	private String msjMuerte;
 	
@@ -14,12 +13,6 @@ public class TriggerAtaque extends Trigger{
 	}
 	public void setDanioLimite(double danioLimite) {
 		this.danioLimite = danioLimite;
-	}
-	public boolean isEsMatable() {
-		return esMatable;
-	}
-	public void setEsMatable(boolean esMatable) {
-		this.esMatable = esMatable;
 	}
 	public double getDanioRecibido() {
 		return danioRecibido;
