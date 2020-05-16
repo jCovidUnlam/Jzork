@@ -13,12 +13,14 @@ public class Objeto {
 	private double salud;
 	private double danio;
 	private boolean muerto;
+	private boolean matable;
 	
 	public Objeto(){
 		this.triggers = new ArrayList<Trigger>();
 		this.salud = 100; // Salud por defecto
 		this.danio = 5; // danio por defecto
 		this.muerto = false;
+		this.matable = false;
 	};
 		
 	public Objeto(String objetoID, String nombre, String descripcion, String descripcionMapa) {
@@ -91,6 +93,14 @@ public class Objeto {
 	public void setDanio(double danio) {
 		this.danio = danio;
 	}
+	
+	public boolean isMatable() {
+		return matable;
+	}
+
+	public void setMatable(boolean matable) {
+		this.matable = matable;
+	}
 
 	public TriggerAtaque atacar(Objeto atacado) {
 		return atacado.recibirAtaque(this.danio);
@@ -98,17 +108,18 @@ public class Objeto {
 	
 	public TriggerAtaque recibirAtaque(double danio) {
 	
-		TriggerAtaque ataque = this.triggers.stream()
+		//Lo primero que hace es buscar si tiene un trigger de ataque
+		TriggerAtaque trigger = this.triggers.stream()
 			    .filter(x -> x instanceof TriggerAtaque)//Esto pregunta para q filter por tipo
 			    .map (x -> (TriggerAtaque) x)//Esto castea
 			    .findAny()// Esto devuelve si existe al menos un trigger. Por favor que no haya mas de 1 porque me vuelvo puto
 				.orElse(null);//Sino encuentra, retorna null.
 	
-		if(ataque == null)
+		if(trigger == null) 
 			return null;
 		
-		ataque.setDanioRecibido(danio);
-		return ataque;
+		trigger.setDanioRecibido(danio);
+		return trigger;
 	}
 
 	public TriggerItem getTriggerItem() {

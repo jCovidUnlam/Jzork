@@ -135,14 +135,12 @@ public class GameMaster {
 		
 		// Si es nulo, muetra que no existe
 		if (item == null)
-			return Mensaje.noExisteObjeto();
+			return Mensaje.noTienesItem(aventura.getPersonaje().getNombre());
 		
 		aventura.getPersonaje().removerDeInventario(item);
 		aventura.getMapa().agregarObjeto(item);
 		
-		
 		return Mensaje.soltoItem(item);
-
 	}
 
 	private String ejecutarComandoUsuario(Comando comando) {

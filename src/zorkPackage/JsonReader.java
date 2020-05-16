@@ -200,12 +200,6 @@ public class JsonReader {
 			case "idObjeto":
 				returned.setObjetoID((String)entry.getValue());
 				break;
-			case "items":
-				returned.setTrigges(objetos
-						.stream()
-						.filter(x -> Arrays.asList(entry.getValue().toString().split(" ")).contains(x.getObjetoID()))
-						.collect(Collectors.toList()));
-				break;
 			case "afterTriggerDesc":
 				returned.setAfterTriggerDesc((String)entry.getValue());
 				break;

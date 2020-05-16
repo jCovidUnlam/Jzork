@@ -12,7 +12,7 @@ public class Personaje extends Objeto{
 		super();
 		this.nombre = nombre;
 		this.inventario = new LinkedList<>();
-		this.setDanio(0);//Sin arma no pega
+		this.setDanio(5);//Sin arma no pega
 	}
 	
 	public Personaje(String nombre, List<Item> list) {

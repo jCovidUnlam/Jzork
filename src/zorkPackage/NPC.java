@@ -13,4 +13,5 @@ public class NPC extends Objeto{
 	}
 	
 	
+	
 }
