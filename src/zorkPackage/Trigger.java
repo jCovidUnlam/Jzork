@@ -19,6 +19,7 @@ public abstract class Trigger {
 	
 	public enum AccionFinal{
 		REMOVERITEM,
+		RESPONDER,
 		NINGUNA,
 	}
 	

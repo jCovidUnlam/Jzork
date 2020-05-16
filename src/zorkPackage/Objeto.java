@@ -121,6 +121,8 @@ public class Objeto {
 		trigger.setDanioRecibido(danio);
 		return trigger;
 	}
+	
+
 
 	public TriggerItem getTriggerItem() {
 		//Si tiene mas de un triggerItem, hay q pensar como separarlo............ ni en pedo.
