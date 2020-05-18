@@ -46,20 +46,11 @@ public final class Consola {
 		System.out.println("\n" + msj);
 	}
 
-	public static void iniciarAventura(Aventura aventura) {
+	public static void iniciarAventura(Mapa mapa) {
 		System.out.println("\n########################");
-		System.out.println("     " + aventura.getNombre());
+		System.out.println("     " + mapa.getNombre());
 		System.out.println("########################\n");
-		System.out.println(aventura.getDescripcion());
+		System.out.println(mapa.getDescripcion());
 	}
 
-	/*
-	 * public static void mostrarLugar(Lugar lugar) {
-	 * 
-	 * if(lugar == null) System.out.println("\nNo hay lugar donde ir!"); else {
-	 * System.out.println("\n########################");
-	 * System.out.println(lugar.getNombre());
-	 * System.out.println("########################"); System.out.println("\n" +
-	 * lugar.getDescripcion()); } }
-	 */
 }

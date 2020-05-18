@@ -1,31 +1,32 @@
 package jZorkTests;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
 
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import zorkPackage.*;
+import zorkPackage.Aventura;
 
 class TestsMovimiento {
 
-	@Before
-	public void init() throws IOException {
-		
-		final Aventura aventura = new Aventura("Tester Movimiento", "testMovimiento.txt");
+	Aventura aventura;
+	int a;
 	
+	@BeforeEach
+	void init() throws IOException{
+
 	}
 	
 	@Test
-	public void moverNorte() {
+	void testNorte() {
+		System.out.println(a);
+		assertEquals(a,1);
 		
 	}
 	
-	@Test
-	void test() {
-		fail("Not yet implemented");
-	}
+	
+	
 
 }

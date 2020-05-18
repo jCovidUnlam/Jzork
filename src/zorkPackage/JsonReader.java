@@ -21,18 +21,15 @@ import net.minidev.json.JSONArray;
 
 public class JsonReader {
 
-	public static void construirAventura (Aventura aventura, String path) {
+	public static Mapa construirAventura(Mapa mapa, String path) {
+		
 		JSONParser parser = new JSONParser();
 		try {
 			Object json = parser.parse(new FileReader(path));
 			String jsonString = json.toString();
 			
-			//Aventura
-			aventura.setNombre(JsonPath.read(jsonString, "$.map.nombre"));
-			aventura.setDescripcion(JsonPath.read(jsonString, "$.map.descripcion"));
-			
 			//Mapa
-			aventura.setMapa(construirMapa(jsonString));
+			mapa = construirMapa(mapa, jsonString);
 			
 			//Objetos
 			List<Objeto> objetos = new ArrayList<Objeto>();
@@ -47,20 +44,35 @@ public class JsonReader {
 			triggers.addAll(agregarTriggers(jsonString, objetos));
 			
 			//Lugares
-			agregarLugares(aventura.getMapa(), jsonString, objetos, triggers);
-			
+			agregarLugares(mapa, jsonString, objetos, triggers);
 	
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		return mapa;
 	}
 	
-	private static Mapa construirMapa(String jsonString) {
+	private static Mapa construirMapa(Mapa mapa, String jsonString) {
+
+		mapa.setNombre(JsonPath.read(jsonString, "$.map.nombre"));
+		mapa.setDescripcion(JsonPath.read(jsonString, "$.map.descripcion"));
+		
+		//Set tamanio del mapa
+		int xSize = Integer.parseInt(JsonPath.read(jsonString, "$.map.xSize"));
+		int ySize = Integer.parseInt(JsonPath.read(jsonString, "$.map.ySize"));
+		int zSize = Integer.parseInt(JsonPath.read(jsonString, "$.map.zSize"));
+		mapa.setTamanio(xSize, ySize, zSize);
+		//
+		
+		//Set posicion actual
 		int x = Integer.parseInt(JsonPath.read(jsonString, "$.map.x"));
 		int y = Integer.parseInt(JsonPath.read(jsonString, "$.map.y"));
 		int z = Integer.parseInt(JsonPath.read(jsonString, "$.map.z"));
+		mapa.setPosicionActual(new Posicion(x,y,z));
+		//
 		
-		return new Mapa(new Posicion(x, y, z));
+		return mapa;
 	}
 	
 	private static List<Trigger> agregarTriggers(String jsonString, List<Objeto> objetos){

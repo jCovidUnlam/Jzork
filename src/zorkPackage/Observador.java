@@ -73,7 +73,7 @@ public class Observador {
 //		};
 
 
-		List<String> articulos = new ArrayList<String>(Arrays.asList(VerbosAceptados.atributos));
+		List<String> articulos = new ArrayList<String>(Arrays.asList(Lexico.atributos));
 
 		cadena.removeAll(articulos);
 

@@ -2,7 +2,7 @@ package zorkPackage;
 
 public final class TriggerMaster {
 
-	public static String EjecutarTriggerItem(Aventura aventura, Objeto afectado, Item item ) {
+	public static String EjecutarTriggerItem(Mapa mapa, Objeto afectado, Item item ) {
 
 		TriggerItem trigger = afectado.getTriggerItem();
 		
@@ -17,7 +17,7 @@ public final class TriggerMaster {
 			case RESPONDER:
 				return trigger.getErrorTriggerDesc();
 			case ATACAR:
-				afectado.atacar(aventura.getPersonaje());// Alf ataca
+				afectado.atacar(mapa.getPersonajeActual());// Alf ataca
 				return trigger.getErrorTriggerDesc();// Retorna mensaje
 			default:
 				return trigger.getErrorTriggerDesc();
@@ -27,7 +27,7 @@ public final class TriggerMaster {
 			switch(trigger.exito)
 			{
 			case REMOVEROBJETO:
-				aventura.getMapa().removerObjeto(afectado);
+				mapa.removerObjeto(afectado);
 				break;
 			default:
 				break;
@@ -35,7 +35,7 @@ public final class TriggerMaster {
 			
 			switch(trigger.after) {
 			case REMOVERITEM:
-				aventura.getPersonaje().removerDeInventario(item);
+				mapa.getPersonajeActual().removerDeInventario(item);
 			default:
 				break;
 			}
@@ -44,7 +44,7 @@ public final class TriggerMaster {
 		}
 	}
 	
-	public static String EjecutarTriggerAtacar(Aventura aventura, TriggerAtaque trigger, Objeto atacado) {
+	public static String EjecutarTriggerAtacar(Mapa mapa, TriggerAtaque trigger, Objeto atacado) {
 		
 		String msj;
 			
@@ -54,13 +54,13 @@ public final class TriggerMaster {
 			atacado.setSalud(atacado.getSalud() - trigger.getDanioRecibido());
 			if(atacado.isMuerto()) {
 				//Si el atacado muere, se va del lugar... esto podriamos ver como hacerlo.
-				aventura.getMapa().removerObjeto(atacado);
+				mapa.removerObjeto(atacado);
 				return trigger.getMsjMuerte();
 			}
 			else {
 				//Sino se muere, te la da.
-				atacado.atacar(aventura.getPersonaje());
-				return Mensaje.personajeAtacado(aventura.getPersonaje(), atacado);
+				atacado.atacar(mapa.getPersonajeActual());
+				return Mensaje.personajeAtacado(mapa.getPersonajeActual(), atacado);
 			}
 		default:
 			break;

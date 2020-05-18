@@ -2,9 +2,12 @@
 	"map":{
 		"nombre": "Testing",
 		"descripcion": "Descripcion de prueba",
+		"xSize": "20",
+		"ySize": "20",
+		"zSize": "3",
 		"x": "5",
 		"y": "10",
-		"z": "0",
+		"z": "1",
 	}
 	"lugares" :[
 		{
@@ -12,7 +15,7 @@
 			"descripcion": "Es un fucking muelle{i1}. Al sur puedes ver una taberna{n1}.\n{i2}",
 			"x": "5",
 			"y": "10",
-			"z": "0",
+			"z": "1",
 			"items": "i1 i2",
 			"obstaculos" : "o1",
 			"npcs" : "n1"
@@ -22,7 +25,7 @@
 			"descripcion": "Es una fucking taberna",
 			"x": "5",
 			"y": "9",
-			"z": "0",
+			"z": "1",
 			"items": "",
 			"obstaculos" : "",
 			"npcs" : ""
@@ -32,7 +35,7 @@
 			"descripcion": "Es un bosque, no puedes percibir nada fuera de lo normal.",
 			"x": "6",
 			"y": "10",
-			"z": "0",
+			"z": "1",
 			"items": "",
 			"obstaculos" : "",
 			"npcs" : ""
@@ -42,7 +45,7 @@
 			"descripcion": "Solo puedes ver árboles y escuchar ruido de animales.\n Al este se extiende el bosque.",
 			"x": "4",
 			"y": "10",
-			"z": "0",
+			"z": "1",
 			"items": "",
 			"obstaculos" : "",
 			"npcs" : ""

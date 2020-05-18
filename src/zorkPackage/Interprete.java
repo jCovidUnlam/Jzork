@@ -16,28 +16,28 @@ public final class Interprete {
 		String verbo = cadena.get(0);
 		
 		//Esto significaría que se encuentra en la lista de comandos de movimientos
-		if(VerbosAceptados.inMovimiento(verbo))
+		if(Lexico.inMovimiento(verbo))
 			comando = esDeMovimiento(cadena);
 		
-		if(VerbosAceptados.inAdquirible(verbo))
+		if(Lexico.inAdquirible(verbo))
 			comando = esDeAdquirir(cadena);
 		
-		if(VerbosAceptados.inUsuario(verbo))
+		if(Lexico.inUsuario(verbo))
 			comando = esDeUsuario(cadena);
 		
-		if(VerbosAceptados.inInspeccionable(verbo))
+		if(Lexico.inInspeccionable(verbo))
 			comando = esDeInspeccionar(cadena);
 		
-		if(VerbosAceptados.inNPC(verbo))
+		if(Lexico.inNPC(verbo))
 			comando = esDeNPC(cadena);
 		
-		if(VerbosAceptados.inUsable(verbo))
+		if(Lexico.inUsable(verbo))
 			comando = esDeUsar(cadena);
 		
-		if(VerbosAceptados.inAtacar(verbo))
+		if(Lexico.inAtacar(verbo))
 			comando = esDeAtaque(cadena);
 		
-		if(VerbosAceptados.inDescartar(verbo))
+		if(Lexico.inDescartar(verbo))
 			comando = esDeDescartar(cadena);
 		
 		

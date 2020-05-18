@@ -38,12 +38,11 @@ public final class Mensaje {
 		return obstaculo.getMensaje();
 	}
 	
-	public static String inventario(List<Item> items, String nombrePJ) {
-		String msj = "El inventario de " + nombrePJ + " es:";
+	public static String mostrarInventario(Personaje personaje) {
+		String msj = "El inventario de " + personaje.getNombre() + " es:";
 		
-		for (Item item : items) {
+		for (Item item : personaje.getInventario())
 			msj += "\n - " + item.getNombre(); 
-		}
 		
 		return msj;
 	}

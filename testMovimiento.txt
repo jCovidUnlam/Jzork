@@ -2,10 +2,13 @@
 	"map":{
 		"nombre": "Aventura de testeo de movimiento",
 		"descripcion": "Testo",
+		"xSize": "20",
+		"ySize": "20",
+		"zSize": "3",
 		"x": "5",
-		"y": "10",
+		"y": "5",
 		"z": "1",
-	}
+	},
 	"lugares" :[
 		{
 			"nombre": "Bosque",
@@ -15,7 +18,7 @@
 			"z": "1",
 			"items": "",
 			"obstaculos" : "",
-			"npcs" : ""
+			"npcs" : "",
 		},
 		{
 			"nombre": "Cabania",
@@ -25,7 +28,7 @@
 			"z": "1",
 			"items": "",
 			"obstaculos" : "",
-			"npcs" : ""
+			"npcs" : "",
 		},
 		{
 			"nombre": "Claro templado",
@@ -35,7 +38,7 @@
 			"z": "1",
 			"items": "",
 			"obstaculos" : "",
-			"npcs" : ""
+			"npcs" : "",
 		},
 		{
 			"nombre": "Risco peligroso",
@@ -45,7 +48,7 @@
 			"z": "1",
 			"items": "",
 			"obstaculos" : "",
-			"npcs" : ""
+			"npcs" : "",
 		},
 		{
 			"nombre": "Interior cabania",
@@ -55,7 +58,7 @@
 			"z": "1",
 			"items": "",
 			"obstaculos" : "",
-			"npcs" : ""
+			"npcs" : "",
 		},
 		{
 			"nombre": "Sotano de cabania",
@@ -65,7 +68,7 @@
 			"z": "0",
 			"items": "",
 			"obstaculos" : "",
-			"npcs" : ""
+			"npcs" : "",
 		},
 		{
 			"nombre": "Atico tenebroso",
@@ -75,7 +78,7 @@
 			"z": "2",
 			"items": "",
 			"obstaculos" : "",
-			"npcs" : ""
+			"npcs" : "",
 		},	
 	],
 	"items" :[

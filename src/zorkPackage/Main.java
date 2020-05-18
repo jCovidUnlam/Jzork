@@ -31,13 +31,13 @@ public class Main {
 					switch(scan) {
 					case "1":
 						
-						Consola.iniciarAventura(new Aventura(name, "jsonPropio.txt"));
+						Consola.iniciarAventura(Aventura.getMapa(name, "jsonPropio.txt"));
 						in.close();
 						init = true;
 						break;
 					case "2":
 						
-						Consola.iniciarAventura(new Aventura(name, "otroJson.txt"));
+						Consola.iniciarAventura(Aventura.getMapa(name, "otroJson.txt"));
 						in.close();
 						init = true;
 						break;
