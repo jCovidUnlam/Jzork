@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Observador {
 	private Scanner in;
 	private String scan;
-	GameMaster gameMaster;
+	private GameMaster gameMaster;
 
 	public Observador(GameMaster gameMaster) {
 		super();
@@ -30,12 +30,12 @@ public class Observador {
 			Comando com = Interprete.interpretar(cadena);
 			gameMaster.ejecutar(com);
 
-		} while (!scan.equals("exit".toLowerCase()));
+		} while (!scan.equals("exit".toLowerCase()) && gameMaster.isEndGame() != true);
 
 		in.close();
 	}
 
-	private static void removerErrores(ArrayList<String> cadena) {
+	private void removerErrores(ArrayList<String> cadena) {
 
 		List<String> articulos = new ArrayList<String>() {
 			/**
@@ -52,7 +52,7 @@ public class Observador {
 		cadena.removeAll(articulos);
 	}
 
-	private static void removerArticulos(ArrayList<String> cadena) {
+	private void removerArticulos(ArrayList<String> cadena) {
 
 //		List<String> articulos = new ArrayList<String>() {
 //			/**
@@ -78,4 +78,9 @@ public class Observador {
 		cadena.removeAll(articulos);
 
 	}
+	
+
+	
+	
+	
 }

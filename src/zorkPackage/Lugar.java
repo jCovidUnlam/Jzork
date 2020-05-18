@@ -86,21 +86,6 @@ public class Lugar {
 		this.descripcion = this.descripcion.replace(objetoReferencia.getDescripcionMapa(), "");
 	}
 
-	public Objeto mostrarDescripcion(String nombreObjeto) {
-		// Busca el objeto en el lugar, sino esta devuelve null
-		try {
-			Objeto obj = this.objetos.stream().filter(x -> x.getNombre().toLowerCase().equals(nombreObjeto)).findAny()
-					.orElse(null);
-
-			return obj;
-		} catch (NullPointerException e) {
-			return null;
-		}
-		// Si, java me obliga a cachear si le devuelvo nulo, dios sabra el porque mierda
-		// no asgina nulo al objeto.
-
-	}
-
 	public NPC getNPC(String nombreNPC) {
 		return this.objetos.stream().filter(x -> x instanceof NPC)// Esto pregunta si es un obstaculo
 				.map(x -> (NPC) x)// Esto castea
@@ -111,11 +96,17 @@ public class Lugar {
 	}
 
 	public Objeto getObjeto(String nombreObjeto) {
-		return this.objetos.stream().filter(x -> x.getNombre().toLowerCase().equals(nombreObjeto))// Esta es la consulta
-																									// real
-				.findAny()// Esto devuelve si existe al menos un obstaculo. Por favor que no haya mas de 1
-							// en una misma direccion jaja
-				.orElse(null);// Sino encuentra, retorna null.
+		try {
+			
+			Objeto obj = this.objetos.stream()
+					.filter(x -> x.getNombre().toLowerCase().equals(nombreObjeto))
+					.findAny()
+					.orElse(null);
+			
+			return obj;
+		} catch (NullPointerException e) {
+			return null;
+		}
 	}
 
 	public void removerObjeto(Objeto objeto) {

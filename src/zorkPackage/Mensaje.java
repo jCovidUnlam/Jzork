@@ -1,6 +1,7 @@
 package zorkPackage;
 
-import java.util.List;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatterBuilder;
 
 public final class Mensaje {
 	
@@ -99,6 +100,27 @@ public final class Mensaje {
 	
 	public static String soltoItem(Item item) {
 		return "Has soltado el item:" + item.getNombre();
+	}
+	
+	public static String atacarObjeto(Objeto atacante, Objeto atacado) {
+		///femenino/masculino
+		return atacante.getNombre() + " ha atacado a " + atacado.getNombre() + " causandole " 
+				+ atacante.getDanio() + " puntos de daño.";
+	}
+	
+	public static String contraAtaqueRecibido(Objeto atacante, Personaje personaje) {
+		return atacante.getNombre() + " contraataca causandote " + atacante.getDanio() +
+				" puntos de daño. Tu salud actual es de: " + personaje.getSalud() + ".";
+	}
+	
+	public static String muerteObjeto(Objeto muerto) {
+		return muerto.getNombre() + " ha muerto!";
+	}
+	
+	public static String endGameMuerte(Personaje personaje) {
+		return personaje.getNombre() + " has muerto en la pelea!/n" +
+				"podrás ver todas tus acciones en el file 'historial_"+
+				personaje.getNombre() + "_" + LocalDateTime.now();
 	}
 	
 }

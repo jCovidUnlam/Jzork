@@ -352,6 +352,7 @@ public class JsonReader {
 					break;
 				case "salud":
 					newObject.setSalud(Double.parseDouble(entry.getValue().toString()));
+					newObject.setMatable(true);//Si le agrego salud, puede morir.
 					break;
 				default:
 					break;

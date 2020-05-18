@@ -3,10 +3,12 @@ package zorkPackage;
 public class GameMaster {
 
 	private Mapa mapa;
-
+	private boolean endGame;
+	
 	public GameMaster(Mapa mapa) {
 		super();
 		this.mapa = mapa;
+		endGame = false;
 		Consola.iniciarAventura(mapa);
 		Consola.mostrar(Mensaje.mensajeLugar(mapa.getLugarActual()));
 	}
@@ -48,8 +50,12 @@ public class GameMaster {
 			devolucion = Mensaje.comandoErroneo();
 			break;
 		}
-
+		
 		Consola.mostrar(devolucion);
+	}
+	
+	public boolean isEndGame() {
+		return endGame;
 	}
 
 	private String moverPersonaje(Comando comando) {
@@ -169,7 +175,7 @@ public class GameMaster {
 		if (comando.getNombreObjeto().toLowerCase().equals("alrededor"))
 			return Mensaje.mensajeLugar(mapa.getLugarActual());
 		else {
-			Objeto obj = mapa.mostrarObjeto(comando.getNombreObjeto());
+			Objeto obj = mapa.getObjeto(comando.getNombreObjeto());
 			if (obj != null)
 				return Mensaje.mostrarObjeto(obj);
 			return Mensaje.noExisteObjeto();
@@ -220,18 +226,39 @@ public class GameMaster {
 	}
 
 	public String atacarObjeto(Comando comando) {
-
+		
 		// Se puede atacar a cualquier cosa, luego se chequea si es atacable o no.
 		Objeto atacado = mapa.getObjeto(comando.getNombreObjeto());
 		if (atacado == null)
 			return Mensaje.noExisteObjeto();
-
-		// Si no hay ninguna secuencia loca al atacar, retorna msj por defecto.
-		TriggerAtaque trigger = atacado.getTriggerAtaque();
-		if (trigger == null)
+		
+		if(!atacado.isMatable())
 			return Mensaje.noEsAtacable(comando.getNombreObjeto());
 
-		// Ataca
-		return TriggerMaster.EjecutarTriggerAtacar(mapa, trigger, atacado);
-	}
+		// Si no hay ninguna secuencia loca al atacar, es simplemente ida y vuelta de golpes.
+		TriggerAtaque trigger = atacado.getTriggerAtaque();
+		if (trigger != null)
+			return TriggerMaster.EjecutarTriggerAtacar(mapa, trigger, atacado);
+			
+			String msj = "";
+			mapa.getPersonajeActual().atacar(atacado);
+			msj += Mensaje.atacarObjeto(mapa.getPersonajeActual(), atacado);
+			
+			if(atacado.isMuerto()) {
+				msj += "\n";
+				return msj += Mensaje.muerteObjeto(atacado);
+			}
+			else {
+				atacado.atacar(mapa.getPersonajeActual());
+				msj += "\n";
+				msj += Mensaje.contraAtaqueRecibido(atacado, mapa.getPersonajeActual());
+				if(mapa.getPersonajeActual().isMuerto()) {
+					this.endGame = true;//Adios
+					msj += "\n";
+					msj += Mensaje.endGameMuerte(mapa.getPersonajeActual());
+				}
+			}
+
+			return msj;
+		}
 }

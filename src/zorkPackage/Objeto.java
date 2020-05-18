@@ -17,7 +17,7 @@ public class Objeto {
 	
 	public Objeto(){
 		this.triggers = new ArrayList<Trigger>();
-		this.salud = 100; // Salud por defecto
+		this.salud = 1; // Salud por defecto
 		this.danio = 0; // danio por defecto de cualquier objeto
 		this.muerto = false;// los objetos deberian comenzar vivos
 		this.matable = false;// los objetos no deberian ser matables a menos que se indique lo contratio.
@@ -82,7 +82,7 @@ public class Objeto {
 	
 	public void restarSalud(double danio) {
 		this.salud -= danio;
-		if(this.salud >= 0)
+		if(this.salud <= 0)
 			this.setMuerto(true);
 	}
 

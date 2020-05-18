@@ -15,6 +15,7 @@ public class Personaje extends Objeto{
 		this.inventario = new LinkedList<>();
 		this.posicionActual = new Posicion(0,0,0);
 		this.setDanio(5);//Sin arma pega esto
+		this.setSalud(100);
 	}
 	
 	public Personaje(String nombre, List<Item> list) {

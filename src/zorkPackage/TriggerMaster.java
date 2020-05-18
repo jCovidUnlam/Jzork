@@ -46,12 +46,13 @@ public final class TriggerMaster {
 	
 	public static String EjecutarTriggerAtacar(Mapa mapa, TriggerAtaque trigger, Objeto atacado) {
 		
-		String msj;
+		String msj = "";
 			
 		switch(trigger.exito)
 		{
 		case CONTRAATACAR:
-			atacado.setSalud(atacado.getSalud() - trigger.getDanioRecibido());
+			atacado.restarSalud(mapa.getPersonajeActual().getDanio());
+			msj += Mensaje.atacarObjeto(mapa.getPersonajeActual(),atacado);
 			if(atacado.isMuerto()) {
 				//Si el atacado muere, se va del lugar... esto podriamos ver como hacerlo.
 				mapa.removerObjeto(atacado);

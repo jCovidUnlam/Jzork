@@ -104,16 +104,6 @@
 			"error": "ATACAR",
 			"errorTriggerDesc": "Alf responde: Que haces guachin?, y te pega un tucumano a la napia, sacandote 15 de vida.\nNo parece ser posible ganarle a mano limpia.",
 			"after": "REMOVERITEM"
-		},
-		{
-			"tipo" : "ataque",
-			"idObjeto" : "n1",
-			"afterTriggerDesc" : "Alf se para de manos, corre guachin!",
-			"exito": "CONTRAATACAR",
-			"error": "RESPONDER",
-			"errorTriggerDesc": "QUE HACES PEGANDOLE A ALF???!!!!",
-			"after": "RESPONDER"
-		}
-			
+		},			
 	]	
 }
