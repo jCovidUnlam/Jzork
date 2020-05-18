@@ -47,28 +47,41 @@ public final class TriggerMaster {
 	public static String EjecutarTriggerAtacar(Mapa mapa, TriggerAtaque trigger, Objeto atacado) {
 		
 		String msj = "";
+		Personaje pj = mapa.getPersonajeActual();
+		
+		if(pj.getDanio() <= trigger.getDanioLimite())
+		{
+			switch(trigger.error) {
+			case RESPONDER:
+				return trigger.errorTriggerDesc;
+			default:
+				break;
+			}
+		}
 			
 		switch(trigger.exito)
 		{
 		case CONTRAATACAR:
-			atacado.restarSalud(mapa.getPersonajeActual().getDanio());
+			atacado.atacar(mapa.getPersonajeActual());
 			msj += Mensaje.atacarObjeto(mapa.getPersonajeActual(),atacado);
 			if(atacado.isMuerto()) {
 				//Si el atacado muere, se va del lugar... esto podriamos ver como hacerlo.
 				mapa.removerObjeto(atacado);
-				return trigger.getMsjMuerte();
+				return msj += Mensaje.muerteObjeto(atacado);
 			}
 			else {
 				//Sino se muere, te la da.
 				atacado.atacar(mapa.getPersonajeActual());
 				return Mensaje.personajeAtacado(mapa.getPersonajeActual(), atacado);
 			}
+		case RESPONDER:
+			msj += trigger.exitoTriggerDesc;
 		default:
 			break;
 		}
 	
 		
-		return "";
+		return msj;
 	}
 	
 }

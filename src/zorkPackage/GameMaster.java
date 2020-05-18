@@ -116,7 +116,7 @@ public class GameMaster {
 
 	private String adquirirItem(Comando comando) {
 		// Lo busca en el lugar
-		Item item = mapa.tomarItem(comando.getNombreObjeto());
+		Item item = mapa.getItem(comando.getNombreObjeto());
 
 		// Si es nulo, muetra que no existe
 		if (item == null)
@@ -126,8 +126,9 @@ public class GameMaster {
 		if (item.isTomable() == false)
 			return item.getMensajeNoTomable();
 		else {
+		
 			// Remueve el atributo descripcionMapa del item en el Lugar.
-			mapa.cambiarDescripcionLugarActual(item);
+			mapa.removerObjeto(item);
 			// Si es tomable, lo agrega al inventario
 			mapa.getPersonajeActual().addObjeto(item);
 			// Finalmente, muetra mensaje de que lo tomo.
@@ -232,8 +233,11 @@ public class GameMaster {
 		if (atacado == null)
 			return Mensaje.noExisteObjeto();
 		
+		if(atacado.isMuerto())
+			return Mensaje.yaEstaMuerto(atacado.getNombre());
+		
 		if(!atacado.isMatable())
-			return Mensaje.noEsAtacable(comando.getNombreObjeto());
+			return Mensaje.noEsAtacable(atacado.getNombre());
 
 		// Si no hay ninguna secuencia loca al atacar, es simplemente ida y vuelta de golpes.
 		TriggerAtaque trigger = atacado.getTriggerAtaque();
@@ -245,6 +249,7 @@ public class GameMaster {
 			msj += Mensaje.atacarObjeto(mapa.getPersonajeActual(), atacado);
 			
 			if(atacado.isMuerto()) {
+				mapa.getLugarActual().removerObjeto(atacado);
 				msj += "\n";
 				return msj += Mensaje.muerteObjeto(atacado);
 			}

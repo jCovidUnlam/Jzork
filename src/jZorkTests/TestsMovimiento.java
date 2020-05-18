@@ -16,7 +16,6 @@ class TestsMovimiento {
 
 	Mapa mapa;
 
-	
 	@BeforeEach
 	void init() throws IOException{
 		mapa = new Mapa();

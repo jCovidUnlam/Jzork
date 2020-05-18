@@ -90,8 +90,8 @@
 			"descripcion": "Es un Alf, te acuerda de Alf? Volvio! en forma de obstaculo!",
 			"hablar": "No hay problemaaa",
 			"descripcionMapa": "pero entre el muelle y la taberna hay.... un Alf?",
-			"danio" : "15",
-			"salud" : "500",
+			"danio" : "150",
+			"salud" : "15",
 		}
 	],
 	"triggers": [
@@ -104,6 +104,17 @@
 			"error": "ATACAR",
 			"errorTriggerDesc": "Alf responde: Que haces guachin?, y te pega un tucumano a la napia, sacandote 15 de vida.\nNo parece ser posible ganarle a mano limpia.",
 			"after": "REMOVERITEM"
-		},			
+		},
+		{
+			"tipo" : "ataque",
+			"idObjeto" : "n1",
+			"danioLimite" : "14",
+			"exito": "CONTRAATACAR",
+			"exitoTriggerDesc": "No es posible atacar a Alf, tendras que encontrar otra forma de sacarlo del medio.",
+			"error": "RESPONDER",
+			"errorTriggerDesc": "No puede golpear a Alf con algo tan debil... prueba encontrar y equiparte un arma.",
+			"after": "RESPONDER"
+			"afterTriggerDesc" : "Alf se para de manos, corre guachin!",
+		},
 	]	
 }

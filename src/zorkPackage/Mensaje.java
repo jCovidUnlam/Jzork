@@ -1,7 +1,7 @@
 package zorkPackage;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatterBuilder;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public final class Mensaje {
 	
@@ -14,6 +14,9 @@ public final class Mensaje {
 			msj += "     " + lugar.getNombre() + "\n";
 			msj += "########################\n";
 			msj += "\n" + lugar.getDescripcion();
+			msj += "\nObjetos: ";
+			for(Objeto obj : lugar.getObjetos())
+				msj += obj.getNombre() + " - ";
 		}
 		
 		return msj;
@@ -79,7 +82,7 @@ public final class Mensaje {
 	}
 	
 	public static String ncpMensaje(NPC npc) {
-		return npc.getNombre() + "responde: " + npc.getHablar();
+		return npc.getNombre() + " responde: " + npc.getHablar();
 	}
 	
 	public static String noTienesItem(String nombrePersonaje) {
@@ -118,9 +121,16 @@ public final class Mensaje {
 	}
 	
 	public static String endGameMuerte(Personaje personaje) {
+		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+		Date today = new Date();
+		
 		return personaje.getNombre() + " has muerto en la pelea!/n" +
-				"podrás ver todas tus acciones en el file 'historial_"+
-				personaje.getNombre() + "_" + LocalDateTime.now();
+				"podrás ver todas tus acciones en el file 'Historial_"+
+				personaje.getNombre() + "_" + formatter.format(today) + "'.";
+	}
+	
+	public static String yaEstaMuerto(String nombreObjeto) {
+		return nombreObjeto + " ya ha muerto, puedes dejar de golpearlo? No seas sangriento.";
 	}
 	
 }

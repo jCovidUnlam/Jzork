@@ -162,6 +162,8 @@ public class JsonReader {
 			case "errorTriggerDesc":
 				returned.setErrorTriggerDesc((String)entry.getValue());
 				break;
+			case "danioLimite":
+				returned.setDanioLimite(Double.parseDouble(entry.getValue().toString()));
 			default:
 				break;
 			}	

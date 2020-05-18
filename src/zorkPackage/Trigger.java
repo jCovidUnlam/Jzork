@@ -25,6 +25,7 @@ public abstract class Trigger {
 	
 	protected String afterTriggerDesc;
 	protected String errorTriggerDesc;
+	protected String exitoTriggerDesc;
 	protected AccionExito exito;
 	protected AccionError error;
 	protected AccionFinal after;

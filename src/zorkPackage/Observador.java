@@ -41,7 +41,7 @@ public class Observador {
 			/**
 			 * Esto me lo hace agregar sino tira warninig.... anda a saber que mierda es
 			 */
-			private static final long serialVersionUID = 2L;
+			private static final long serialVersionUID = 1L;
 
 			{
 				add(" ");
@@ -53,30 +53,7 @@ public class Observador {
 	}
 
 	private void removerArticulos(ArrayList<String> cadena) {
-
-//		List<String> articulos = new ArrayList<String>() {
-//			/**
-//			 * Esto me lo hace agregar sino tira warninig.... anda a saber que mierda es
-//			 */
-//			private static final long serialVersionUID = 1L;
-//
-//			{
-//				add("el");
-//				add("la");
-//				add("ellos");
-//				add("ellas");
-//				add("hacia");
-//				add("a");
-//				add("al");
-//				add("en");
-//			}		
-//		};
-
-
-		List<String> articulos = new ArrayList<String>(Arrays.asList(Lexico.atributos));
-
-		cadena.removeAll(articulos);
-
+		cadena.removeAll(Arrays.asList(Lexico.atributos));
 	}
 	
 

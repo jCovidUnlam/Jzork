@@ -261,13 +261,8 @@ public class Mapa {
 	}
 	
 	//Esto esta armado solo para respetar que GAMEMASTER llame solo al mapa.
-	public Item tomarItem(String nombreObjeto) {
-		return getLugarActual().tomarItem(nombreObjeto);
-	}
-	
-	//Esto tambien
-	public void cambiarDescripcionLugarActual(Item item) {
-		getLugarActual().cambiarDescripcion(item);
+	public Item getItem(String nombreObjeto) {
+		return getLugarActual().getItem(nombreObjeto);
 	}
 	
 	public NPC getNPC(String nombreNPC) {
