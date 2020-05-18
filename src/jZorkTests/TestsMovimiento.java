@@ -7,22 +7,33 @@ import java.io.IOException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import zorkPackage.Aventura;
+import zorkPackage.JsonReader;
+import zorkPackage.Mapa;
+import zorkPackage.Personaje;
+import zorkPackage.Posicion;
 
 class TestsMovimiento {
 
-	Aventura aventura;
-	int a;
+	Mapa mapa;
+
 	
 	@BeforeEach
 	void init() throws IOException{
-
+		mapa = new Mapa();
+		mapa.setPersonajeActual(new Personaje("Tester movimiento"));
+		JsonReader.construirAventura(mapa, "testMovimiento.txt");
 	}
 	
 	@Test
 	void testNorte() {
-		System.out.println(a);
-		assertEquals(a,1);
+		
+		Posicion actual = mapa.getPosicionActual();
+		mapa.moverNorte();
+		Posicion norte = mapa.getPosicionActual();
+		
+		actual.setY(actual.getY() + 1);
+		
+		assertEquals(actual, norte);
 		
 	}
 	
