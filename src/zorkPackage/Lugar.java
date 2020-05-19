@@ -81,13 +81,11 @@ public class Lugar {
 	}
 
 	public Obstaculo existeObstaculo(String direccion) {
-		// Busca el obstaculo en el lugar
-		return this.objetos.stream().filter(x -> x instanceof Obstaculo)// Esto pregunta si es un obstaculo
-				.map(x -> (Obstaculo) x)// Esto castea
-				.filter(x -> x.getDireccion().toLowerCase().equals(direccion))// Esta es la consulta real
-				.findAny()// Esto devuelve si existe al menos un obstaculo. Por favor que no haya mas de 1
-							// en una misma direccion jaja
-				.orElse(null);// Sino encuentra, retorna null.
+		return this.objetos.stream().filter(x -> x instanceof Obstaculo)
+				.map(x -> (Obstaculo) x)
+				.filter(x -> x.getDireccion().toLowerCase().equals(direccion))
+				.findAny()
+				.orElse(null);
 	}
 
 	public void removerObjeto(Objeto objeto) {

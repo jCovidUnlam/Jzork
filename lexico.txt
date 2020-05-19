@@ -3,11 +3,12 @@ rompibles;romper;destruir;golper;patear;estallar
 consumible;tomar;beber;ingerir;comer
 inspeccionable;inspeccionar;mirar;observar;ver
 usable;usar;utilizar
-movimiento;norte;sur;este;oeste;arriba;abajo;sureste;suroeste;noreste;noreste;ir
+movimiento;norte;sur;este;oeste;arriba;abajo;ir;subir;bajar;escalar;trepar
 usuario;inventario;reglas;estado;equipar
 NPC;hablar;charlar			
 ataque;atacar;achurrar;darle
-atributo;el;la;ellos;ellas;hacia;a;al;en
 descartables;soltar;descartar;desechar;tirar
+atributo;el;la;ellos;ellas;hacia;a;al;en;con
+
 
 

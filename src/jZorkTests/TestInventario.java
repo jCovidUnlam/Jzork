@@ -28,6 +28,13 @@ public class TestInventario {
 	
 	Mapa mapa;
 	Personaje personaje;
+	
+	public static final String NORTE = "norte";
+	public static final String SUR = "sur";
+	public static final String OESTE = "oeste";
+	public static final String ESTE = "este";
+	public static final String ABAJO = "abajo";
+	public static final String ARRIBA = "arriba";
 
 	@BeforeEach
 	void init() throws IOException{
@@ -45,14 +52,14 @@ public class TestInventario {
 	@Test
 	public void testTomarObjetoExistente() {		
 		assertEquals(2, mapa.getLugarActual().getObjetos().size());
-		mapa.removerObjeto(mapa.getObjeto("gato"));
+		mapa.getLugarActual().removerObjeto(mapa.getLugarActual().getObjeto("gato"));
 		assertEquals(1, mapa.getLugarActual().getObjetos().size());
 	}
 	
 	@Test
 	public void testTomarObjetoNoExistente() {
 		assertEquals(2, mapa.getLugarActual().getObjetos().size());
-		mapa.getObjeto("paracaidas");
+		mapa.getLugarActual().getObjeto("paracaidas");
 		assertEquals(2, mapa.getLugarActual().getObjetos().size());
 	}
 	
@@ -63,20 +70,20 @@ public class TestInventario {
 
 	@Test
 	public void testObjetoTomadoEnInventario() {
-		personaje.addObjeto(mapa.getItem("gato"));
-		mapa.removerObjeto(mapa.getObjeto("gato"));		
+		personaje.addObjeto(mapa.getLugarActual().getItem("gato"));
+		mapa.getLugarActual().removerObjeto(mapa.getLugarActual().getObjeto("gato"));		
 		assertEquals(1, personaje.getInventario().size());
 	}
 	
 	@Test
 	public void testSoltarObjeto() {
-		Item i = mapa.getItem("gato");
+		Item i = mapa.getLugarActual().getItem("gato");
 		personaje.addObjeto(i);
-		mapa.removerObjeto(i);
-		mapa.moverNorte();
+		mapa.getLugarActual().removerObjeto(i);
+		mapa.mover(NORTE);
 		personaje.removerDeInventario(i);
-		mapa.agregarObjeto(i);
-		mapa.moverSur();
+		mapa.getLugarActual().agregarObjeto(i);
+		mapa.mover(SUR);
 		assertEquals(1, mapa.getLugarActual().getObjetos().size());
 	}
 

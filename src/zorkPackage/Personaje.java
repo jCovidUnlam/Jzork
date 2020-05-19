@@ -56,30 +56,12 @@ public class Personaje extends Objeto{
 		this.posicionActual = posicionActual;
 	}
 	
-	public void irNorte() {
-		this.posicionActual.setY(this.posicionActual.getY() + 1);
+	public void ir(Posicion pos) {
+		this.posicionActual.setX(this.posicionActual.getX() + pos.getX());
+		this.posicionActual.setY(this.posicionActual.getY() + pos.getY());
+		this.posicionActual.setZ(this.posicionActual.getZ() + pos.getZ());
 	}
 	
-	public void irSur() {
-		this.posicionActual.setY(this.posicionActual.getY() - 1);
-	}
-	
-	public void irEste() {
-		this.posicionActual.setX(this.posicionActual.getX() + 1);
-	}
-	
-	public void irOeste() {
-		this.posicionActual.setX(this.posicionActual.getX() - 1);
-	}
-	
-	public void irAbajo() {
-		this.posicionActual.setZ(this.posicionActual.getZ() - 1);
-	}
-	
-	public void irArriba() {
-		this.posicionActual.setZ(this.posicionActual.getZ() + 1);
-	}
-
 	public Arma equiparArma(String nombreArma) {
 		if(inventario.size() == 0)
 			return null;

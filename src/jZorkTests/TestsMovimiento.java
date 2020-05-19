@@ -15,6 +15,12 @@ import zorkPackage.Posicion;
 class TestsMovimiento {
 
 	Mapa mapa;
+	public static final String NORTE = "norte";
+	public static final String SUR = "sur";
+	public static final String OESTE = "oeste";
+	public static final String ESTE = "este";
+	public static final String ABAJO = "abajo";
+	public static final String ARRIBA = "arriba";
 
 	@BeforeEach
 	void init() throws IOException{
@@ -30,98 +36,151 @@ class TestsMovimiento {
 	
 	@Test
 	void testNorte() {
-		mapa.moverNorte();
+		mapa.mover(NORTE);
 		assertEquals(new Posicion(5,6,1), mapa.getPosicionActual());	
 	}
 	
 	@Test
 	void testNoHayNorte() {
-		mapa.moverNorte();
-		mapa.moverNorte();
-		mapa.moverNorte();
+		mapa.mover(NORTE);
+		mapa.mover(NORTE);
+		mapa.mover(NORTE);
 		assertEquals(new Posicion(5,7,1), mapa.getPosicionActual());
 	}
 	
 	@Test
 	void testSur() {
-		mapa.moverSur();
+		mapa.mover(SUR);
 		assertEquals(new Posicion(5,4,1), mapa.getPosicionActual());
 	}
 	
 	@Test
 	void testNoHaySur() {
-		mapa.moverSur();
-		mapa.moverSur();
+		mapa.mover(SUR);
+		mapa.mover(SUR);
 		assertEquals(new Posicion(5,4,1), mapa.getPosicionActual());
 	}
 	
 	@Test
 	void testOeste() {
-		mapa.moverOeste();
+		mapa.mover(OESTE);
 		assertEquals(new Posicion(4,5,1),  mapa.getPosicionActual());
 	}
 	
 	@Test
 	void testNoHayOeste() {
-		mapa.moverOeste();
-		mapa.moverOeste();
+		mapa.mover(OESTE);
+		mapa.mover(OESTE);
 		assertEquals(new Posicion(4,5,1),  mapa.getPosicionActual());
 	}
 	
 	@Test
 	void testEste() {
-		mapa.moverEste();
+		mapa.mover(ESTE);
 		assertEquals(new Posicion(6,5,1), mapa.getPosicionActual());
 	}
 	
 	@Test
 	void testNoHayEste() {
-		mapa.moverEste();
-		mapa.moverEste();
+		mapa.mover(ESTE);
+		mapa.mover(ESTE);
 		assertEquals(new Posicion(6,5,1), mapa.getPosicionActual());
 	}
 	
 	@Test
 	void testIrArriba() {
-		mapa.moverNorte();
-		mapa.moverNorte();
-		mapa.moverArriba();
+		mapa.mover(NORTE);
+		mapa.mover(NORTE);
+		mapa.mover(ARRIBA);
 		assertEquals(new Posicion(5,7,2), mapa.getPosicionActual());
 	}
 	
 	@Test
 	void testIrAbajo() {
-		mapa.moverNorte();
-		mapa.moverNorte();
-		mapa.moverAbajo();
+		mapa.mover(NORTE);
+		mapa.mover(NORTE);
+		mapa.mover(ABAJO);
 		assertEquals(new Posicion(5,7,0), mapa.getPosicionActual());
 	}
 	
 	@Test
 	void testNoSePuedeSubir() {
-		mapa.moverNorte();
-		mapa.moverNorte();
-		mapa.moverArriba();
+		mapa.mover(NORTE);
+		mapa.mover(NORTE);
+		mapa.mover(ARRIBA);
 		assertEquals(new Posicion(5,7,2), mapa.getPosicionActual());
-		mapa.moverArriba();
+		mapa.mover(ARRIBA);
 		assertEquals(new Posicion(5,7,2), mapa.getPosicionActual());
 	}
 	
 	@Test
 	void testNoSePuedeBajar() {
-		mapa.moverNorte();
-		mapa.moverNorte();
-		mapa.moverAbajo();
+		mapa.mover(NORTE);
+		mapa.mover(NORTE);
+		mapa.mover(ABAJO);
 		assertEquals(new Posicion(5,7,0), mapa.getPosicionActual());
-		mapa.moverAbajo();
+		mapa.mover(ABAJO);
 		assertEquals(new Posicion(5,7,0), mapa.getPosicionActual());
 	}
 	
-//	@Test
-//	void testIrHacia() {
-//		mapa.irHacia("Cabania");
-//		assertEquals(new Posicion(5,6,1), mapa.getPosicionActual());
-//	}
+	@Test
+	void testIrHaciaNorte() {
+		mapa.irHacia("cabania");
+		System.out.println(mapa.getPosicionActual());
+		assertEquals(new Posicion(5,6,1), mapa.getPosicionActual());
+	}
 	
-
+	@Test
+	void testIrHaciaSur() {
+		mapa.irHacia("bosque encantado");
+		assertEquals(new Posicion(5,4,1), mapa.getPosicionActual());
+	}
+	
+	@Test
+	void testIrHaciaOeste() {
+		mapa.irHacia("claro templado");
+		assertEquals(new Posicion(4,5,1), mapa.getPosicionActual());
+	}
+	
+	@Test
+	void testIrHaciaEste() {
+		mapa.irHacia("risco peligroso");
+		assertEquals(new Posicion(6,5,1), mapa.getPosicionActual());
+	}
+	
+	@Test
+	void testIrHaciaAbajo() {
+		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
+		mapa.mover(NORTE);
+		assertEquals(new Posicion(5,6,1), mapa.getPosicionActual());
+		mapa.mover(NORTE);
+		assertEquals(new Posicion(5,7,1), mapa.getPosicionActual());
+		mapa.irHacia("sotano de cabania");
+		assertEquals(new Posicion(5,7,0), mapa.getPosicionActual());
+	}
+	
+	@Test
+	void testIrHaciaArriba() {
+		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
+		mapa.mover(NORTE);
+		assertEquals(new Posicion(5,6,1), mapa.getPosicionActual());
+		mapa.mover(NORTE);
+		assertEquals(new Posicion(5,7,1), mapa.getPosicionActual());
+		mapa.irHacia("atico tenebroso");
+		assertEquals(new Posicion(5,7,2), mapa.getPosicionActual());
+	}
+	
+	@Test
+	void testIrNoExisteLugar() {
+		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
+		mapa.irHacia("");
+		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
+	}
+	
+	@Test
+	void testIrNoSaltearLugares() {
+		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
+		mapa.irHacia("interior cabania");
+		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
+	}
 }

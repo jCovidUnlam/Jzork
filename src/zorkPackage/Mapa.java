@@ -57,7 +57,6 @@ public class Mapa {
 		this.lugares[posicion.getX()][posicion.getY()][posicion.getZ()] = lugar;
 	}
 	
-	//Esto por ahora lo dejo para testear, dp se lo podemos dar al loco cuando encuentre un mapa o algo asi
 	public void verMapa() {
 		
 		for (int i = 0; i < 19; i++) {
@@ -72,214 +71,93 @@ public class Mapa {
 		}
 	}
 	
-	//testeo
-	private void imprimirPosicion() {
-		System.out.println(this.personajeActual.getPosicionActual());
-	}
-
 	public Lugar getLugarActual() {
 		Posicion actual = this.personajeActual.getPosicionActual();
 		return lugares[actual.getX()][actual.getY()][actual.getZ()];
 	}
 	
-	private Lugar getPosibleLugar(int x, int y, int z) {
+	private Lugar getLugar(Posicion p) {
 		Posicion actual = this.personajeActual.getPosicionActual();
-		try { 
-			return lugares[actual.getX() + x][actual.getY() + y][actual.getZ() + z]; 
-			}
-		catch ( IndexOutOfBoundsException e ) { 
+		try {
+			return lugares[actual.getX() + p.getX()][actual.getY() + p.getY()][actual.getZ() + p.getZ()];
+		} catch (IndexOutOfBoundsException e) {
 			return null;
-			}
+		}
 	}
 	
-	public Object moverNorte() {
-		
-		//Se fija sino esta fuera del mapa.
-		if(getPosibleLugar(0,1,0) == null)
+	private Posicion posicionDireccion(String direccion) {
+		switch (direccion) {
+		case "norte":
+			return new Posicion(0,1,0);
+		case "sur":
+			return new Posicion(0,-1,0);
+		case "este":
+			return new Posicion(1,0,0);
+		case "oeste":
+			return new Posicion(-1,0,0);
+		case "abajo":
+		case "bajar":
+			return new Posicion(0,0,-1);
+		case "arriba":
+		case "subir":
+		case "escalar":
+		case "trepar":
+			return new Posicion(0,0,1);
+			default:
+				return null;
+		}
+	}
+	
+	public Object mover(String direccion) {
+		Posicion pos = posicionDireccion(direccion);
+		Lugar lugar = getLugar(pos);
+		if(lugar == null)
 			return null;
-		
-		//Se fija si el lugar donde esta parado tiene obstaculos en esa direccion.
-		Obstaculo obstaculo = getLugarActual().existeObstaculo("norte");
-		if(obstaculo != null)
-			return obstaculo;
-		
-		//Si todo sale bien, suma movimientos, se mueve y devuelve el lugar pa q lo imprima el GM.
-		this.cantidadMovimientos++;
-		this.personajeActual.irNorte();//Mueve el personaje al norte
 
-		return getLugarActual();
-	}
-	
-	public Object moverSur() {
-		
-		if(getPosibleLugar(0,-1,0) == null)
-			return null;
-		
-		
-		Obstaculo obstaculo = getLugarActual().existeObstaculo("sur");
+		Obstaculo obstaculo = getLugarActual().existeObstaculo(direccion);
 		if(obstaculo != null)
 			return obstaculo;
 		
 		this.cantidadMovimientos++;
-		this.personajeActual.irSur();
-
-		return getLugarActual();
-	}
-	
-	public Object moverEste() {
-		
-		if(getPosibleLugar(1,0,0) == null)
-			return null;
-		
-		Obstaculo obstaculo = getLugarActual().existeObstaculo("este");
-		if(obstaculo != null)
-			return obstaculo;
-		
-		this.cantidadMovimientos++;
-		this.personajeActual.irEste();
-
-		return getLugarActual();
-	}
-	
-	public Object moverOeste() {
-		
-		if(getPosibleLugar(-1,0,0) == null)
-			return null;
-		
-		
-		Obstaculo obstaculo = getLugarActual().existeObstaculo("oeste");
-		if(obstaculo != null)
-			return obstaculo;
-		
-		this.cantidadMovimientos++;
-		this.personajeActual.irOeste();
-		return getLugarActual();
-	}
-	
-	public Object moverAbajo() {
-		
-		//Se fija sino esta fuera del mapa.
-		if(getPosibleLugar(0,0,-1) == null)
-			return null;
-		
-		
-		//Se fija si el lugar donde esta parado tiene obstaculos en esa direccion.
-		Obstaculo obstaculo = getLugarActual().existeObstaculo("abajo");
-		if(obstaculo != null)
-			return obstaculo;
-		
-		//Si todo sale bien, suma movimientos, se mueve y devuelve el lugar pa q lo imprima el GM.
-		this.cantidadMovimientos++;
-		this.personajeActual.irAbajo();
-		//Esto seria para testear
-		imprimirPosicion();
-		return getLugarActual();
-	}
-	
-	public Object moverArriba() {
-		
-		//Se fija sino esta fuera del mapa.
-		if(getPosibleLugar(0,0,1) == null)
-			return null;
-		
-		//Se fija si el lugar donde esta parado tiene obstaculos en esa direccion.
-		Obstaculo obstaculo = getLugarActual().existeObstaculo("arriba");
-		if(obstaculo != null)
-			return obstaculo;
-		
-		//Si todo sale bien, suma movimientos, se mueve y devuelve el lugar pa q lo imprima el GM.
-		this.cantidadMovimientos++;
-		this.personajeActual.irArriba();
-		//Esto seria para testear
-		imprimirPosicion();
-		return getLugarActual();
+		this.personajeActual.ir(pos);
+		return lugar;
 	}
 	
 	public Object irHacia(String nombreLugar) {
 		
-		Lugar lugar;
+		Posicion pos = posicionDireccion(nombreLugar);
+		if(pos != null)
+			return mover(nombreLugar);
 		
 		if(getLugarActual().getNombre().equals(nombreLugar))
 			return "Ya te encuentras en este lugar!";
 		
-		//Norte
-		lugar = getPosibleLugar(0,1,0);
-		if(lugar != null && lugar.getNombre().toLowerCase().equals(nombreLugar))
-		{
-			Obstaculo obs = lugar.existeObstaculo("norte");
-			if(obs != null)
-				return obs;
-			
-			this.cantidadMovimientos++;
-			this.personajeActual.irNorte();
-	
-			return lugar;
-		}
+		Lugar lugar;
 		
-		//Sur
-		lugar = getPosibleLugar(0,-1,0);
+		lugar = getLugar(posicionDireccion("norte"));
 		if(lugar != null && lugar.getNombre().toLowerCase().equals(nombreLugar))
-		{
-			Obstaculo obs = lugar.existeObstaculo("sur");
-			if(obs != null)
-				return obs;
-			
-			this.cantidadMovimientos++;
-			this.personajeActual.irSur();
+			return mover("norte");
 		
-			return lugar;
-		}
-			
-		//Este
-		lugar = getPosibleLugar(1,0,0);
+		lugar = getLugar(posicionDireccion("sur"));
 		if(lugar != null && lugar.getNombre().toLowerCase().equals(nombreLugar))
-		{
-			Obstaculo obs = lugar.existeObstaculo("este");
-			if(obs != null)
-				return obs;
-			
-			this.cantidadMovimientos++;
-			this.personajeActual.irEste();
-
-			return lugar;
-		}
+			return mover("sur");
 		
-		//Oeste
-		lugar = getPosibleLugar(-1,0,0);
+		lugar = getLugar(posicionDireccion("este"));
 		if(lugar != null && lugar.getNombre().toLowerCase().equals(nombreLugar))
-		{
-			Obstaculo obs = lugar.existeObstaculo("oeste");
-			if(obs != null)
-				return obs;
-			
-			this.cantidadMovimientos++;
-			this.personajeActual.irOeste();
-			return lugar;
-		}
+			return mover("este");
+		
+		lugar = getLugar(posicionDireccion("oeste"));
+		if(lugar != null && lugar.getNombre().toLowerCase().equals(nombreLugar))
+			return mover("oeste");
+		
+		lugar = getLugar(posicionDireccion("abajo"));
+		if(lugar != null && lugar.getNombre().toLowerCase().equals(nombreLugar))
+			return mover("abajo");
+		
+		lugar = getLugar(posicionDireccion("arriba"));
+		if(lugar != null && lugar.getNombre().toLowerCase().equals(nombreLugar))
+			return mover("arriba");
 		
 		return null;
 	}
-	
-	//Esto esta armado solo para respetar que GAMEMASTER llame solo al mapa.
-	public Item getItem(String nombreObjeto) {
-		return getLugarActual().getItem(nombreObjeto);
-	}
-	
-	public NPC getNPC(String nombreNPC) {
-		return getLugarActual().getNPC(nombreNPC);
-	}
-	
-	public Objeto getObjeto(String nombreObjeto) {
-		return getLugarActual().getObjeto(nombreObjeto);
-	}
-	
-	public void removerObjeto(Objeto objeto) {
-		getLugarActual().removerObjeto(objeto);
-	}
-	
-	public void agregarObjeto(Objeto objeto) {
-		getLugarActual().agregarObjeto(objeto);
-	}
-	
-	
 }

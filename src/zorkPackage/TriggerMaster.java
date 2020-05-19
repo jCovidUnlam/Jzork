@@ -27,7 +27,7 @@ public final class TriggerMaster {
 			switch(trigger.exito)
 			{
 			case REMOVEROBJETO:
-				mapa.removerObjeto(afectado);
+				mapa.getLugarActual().removerObjeto(afectado);
 				break;
 			default:
 				break;
@@ -66,7 +66,7 @@ public final class TriggerMaster {
 			msj += Mensaje.atacarObjeto(mapa.getPersonajeActual(),atacado);
 			if(atacado.isMuerto()) {
 				//Si el atacado muere, se va del lugar... esto podriamos ver como hacerlo.
-				mapa.removerObjeto(atacado);
+				mapa.getLugarActual().removerObjeto(atacado);
 				return msj += Mensaje.muerteObjeto(atacado);
 			}
 			else {
