@@ -27,6 +27,16 @@
 			"y": "6",
 			"z": "1",
 			"items": "",
+			"obstaculos" : "o7",
+			"npcs" : "",
+		},
+		{
+			"nombre": "lugar norte norte",
+			"descripcion": "norte norte",
+			"x": "5",
+			"y": "7",
+			"z": "1",
+			"items": "",
 			"obstaculos" : "",
 			"npcs" : "",
 		},
@@ -127,10 +137,24 @@
 			"nombre": "puerta abajo",
 			"descripcion" : "es una puerta",
 		},
+		{
+			"id": "o7",
+			"mensaje": "msj",
+			"direccion": "norte",
+			"objeto": "n1",
+		},
 		
 	],
 	"npcs":[
-
+		{
+			"id" : "n1",
+			"nombre" : "Alf",
+			"descripcion": "Es un Alf, te acuerda de Alf? Volvio! en forma de obstaculo!",
+			"hablar": "No hay problemaaa",
+			"descripcionMapa": "desc",
+			"danio" : "150",
+			"salud" : "15",
+		}
 	],
 	"triggers": [
 			

@@ -87,5 +87,61 @@ public class TestObstaculo {
 		assertEquals(new Posicion(5,4,1), mapa.getPosicionActual());
 	}
 	
+	@Test
+	void removerObstaculoEsteYavanzar() {
+		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
+		mapa.getLugarActual().removerObjeto(mapa.getLugarActual().getObjeto("puerta este"));			
+		mapa.mover(ESTE);
+		assertEquals(new Posicion(6,5,1), mapa.getPosicionActual());
+	}
+	
+	@Test
+	void removerObstaculoOesteYavanzar() {
+		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
+		mapa.getLugarActual().removerObjeto(mapa.getLugarActual().getObjeto("puerta oeste"));			
+		mapa.mover(OESTE);
+		assertEquals(new Posicion(4,5,1), mapa.getPosicionActual());
+	}
+	
+	@Test
+	void removerObstaculoArribaYavanzar() {
+		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
+		mapa.getLugarActual().removerObjeto(mapa.getLugarActual().getObjeto("puerta arriba"));			
+		mapa.mover(ARRIBA);
+		assertEquals(new Posicion(5,5,2), mapa.getPosicionActual());
+	}
+	
+	@Test
+	void removerObstaculoAbajoYavanzar() {
+		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
+		mapa.getLugarActual().removerObjeto(mapa.getLugarActual().getObjeto("puerta abajo"));			
+		mapa.mover(ABAJO);
+		assertEquals(new Posicion(5,5,0), mapa.getPosicionActual());
+	}
+	
+	@Test
+	void removerObstaculoSurYnoOtro() {
+		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
+		mapa.getLugarActual().removerObjeto(mapa.getLugarActual().getObjeto("puerta sur"));			
+		mapa.mover(NORTE);
+		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
+		mapa.mover(ESTE);
+		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
+		mapa.mover(OESTE);
+		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
+		mapa.mover(ARRIBA);
+		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
+		mapa.mover(ABAJO);
+		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
+		mapa.mover(SUR);
+		assertEquals(new Posicion(5,4,1), mapa.getPosicionActual());
+	}
+	
+	@Test
+	void obstaculoAtadoNPCNorte() {
+		removerObstaculoNorteYavanzar();
+		mapa.mover(NORTE);
+		assertEquals(new Posicion(5,6,1), mapa.getPosicionActual());
+	}
 	
 }
