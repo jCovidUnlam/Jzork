@@ -1,12 +1,16 @@
 package jZorkTests;
 
+import static org.junit.Assert.*;
+
 import java.io.IOException;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import zorkPackage.Item;
 import zorkPackage.JsonReader;
 import zorkPackage.Mapa;
+import zorkPackage.Objeto;
 import zorkPackage.Personaje;
 
 public class TestInventario {
@@ -23,22 +27,57 @@ public class TestInventario {
 	//en el Lugar, esta la funcion getObjeto('nombreObjeto') que retorna el objeto o null sino lo tiene 
 	
 	Mapa mapa;
+	Personaje personaje;
 
 	@BeforeEach
 	void init() throws IOException{
 		mapa = new Mapa();
-		mapa.setPersonajeActual(new Personaje("Tester inventario"));
+		personaje = new Personaje("Tester inventario");
+		mapa.setPersonajeActual(personaje);
 		JsonReader.construirAventura(mapa, "testInventario.txt");
+	}
+
+	@Test
+	public void testHayObjetosEnLugar() {
+		assertEquals(2, mapa.getLugarActual().getObjetos().size());
+	}
+
+	@Test
+	public void testTomarObjetoExistente() {		
+		assertEquals(2, mapa.getLugarActual().getObjetos().size());
+		mapa.removerObjeto(mapa.getObjeto("gato"));
+		assertEquals(1, mapa.getLugarActual().getObjetos().size());
 	}
 	
 	@Test
-	void tomarObjeto() {
-		
-		//Eso trae todos los objetos del lugar actual
-		System.out.println(mapa.getLugarActual().getObjetos());
-		//Esto, busca un objeto o devuelve null
-		System.out.println(mapa.getObjeto("gato"));
-		
-		
+	public void testTomarObjetoNoExistente() {
+		assertEquals(2, mapa.getLugarActual().getObjetos().size());
+		mapa.getObjeto("paracaidas");
+		assertEquals(2, mapa.getLugarActual().getObjetos().size());
 	}
+	
+	@Test
+	public void testInventarioVacio() {
+		assertEquals(0, personaje.getInventario().size());		
+	}
+
+	@Test
+	public void testObjetoTomadoEnInventario() {
+		personaje.addObjeto(mapa.getItem("gato"));
+		mapa.removerObjeto(mapa.getObjeto("gato"));		
+		assertEquals(1, personaje.getInventario().size());
+	}
+	
+	@Test
+	public void testSoltarObjeto() {
+		Item i = mapa.getItem("gato");
+		personaje.addObjeto(i);
+		mapa.removerObjeto(i);
+		mapa.moverNorte();
+		personaje.removerDeInventario(i);
+		mapa.agregarObjeto(i);
+		mapa.moverSur();
+		assertEquals(1, mapa.getLugarActual().getObjetos().size());
+	}
+
 }
