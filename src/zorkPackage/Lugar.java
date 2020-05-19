@@ -89,21 +89,29 @@ public class Lugar {
 	}
 
 	public void removerObjeto(Objeto objeto) {
-
-		// Si el objeto tiene obstaculos los encuentra
-		List<Obstaculo> obstaculos = this.objetos
-				.stream()
-				.filter(x -> x instanceof Obstaculo)// Esto pregunta si es un obstaculo
-				.map(x -> (Obstaculo) x)// Esto castea
-				.filter(x -> x.getObjeto().getObjetoID().equals(objeto.getObjetoID()))// Esta es la consulta real
-				.collect(Collectors.toList());
-
-		// Remueve obstaculos del objeto
-		this.objetos.removeAll(obstaculos);
-		// Remueve objeto finalmente
+		
+		List<Obstaculo> obstaculos = null;
+		
+		try {
+			 obstaculos = this.objetos
+						.stream()
+						.filter(x -> x instanceof Obstaculo)// Esto pregunta si es un obstaculo
+						.map(x -> (Obstaculo) x)// Esto castea
+						.filter(x -> x.getObjeto().getObjetoID().equals(objeto.getObjetoID()))// Esta es la consulta real
+						.collect(Collectors.toList());
+		}
+		catch(Exception e)
+		{
+			obstaculos = null;
+		}
+		
+		if(obstaculos != null)
+			this.objetos.removeAll(obstaculos);
+		
+		if(objeto.getDescripcionMapa() != null)
+			cambiarDescripcion(objeto);
+	
 		this.objetos.remove(objeto);
-		// Cambia descripcion del lugar
-		cambiarDescripcion(objeto);
 	}
 	
 	private void cambiarDescripcion(Objeto objetoReferencia) {

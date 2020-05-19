@@ -390,6 +390,12 @@ public class JsonReader {
 				case "objeto":
 					newObject.setObjeto(objetos.stream().filter(x->x.getObjetoID().equals((String)entry.getValue())).findFirst().orElse(null));
 					break;
+				case "nombre":
+					newObject.setNombre((String)entry.getValue());
+					break;
+				case "descripcion":
+					newObject.setDescripcion((String)entry.getValue());
+					break;
 				default:
 					break;
 				}	

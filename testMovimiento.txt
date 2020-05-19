@@ -16,7 +16,7 @@
 			"x": "5",
 			"y": "5",
 			"z": "1",
-			"items": "i1",
+			"items": "",
 			"obstaculos" : "",
 			"npcs" : "",
 		},
@@ -102,19 +102,10 @@
 		},		
 	],
 	"items" :[
-	{
-			"id": "i1",
-			"nombre": "gato",
-			"descripcion": "es un gato gordo que esta tirado",
-			"descripcionMapa": ", hay un gato gordo tirado en el piso",
-			"tomable": "true",
-			"mensajeTomable": "te llevas el gato gordo al hombro",
-			"mensajeNoTomable" : "",
-		}
 
 	],
 	"obstaculos":[
-
+		
 	],
 	"npcs":[
 
