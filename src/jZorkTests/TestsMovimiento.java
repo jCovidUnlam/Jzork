@@ -126,7 +126,6 @@ class TestsMovimiento {
 	@Test
 	void testIrHaciaNorte() {
 		mapa.irHacia("cabania");
-		System.out.println(mapa.getPosicionActual());
 		assertEquals(new Posicion(5,6,1), mapa.getPosicionActual());
 	}
 	
@@ -171,6 +170,45 @@ class TestsMovimiento {
 	}
 	
 	@Test
+	void testMoverseDesdeArribaConNorte() {
+		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
+		mapa.mover(NORTE);
+		assertEquals(new Posicion(5,6,1), mapa.getPosicionActual());
+		mapa.mover(NORTE);
+		assertEquals(new Posicion(5,7,1), mapa.getPosicionActual());
+		mapa.mover(ARRIBA);
+		assertEquals(new Posicion(5,7,2), mapa.getPosicionActual());
+		mapa.mover(NORTE);
+		assertEquals(new Posicion(5,8,2), mapa.getPosicionActual());
+	}
+	
+	@Test
+	void testMoverseDesdeArribaSinSur() {
+		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
+		mapa.mover(NORTE);
+		assertEquals(new Posicion(5,6,1), mapa.getPosicionActual());
+		mapa.mover(NORTE);
+		assertEquals(new Posicion(5,7,1), mapa.getPosicionActual());
+		mapa.mover(ARRIBA);
+		assertEquals(new Posicion(5,7,2), mapa.getPosicionActual());
+		mapa.mover(SUR);
+		assertEquals(new Posicion(5,7,2), mapa.getPosicionActual());
+	}
+	
+	@Test
+	void testIrHaciaDesdeArriba() {
+		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
+		mapa.mover(NORTE);
+		assertEquals(new Posicion(5,6,1), mapa.getPosicionActual());
+		mapa.mover(NORTE);
+		assertEquals(new Posicion(5,7,1), mapa.getPosicionActual());
+		mapa.mover(ARRIBA);
+		assertEquals(new Posicion(5,7,2), mapa.getPosicionActual());
+		mapa.irHacia("interior cabania");
+		assertEquals(new Posicion(5,7,1), mapa.getPosicionActual());
+	}
+	
+	@Test
 	void testIrNoExisteLugar() {
 		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
 		mapa.irHacia("");
@@ -181,6 +219,13 @@ class TestsMovimiento {
 	void testIrNoSaltearLugares() {
 		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
 		mapa.irHacia("interior cabania");
+		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
+	}
+	
+	@Test
+	void testIrHaciaLugarActual() {
+		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
+		mapa.irHacia("bosque");
 		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
 	}
 }

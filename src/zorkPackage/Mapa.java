@@ -57,6 +57,7 @@ public class Mapa {
 		this.lugares[posicion.getX()][posicion.getY()][posicion.getZ()] = lugar;
 	}
 	
+	//BORRAR
 	public void verMapa() {
 		
 		for (int i = 0; i < 19; i++) {

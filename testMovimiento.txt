@@ -82,14 +82,24 @@
 		},
 		{
 			"nombre": "Atico tenebroso",
-			"descripcion": "EEs un atico viejo",
+			"descripcion": "Es un atico viejo",
 			"x": "5",
 			"y": "7",
 			"z": "2",
 			"items": "",
 			"obstaculos" : "",
 			"npcs" : "",
-		},	
+		},
+		{
+			"nombre": "cuartito",
+			"descripcion": "Es un cuarto",
+			"x": "5",
+			"y": "8",
+			"z": "2",
+			"items": "",
+			"obstaculos" : "",
+			"npcs" : "",
+		},		
 	],
 	"items" :[
 	{

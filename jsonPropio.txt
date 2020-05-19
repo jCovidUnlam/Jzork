@@ -21,6 +21,26 @@
 			"npcs" : "n1"
 		},
 		{
+			"nombre": "techo",
+			"descripcion": "Techito",
+			"x": "5",
+			"y": "10",
+			"z": "2",
+			"items": "",
+			"obstaculos" : "",
+			"npcs" : ""
+		},
+		{
+			"nombre": "pozo",
+			"descripcion": "pozo",
+			"x": "5",
+			"y": "10",
+			"z": "0",
+			"items": "",
+			"obstaculos" : "",
+			"npcs" : ""
+		},
+		{
 			"nombre": "taberna",
 			"descripcion": "Es una fucking taberna",
 			"x": "5",
