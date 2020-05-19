@@ -44,6 +44,34 @@ public class TestObstaculo {
 	}
 	
 	@Test
+	void obstaculoEste() {
+		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
+		mapa.mover(ESTE);
+		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
+	}
+	
+	@Test
+	void obstaculoOeste() {
+		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
+		mapa.mover(OESTE);
+		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
+	}
+	
+	@Test
+	void obstaculoArriba() {
+		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
+		mapa.mover(ARRIBA);
+		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
+	}
+	
+	@Test
+	void obstaculoAbajo() {
+		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
+		mapa.mover(ABAJO);
+		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
+	}
+	
+	@Test
 	void removerObstaculoNorteYavanzar() {
 		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
 		mapa.getLugarActual().removerObjeto(mapa.getLugarActual().getObjeto("puerta"));			
