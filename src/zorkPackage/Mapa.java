@@ -109,29 +109,29 @@ public class Mapa {
 		}
 	}
 	
-	public Object mover(String direccion) {
+	public String mover(String direccion) {
 		Posicion pos = posicionDireccion(direccion);
 		Lugar lugar = getLugar(pos);
 		if(lugar == null)
-			return null;
+			return Mensaje.fueraLimite();
 
 		Obstaculo obstaculo = getLugarActual().existeObstaculo(direccion);
 		if(obstaculo != null)
-			return obstaculo;
+			return Mensaje.existeObstaculo(obstaculo);
 		
 		this.cantidadMovimientos++;
 		this.personajeActual.ir(pos);
-		return lugar;
+		return Mensaje.mensajeLugar(lugar);
 	}
 	
-	public Object irHacia(String nombreLugar) {
+	public String irHacia(String nombreLugar) {
+		
+		if(getLugarActual().getNombre().equals(nombreLugar))
+			return "Ya te encuentras en este lugar!";
 		
 		Posicion pos = posicionDireccion(nombreLugar);
 		if(pos != null)
 			return mover(nombreLugar);
-		
-		if(getLugarActual().getNombre().equals(nombreLugar))
-			return "Ya te encuentras en este lugar!";
 		
 		Lugar lugar;
 		
@@ -159,6 +159,6 @@ public class Mapa {
 		if(lugar != null && lugar.getNombre().toLowerCase().equals(nombreLugar))
 			return mover("arriba");
 		
-		return null;
+		return "No existe ese lugar!";
 	}
 }

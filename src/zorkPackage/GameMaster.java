@@ -22,7 +22,7 @@ public class GameMaster {
 			devolucion = moverPersonaje(comando);
 			break;
 		case ADQUIRIR:
-			devolucion = adquirirItem(comando);
+			devolucion = tomarItem(comando);
 			break;
 		case DESCARTAR:
 			devolucion = soltarItem(comando);
@@ -59,31 +59,13 @@ public class GameMaster {
 	}
 
 	private String moverPersonaje(Comando comando) {
-
-		Object obj = null;
-		
 		if(comando.getNombre().equals("ir"))
-			obj = mapa.irHacia(comando.getNombreObjeto());
+			return mapa.irHacia(comando.getNombreObjeto());
 		else
-			obj = mapa.mover(comando.getNombre());
-
-		if (obj == null)
-			return Mensaje.fueraLimite();
-
-		switch (obj.getClass().getSimpleName()) {
-		case "Lugar":
-			return Mensaje.mensajeLugar((Lugar) obj);
-		case "Obstaculo":
-			return Mensaje.existeObstaculo((Obstaculo) obj);
-		case "String":
-			return (String) obj;
-		}
-
-		return Mensaje.comandoErroneo();
+			return mapa.mover(comando.getNombre());
 	}
 
-	private String adquirirItem(Comando comando) {
-		// Lo busca en el lugar
+	private String tomarItem(Comando comando) {
 		Item item = mapa.getLugarActual().getItem(comando.getNombreObjeto());
 
 		// Si es nulo, muetra que no existe
