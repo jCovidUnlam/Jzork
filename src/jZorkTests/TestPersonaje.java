@@ -15,6 +15,9 @@ class TestPersonaje {
 	@BeforeEach
 	void setUp() throws Exception {
 		p = new Personaje("Juanito");
+		mapa = new Mapa();
+		mapa.setPersonajeActual(p);
+		JsonReader.construirAventura(mapa, "testPersonaje.txt");
 	}
 
 	@Test
@@ -48,13 +51,59 @@ class TestPersonaje {
 	@Test
 	void testArmaEquipada() {
 		assertNull(p.getArmaEquipada());
-		mapa = new Mapa();
-		mapa.setPersonajeActual(p);
-		JsonReader.construirAventura(mapa, "testMovimiento.txt");
+		Item i = mapa.getLugarActual().getItem("palo");
+		p.addObjeto(i);
+		p.equiparArma("palo");
+		assertEquals(i, p.getArmaEquipada());
+	}
+	
+	@Test
+	void testDanioSinArma() {
+		assertEquals(5, p.getDanio());
+	}
+	
+	@Test
+	void testDanioConArma() {
+		Item i = mapa.getLugarActual().getItem("palo");
+		p.addObjeto(i);
+		p.equiparArma("palo");
+		assertEquals(15, p.getDanio());
+	}
+	
+	@Test
+	void testNoEquiparObjeto() {
+		//No se deben equipar objetos que no son armas!
+		//Baja a ese gato!!
 		Item i = mapa.getLugarActual().getItem("gato");
 		p.addObjeto(i);
 		p.equiparArma("gato");
-		assertEquals(i, p.getArmaEquipada());
+		assertNull(p.getArmaEquipada());
 	}
+	
+	@Test
+	void testEquiparArmaInventarioVacio() {
+		Item i = mapa.getLugarActual().getItem("gato");
+		p.equiparArma("gato");
+		assertNull(p.getArmaEquipada());
+	}
+	
+	@Test
+	void testDesequiparArma() {
+		Item i = mapa.getLugarActual().getItem("palo");
+		p.addObjeto(i);
+		p.equiparArma("palo");
+		assertEquals(15, p.getDanio());
+		p.desequiparArma((Arma) i);
+		assertNull(p.getArmaEquipada());
+	}
+	
+	@Test
+	void testObtenerObjInventario() {
+		Item i = mapa.getLugarActual().getItem("palo");
+		p.addObjeto(i);
+		assertEquals(i, p.getObjetoInventario("palo"));
+	}
+	
+	
 
 }

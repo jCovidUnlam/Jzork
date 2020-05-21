@@ -138,10 +138,32 @@ public class TestObstaculo {
 	}
 	
 	@Test
+	void removerObstaculoNorteYnoOtro() {
+		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
+		mapa.getLugarActual().removerObjeto(mapa.getLugarActual().getObjeto("puerta"));			
+		mapa.mover(SUR);
+		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
+		mapa.mover(ESTE);
+		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
+		mapa.mover(OESTE);
+		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
+		mapa.mover(ARRIBA);
+		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
+		mapa.mover(ABAJO);
+		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
+		mapa.mover(NORTE);
+		assertEquals(new Posicion(5,6,1), mapa.getPosicionActual());
+	}
+	
+	
+	
+	@Test
 	void obstaculoAtadoNPCNorte() {
 		removerObstaculoNorteYavanzar();
 		mapa.mover(NORTE);
 		assertEquals(new Posicion(5,6,1), mapa.getPosicionActual());
 	}
+	
+	
 	
 }
