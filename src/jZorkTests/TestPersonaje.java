@@ -104,6 +104,26 @@ class TestPersonaje {
 		assertEquals(i, p.getObjetoInventario("palo"));
 	}
 	
+	@Test
+	void testRestarSaludPersonaje() {
+		p.recibirAtaque(50);
+		assertEquals(50, p.getSalud());
+	}
 	
-
+	@Test
+	void testAtacarAOtroPersonaje() {
+		Personaje otroP = new Personaje("Pedro");
+		p.atacar(otroP);
+		assertEquals(95, otroP.getSalud());
+	}
+	
+	@Test
+	void testAtacarAOtroPConArma() {
+		Personaje otroP = new Personaje("Pedro");
+		Item i = mapa.getLugarActual().getItem("palo");
+		p.addObjeto(i);
+		p.equiparArma("palo");
+		p.atacar(otroP);
+		assertEquals(85, otroP.getSalud());
+	}
 }
