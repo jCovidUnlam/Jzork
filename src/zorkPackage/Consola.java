@@ -12,14 +12,14 @@ public final class Consola {
 
 	public static void mostrarMensajeBienvenida() {
 
-		String msgBienvenida[] = { "\\n########################", "     Mundo de JZork" };
+		String msgBienvenida[] = { "\n########################", "     Mundo de JZork" };
 		imprimirEnConsola(msgBienvenida);
 
 	}
 
 	public static void mostrarMenuInicio(String name) {
 
-		String msgMenuInicio[] = { "\\n########################", "Bienvenidx a JZork " + name + "!",
+		String msgMenuInicio[] = { "\n########################", "Bienvenidx a JZork " + name + "!",
 				"Por favor, elija entre las siguientes opciones:\n", "1 - Iniciar Aventura", "2 - Reglas",
 				"3 - Salir"};
 		imprimirEnConsola(msgMenuInicio);

@@ -1,14 +1,16 @@
+MOVIMIENTOSIMPLE;norte;sur;este;oeste;arriba;abajo
+usuarioSimple;estado;inventario;reglas
 adquiribles;tomar;obtener;agarrar;adquirir
 rompibles;romper;destruir;golper;patear;estallar
 consumible;tomar;beber;ingerir;comer
 inspeccionable;inspeccionar;mirar;observar;ver
 usable;usar;utilizar
-movimiento;norte;sur;este;oeste;arriba;abajo;ir;subir;bajar;escalar;trepar
-usuario;inventario;reglas;estado;equipar
+movimiento;ir;subir;bajar;escalar;trepar
+usuario;equipar
 NPC;hablar;charlar			
 ataque;atacar;achurrar;darle
 descartables;soltar;descartar;desechar;tirar
 atributo;el;la;ellos;ellas;hacia;a;al;en;con
-
+CARACTERESESPECIALES;';/;\;|
 
 

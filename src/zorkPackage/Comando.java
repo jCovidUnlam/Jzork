@@ -22,13 +22,21 @@ public class Comando {
 	private String nombreObjeto;
 	private String nombreAfectado;
 	private Tipo tipo;
+	private boolean reEscanear;
 	
 	public Comando() {
 		super();
 	}
-	
+
+
 	public Comando(Tipo tipo) {
 		super();
+		this.tipo = tipo;
+	}
+	
+	public Comando(String nombre, Tipo tipo) {
+		super();
+		this.nombre = nombre;
 		this.tipo = tipo;
 	}
 	
@@ -48,6 +56,12 @@ public class Comando {
 		this.nombreAfectado = nombreAfectado;
 	}
 	
+	public boolean isReEscanear() {
+		return reEscanear;
+	}
+	public void setReEscanear(boolean reEscanear) {
+		this.reEscanear = reEscanear;
+	}
 	public String getNombre() {
 		return nombre;
 	}

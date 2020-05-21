@@ -133,4 +133,8 @@ public final class Mensaje {
 		return nombreObjeto + " ya ha muerto, puedes dejar de golpearlo? No seas sangriento.";
 	}
 	
+	public static String pretungarJugador(String verbo) {
+		return "Qué es lo que desea " + verbo + "?";
+	}
+	
 }

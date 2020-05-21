@@ -14,14 +14,8 @@ public class Personaje extends Objeto{
 		this.nombre = nombre;
 		this.inventario = new LinkedList<>();
 		this.posicionActual = new Posicion(0,0,0);
-		this.setDanio(5);//Sin arma pega esto
+		this.setDanio(5);
 		this.setSalud(100);
-	}
-	
-	public Personaje(String nombre, List<Item> list) {
-		super();
-		this.nombre = nombre;
-		this.inventario = list;
 	}
 
 	public String getNombre() {
@@ -66,28 +60,26 @@ public class Personaje extends Objeto{
 		if(inventario.size() == 0)
 			return null;
 		
-		//Busco palo
 		Arma arma = this.inventario.stream()
-			    .filter(x -> x instanceof Arma)//Esto pregunta si es del tipo q le pongo
-			    .map (x -> (Arma) x)//Esto castea
+			    .filter(x -> x instanceof Arma)
+			    .map (x -> (Arma) x)
 			    .filter(x -> x.getNombre().toLowerCase().equals(nombreArma))
-			    .findAny()// Esto devuelve si existe al menos un obstaculo. Por favor que no haya mas de 1 en una misma direccion jaja
-				.orElse(null);//Sino encuentra, retorna null.
-	
-		//Sino hay palo retorno nulo y el GM devuelve mensaje
+			    .findAny()
+				.orElse(null);
+		
 		if(arma == null)
 			return null;
 		
-		//Si hay palo equipo y seteo danio
-		this.setDanio(this.getDanio() + arma.getDanio());
+		if(this.armaEquipada != null)
+			desequiparArma(arma);
+		
+		this.setDanio(5 + arma.getDanio());
 		this.armaEquipada = arma;
 		
 		return arma;
 	}
 	
 	public Arma desequiparArma(Arma arma) {
-		//Esto puede crecer mucho, supongamos que tengo mas de un arma o un escudo...
-		//Por ahora sirve asi
 		this.setDanio(this.getDanio() - this.armaEquipada.getDanio());
 		this.armaEquipada = null;
 		return arma;
@@ -95,9 +87,9 @@ public class Personaje extends Objeto{
 	
 	public Item getObjetoInventario(String nombreObjeto) {
 		return this.inventario.stream()
-			    .filter(x -> x.getNombre().toLowerCase().equals(nombreObjeto))//Esta es la consulta real
-				.findAny()// Esto devuelve si existe al menos un obstaculo. Por favor que no haya mas de 1 en una misma direccion jaja
-				.orElse(null);//Sino encuentra, retorna null.
+			    .filter(x -> x.getNombre().toLowerCase().equals(nombreObjeto))
+				.findAny()
+				.orElse(null);
 	}
 	
 	public void removerDeInventario(Item removido) {

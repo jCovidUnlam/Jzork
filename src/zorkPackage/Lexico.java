@@ -6,6 +6,10 @@ import java.io.IOException;
 import java.util.Arrays;
 
 public final class Lexico {
+	
+	public static  String[] movimientoSimple; 
+	
+	public static  String[] usuarioSimple;
 
 	public static  String[] adquirible;
 
@@ -16,7 +20,7 @@ public final class Lexico {
 	public static  String[] inspeccionable;
 
 	public static  String[] usable; 
-
+	
 	public static  String[] movimiento; 
 
 	public static  String[] usuario;
@@ -28,7 +32,17 @@ public final class Lexico {
 	public static String [] atributos;
 	
 	public static String [] descartables;
+	
+	public static String [] caracteresEspeciales;
 
+	public static boolean inMovimientoSimple(String verbo) {
+		return Arrays.asList(movimientoSimple).contains(verbo);
+	}
+	
+	public static boolean inUsuarioSimple(String verbo) {
+		return Arrays.asList(usuarioSimple).contains(verbo);
+	}
+	
 	public static boolean inAtacar(String verbo) {
 		return Arrays.asList(ataque).contains(verbo);
 	}
@@ -106,9 +120,17 @@ public final class Lexico {
 				movimiento = new String[lexico.length - 1];
 				System.arraycopy(lexico, 1, movimiento, 0, lexico.length - 1);
 				break;
+			case MOVIMIENTOSIMPLE:
+				movimientoSimple = new String[lexico.length - 1];
+				System.arraycopy(lexico, 1, movimientoSimple, 0, lexico.length - 1);
+				break;
 			case USUARIO:
 				usuario = new String[lexico.length - 1];
 				System.arraycopy(lexico, 1, usuario, 0, lexico.length - 1);
+				break;
+			case USUARIOSIMPLE:
+				usuarioSimple = new String[lexico.length - 1];
+				System.arraycopy(lexico, 1, usuarioSimple, 0, lexico.length - 1);
 				break;
 			case NPC:
 				NPC = new String[lexico.length - 1];
@@ -121,6 +143,10 @@ public final class Lexico {
 			case ATRIBUTO:
 				atributos = new String[lexico.length - 1];
 				System.arraycopy(lexico, 1, atributos, 0, lexico.length - 1);
+				break;
+			case CARACTERESESPECIALES:
+				caracteresEspeciales = new String[lexico.length - 1];
+				System.arraycopy(lexico, 1, caracteresEspeciales, 0, lexico.length - 1);
 				break;
 			case DESCARTABLES:
 				descartables = new String[lexico.length - 1];

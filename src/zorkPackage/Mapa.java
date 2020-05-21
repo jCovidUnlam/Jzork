@@ -115,7 +115,7 @@ public class Mapa {
 		if(lugar == null)
 			return Mensaje.fueraLimite();
 
-		Obstaculo obstaculo = getLugarActual().existeObstaculo(direccion);
+		Obstaculo obstaculo = getLugarActual().getObstaculo(direccion);
 		if(obstaculo != null)
 			return Mensaje.existeObstaculo(obstaculo);
 		

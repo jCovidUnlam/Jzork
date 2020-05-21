@@ -2,6 +2,8 @@ package zorkPackage;
 
 public enum  EnumTipoLexico {
 	
+	MOVIMIENTOSIMPLE,
+	USUARIOSIMPLE,
 	ADQUIRIBLES,
 	ROMPIBLES,
 	CONSUMIBLE,
@@ -13,5 +15,5 @@ public enum  EnumTipoLexico {
 	ATAQUE,
 	ATRIBUTO,
 	DESCARTABLES,
-
+	CARACTERESESPECIALES,
 }

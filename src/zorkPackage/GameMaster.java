@@ -14,41 +14,49 @@ public class GameMaster {
 	}
 
 	public void ejecutar(Comando comando) {
-
+		
 		String devolucion = "";
-
-		switch (comando.getTipo()) {
-		case MOVER:
-			devolucion = moverPersonaje(comando);
-			break;
-		case ADQUIRIR:
-			devolucion = tomarItem(comando);
-			break;
-		case DESCARTAR:
-			devolucion = soltarItem(comando);
-			break;
-		case USUARIO:
-			devolucion = ejecutarComandoUsuario(comando);
-			break;
-		case INSPECCIONAR:
-			devolucion = mostrarObjeto(comando);
-			break;
-		case NPC:
-			devolucion = hablarNPC(comando);
-			break;
-		case USAR:
-			devolucion = usarObjeto(comando);
-			break;
-		case TRIGGER:
-			devolucion = ejecutarTriggerItem(comando);
-			break;
-		case ATACAR:
-			devolucion = atacarObjeto(comando);
-			break;
-		case INVALIDO:
-		default:
-			devolucion = Mensaje.comandoErroneo();
-			break;
+		
+		if(comando.isReEscanear() == true)
+			
+			if(comando.getNombre().equals("hablar"))
+				devolucion = "Con quién desea hablar?";
+			else
+				devolucion = Mensaje.pretungarJugador(comando.getNombre());
+		else {
+			switch (comando.getTipo()) {
+			case MOVER:
+				devolucion = moverPersonaje(comando);
+				break;
+			case ADQUIRIR:
+				devolucion = tomarItem(comando);
+				break;
+			case DESCARTAR:
+				devolucion = soltarItem(comando);
+				break;
+			case USUARIO:
+				devolucion = ejecutarComandoUsuario(comando);
+				break;
+			case INSPECCIONAR:
+				devolucion = mostrarObjeto(comando);
+				break;
+			case NPC:
+				devolucion = hablarNPC(comando);
+				break;
+			case USAR:
+				devolucion = usarObjeto(comando);
+				break;
+			case TRIGGER:
+				devolucion = ejecutarTriggerItem(comando);
+				break;
+			case ATACAR:
+				devolucion = atacarObjeto(comando);
+				break;
+			case INVALIDO:
+			default:
+				devolucion = Mensaje.comandoErroneo();
+				break;
+			}
 		}
 		
 		Consola.mostrar(devolucion);
@@ -57,7 +65,7 @@ public class GameMaster {
 	public boolean isEndGame() {
 		return endGame;
 	}
-
+	
 	private String moverPersonaje(Comando comando) {
 		if(comando.getNombre().equals("ir"))
 			return mapa.irHacia(comando.getNombreObjeto());

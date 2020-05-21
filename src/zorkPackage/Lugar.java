@@ -14,19 +14,6 @@ public class Lugar {
 		objetos = new ArrayList<Objeto>();
 	};
 	
-	public Lugar(String nombre, String descripcion) {
-		super();
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-	}
-
-	public Lugar(String nombre, String descripcion, List<Objeto> objetos) {
-		super();
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-		this.objetos = objetos;
-	}
-
 	public String getNombre() {
 		return nombre;
 	}
@@ -80,7 +67,7 @@ public class Lugar {
 		return (NPC)obj;
 	}
 
-	public Obstaculo existeObstaculo(String direccion) {
+	public Obstaculo getObstaculo(String direccion) {
 		return this.objetos.stream().filter(x -> x instanceof Obstaculo)
 				.map(x -> (Obstaculo) x)
 				.filter(x -> x.getDireccion().toLowerCase().equals(direccion))
@@ -95,9 +82,9 @@ public class Lugar {
 		try {
 			 obstaculos = this.objetos
 						.stream()
-						.filter(x -> x instanceof Obstaculo)// Esto pregunta si es un obstaculo
-						.map(x -> (Obstaculo) x)// Esto castea
-						.filter(x -> x.getObjeto().getObjetoID().equals(objeto.getObjetoID()))// Esta es la consulta real
+						.filter(x -> x instanceof Obstaculo)
+						.map(x -> (Obstaculo) x)
+						.filter(x -> x.getObjeto().getObjetoID().equals(objeto.getObjetoID()))
 						.collect(Collectors.toList());
 		}
 		catch(Exception e)
