@@ -90,4 +90,47 @@ class TestInterprete {
 		frase.add("Alf");
 		assertEquals(new Comando("hablar", "Alf", null, Comando.Tipo.NPC), Interprete.interpretar(frase));
 	}
+	
+	@Test
+	public void testUsable() {
+		frase.add("usar");
+		frase.add("palo");
+		assertEquals(new Comando("usar", "palo", null, Comando.Tipo.USAR), Interprete.interpretar(frase));
+	}
+	
+	@Test
+	public void testAtacar() {
+		frase.add("atacar");
+		frase.add("Alf");
+		assertEquals(new Comando("atacar", "Alf", null, Comando.Tipo.ATACAR), Interprete.interpretar(frase));
+	}
+	
+	@Test
+	public void testDescartar() {
+		frase.add("descartar");
+		frase.add("palo");
+		assertEquals(new Comando("descartar", "palo", null, Comando.Tipo.DESCARTAR), Interprete.interpretar(frase));
+	}
+	
+	@Test
+	public void testCmdInvalido() {
+		frase = null;
+		assertEquals(new Comando(Comando.Tipo.INVALIDO), Interprete.interpretar(frase));
+	}
+	
+	@Test
+	public void testTrigger() {
+		frase.add("usar");
+		frase.add("palo");
+		frase.add("Alf");		
+		assertEquals(new Comando("usar", "palo", "Alf", Comando.Tipo.TRIGGER), Interprete.interpretar(frase));
+	}
+	
+	@Test
+	public void testTriggerNoValido() {
+		frase.add("mirar");
+		frase.add("palo");
+		frase.add("Alf");
+		assertEquals(new Comando(Comando.Tipo.INVALIDO), Interprete.interpretar(frase));
+	}
 }
