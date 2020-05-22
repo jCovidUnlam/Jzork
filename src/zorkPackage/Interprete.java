@@ -1,9 +1,6 @@
 package zorkPackage;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import zorkPackage.Comando.Tipo;
 
 public final class Interprete {
 	

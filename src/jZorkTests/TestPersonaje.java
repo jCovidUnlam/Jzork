@@ -82,7 +82,6 @@ class TestPersonaje {
 	
 	@Test
 	void testEquiparArmaInventarioVacio() {
-		Item i = mapa.getLugarActual().getItem("gato");
 		p.equiparArma("gato");
 		assertNull(p.getArmaEquipada());
 	}

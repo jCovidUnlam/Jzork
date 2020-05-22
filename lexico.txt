@@ -7,7 +7,7 @@ inspeccionable;inspeccionar;mirar;observar;ver
 usable;usar;utilizar
 movimiento;ir;subir;bajar;escalar;trepar
 usuario;equipar
-NPC;hablar;charlar			
+NPC;hablar;charlar;interactuar			
 ataque;atacar;achurrar;darle
 descartables;soltar;descartar;desechar;tirar
 atributo;el;la;ellos;ellas;hacia;a;al;en;con

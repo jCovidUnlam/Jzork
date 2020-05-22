@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 import zorkPackage.Item;
 import zorkPackage.JsonReader;
 import zorkPackage.Mapa;
-import zorkPackage.Objeto;
 import zorkPackage.Personaje;
 
 public class TestInventario {
