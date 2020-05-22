@@ -5,23 +5,29 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
+import org.apache.log4j.Logger;
+
 public class Observador {
 	private Scanner in;
 	private String scan;
 	private GameMaster gameMaster;
+	
+	private final static Logger log = Logger.getLogger(Observador.class);
 	
 	public Observador(GameMaster gameMaster) {
 		super();
 		this.gameMaster = gameMaster;
 		in = new Scanner(System.in);
 		Comando cmd = new Comando();
+		LoggerHistory.loggerConfig();
 		do {
 			System.out.println();
 			System.out.print(">>");
 			scan = (in.nextLine());
 			
+			log.info(scan.toLowerCase());
+			
 			ArrayList<String> cadena = new ArrayList<String>(Arrays.asList(scan.toLowerCase().split(" ")));
-
 			removerErrores(cadena);
 			removerAtributos(cadena);
 			removerCaracteresEspeciales(cadena);

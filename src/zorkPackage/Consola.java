@@ -21,7 +21,7 @@ public final class Consola {
 
 		String msgMenuInicio[] = { "\n########################", "Bienvenidx a JZork " + name + "!",
 				"Por favor, elija entre las siguientes opciones:\n", "1 - Iniciar Aventura", "2 - Reglas",
-				"3 - Salir"};
+				"3 - Salir" };
 		imprimirEnConsola(msgMenuInicio);
 
 //		System.out.println("\n########################\n");
@@ -70,15 +70,25 @@ public final class Consola {
 //				+ "\n Sur   -> Moverá al jugador en la dirección Sur" + "");
 	}
 
+	
+	//este metodo se puede integrar con imprimir en consola porque basicamente hacen lo mismo
+	//pero tenemos que cambiar como mandamos los mensajes en la consola
 	public static void mostrar(String msj) {
 		System.out.println("\n" + msj);
+
+		String msjCad[] = msj.split("\n");
+
+		for (String mensaje : msjCad) {
+			log.info(mensaje);
+		}
 	}
 
 	public static void iniciarAventura(Mapa mapa) {
-		
-		String msgMenuAventura[] = {"\n########################","     " + mapa.getNombre(),"########################\n",mapa.getDescripcion()};
+
+		String msgMenuAventura[] = { "\n########################", "     " + mapa.getNombre(),
+				"########################\n", mapa.getDescripcion() };
 		imprimirEnConsola(msgMenuAventura);
-		
+
 //		System.out.println("\n########################");
 //		System.out.println("     " + mapa.getNombre());
 //		System.out.println("########################\n");
@@ -88,8 +98,8 @@ public final class Consola {
 	public static void imprimirEnConsola(String[] mensajes) {
 
 		LoggerHistory.loggerConfig();
-
 		for (String mensaje : mensajes) {
+
 			System.out.println(mensaje);
 			log.info(mensaje);
 		}
