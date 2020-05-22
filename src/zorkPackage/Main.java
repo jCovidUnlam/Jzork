@@ -12,13 +12,14 @@ public class Main {
 		Scanner in = new Scanner(System.in);
 		String scan;
 		String name;
+		Date fecha = new Date();
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyMMdd_HHmmss"); 
 		Consola.mostrarMensajeBienvenida();
 		System.out.print("\nIngrese su nombre: ");
 		name = (in.next());
-		Date fecha = new Date();
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyMMdd_HHmmss"); 
+		
 		System.setProperty("logfilename", name +"_"+ formatter.format(fecha).toString());
-
+		
 		Consola.mostrarMenuInicio(name);
 		boolean init = false;
 		do {

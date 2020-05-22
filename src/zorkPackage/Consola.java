@@ -12,8 +12,8 @@ public final class Consola {
 
 	public static void mostrarMensajeBienvenida() {
 
-		String msgBienvenida[] = { "\n########################", "     Mundo de JZork" };
-		imprimirEnConsola(msgBienvenida);
+		System.out.println("\n########################");
+		System.out.println("     Mundo de JZork");
 
 	}
 
@@ -70,9 +70,9 @@ public final class Consola {
 //				+ "\n Sur   -> Moverá al jugador en la dirección Sur" + "");
 	}
 
-	
-	//este metodo se puede integrar con imprimir en consola porque basicamente hacen lo mismo
-	//pero tenemos que cambiar como mandamos los mensajes en la consola
+	// este metodo se puede integrar con imprimir en consola porque basicamente
+	// hacen lo mismo
+	// pero tenemos que cambiar como mandamos los mensajes en la consola
 	public static void mostrar(String msj) {
 		System.out.println("\n" + msj);
 
