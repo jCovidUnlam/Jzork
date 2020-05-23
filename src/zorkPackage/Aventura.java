@@ -2,6 +2,9 @@ package zorkPackage;
 
 import java.io.IOException;
 
+import zorkUI.Consola;
+import zorkUtils.JsonReader;
+
 public final class Aventura {
 
 	public static void getMapa (String characterName, String path) throws IOException {

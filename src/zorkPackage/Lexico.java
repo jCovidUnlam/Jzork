@@ -5,6 +5,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
 
+import zorkEnum.EnumTipoLexico;
+
 public final class Lexico {
 	
 	public static  String[] movimientoSimple; 
@@ -85,7 +87,7 @@ public final class Lexico {
 	
 	public static void cargarLexico() throws IOException {
 
-		FileReader fr = new FileReader("./lexico.txt");
+		FileReader fr = new FileReader("./Recursos/lexico.txt");
 		BufferedReader bf = new BufferedReader(fr);
 		String linea;
 

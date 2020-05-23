@@ -5,6 +5,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
+import zorkUI.Consola;
+
 public class Main {
 
 	public static void main(String[] args) throws IOException {
@@ -36,12 +38,12 @@ public class Main {
 
 					switch (scan) {
 					case "1":
-						Aventura.getMapa(name, "jsonPropio.txt");
+						Aventura.getMapa(name, "./Recursos/jsonPropio.txt");
 						in.close();
 						init = true;
 						break;
 					case "2":
-						Aventura.getMapa(name, "otroJson.txt");
+						Aventura.getMapa(name, "./Recursos/otroJson.txt");
 						in.close();
 						init = true;
 						break;

@@ -2,6 +2,11 @@ package zorkPackage;
 
 import java.util.ArrayList;
 
+import zorkStrategy.InterpreteOneWordStrategy;
+import zorkStrategy.InterpreteStrategy;
+import zorkStrategy.InterpreteThreeWordStrategy;
+import zorkStrategy.InterpreteTwoWordsStrategy;
+
 public final class Interprete {
 	
 	public static Comando interpretar(ArrayList<String> cadena) {

@@ -7,6 +7,8 @@ import java.util.Scanner;
 
 import org.apache.log4j.Logger;
 
+import zorkLogger.LoggerHistory;
+
 public class Observador {
 	private Scanner in;
 	private String scan;

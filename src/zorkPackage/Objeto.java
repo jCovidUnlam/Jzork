@@ -3,6 +3,10 @@ package zorkPackage;
 import java.util.ArrayList;
 import java.util.List;
 
+import zorkTrigger.Trigger;
+import zorkTrigger.TriggerAtaque;
+import zorkTrigger.TriggerItem;
+
 public class Objeto {
 	
 	private String id;

@@ -1,5 +1,9 @@
 package zorkPackage;
 
+import zorkTrigger.TriggerAtaque;
+import zorkTrigger.TriggerMaster;
+import zorkUI.Consola;
+
 public class GameMaster {
 
 	private Mapa mapa;
