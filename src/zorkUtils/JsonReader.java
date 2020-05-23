@@ -24,7 +24,7 @@ import zorkTrigger.TriggerAtaque;
 import zorkTrigger.TriggerItem;
 
 
-public class JsonReader {
+public final class JsonReader {
 
 	public static Mapa construirAventura(Mapa mapa, String path) {
 		
