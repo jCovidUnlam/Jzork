@@ -22,35 +22,34 @@ class TestPersonaje {
 	}
 
 	@Test
-	void testNombreCorrecto() {
+	void queNombrePersonajeSeaCorrecto() {
 		assertEquals("Juanito", p.getNombre());
 	}
 	
 	@Test 
-	void testNombreIncorrecto() {
+	void queNombrePersonajeSeaIncorrecto() {
 		assertNotEquals("Jose", p.getNombre());
 	}
 	
 	@Test
-	void testCambiarNombre() {
+	void queCambieNombrePersonaje() {
 		p.setNombre("Pedro");
 		assertEquals("Pedro", p.getNombre());
 	}
 	
 	@Test
-	void testInventarioVacio() {
+	void queElInventarioInicieVacio() {
 		assertEquals(0, p.getInventario().size());
 	}
 	
 	@Test 
-	void testInventarioConObjetos() {
+	void quePersonajeAgregueObjeto() {
 		p.addObjeto(new Item());
-		p.addObjeto(new Item());
-		assertEquals(2, p.getInventario().size());
+		assertEquals(1, p.getInventario().size());
 	}
 	
 	@Test
-	void testArmaEquipada() {
+	void queEquipeArma() {
 		assertNull(p.getArmaEquipada());
 		Item i = mapa.getLugarActual().getItem("palo");
 		p.addObjeto(i);
@@ -59,12 +58,12 @@ class TestPersonaje {
 	}
 	
 	@Test
-	void testDanioSinArma() {
+	void danioPersonajeSinArma() {
 		assertEquals(5, p.getDanio());
 	}
 	
 	@Test
-	void testDanioConArma() {
+	void danioPersonajeConArma() {
 		Item i = mapa.getLugarActual().getItem("palo");
 		p.addObjeto(i);
 		p.equiparArma("palo");
@@ -72,7 +71,7 @@ class TestPersonaje {
 	}
 	
 	@Test
-	void testNoEquiparObjeto() {
+	void queNoEquipeObjeto() {
 		//No se deben equipar objetos que no son armas!
 		//Baja a ese gato!!
 		Item i = mapa.getLugarActual().getItem("gato");
@@ -82,13 +81,13 @@ class TestPersonaje {
 	}
 	
 	@Test
-	void testEquiparArmaInventarioVacio() {
+	void queNoEquipeArmaSiInventarioVacio() {
 		p.equiparArma("gato");
 		assertNull(p.getArmaEquipada());
 	}
 	
 	@Test
-	void testDesequiparArma() {
+	void queDesequipeArma() {
 		Item i = mapa.getLugarActual().getItem("palo");
 		p.addObjeto(i);
 		p.equiparArma("palo");
@@ -98,27 +97,27 @@ class TestPersonaje {
 	}
 	
 	@Test
-	void testObtenerObjInventario() {
+	void queObtengaObjInvetario() {
 		Item i = mapa.getLugarActual().getItem("palo");
 		p.addObjeto(i);
 		assertEquals(i, p.getObjetoInventario("palo"));
 	}
 	
 	@Test
-	void testRestarSaludPersonaje() {
+	void queResteSaludPersonaje() {
 		p.recibirAtaque(50);
 		assertEquals(50, p.getSalud());
 	}
 	
 	@Test
-	void testAtacarAOtroPersonaje() {
+	void quePersAtaqueAOtroPers() {
 		Personaje otroP = new Personaje("Pedro");
 		p.atacar(otroP);
 		assertEquals(95, otroP.getSalud());
 	}
 	
 	@Test
-	void testAtacarAOtroPConArma() {
+	void quePersAtaqueAOtroPersConArma() {
 		Personaje otroP = new Personaje("Pedro");
 		Item i = mapa.getLugarActual().getItem("palo");
 		p.addObjeto(i);
