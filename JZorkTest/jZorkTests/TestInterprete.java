@@ -28,99 +28,99 @@ class TestInterprete {
 	}
 
 	@Test
-	public void testMovimientoSimpleSur() {
+	public void queSeMuevaAlSur() {
 		frase.add("sur");
 		assertEquals(new Comando("sur", Comando.Tipo.MOVER), Interprete.interpretar(frase));
 	}
 		
 	@Test
-	public void testMovimientoSimpleNorte() {
+	public void queSeMuevaAlNorte() {
 		frase.add("norte");
 		assertEquals(new Comando("norte", Comando.Tipo.MOVER), Interprete.interpretar(frase));
 	}
 	
 	@Test
-	public void testUsuarioSimpleestado() {
+	public void queFuncioneComandoEstado() {
 		frase.add("estado");
 		assertEquals(new Comando("estado", Comando.Tipo.USUARIO), Interprete.interpretar(frase));
 	}
 	
 	@Test
-	public void testUsuarioSimpleReglas() {
+	public void queFuncioneComandoReglas() {
 		frase.add("reglas");
 		assertEquals(new Comando("reglas", Comando.Tipo.USUARIO), Interprete.interpretar(frase));
 	}
 	
 	@Test
-	public void testTomarArma() {
+	public void queTomeArma() {
 		frase.add("tomar");
 		frase.add("palo");
 		assertEquals(new Comando("tomar", "palo", null, Comando.Tipo.ADQUIRIR), Interprete.interpretar(frase));
 	}
 	
 	@Test
-	public void testInvalido() {
+	public void queSeaComandoInvalido() {
 		assertEquals(new Comando(Comando.Tipo.INVALIDO), Interprete.interpretar(frase));
 	}
 	
 	
 	@Test
-	public void testIrDireccion() {
+	public void queSeaComandoMovimiento() {
 		frase.add("ir");
 		frase.add("norte");
 		assertEquals(new Comando("ir", "norte", null, Comando.Tipo.MOVER), Interprete.interpretar(frase));
 	}
 	
 	@Test
-	public void testUsuario() {
+	public void queSeaComandoEquiparUsuario() {
 		frase.add("equipar");
 		frase.add("palo");
 		assertEquals(new Comando("equipar", "palo", null, Comando.Tipo.USUARIO), Interprete.interpretar(frase));
 	}
 	
 	@Test
-	public void testInspeccionable() {
+	public void queSeaComandoInspeccionable() {
 		frase.add("inspeccionar");
 		frase.add("alrededor");
 		assertEquals(new Comando("inspeccionar", "alrededor", null, Comando.Tipo.INSPECCIONAR), Interprete.interpretar(frase));
 	}
 	
 	@Test
-	public void testNPC() {
+	public void queSeaComandoDeNPC() {
 		frase.add("hablar");
 		frase.add("Alf");
 		assertEquals(new Comando("hablar", "Alf", null, Comando.Tipo.NPC), Interprete.interpretar(frase));
 	}
 	
 	@Test
-	public void testUsable() {
+	public void queSeaComandoDeUsable() {
 		frase.add("usar");
 		frase.add("palo");
 		assertEquals(new Comando("usar", "palo", null, Comando.Tipo.USAR), Interprete.interpretar(frase));
 	}
 	
 	@Test
-	public void testAtacar() {
+	public void queSeaComandoAtacar() {
 		frase.add("atacar");
 		frase.add("Alf");
 		assertEquals(new Comando("atacar", "Alf", null, Comando.Tipo.ATACAR), Interprete.interpretar(frase));
 	}
 	
 	@Test
-	public void testDescartar() {
+	public void queSeaComandoDescartar() {
 		frase.add("descartar");
 		frase.add("palo");
 		assertEquals(new Comando("descartar", "palo", null, Comando.Tipo.DESCARTAR), Interprete.interpretar(frase));
 	}
 	
 	@Test
-	public void testCmdInvalido() {
+	public void queSeaComandoNoValido() {
 		frase = null;
 		assertEquals(new Comando(Comando.Tipo.INVALIDO), Interprete.interpretar(frase));
 	}
 	
 	@Test
-	public void testTrigger() {
+	public void queSeaComandoTrigger() {
 		frase.add("usar");
 		frase.add("palo");
 		frase.add("Alf");		
@@ -128,7 +128,7 @@ class TestInterprete {
 	}
 	
 	@Test
-	public void testTriggerNoValido() {
+	public void queSeaComandoTriggerInvalido() {
 		frase.add("mirar");
 		frase.add("palo");
 		frase.add("Alf");

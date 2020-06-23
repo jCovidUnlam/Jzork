@@ -44,38 +44,40 @@ public class TestInventario {
 	}
 
 	@Test
-	public void testHayObjetosEnLugar() {
+	public void queHayaDosObjEnLugar() {
 		assertEquals(2, mapa.getLugarActual().getObjetos().size());
 	}
 
 	@Test
-	public void testTomarObjetoExistente() {		
+	public void queSePuedaTomarObjeto() {		
 		assertEquals(2, mapa.getLugarActual().getObjetos().size());
 		mapa.getLugarActual().removerObjeto(mapa.getLugarActual().getObjeto("gato"));
 		assertEquals(1, mapa.getLugarActual().getObjetos().size());
 	}
 	
 	@Test
-	public void testTomarObjetoNoExistente() {
+	public void queNoSePuedaTomarObjeto() {
 		assertEquals(2, mapa.getLugarActual().getObjetos().size());
 		mapa.getLugarActual().getObjeto("paracaidas");
 		assertEquals(2, mapa.getLugarActual().getObjetos().size());
 	}
 	
 	@Test
-	public void testInventarioVacio() {
+	public void queInventarioEsteVacio() {
 		assertEquals(0, personaje.getInventario().size());		
 	}
 
 	@Test
-	public void testObjetoTomadoEnInventario() {
+	public void queObjAparezcaEnInventario() {
 		personaje.addObjeto(mapa.getLugarActual().getItem("gato"));
 		mapa.getLugarActual().removerObjeto(mapa.getLugarActual().getObjeto("gato"));		
 		assertEquals(1, personaje.getInventario().size());
 	}
 	
 	@Test
-	public void testSoltarObjeto() {
+	public void queSuelteObjCorrectamente() {
+		//Si suelto un objeto en el bosque
+		//tiene que aparecer ahí y no en otro lado
 		Item i = mapa.getLugarActual().getItem("gato");
 		personaje.addObjeto(i);
 		mapa.getLugarActual().removerObjeto(i);
