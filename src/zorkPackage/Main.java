@@ -43,7 +43,7 @@ public class Main {
 						init = true;
 						break;
 					case "2":
-						Aventura.getMapa(name, "./Recursos/otroJson.txt");
+						Aventura.getMapa(name, "./Recursos/deDragonesYDesiertos.txt");
 						in.close();
 						init = true;
 						break;

@@ -1,9 +1,8 @@
 {
 	"map":{
 		"nombre": "De Dragones y Desiertos",
-		"descripcion": "Te despertas con un dolor de cabeza terrible, y no entendes nada: ya te habias pasado de copas muchas veces antes, pero nunca 
-lo suficiente como para aparecer en el medio del desierto sin la nocion de que habia pasado, o como habias llegado ahi. 
-Lamentablemente, no tenes tiempo para pensarlo demasiado.",
+		"descripcion": "Te despiertas con un dolor de cabeza terrible, y no entiendes nada: ya te habias pasado de copas muchas veces antes, pero nunca 
+lo suficiente como para aparecer en el medio del desierto sin la nocion de que habia pasado, o como habias llegado ahi.",
 		"xSize": "20",
 		"ySize": "20",
 		"zSize": "3",
@@ -14,40 +13,48 @@ Lamentablemente, no tenes tiempo para pensarlo demasiado.",
 	"lugares" :[
 		{
 			"nombre": "Desierto",
-			"descripcion": "una criatura colosal{i1} se aproxima hacia vos, escupiendo fuego por la boca.",
+			"descripcion": "Lamentablemente, no tenes tiempo para pensarlo demasiado. Una criatura colosal {i1} se aproxima hacia ti, escupiendo 
+fuego por la boca. Miras con desesperacion alrededor: al sur se ve una aldea, y en el suelo, junto a tus pies, 
+{i2}",
 			"x": "5",
 			"y": "10",
 			"z": "1",
-			"items": "i1",
+			"items": "i1 i2",
 			"obstaculos" : "",
 			"npcs" : ""
 		},
 		{
 			"nombre": "Aldea",
-			"descripcion": "La aldea es un lugar casi tan vacio como el desierto, a excepcion de unos pocos lugares que ves abiertos. A la izquierda a unos cuantos metros ves una taberna, y a la derecha una tabaquería.",
+			"descripcion": "La aldea es un lugar casi tan vacio como el desierto, a excepcion de unos pocos lugares que ves abiertos. 
+A la izquierda de la calle principal ves una taberna, y a la derecha una tabaqueria.
+En el suelo ves {i3}.
+",
 			"x": "5",
 			"y": "9",
 			"z": "1",
-			"items": "",
+			"items": "i3",
 			"obstaculos" : "",
 			"npcs" : ""
 		},
 		{
 			"nombre": "Taberna",
-			"descripcion": "Es un lugar con escasa luz, donde hay pocas personas. A lo lejos se escucha el llanto de una mujer. {n1}",
-			"x": "5",
-			"y": "10",
+			"descripcion": "Es un lugar con escasa luz, donde hay pocas personas. A lo lejos se escucha el llanto de una mujer. 
+{n1}",
+			"x": "6",
+			"y": "9",
 			"z": "1",
 			"items": "",
-			"obstaculos" : "",
-			"npcs" : ""
+			"obstaculos" : "o1",
+			"npcs" : "n1"
 		},
 		{
 			"nombre": "Sotano taberna",
-			"descripcion": "Desciendes por la escalera y, a cada paso que das, escuchas como el sollozo se intensifica. Al llegar al final de la escalera, te encuentras en una habitacion apenas iluminada, y finalmente ves el origen del sonido: {n2}. Cuando escucha el ruido de tus pisadas, levanta la vista y te mira, asustada.",
-			"x": "5",
-			"y": "10",
-			"z": "1",
+			"descripcion": "Desciendes por la escalera y, a cada paso que das, escuchas como el sollozo se intensifica.
+Al llegar al final de la escalera, te encuentras en una habitacion apenas iluminada, y finalmente encuentras el origen 
+del sonido: {n2}. Cuando escucha el ruido de tus pisadas, levanta la vista y te mira, asustada.",
+			"x": "6",
+			"y": "9",
+			"z": "0",
 			"items": "",
 			"obstaculos" : "",
 			"npcs" : ""
@@ -62,11 +69,35 @@ Lamentablemente, no tenes tiempo para pensarlo demasiado.",
 			"descripcionMapa": "(un dragon!?)",
 			"tomable": "false",
 			"mensajeTomable": "",
-			"mensajeNoTomable" : "se ve que la resaca te hace pensar cosas demenciales, como vas a agarrar a un dragon!?",
+			"mensajeNoTomable" : "Se ve que la resaca te hace pensar cosas demenciales, como vas a agarrar a un dragon!?",
+		},
+		{
+			"id": "i2",
+			"nombre": "espada",
+			"descripcion": "Es una espada reluciente, muy pesada.",
+			"descripcionMapa": "una espada reluciente.",
+			"tomable": "true",
+			"mensajeTomable": "Es reluciente, y muy pesada. Dudas de poder hacerle danio al dragon.",
+			"mensajeNoTomable" : "",
+		},
+		{
+			"id": "i3",
+			"nombre": "bolsa",
+			"descripcion": "Es una bolsa de arpillera, esta bastante sucia y llena de arena. No tiene nada dentro.",
+			"descripcionMapa": "una bolsa que llama tu atencion",
+			"tomable": "true",
+			"mensajeTomable": "Cuando la agarras, te llenas las manos te arena. Maldices por lo bajo.",
+			"mensajeNoTomable" : "",
 		},
 		
 	],
 	"obstaculos":[
+	{
+			"id": "o1",
+			"mensaje": "El tabernero llama tu atencion, y no te deja seguir avanzando.",
+			"direccion": "abajo",
+			"objeto": "n1",
+		}
 
 	],
 	"npcs":[
@@ -74,7 +105,9 @@ Lamentablemente, no tenes tiempo para pensarlo demasiado.",
 			"id" : "n1",
 			"nombre" : "tabernero",
 			"descripcion": "El tabernero esta limpiando un porron de cerveza con el trapo mas sucio que hayas visto en tu vida. Tiene cara de pocos amigos.",
-			"hablar": "Nunca te he visto por aqui, ¿como te llamas? Bah, que sentido tiene, igual me olvidare tu nombre... ¿escuchas eso? Creo que es mi sobrina Clara, llorando de nuevo... Quiza hablar contigo le haga bien. Vamos, ¡ve! no te quedes ahi parado todo el dia...",
+			"hablar": "Nunca te he visto por aqui, ¿como te llamas? Bah, que sentido tiene, igual me olvidare tu nombre... 
+¿escuchas eso? Creo que es mi sobrina Clara, llorando de nuevo... Quiza hablar contigo le haga bien. 
+Vamos, ¡ve! no te quedes ahi parado todo el dia...",
 			"descripcionMapa": "El tabernero repara en ti, y te mira con curiosidad y algo de desconfianza.",
 			"danio" : "10",
 			"salud" : "15",
@@ -83,11 +116,13 @@ Lamentablemente, no tenes tiempo para pensarlo demasiado.",
 			"id" : "n2",
 			"nombre" : "Clara",
 			"descripcion": "hay una chica joven, delgada, con la cara enrojecida por el llanto, sentada en una cama que esta justo en el medio de la precaria habitacion",
-			"hablar": "¿Quien eres? ¿Como entraste? ¡Por favor, necesito tu ayuda! Necesito que recuperes el oro que perdi en el desierto, sino mi padre me matara... Lo perdi en el desierto, justo cuando un dragon me ataco!",
+			"hablar": "¿Quien eres? ¿Como entraste? ¡Por favor, necesito tu ayuda! Necesito que recuperes el oro que perdi en el desierto, 
+sino mi padre me matara... Lo perdi en el desierto, justo cuando un dragon me ataco!",
 			"descripcionMapa": "Cuando escucha el ruido de tus pasos, levanta la vista y te mira, dudando.",
 			"danio" : "20",
 			"salud" : "15",
 		},
+
 
 	],
 	"triggers": [
