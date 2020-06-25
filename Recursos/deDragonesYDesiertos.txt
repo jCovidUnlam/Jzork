@@ -14,12 +14,11 @@ lo suficiente como para aparecer en el medio del desierto sin la nocion de que h
 		{
 			"nombre": "Desierto",
 			"descripcion": "Lamentablemente, no tienes tiempo para pensarlo demasiado. Una criatura colosal {i1} se aproxima hacia ti, escupiendo 
-fuego por la boca. Miras con desesperacion alrededor: al sur se ve una aldea, y en el suelo, junto a tus pies, 
-{i2}",
+fuego por la boca. Miras con desesperacion alrededor: al sur se ve una aldea",
 			"x": "5",
 			"y": "10",
 			"z": "1",
-			"items": "i1 i2",
+			"items": "i1",
 			"obstaculos" : "",
 			"npcs" : ""
 		},
