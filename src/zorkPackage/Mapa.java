@@ -1,6 +1,8 @@
 package zorkPackage;
 
 
+import zorkEnum.EnumDireccion;
+
 public class Mapa {
 	
 	private String nombre;
@@ -135,29 +137,29 @@ public class Mapa {
 		
 		Lugar lugar;
 		
-		lugar = getLugar(posicionDireccion("norte"));
+		lugar = getLugar(posicionDireccion(EnumDireccion.NORTE.getValue()));
 		if(lugar != null && lugar.getNombre().toLowerCase().equals(nombreLugar))
-			return mover("norte");
+			return mover(EnumDireccion.NORTE.getValue());
 		
-		lugar = getLugar(posicionDireccion("sur"));
+		lugar = getLugar(posicionDireccion(EnumDireccion.SUR.getValue()));
 		if(lugar != null && lugar.getNombre().toLowerCase().equals(nombreLugar))
-			return mover("sur");
+			return mover(EnumDireccion.SUR.getValue());
 		
-		lugar = getLugar(posicionDireccion("este"));
+		lugar = getLugar(posicionDireccion(EnumDireccion.ESTE.getValue()));
 		if(lugar != null && lugar.getNombre().toLowerCase().equals(nombreLugar))
-			return mover("este");
+			return mover(EnumDireccion.ESTE.getValue());
 		
-		lugar = getLugar(posicionDireccion("oeste"));
+		lugar = getLugar(posicionDireccion(EnumDireccion.OESTE.getValue()));
 		if(lugar != null && lugar.getNombre().toLowerCase().equals(nombreLugar))
-			return mover("oeste");
+			return mover(EnumDireccion.OESTE.getValue());
 		
-		lugar = getLugar(posicionDireccion("abajo"));
+		lugar = getLugar(posicionDireccion(EnumDireccion.ABAJO.getValue()));
 		if(lugar != null && lugar.getNombre().toLowerCase().equals(nombreLugar))
-			return mover("abajo");
+			return mover(EnumDireccion.ABAJO.getValue());
 		
-		lugar = getLugar(posicionDireccion("arriba"));
+		lugar = getLugar(posicionDireccion(EnumDireccion.ARRIBA.getValue()));
 		if(lugar != null && lugar.getNombre().toLowerCase().equals(nombreLugar))
-			return mover("arriba");
+			return mover(EnumDireccion.ARRIBA.getValue());
 		
 		return "No existe ese lugar!";
 	}

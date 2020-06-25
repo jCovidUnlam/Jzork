@@ -7,6 +7,7 @@ import java.io.IOException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import zorkEnum.EnumDireccion;
 import zorkPackage.Item;
 import zorkPackage.Mapa;
 import zorkPackage.Personaje;
@@ -27,13 +28,6 @@ public class TestInventario {
 	
 	Mapa mapa;
 	Personaje personaje;
-	
-	public static final String NORTE = "norte";
-	public static final String SUR = "sur";
-	public static final String OESTE = "oeste";
-	public static final String ESTE = "este";
-	public static final String ABAJO = "abajo";
-	public static final String ARRIBA = "arriba";
 
 	@BeforeEach
 	void init() throws IOException{
@@ -81,10 +75,10 @@ public class TestInventario {
 		Item i = mapa.getLugarActual().getItem("gato");
 		personaje.addObjeto(i);
 		mapa.getLugarActual().removerObjeto(i);
-		mapa.mover(NORTE);
+		mapa.mover(EnumDireccion.NORTE.getValue());
 		personaje.removerDeInventario(i);
 		mapa.getLugarActual().agregarObjeto(i);
-		mapa.mover(SUR);
+		mapa.mover(EnumDireccion.SUR.getValue());
 		assertEquals(1, mapa.getLugarActual().getObjetos().size());
 	}
 
