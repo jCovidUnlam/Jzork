@@ -13,7 +13,7 @@ lo suficiente como para aparecer en el medio del desierto sin la nocion de que h
 	"lugares" :[
 		{
 			"nombre": "Desierto",
-			"descripcion": "Lamentablemente, no tenes tiempo para pensarlo demasiado. Una criatura colosal {i1} se aproxima hacia ti, escupiendo 
+			"descripcion": "Lamentablemente, no tienes tiempo para pensarlo demasiado. Una criatura colosal {i1} se aproxima hacia ti, escupiendo 
 fuego por la boca. Miras con desesperacion alrededor: al sur se ve una aldea, y en el suelo, junto a tus pies, 
 {i2}",
 			"x": "5",
@@ -61,14 +61,14 @@ del sonido: {n2}. Cuando escucha el ruido de tus pisadas, levanta la vista y te 
 		},
 		{
 			"nombre": "Tabaqueria",
-			"descripcion": "Te sorprende lo grande que es el negocio. Entra much luz natural desde el techo, se ve mucho polvo flotando alrededor.". 
-{n1}",
-			"x": "6",
+			"descripcion": "Te sorprende lo grande que es el negocio. Entra luz natural desde el techo, se ve mucho polvo flotando alrededor.
+Hay algo tirado en el piso que llama tu atencion.",
+			"x": "4",
 			"y": "9",
 			"z": "1",
-			"items": "",
+			"items": "i4",
 			"obstaculos" : "o1",
-			"npcs" : "n1"
+			"npcs" : "n3"
 		},
 		
 	],
@@ -95,6 +95,15 @@ del sonido: {n2}. Cuando escucha el ruido de tus pisadas, levanta la vista y te 
 			"id": "i3",
 			"nombre": "bolsa",
 			"descripcion": "Es una bolsa de arpillera, esta bastante sucia y llena de arena. No tiene nada dentro.",
+			"descripcionMapa": "una bolsa que llama tu atencion",
+			"tomable": "true",
+			"mensajeTomable": "Cuando la agarras, te llenas las manos te arena. Maldices por lo bajo.",
+			"mensajeNoTomable" : "",
+		},
+		{
+			"id": "i4",
+			"nombre": "cartel",
+			"descripcion": "E un viejo cartel, parece caido de la pared. Dice 'Tabaqueria Jose'",
 			"descripcionMapa": "una bolsa que llama tu atencion",
 			"tomable": "true",
 			"mensajeTomable": "Cuando la agarras, te llenas las manos te arena. Maldices por lo bajo.",
@@ -134,12 +143,11 @@ sino mi padre me matara... Lo perdi en el desierto, justo cuando un dragon me at
 			"salud" : "15",
 		},
 		{
-			"id" : "n2",
+			"id" : "n3",
 			"nombre" : "Jose",
 			"descripcion": "Es un hombre alto, delgado, con algunas canas que delataban su edad, no demasiado avanzada.",
-			"hablar": "¿Quien eres? ¿Como entraste? ¡Por favor, necesito tu ayuda! Necesito que recuperes el oro que perdi en el desierto, 
-sino mi padre me matara... Lo perdi en el desierto, justo cuando un dragon me ataco!",
-			"descripcionMapa": "Cuando escucha el ruido de tus pasos, levanta la vista y te mira, dudando.",
+			"hablar": "",
+			"descripcionMapa": "Un hombre tras el mostrador, presumiblemente el encargado del lugar, te mira fijo sin decir una palabra.",
 			"danio" : "20",
 			"salud" : "15",
 		},
