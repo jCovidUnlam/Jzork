@@ -59,6 +59,17 @@ del sonido: {n2}. Cuando escucha el ruido de tus pisadas, levanta la vista y te 
 			"obstaculos" : "",
 			"npcs" : ""
 		},
+		{
+			"nombre": "Tabaqueria",
+			"descripcion": "Te sorprende lo grande que es el negocio. Entra much luz natural desde el techo, se ve mucho polvo flotando alrededor.". 
+{n1}",
+			"x": "6",
+			"y": "9",
+			"z": "1",
+			"items": "",
+			"obstaculos" : "o1",
+			"npcs" : "n1"
+		},
 		
 	],
 	"items" :[
@@ -116,6 +127,16 @@ Vamos, ¡ve! no te quedes ahi parado todo el dia...",
 			"id" : "n2",
 			"nombre" : "Clara",
 			"descripcion": "hay una chica joven, delgada, con la cara enrojecida por el llanto, sentada en una cama que esta justo en el medio de la precaria habitacion",
+			"hablar": "¿Quien eres? ¿Como entraste? ¡Por favor, necesito tu ayuda! Necesito que recuperes el oro que perdi en el desierto, 
+sino mi padre me matara... Lo perdi en el desierto, justo cuando un dragon me ataco!",
+			"descripcionMapa": "Cuando escucha el ruido de tus pasos, levanta la vista y te mira, dudando.",
+			"danio" : "20",
+			"salud" : "15",
+		},
+		{
+			"id" : "n2",
+			"nombre" : "Jose",
+			"descripcion": "Es un hombre alto, delgado, con algunas canas que delataban su edad, no demasiado avanzada.",
 			"hablar": "¿Quien eres? ¿Como entraste? ¡Por favor, necesito tu ayuda! Necesito que recuperes el oro que perdi en el desierto, 
 sino mi padre me matara... Lo perdi en el desierto, justo cuando un dragon me ataco!",
 			"descripcionMapa": "Cuando escucha el ruido de tus pasos, levanta la vista y te mira, dudando.",
