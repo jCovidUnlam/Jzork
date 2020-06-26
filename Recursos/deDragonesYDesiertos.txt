@@ -23,18 +23,45 @@ fuego por la boca. Miras con desesperacion alrededor: al sur se ve una aldea",
 			"npcs" : ""
 		},
 		{
+			"nombre": "Entrada aldea",
+			"descripcion": "Llegas a una especie de arco que hace las veces de entrada a lo que parece una vieja aldea. 
+{i5}. 
+Mas alla del arco, se ve la aldea. Un pequeño temblor te recorre la espalda.",
+			"x": "5",
+			"y": "9",
+			"z": "1",
+			"items": "i5",
+			"obstaculos" : "",
+			"npcs" : ""
+		},
+		{
 			"nombre": "Aldea",
 			"descripcion": "La aldea es un lugar casi tan vacio como el desierto, a excepcion de unos pocos lugares que ves abiertos. 
 A la izquierda de la calle principal ves una taberna, y a la derecha una tabaqueria.
 En el suelo ves {i3}.
 ",
 			"x": "5",
-			"y": "9",
+			"y": "8",
 			"z": "1",
 			"items": "i3",
 			"obstaculos" : "",
 			"npcs" : ""
 		},
+		{
+			"nombre": "Bosque",
+			"descripcion": "Luego d perder la nocion de cuantas horas habias caminado en una direccion incierta, llegas a un
+pequeño bosque. 
+La brisa es agradable, no hace el calor abrazador que sentias en el desierto.
+Frente a ti, hay una roca con... {i2}
+",
+			"x": "5",
+			"y": "8",
+			"z": "1",
+			"items": "i3",
+			"obstaculos" : "",
+			"npcs" : ""
+		},
+		
 		{
 			"nombre": "Taberna",
 			"descripcion": "Es un lugar con escasa luz, donde hay pocas personas. A lo lejos se escucha el llanto de una mujer. 
@@ -59,14 +86,15 @@ del sonido: {n2}. Cuando escucha el ruido de tus pisadas, levanta la vista y te 
 			"npcs" : ""
 		},
 		{
-			"nombre": "Tabaqueria",
+			"nombre": "Almacen",
 			"descripcion": "Te sorprende lo grande que es el negocio. Entra luz natural desde el techo, se ve mucho polvo flotando alrededor.
-Hay algo tirado en el piso que llama tu atencion.",
+{i4}.
+Detras de un gran mostrador, ves al almacenero, pero no sabes su nombre.",
 			"x": "4",
 			"y": "9",
 			"z": "1",
 			"items": "i4",
-			"obstaculos" : "o1",
+			"obstaculos" : "",
 			"npcs" : "n3"
 		},
 		
@@ -85,9 +113,9 @@ Hay algo tirado en el piso que llama tu atencion.",
 			"id": "i2",
 			"nombre": "espada",
 			"descripcion": "Es una espada reluciente, muy pesada.",
-			"descripcionMapa": "una espada reluciente.",
+			"descripcionMapa": "una espada clavada en ella!",
 			"tomable": "true",
-			"mensajeTomable": "Es reluciente, y muy pesada. Dudas de poder hacerle danio al dragon.",
+			"mensajeTomable": "Logras sacarla de la piedra con facilidad. Es muy pesada, dudas de tener un buen control de ella.",
 			"mensajeNoTomable" : "",
 		},
 		{
@@ -102,11 +130,20 @@ Hay algo tirado en el piso que llama tu atencion.",
 		{
 			"id": "i4",
 			"nombre": "cartel",
-			"descripcion": "E un viejo cartel, parece caido de la pared. Dice 'Tabaqueria Jose'",
-			"descripcionMapa": "una bolsa que llama tu atencion",
-			"tomable": "true",
-			"mensajeTomable": "Cuando la agarras, te llenas las manos te arena. Maldices por lo bajo.",
-			"mensajeNoTomable" : "",
+			"descripcion": "El cartel dice 'Almacen de Jose' fijado en una columna del almacen.",
+			"descripcionMapa": "Hay un viejo cartel fijado a una columna del almacen.",
+			"tomable": "false",
+			"mensajeTomable": "",
+			"mensajeNoTomable" : "No puedes agarrarlo, esta fuertemente agarrado a la columna. Tampoco sirve de nada...",
+		},
+		{
+			"id": "i5",
+			"nombre": "cartel",
+			"descripcion": "descr cartel",
+			"descripcionMapa": "Hay un pequeño cartel a un costado, parece golpeado por el paso del tiempo.",
+			"tomable": "false",
+			"mensajeTomable": "",
+			"mensajeNoTomable" : "No puedes tomar este cartel, esta fijado al arco.",
 		},
 		
 	],
@@ -143,7 +180,7 @@ sino mi padre me matara... Lo perdi en el desierto, justo cuando un dragon me at
 		},
 		{
 			"id" : "n3",
-			"nombre" : "Jose",
+			"nombre" : "Almacenero",
 			"descripcion": "Es un hombre alto, delgado, con algunas canas que delataban su edad, no demasiado avanzada.",
 			"hablar": "",
 			"descripcionMapa": "Un hombre tras el mostrador, presumiblemente el encargado del lugar, te mira fijo sin decir una palabra.",
