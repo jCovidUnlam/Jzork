@@ -8,14 +8,16 @@ public class Personaje extends Objeto{
 	private List<Item> inventario;
 	private Posicion posicionActual;
 	private Arma armaEquipada;
+	private Boolean esPrincipal ;
 	
-	public Personaje(String nombre) {
+	public Personaje(String nombre, Boolean esPrincipal) {
 		super();
 		this.nombre = nombre;
 		this.inventario = new LinkedList<>();
 		this.posicionActual = new Posicion(0,0,0);
 		this.setDanio(5);
 		this.setSalud(100);
+		this.esPrincipal = esPrincipal;
 	}
 
 	public String getNombre() {

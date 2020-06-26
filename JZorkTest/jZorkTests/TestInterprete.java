@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import zorkEnum.EnumDireccion;
 import zorkPackage.*;
 import zorkUtils.JsonReader;
 
@@ -20,7 +21,7 @@ class TestInterprete {
 	@BeforeEach
 	public void setUp() throws Exception {
 		mapa = new Mapa();
-		mapa.setPersonajeActual(new Personaje("Tester Interprete"));
+		mapa.setPersonajeActual(new Personaje("Tester Interprete",true));
 		JsonReader.construirAventura(mapa, "./Recursos/testInterprete.txt");
 		i = new Interprete();
 		Lexico.cargarLexico();
@@ -29,14 +30,14 @@ class TestInterprete {
 
 	@Test
 	public void queSeMuevaAlSur() {
-		frase.add("sur");
-		assertEquals(new Comando("sur", Comando.Tipo.MOVER), Interprete.interpretar(frase));
+		frase.add(EnumDireccion.SUR.getValue());
+		assertEquals(new Comando(EnumDireccion.SUR.getValue(), Comando.Tipo.MOVER), Interprete.interpretar(frase));
 	}
 		
 	@Test
 	public void queSeMuevaAlNorte() {
-		frase.add("norte");
-		assertEquals(new Comando("norte", Comando.Tipo.MOVER), Interprete.interpretar(frase));
+		frase.add(EnumDireccion.NORTE.getValue());
+		assertEquals(new Comando(EnumDireccion.NORTE.getValue(), Comando.Tipo.MOVER), Interprete.interpretar(frase));
 	}
 	
 	@Test
@@ -67,8 +68,8 @@ class TestInterprete {
 	@Test
 	public void queSeaComandoMovimiento() {
 		frase.add("ir");
-		frase.add("norte");
-		assertEquals(new Comando("ir", "norte", null, Comando.Tipo.MOVER), Interprete.interpretar(frase));
+		frase.add(EnumDireccion.NORTE.getValue());
+		assertEquals(new Comando("ir", EnumDireccion.NORTE.getValue(), null, Comando.Tipo.MOVER), Interprete.interpretar(frase));
 	}
 	
 	@Test
