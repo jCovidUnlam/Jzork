@@ -95,9 +95,9 @@ Frente a ti, hay una roca con... {i2}
 			"npcs" : "n1"
 		},
 		{
-			"nombre": "Sotano",
-			"descripcion": "Desciendes por la escalera y, a cada paso que das, escuchas como el sollozo se intensifica.
-Al llegar al final de la escalera, te encuentras en una habitacion apenas iluminada, y finalmente encuentras el origen 
+			"nombre": "Primer piso",
+			"descripcion": "Subes por la escalera y, a cada paso que das, escuchas como el sollozo se intensifica.
+Al llegar al final de la escalera, te encuentras en una habitacion mas iluminada que la que acabas de abandonar, y finalmente descubres el origen 
 del sonido: {n2}. Cuando escucha el ruido de tus pisadas, levanta la vista y te mira, asustada.",
 			"x": "6",
 			"y": "8",
@@ -185,8 +185,11 @@ Seras, querido aventurero, el mas venerado por siempre en nuestras tierras, si n
 		{
 			"id" : "n1",
 			"nombre" : "tabernero",
-			"descripcion": "es un dragon que escupe fuego por la boca, y te mira furioso",
-			"hablar": "",
+			"descripcion": "El tabernero esta limpiando un porron de cerveza con el trapo mas sucio que hayas visto en tu vida. 
+Tiene cara de pocos amigos.",
+			"hablar": "Nunca te he visto por aqui, como te llamas? Bah, que sentido tiene, igual me olvidare tu nombre... 
+escuchas eso? Creo que es mi sobrina Clara, llorando de nuevo... Quiza hablar contigo le haga bien. 
+Vamos, ¡ve! no te quedes ahi parado todo el dia... Esta en el primer piso.",
 			"descripcionMapa": "El tabernero repara en ti, y te mira con curiosidad y algo de desconfianza.",
 			"danio" : "10",
 			"salud" : "15",
