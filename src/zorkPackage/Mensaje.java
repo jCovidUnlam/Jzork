@@ -14,9 +14,9 @@ public final class Mensaje {
 			msj += "     " + lugar.getNombre() + "\n";
 			msj += "########################\n";
 			msj += "\n" + lugar.getDescripcion();
-			msj += "\nObjetos: ";
-			for(Objeto obj : lugar.getObjetos())
-				msj += obj.getNombre() + " - ";
+			//msj += "\nObjetos: ";
+			//for(Objeto obj : lugar.getObjetos())
+			//	msj += obj.getNombre() + " - ";
 		}
 		
 		return msj;

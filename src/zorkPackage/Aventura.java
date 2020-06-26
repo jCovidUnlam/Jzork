@@ -11,7 +11,7 @@ public final class Aventura {
 		mapa.setPersonajeActual( new Personaje(characterName,true));
 		mapa = JsonReader.construirAventura(mapa, path);
 		Lexico.cargarLexico();
-		mapa.verMapa();
+		//mapa.verMapa();
 		//Consola.iniciarAventura(mapa);
 		GameMaster gm = new GameMaster(mapa);
 		new Observador(gm);
