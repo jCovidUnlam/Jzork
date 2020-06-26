@@ -32,7 +32,7 @@ public class TestInventario {
 	@BeforeEach
 	void init() throws IOException{
 		mapa = new Mapa();
-		personaje = new Personaje("Tester inventario");
+		personaje = new Personaje("Tester inventario",true);
 		mapa.setPersonajeActual(personaje);
 		JsonReader.construirAventura(mapa, "./Recursos/testInventario.txt");
 	}

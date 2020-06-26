@@ -15,7 +15,7 @@ class TestPersonaje {
 
 	@BeforeEach
 	void setUp() throws Exception {
-		p = new Personaje("Juanito");
+		p = new Personaje("Juanito",true);
 		mapa = new Mapa();
 		mapa.setPersonajeActual(p);
 		JsonReader.construirAventura(mapa, "./Recursos/testPersonaje.txt");
@@ -111,14 +111,14 @@ class TestPersonaje {
 	
 	@Test
 	void quePersAtaqueAOtroPers() {
-		Personaje otroP = new Personaje("Pedro");
+		Personaje otroP = new Personaje("Pedro",true);
 		p.atacar(otroP);
 		assertEquals(95, otroP.getSalud());
 	}
 	
 	@Test
 	void quePersAtaqueAOtroPersConArma() {
-		Personaje otroP = new Personaje("Pedro");
+		Personaje otroP = new Personaje("Pedro",true);
 		Item i = mapa.getLugarActual().getItem("palo");
 		p.addObjeto(i);
 		p.equiparArma("palo");

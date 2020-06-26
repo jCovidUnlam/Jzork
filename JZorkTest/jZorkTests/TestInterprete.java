@@ -21,7 +21,7 @@ class TestInterprete {
 	@BeforeEach
 	public void setUp() throws Exception {
 		mapa = new Mapa();
-		mapa.setPersonajeActual(new Personaje("Tester Interprete"));
+		mapa.setPersonajeActual(new Personaje("Tester Interprete",true));
 		JsonReader.construirAventura(mapa, "./Recursos/testInterprete.txt");
 		i = new Interprete();
 		Lexico.cargarLexico();

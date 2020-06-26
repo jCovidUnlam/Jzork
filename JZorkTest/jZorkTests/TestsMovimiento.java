@@ -20,7 +20,7 @@ class TestsMovimiento {
 	@BeforeEach
 	void init() throws IOException{
 		mapa = new Mapa();
-		mapa.setPersonajeActual(new Personaje("Tester movimiento"));
+		mapa.setPersonajeActual(new Personaje("Tester movimiento",true));
 		JsonReader.construirAventura(mapa, "./Recursos/testMovimiento.txt");
 	}
 	

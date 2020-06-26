@@ -8,7 +8,7 @@ public final class Aventura {
 
 	public static void getMapa (String characterName, String path) throws IOException {
 		Mapa mapa =  new Mapa();
-		mapa.setPersonajeActual( new Personaje(characterName));
+		mapa.setPersonajeActual( new Personaje(characterName,true));
 		mapa = JsonReader.construirAventura(mapa, path);
 		Lexico.cargarLexico();
 		mapa.verMapa();
