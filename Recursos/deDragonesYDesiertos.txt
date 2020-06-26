@@ -13,14 +13,14 @@ lo suficiente como para aparecer en el medio del desierto sin la nocion de que h
 	"lugares" :[
 		{
 			"nombre": "Desierto",
-			"descripcion": "Lamentablemente, no tienes tiempo para pensarlo demasiado. Una criatura colosal {i1} se aproxima hacia ti, escupiendo 
+			"descripcion": "Lamentablemente, no tienes tiempo para pensarlo demasiado. Una criatura colosal {n4} se aproxima hacia ti, escupiendo 
 fuego por la boca. Miras con desesperacion alrededor: puedes escapar al este o al oeste. Al sur, ves lo que parece una entrada a una aldea.",
 			"x": "5",
 			"y": "10",
-			"z": "1",
-			"items": "i1",
+			"z": "0",
+			"items": "",
 			"obstaculos" : "",
-			"npcs" : ""
+			"npcs" : "n4"
 		},
 		{
 			"nombre": "Arena movediza",
@@ -28,7 +28,7 @@ fuego por la boca. Miras con desesperacion alrededor: puedes escapar al este o a
 arena movediza comienza a absorberte y, sin que puedas hacer nada, caes y caes sin fin.",
 			"x": "4",
 			"y": "10",
-			"z": "1",
+			"z": "0",
 			"items": "",
 			"obstaculos" : "",
 			"npcs" : ""
@@ -39,7 +39,7 @@ arena movediza comienza a absorberte y, sin que puedas hacer nada, caes y caes s
 perdido, y no hay mucho mas que puedas hacer.",
 			"x": "6",
 			"y": "10",
-			"z": "1",
+			"z": "0",
 			"items": "",
 			"obstaculos" : "",
 			"npcs" : ""
@@ -47,11 +47,10 @@ perdido, y no hay mucho mas que puedas hacer.",
 		{
 			"nombre": "Entrada aldea",
 			"descripcion": "Llegas a una especie de arco que hace las veces de entrada a lo que parece una vieja aldea. 
-{i5}. 
-Mas alla del arco, se ve la aldea. Un pequeño temblor te recorre la espalda.",
+Mas alla del arco, que parece tener siglos de antiguedad se ve la aldea. Un temblor te recorre la espalda.",
 			"x": "5",
 			"y": "9",
-			"z": "1",
+			"z": "0",
 			"items": "i5",
 			"obstaculos" : "",
 			"npcs" : ""
@@ -59,12 +58,12 @@ Mas alla del arco, se ve la aldea. Un pequeño temblor te recorre la espalda.",
 		{
 			"nombre": "Aldea",
 			"descripcion": "La aldea es un lugar casi tan vacio como el desierto, a excepcion de unos pocos lugares que ves abiertos. 
-A la izquierda de la calle principal ves una taberna, y a la derecha una tabaqueria.
+A la izquierda de la calle principal ves una taberna, y a la derecha un almacen.
 En el suelo ves {i3}.
 ",
 			"x": "5",
 			"y": "8",
-			"z": "1",
+			"z": "0",
 			"items": "i3",
 			"obstaculos" : "",
 			"npcs" : ""
@@ -78,7 +77,7 @@ Frente a ti, hay una roca con... {i2}
 ",
 			"x": "5",
 			"y": "7",
-			"z": "1",
+			"z": "0",
 			"items": "i2",
 			"obstaculos" : "",
 			"npcs" : ""
@@ -89,31 +88,31 @@ Frente a ti, hay una roca con... {i2}
 			"descripcion": "Es un lugar con escasa luz, donde hay pocas personas. A lo lejos se escucha el llanto de una mujer. 
 {n1}",
 			"x": "6",
-			"y": "9",
-			"z": "1",
+			"y": "8",
+			"z": "0",
 			"items": "",
-			"obstaculos" : "o1",
+			"obstaculos" : "",
 			"npcs" : "n1"
 		},
 		{
-			"nombre": "Sotano taberna",
+			"nombre": "Sotano",
 			"descripcion": "Desciendes por la escalera y, a cada paso que das, escuchas como el sollozo se intensifica.
 Al llegar al final de la escalera, te encuentras en una habitacion apenas iluminada, y finalmente encuentras el origen 
 del sonido: {n2}. Cuando escucha el ruido de tus pisadas, levanta la vista y te mira, asustada.",
 			"x": "6",
-			"y": "9",
-			"z": "0",
+			"y": "8",
+			"z": "1",
 			"items": "",
 			"obstaculos" : "",
 			"npcs" : ""
 		},
 		{
 			"nombre": "Almacen",
-			"descripcion": "Te sorprende lo grande que es el negocio. Entra luz natural desde el techo, se ve mucho polvo flotando alrededor.
+			"descripcion": "Te sorprende lo grande que es aquel lugar. Entra luz natural desde el techo, se ve mucho polvo flotando alrededor.
 {i4}.
-Detras de un gran mostrador, ves al almacenero, pero no sabes su nombre.",
+Detras de un gran mostrador, ves al almacenero, que no repara en ti en absoluto.",
 			"x": "4",
-			"y": "9",
+			"y": "8",
 			"z": "1",
 			"items": "i4",
 			"obstaculos" : "",
@@ -152,7 +151,7 @@ Detras de un gran mostrador, ves al almacenero, pero no sabes su nombre.",
 		{
 			"id": "i4",
 			"nombre": "cartel",
-			"descripcion": "El cartel dice 'Almacen de Jose' fijado en una columna del almacen.",
+			"descripcion": "El cartel dice 'Almacen NO TENGO TIEMPO' fijado en una columna del almacen.",
 			"descripcionMapa": "Hay un viejo cartel fijado a una columna del almacen.",
 			"tomable": "false",
 			"mensajeTomable": "",
@@ -161,8 +160,17 @@ Detras de un gran mostrador, ves al almacenero, pero no sabes su nombre.",
 		{
 			"id": "i5",
 			"nombre": "cartel",
-			"descripcion": "descr cartel",
-			"descripcionMapa": "Hay un pequeño cartel a un costado, parece golpeado por el paso del tiempo.",
+			"descripcion": "El cartel reza lo siguiente:
+Seas bienvenido, oh aventurero! a esta aldea tan antigua como el mismisimo Adan y la mismisima Eva. 
+Siempre aqui seras bien recibido entre nosotros.
+Pero debes saber algo: desde el inicio de los tiempos, una maldicion nos atormenta.
+Un dragon, el mas malvado de todos ellos siempre ha sido el enemigo de nuestras amadas tierras, y nada que hayamos hecho
+pudo resolver su indomita  ira. 
+Ninguno de los aldeanos se ha animado a intentar vencerlo, para poder vivir en paz.
+Entonces, aventurero, si posees la valentia que se necesita, podras encontrar mas alla de los limites mas australes de nuestras tierras
+una espada que, prometen, sera la que venza de una vez y para siempre a este malvado enemigo.
+Seras, querido aventurero, el mas venerado por siempre en nuestras tierras, si nos libras de esta maldicion.",
+			"descripcionMapa": "Hay unas marcas a cada lado del arco",
 			"tomable": "false",
 			"mensajeTomable": "",
 			"mensajeNoTomable" : "No puedes tomar este cartel, esta fijado al arco.",
@@ -170,22 +178,15 @@ Detras de un gran mostrador, ves al almacenero, pero no sabes su nombre.",
 		
 	],
 	"obstaculos":[
-	{
-			"id": "o1",
-			"mensaje": "El tabernero llama tu atencion, y no te deja seguir avanzando.",
-			"direccion": "abajo",
-			"objeto": "n1",
-		}
+
 
 	],
 	"npcs":[
 		{
 			"id" : "n1",
 			"nombre" : "tabernero",
-			"descripcion": "El tabernero esta limpiando un porron de cerveza con el trapo mas sucio que hayas visto en tu vida. Tiene cara de pocos amigos.",
-			"hablar": "Nunca te he visto por aqui, ¿como te llamas? Bah, que sentido tiene, igual me olvidare tu nombre... 
-¿escuchas eso? Creo que es mi sobrina Clara, llorando de nuevo... Quiza hablar contigo le haga bien. 
-Vamos, ¡ve! no te quedes ahi parado todo el dia...",
+			"descripcion": "es un dragon que escupe fuego por la boca, y te mira furioso",
+			"hablar": "",
 			"descripcionMapa": "El tabernero repara en ti, y te mira con curiosidad y algo de desconfianza.",
 			"danio" : "10",
 			"salud" : "15",
@@ -204,10 +205,24 @@ sino mi padre me matara... Lo perdi en el desierto, justo cuando un dragon me at
 			"id" : "n3",
 			"nombre" : "Almacenero",
 			"descripcion": "Es un hombre alto, delgado, con algunas canas que delataban su edad, no demasiado avanzada.",
-			"hablar": "",
+			"hablar": "Que? Ah... Quien eres? Nunca te vi por aqui... Que cosa? un dragon te ataco? Si, definitivamente no eres depor aqui... 
+Bien, te contare. Esta aldea es mas vieja de lo que cualquiera de nuestros ancestros pueda recordar. Nadie sabe realmente quien la fundo, 
+ni hace cuanto tiempo. Lo que si sabemos, es que cada cierto tiempo, el dragon que te ataco aparece, comete algunas fechorias, y asi como vino, 
+veulve a irse. No sabemos por que lo hace, o con que intenciones. Esta vez, ya se comio a dos de nuestros aldeanos,  y robo pertenencias de otros...
+Que por que no hacemos nada? Estamos muy ocupados con nuestros asuntos... Pero, si quieres hacer algo, puedes ir a la entrada de la aldea:
+dicen que en el arco hay un cartel antiguo que contiene el secreto para derrotar al dragon. Buena suerte con ello.",
 			"descripcionMapa": "Un hombre tras el mostrador, presumiblemente el encargado del lugar, te mira fijo sin decir una palabra.",
 			"danio" : "20",
 			"salud" : "15",
+		},
+		{
+			"id" : "n4",
+			"nombre" : "Dragon",
+			"descripcion": "El dragon es colosal, color rojo carmesi, y se agita violentamente con el cuello estirado al cielo.",
+			"hablar": "El dragon te mira furioso, y escupe una llamarada que por poco no te quema en vida."
+			"descripcionMapa": "(un dragon!?)",
+			"danio" : "100",
+			"salud" : "1500",
 		},
 
 
