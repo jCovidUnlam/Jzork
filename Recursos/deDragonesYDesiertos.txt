@@ -14,11 +14,33 @@ lo suficiente como para aparecer en el medio del desierto sin la nocion de que h
 		{
 			"nombre": "Desierto",
 			"descripcion": "Lamentablemente, no tienes tiempo para pensarlo demasiado. Una criatura colosal {i1} se aproxima hacia ti, escupiendo 
-fuego por la boca. Miras con desesperacion alrededor: al sur se ve una aldea",
+fuego por la boca. Miras con desesperacion alrededor: puedes escapar al este o al oeste. Al sur, ves lo que parece una entrada a una aldea.",
 			"x": "5",
 			"y": "10",
 			"z": "1",
 			"items": "i1",
+			"obstaculos" : "",
+			"npcs" : ""
+		},
+		{
+			"nombre": "Arena movediza",
+			"descripcion": "Huyes hacia el oeste, pero cuando crees que por fin estas a salvo, te encuentras con algo peor: un enorme banco de 
+arena movediza comienza a absorberte y, sin que puedas hacer nada, caes y caes sin fin.",
+			"x": "4",
+			"y": "10",
+			"z": "1",
+			"items": "",
+			"obstaculos" : "",
+			"npcs" : ""
+		},
+		{
+			"nombre": "Desierto abrazador",
+			"descripcion": "Huyes hacia el este, pero luego de caminar por horas bajo el sol abrazador, debes adminitr que estas
+perdido, y no hay mucho mas que puedas hacer.",
+			"x": "6",
+			"y": "10",
+			"z": "1",
+			"items": "",
 			"obstaculos" : "",
 			"npcs" : ""
 		},
@@ -50,14 +72,14 @@ En el suelo ves {i3}.
 		{
 			"nombre": "Bosque",
 			"descripcion": "Luego d perder la nocion de cuantas horas habias caminado en una direccion incierta, llegas a un
-pequeño bosque. 
+pequenio bosque. 
 La brisa es agradable, no hace el calor abrazador que sentias en el desierto.
 Frente a ti, hay una roca con... {i2}
 ",
 			"x": "5",
-			"y": "8",
+			"y": "7",
 			"z": "1",
-			"items": "i3",
+			"items": "i2",
 			"obstaculos" : "",
 			"npcs" : ""
 		},
