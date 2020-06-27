@@ -19,7 +19,7 @@ lo suficiente como para aparecer en el medio del desierto sin la nocion de que h
 			"y": "10",
 			"z": "0",
 			"mensajeLimite": "",
-			"items": "i2",
+			"items": "",
 			"obstaculos" : "o1",
 			"npcs" : "n4",
 		},

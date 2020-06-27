@@ -38,12 +38,12 @@ public class Main {
 
 					switch (scan) {
 					case "1":
-						Aventura.getMapa(name, "./Recursos/jsonPropio.txt");
+						InitConfig.getMapa(name, "./Recursos/jsonPropio.txt");
 						in.close();
 						init = true;
 						break;
 					case "2":
-						Aventura.getMapa(name, "./Recursos/deDragonesYDesiertos.txt");
+						InitConfig.getMapa(name, "./Recursos/deDragonesYDesiertos.txt");
 						in.close();
 						init = true;
 						break;

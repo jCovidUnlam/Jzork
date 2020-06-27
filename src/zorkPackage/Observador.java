@@ -12,11 +12,11 @@ import zorkLogger.LoggerHistory;
 public class Observador {
 	private Scanner in;
 	private String scan;
-	private GameMaster gameMaster;
+	private Aventura gameMaster;
 	
 	private final static Logger log = Logger.getLogger(Observador.class);
 	
-	public Observador(GameMaster gameMaster) {
+	public Observador(Aventura gameMaster) {
 		super();
 		this.gameMaster = gameMaster;
 		in = new Scanner(System.in);
