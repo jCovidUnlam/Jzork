@@ -1,10 +1,10 @@
-MOVIMIENTOSIMPLE;norte;sur;este;oeste;arriba;abajo
+MOVIMIENTOSIMPLE;norte;sur;este;oeste;arriba;abajo;frente;atras;izquierda;derecha
 usuarioSimple;estado;inventario;reglas
 adquiribles;tomar;obtener;agarrar;adquirir
 rompibles;romper;destruir;golper;patear;estallar
 consumible;tomar;beber;ingerir;comer
-inspeccionable;inspeccionar;mirar;observar;ver
-usable;usar;utilizar
+inspeccionable;inspeccionar;mirar;observar;ver;leer
+usable;usar;utilizar;dar
 movimiento;ir;subir;bajar;escalar;trepar
 usuario;equipar
 NPC;hablar;charlar;interactuar			

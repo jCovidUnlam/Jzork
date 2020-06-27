@@ -3,6 +3,7 @@ package zorkTrigger;
 public class TriggerAtaque extends Trigger{
 
 	private double danioLimite;
+
 	
 	public TriggerAtaque() {};
 	
@@ -12,6 +13,10 @@ public class TriggerAtaque extends Trigger{
 	public void setDanioLimite(double danioLimite) {
 		this.danioLimite = danioLimite;
 	}
+
+
+
+
 
 
 	

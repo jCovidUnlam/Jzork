@@ -1,5 +1,7 @@
 package zorkTrigger;
 
+import zorkEnum.EnumDireccion;
+import zorkPackage.Arma;
 import zorkPackage.Item;
 import zorkPackage.Mapa;
 import zorkPackage.Mensaje;
@@ -35,18 +37,31 @@ public final class TriggerMaster {
 			case REMOVEROBJETO:
 				mapa.getLugarActual().removerObjeto(afectado);
 				break;
+			case REMOVERITEM:
+				mapa.getPersonajeActual().removerDeInventario(item);
+				break;
+			case ADQUIRIROBJETO:
+				mapa.getPersonajeActual().addObjeto((Item)afectado);
+				break;
 			default:
 				break;
 			}
 			
 			switch(trigger.after) {
+			case ADQUIRIROBJETO:
+				mapa.getPersonajeActual().addObjeto((Item)afectado);
+				break;
+			case REMOVEROBJETO:
+				mapa.getLugarActual().removerObjeto(afectado);
+				break;
 			case REMOVERITEM:
 				mapa.getPersonajeActual().removerDeInventario(item);
+				break;
 			default:
 				break;
 			}
 			
-			return trigger.getAfterTriggerDesc();
+			return trigger.getExitoTriggerDesc();
 		}
 	}
 	
@@ -59,10 +74,18 @@ public final class TriggerMaster {
 		{
 			switch(trigger.error) {
 			case RESPONDER:
-				return trigger.errorTriggerDesc;
+				msj += trigger.errorTriggerDesc;
+				break;
+			case ATACAR:
+				atacado.atacar(mapa.getPersonajeActual());
+				msj += trigger.errorTriggerDesc;
+				msj += Mensaje.personajeAtacado(mapa.getPersonajeActual(), atacado);
+				break;
 			default:
 				break;
 			}
+			
+			return msj;
 		}
 			
 		switch(trigger.exito)
@@ -82,10 +105,41 @@ public final class TriggerMaster {
 			}
 		case RESPONDER:
 			msj += trigger.exitoTriggerDesc;
+			break;
+		case REMOVEROBJETO:
+			mapa.getLugarActual().removerObjeto(atacado);
+			msj += trigger.exitoTriggerDesc;
+			break;
+		default:
+			break;
+		}
+		
+		switch (trigger.after) {
+		case REMOVERARMA:
+			Arma removida = mapa.getPersonajeActual().desequiparArma(mapa.getPersonajeActual().getArmaEquipada());
+			mapa.getPersonajeActual().removerDeInventario(removida);
+			break;
+
 		default:
 			break;
 		}
 	
+		
+		return msj;
+	}
+	
+	public static String EjecutarTriggerMovimiento(Mapa mapa, TriggerLugar trigger) {
+		
+		String msj = "";
+			
+		switch(trigger.exito)
+		{
+		case RESPONDER:
+			msj += trigger.exitoTriggerDesc;
+			break;
+		default:
+			break;
+		}
 		
 		return msj;
 	}

@@ -12,7 +12,7 @@ public class Item extends Objeto{
 
 	public Item(boolean rompible, String descRompible, boolean tomable, String descTomable, String descNoTomable) {
 		super();
-		this.rompible = rompible;
+
 		this.descRompible = descRompible;
 		this.tomable = tomable;
 		this.mensajeTomable = descTomable;

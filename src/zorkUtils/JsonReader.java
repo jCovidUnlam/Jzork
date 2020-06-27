@@ -11,7 +11,9 @@ import org.json.simple.parser.JSONParser;
 
 import com.jayway.jsonpath.JsonPath;
 
+import zorkEnum.EnumDireccion;
 import zorkPackage.Arma;
+import zorkPackage.Contenedor;
 import zorkPackage.Item;
 import zorkPackage.Lugar;
 import zorkPackage.Mapa;
@@ -22,6 +24,7 @@ import zorkPackage.Posicion;
 import zorkTrigger.Trigger;
 import zorkTrigger.TriggerAtaque;
 import zorkTrigger.TriggerItem;
+import zorkTrigger.TriggerLugar;
 
 
 public final class JsonReader {
@@ -50,6 +53,7 @@ public final class JsonReader {
 			
 			//Lugares
 			agregarLugares(mapa, jsonString, objetos, triggers);
+		
 	
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -95,6 +99,9 @@ public final class JsonReader {
 			case "ataque":
 				newTrigger = addNewAtaqueTrigger(trigger);
 				break;
+			case "movimiento":
+				newTrigger = addNewLugarTrigger(trigger);
+				break;
 			default:
 				newTrigger = null;
 				break;
@@ -125,6 +132,9 @@ public final class JsonReader {
 				break;
 			case "exito":
 				returned.setExito(Trigger.AccionExito.valueOf((String)entry.getValue().toString().toUpperCase()));
+				break;
+			case "exitoTriggerDesc":
+				returned.setExitoTriggerDesc((String)entry.getValue());
 				break;
 			case "error":
 				returned.setError(Trigger.AccionError.valueOf((String)entry.getValue().toString().toUpperCase()));
@@ -158,6 +168,9 @@ public final class JsonReader {
 			case "exito":
 				returned.setExito(Trigger.AccionExito.valueOf((String)entry.getValue().toString().toUpperCase()));
 				break;
+			case "exitoTriggerDesc":
+				returned.setExitoTriggerDesc((String)entry.getValue());
+				break;
 			case "error":
 				returned.setError(Trigger.AccionError.valueOf((String)entry.getValue().toString().toUpperCase()));
 				break;
@@ -176,12 +189,50 @@ public final class JsonReader {
 		
 		return returned;
 	}
+
+	private static TriggerLugar addNewLugarTrigger(Map<String,Object> trigger) {
+		TriggerLugar returned = new TriggerLugar();
+		
+		for (Map.Entry<String,Object> entry : trigger.entrySet()) {
+			
+			switch (entry.getKey()) {
+			case "idObjeto":
+				returned.setObjetoID((String)entry.getValue());
+				break;
+			case "afterTriggerDesc":
+				returned.setAfterTriggerDesc((String)entry.getValue());
+				break;
+			case "exito":
+				returned.setExito(Trigger.AccionExito.valueOf((String)entry.getValue().toString().toUpperCase()));
+				break;
+			case "exitoTriggerDesc":
+				returned.setExitoTriggerDesc((String)entry.getValue());
+				break;
+			case "error":
+				returned.setError(Trigger.AccionError.valueOf((String)entry.getValue().toString().toUpperCase()));
+				break;
+			case "after":
+				returned.setAfter(Trigger.AccionFinal.valueOf((String)entry.getValue().toString().toUpperCase()));
+				break;
+			case "errorTriggerDesc":
+				returned.setErrorTriggerDesc((String)entry.getValue());
+				break;
+			case "movimiento":
+				returned.setDireccion(EnumDireccion.valueOf((String)entry.getValue().toString().toUpperCase()));
+			default:
+				break;
+			}	
+		}
+		
+		return returned;
+	}
 	
 	private static void agregarLugares(Mapa mapa, String jsonString, List<Objeto> objetos, List<Trigger> triggers) {
 		
 		//Listo todo lo referente a todos los lugares.
 		List<String> nombres = JsonPath.read(jsonString,"$.lugares[*].nombre");
 		List<String> descripciones = JsonPath.read(jsonString,"$.lugares[*].descripcion");
+		List<String> mensajesLimite = JsonPath.read(jsonString,"$.lugares[*].mensajeLimite");
 		List<String> xs = JsonPath.read(jsonString,"$.lugares[*].x");
 		List<String> ys = JsonPath.read(jsonString,"$.lugares[*].y");
 		List<String> zs = JsonPath.read(jsonString,"$.lugares[*].z");
@@ -224,6 +275,7 @@ public final class JsonReader {
 			
 			//Agrego descripcion piola
 			lugar.setDescripcion(descripciones.get(i));
+			lugar.setMensajeLimite(mensajesLimite.get(i));
 			
 			//Lo agrego al mapa con la posicion.
 			mapa.addLugar(lugar, new Posicion(Integer.parseInt(xs.get(i)),Integer.parseInt(ys.get(i)),Integer.parseInt(zs.get(i))));
@@ -288,6 +340,7 @@ public final class JsonReader {
 					break;
 				}
 			}
+			
 			
 
 			for (Map.Entry<String,Object> entry : objeto.entrySet()) {

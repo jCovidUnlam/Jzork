@@ -6,6 +6,7 @@ import java.util.List;
 import zorkTrigger.Trigger;
 import zorkTrigger.TriggerAtaque;
 import zorkTrigger.TriggerItem;
+import zorkTrigger.TriggerLugar;
 
 public class Objeto {
 	
@@ -107,7 +108,8 @@ public class Objeto {
 	}
 
 	public void atacar(Objeto atacado) {
-		atacado.recibirAtaque(this.danio);
+		if(atacado.getSalud() != 0)
+			atacado.recibirAtaque(this.danio);
 	}
 	
 	public void recibirAtaque(double danio) {
@@ -128,6 +130,15 @@ public class Objeto {
 		return this.triggers.stream()
 			    .filter(x -> x instanceof TriggerItem)//Esto pregunta si es un obstaculo
 			    .map (x -> (TriggerItem) x)//Esto castea
+			    .findAny()// Esto devuelve si existe al menos un obstaculo. Por favor que no haya mas de 1 en una misma direccion jaja
+				.orElse(null);//Sino encuentra, retorna null.
+	}
+	
+	public TriggerLugar getTriggerMovimiento() {
+		//Si tiene mas de un triggerItem, hay q pensar como separarlo............ ni en pedo.
+		return this.triggers.stream()
+			    .filter(x -> x instanceof TriggerLugar)//Esto pregunta si es un obstaculo
+			    .map (x -> (TriggerLugar) x)//Esto castea
 			    .findAny()// Esto devuelve si existe al menos un obstaculo. Por favor que no haya mas de 1 en una misma direccion jaja
 				.orElse(null);//Sino encuentra, retorna null.
 	}

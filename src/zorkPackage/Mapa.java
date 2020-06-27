@@ -1,5 +1,6 @@
 package zorkPackage;
 import zorkEnum.EnumDireccion;
+import zorkTrigger.TriggerLugar;
 
 
 public class Mapa {
@@ -90,12 +91,16 @@ public class Mapa {
 	private Posicion posicionDireccion(String direccion) {
 		switch (direccion) {
 		case "norte":
+		case "frente":
 			return new Posicion(0,1,0);
 		case "sur":
+		case "atras":
 			return new Posicion(0,-1,0);
 		case "este":
+		case "derecha":
 			return new Posicion(1,0,0);
 		case "oeste":
+		case "izquierda":
 			return new Posicion(-1,0,0);
 		case "abajo":
 		case "bajar":
@@ -113,12 +118,13 @@ public class Mapa {
 	public String mover(String direccion) {
 		Posicion pos = posicionDireccion(direccion);
 		Lugar lugar = getLugar(pos);
-		if(lugar == null)
-			return Mensaje.fueraLimite();
+		if(lugar == null) 
+			return Mensaje.fueraLimite(getLugarActual().getMensajeLimite());
 
 		Obstaculo obstaculo = getLugarActual().getObstaculo(direccion);
 		if(obstaculo != null)
 			return Mensaje.existeObstaculo(obstaculo);
+		
 		
 		this.cantidadMovimientos++;
 		this.personajeActual.ir(pos);

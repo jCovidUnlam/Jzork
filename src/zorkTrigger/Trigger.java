@@ -8,6 +8,9 @@ public abstract class Trigger {
 		REMOVEROBJETO,
 		CONTRAATACAR,
 		RESPONDER,
+		REMOVERITEM,
+		ADQUIRIROBJETO,
+		NINGUNA,
 	}
 	
 	public enum AccionError{
@@ -20,6 +23,9 @@ public abstract class Trigger {
 		REMOVERITEM,
 		RESPONDER,
 		NINGUNA,
+		REMOVERARMA,
+		ADQUIRIROBJETO,
+		REMOVEROBJETO
 	}
 	
 	protected String afterTriggerDesc;
@@ -34,6 +40,14 @@ public abstract class Trigger {
 
 	public String getAfterTriggerDesc() {
 		return afterTriggerDesc;
+	}
+	
+	public void setExitoTriggerDesc(String exitoTriggerDesc) {
+		this.exitoTriggerDesc = exitoTriggerDesc;
+	}
+
+	public String getExitoTriggerDesc() {
+		return exitoTriggerDesc;
 	}
 
 	public void setAfterTriggerDesc(String afterTriggerDesc) {

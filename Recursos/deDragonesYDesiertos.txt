@@ -13,119 +13,166 @@ lo suficiente como para aparecer en el medio del desierto sin la nocion de que h
 	"lugares" :[
 		{
 			"nombre": "Desierto",
-			"descripcion": "Lamentablemente, no tienes tiempo para pensarlo demasiado. Una criatura colosal {n4} se aproxima hacia ti, escupiendo 
-fuego por la boca. Miras con desesperacion alrededor: puedes escapar al este o al oeste. Al sur, ves lo que parece una entrada a una aldea.",
+			"descripcion": "A tu alrededor, solo puede ver arena en todos lados, al sur ves lo que parece ser una aldea.
+{n4}",
 			"x": "5",
 			"y": "10",
 			"z": "0",
-			"items": "",
+			"mensajeLimite": "",
+			"items": "i2",
 			"obstaculos" : "o1",
-			"npcs" : "n4"
+			"npcs" : "n4",
 		},
 		{
-			"nombre": "Arena movediza",
-			"descripcion": "Huyes hacia el oeste, pero cuando crees que por fin estas a salvo, te encuentras con algo peor: un enorme banco de 
-arena movediza comienza a absorberte y, sin que puedas hacer nada, caes y caes sin fin.",
+			"nombre": "Desierto oeste",
+			"descripcion": "Huyes hacia el oeste pero el dragon no ha dejado de perseguirte y te bloquea el paso, no ves ninguna salida salvo seguir corriendo hacia el norte.",
 			"x": "4",
 			"y": "10",
 			"z": "0",
+			"mensajeLimite": "Solo ves arena, no puedes huir por el dragon si vas por este camino!",
+			"items": "",
+			"obstaculos" : "o2",
+			"npcs" : "n4",
+		},
+		{
+			"nombre": "Arena movediza",
+			"descripcion": "ENDGAME.Huyes hacia el oeste, pero cuando crees que por fin estas a salvo, te encuentras con algo peor: un enorme banco de 
+arena movediza comienza a absorberte y, sin que puedas hacer nada, caes y caes sin fin.",
+			"x": "3",
+			"y": "10",
+			"z": "0",
+			"mensajeLimite": "",							
 			"items": "",
 			"obstaculos" : "",
 			"npcs" : ""
 		},
 		{
 			"nombre": "Desierto abrazador",
-			"descripcion": "Huyes hacia el este, pero luego de caminar por horas bajo el sol abrazador, debes adminitr que estas
-perdido, y no hay mucho mas que puedas hacer.",
+			"descripcion": "Huyes hacia el este, el dragon sigue persiguiendote y no parece nada cansado, no ves mas salida que seguir corriendo y ver si logras perderlo.",
 			"x": "6",
 			"y": "10",
 			"z": "0",
+			"mensajeLimite": "Solo ves arena, no puedes huir por el dragon si vas por este camino!",
 			"items": "",
-			"obstaculos" : "",
-			"npcs" : ""
+			"obstaculos" : "o3",
+			"npcs" : "n4"
+		},
+		{
+			"nombre": "Medanos",
+			"descripcion": "ENDGAME.Finalmente, crees haber perdido al dragon, pero te encuentras muy cansado y no puedes mantenerte en pie.... no parece que vayas a salir de esta.",
+			"x": "7",
+			"y": "10",
+			"z": "0",
+			"mensajeLimite": "",
+			"items": "",
+			"obstaculos" : "o3",
+			"npcs" : "n4"
 		},
 		{
 			"nombre": "Entrada aldea",
 			"descripcion": "Llegas a una especie de arco que hace las veces de entrada a lo que parece una vieja aldea. 
-Mas alla del arco, que parece tener siglos de antiguedad se ve la aldea. Un temblor te recorre la espalda.",
+Mas alla del arco, que parece tener siglos de antiguedad se ve la aldea. Un temblor te recorre la espalda. 
+Puedes ver que a un costado, hay una especie de cartel tallado en piedra y al lado una especie de retrato, para variar, tambien tallado en piedra.
+{i10}.
+Al sur parece estar la aldea.",
 			"x": "5",
 			"y": "9",
 			"z": "0",
-			"items": "i5",
+			"mensajeLimite": "Solo logras ver ruinas y arena, no tendria sentido ir por este camino.",
+			"items": "i5 i9 i10",
 			"obstaculos" : "",
 			"npcs" : ""
 		},
 		{
 			"nombre": "Aldea",
-			"descripcion": "La aldea es un lugar casi tan vacio como el desierto, a excepcion de unos pocos lugares que ves abiertos. 
-A la izquierda de la calle principal ves una taberna, y a la derecha un almacen.
-En el suelo ves {i3}.
-",
+			"descripcion": "La aldea es un lugar casi tan vacio como el desierto, a excepcion de unos pocos lugares que parecen estar habitados. 
+A la derecha de la calle principal ves una taberna, y a la izquierda un almacen, al frente tuyo ves una especie de totem que jurarias te esta mirando.
+{i3}",
 			"x": "5",
 			"y": "8",
 			"z": "0",
+			"mensajeLimite": "",
 			"items": "i3",
-			"obstaculos" : "",
-			"npcs" : ""
+			"obstaculos" : "o4",
+			"npcs" : "n5"
 		},
-		{
+				{
 			"nombre": "Bosque",
-			"descripcion": "Luego d perder la nocion de cuantas horas habias caminado en una direccion incierta, llegas a un
-pequenio bosque. 
+			"descripcion": "Pasando la Aldea, llegas a un bosque que parece salido de un cuento de hadas.
 La brisa es agradable, no hace el calor abrazador que sentias en el desierto.
-Frente a ti, hay una roca con... {i2}
-",
+{n6}",
 			"x": "5",
 			"y": "7",
 			"z": "0",
+			"mensajeLimite": "Solo hay mas arboles, no es posible pasar por este camino.",
+			"items": "",
+			"obstaculos" : "o6",
+			"npcs" : "n6"
+		},
+		{
+			"nombre": "Claro",
+			"descripcion": "Luego d perder la nocion de cuantas horas habias caminado en una direccion incierta, llegas a un
+pequenio claro al final del bosque. 
+La brisa es agradable, no hace el calor abrazador que sentias en el desierto.
+Frente a ti, hay una roca{i2}.",
+
+			"x": "5",
+			"y": "6",
+			"z": "0",
+			"mensajeLimite": "",
 			"items": "i2 i8",
-			"obstaculos" : "",
+			"obstaculos" : "Solo hay mas arboles, no es posible pasar por este camino.",
 			"npcs" : ""
 		},
 		
 		{
 			"nombre": "Taberna",
-			"descripcion": "Es un lugar con escasa luz, donde hay pocas personas. A lo lejos se escucha el llanto de una mujer. 
-{n1}",
+			"descripcion": "Esto si que no se parece nada al bar de anoche, es un lugar con sombrio, y con algunos esqueletos sentados... 
+Para tu sorpresa, existen mas personas en esta pesadilla, y logras ver al tabernero que se fija en ti. 
+A lo lejos se escucha el llanto de una mujer que no ayuda para nada a tu resaca, pareciera que se encuentra en el Atico de la taberna.",
 			"x": "6",
 			"y": "8",
 			"z": "0",
+			"mensajeLimite": "El Tabernero exclada, a donde vas?? Parece que ademas de raro mi suenio no tiene buen humor.",
 			"items": "",
 			"obstaculos" : "",
 			"npcs" : "n1"
 		},
 		{
-			"nombre": "Primer piso",
-			"descripcion": "Subes por la escalera y, a cada paso que das, escuchas como el sollozo se intensifica.
-Al llegar al final de la escalera, te encuentras en una habitacion mas iluminada que la que acabas de abandonar, y finalmente descubres el origen 
-del sonido: {n2}. Cuando escucha el ruido de tus pisadas, levanta la vista y te mira, asustada.",
+			"nombre": "Atico",
+			"descripcion": "Subes por la escalera y, a cada paso que das, escuchas como el sollozo se intensifica, casi tanto como tu dolor de cabeza.
+Al llegar al final de la escalera, te encuentras en una habitacion mas iluminada que la que acabas de abandonar, y sin tantos esqueletos, solo algunos.
+{n2}",
 			"x": "6",
 			"y": "8",
 			"z": "1",
+			"mensajeLimite": "No tienes donde ir, solo puedes bajar hacia la Taberna nuevamente.",
 			"items": "",
 			"obstaculos" : "",
-			"npcs" : ""
+			"npcs" : "n2"
 		},
 		{
 			"nombre": "Almacen",
 			"descripcion": "Te sorprende lo grande que es aquel lugar. Entra luz natural desde el techo, se ve mucho polvo flotando alrededor.
 {i4}.
-Detras de un gran mostrador, ves al almacenero, que no repara en ti en absoluto.",
+Detras de un gran mostrador, ves al almacenero, que no repara en ti en absoluto.
+{i11}",
 			"x": "4",
 			"y": "8",
-			"z": "1",
-			"items": "i4",
+			"z": "0",
+			"mensajeLimite": "No hay mucho lugar donde ir, aunque al almacenero parece no importarle.",
+			"items": "i4 i11",
 			"obstaculos" : "",
 			"npcs" : "n3"
 		},
 		{
 			"nombre": "Oasis",
-			"descripcion": "Justo enfrente de tus ojos, se abre un oasis maravilloso donde ves {i6}: alli el 
-dragon guardaba todos los preciados tesoros que robaba a los aldeanos. Corres hacia el cofre, para ver si consigues el oro.",
+			"descripcion": "Justo enfrente de tus ojos, se abre un oasis maravilloso. {i7}",
 			"x": "5",
 			"y": "11",
 			"z": "0",
-			"items": "",
+			"mensajeLimite": "No tienes tiempo que perder caminando por la arena, tienes que despertar!",
+			"items": "i7",
 			"obstaculos" : "",
 			"npcs" : ""
 		},
@@ -144,25 +191,29 @@ dragon guardaba todos los preciados tesoros que robaba a los aldeanos. Corres ha
 		{
 			"id": "i2",
 			"nombre": "espada",
-			"descripcion": "Es una espada reluciente, muy pesada.",
-			"descripcionMapa": "una espada clavada en ella!",
+			"tipo" : "arma",
+			"danio" : "1500",
+			"descripcion": "Es una espada reluciente, muy muy muy pesada... muy...",
+			"descripcionMapa": " con... una espada clavada en ella!, Genial, tu viaje no hace mas que mejorar, ahora soy el rey arturo?",
 			"tomable": "true",
-			"mensajeTomable": "Logras sacarla de la piedra con facilidad. Es muy pesada, dudas de tener un buen control de ella.",
+			"mensajeTomable": "Para tu sorpresa, logras sacarla de la piedra con facilidad. Es muy pesada, dudas de tener un buen control de ella.
+La espada tiene una leyenda que dice 'equipame'. Creo que mi propio suenio me trata de tonto.",
 			"mensajeNoTomable" : "",
 		},
 		{
 			"id": "i3",
-			"nombre": "bolsa",
-			"descripcion": "Es una bolsa de arpillera, esta bastante sucia y llena de arena. No tiene nada dentro.",
-			"descripcionMapa": "una bolsa que llama tu atencion",
+			"nombre": "red",
+			"descripcion": "Es una red bastante vieja, esta bastante sucia y llena de arena. No tiene nada dentro.",
+			"descripcionMapa": "En suelo ves una red que llama tu atencion.",
 			"tomable": "true",
-			"mensajeTomable": "Cuando la agarras, te llenas las manos te arena. Maldices por lo bajo.",
+			"mensajeTomable": "Cuando la agarras, te llenas las manos te arena. Maldices por lo bajo, porque me esta pasando esto? donde quedo mi fernet?.",
 			"mensajeNoTomable" : "",
 		},
 		{
 			"id": "i4",
 			"nombre": "cartel",
-			"descripcion": "El cartel dice 'Almacen NO TENGO TIEMPO' fijado en una columna del almacen.",
+			"descripcion": "El cartel dice 'Almacen NO TENGO TIEMPO' fijado en una columna del almacen.
+Se nota que el lugar desborda de alegria...",
 			"descripcionMapa": "Hay un viejo cartel fijado a una columna del almacen.",
 			"tomable": "false",
 			"mensajeTomable": "",
@@ -180,7 +231,9 @@ pudo resolver su indomita  ira.
 Ninguno de los aldeanos se ha animado a intentar vencerlo, para poder vivir en paz.
 Entonces, aventurero, si posees la valentia que se necesita, podras encontrar mas alla de los limites mas australes de nuestras tierras
 una espada que, prometen, sera la que venza de una vez y para siempre a este malvado enemigo.
-Seras, querido aventurero, el mas venerado por siempre en nuestras tierras, si nos libras de esta maldicion.",
+Seras, querido aventurero, el mas venerado por siempre en nuestras tierras, si nos libras de esta maldicion.
+
+Tu te sigues preguntando que le pusieron tus amigos a tu bebida anoche...",
 			"descripcionMapa": "Hay unas marcas a cada lado del arco",
 			"tomable": "false",
 			"mensajeTomable": "",
@@ -189,8 +242,9 @@ Seras, querido aventurero, el mas venerado por siempre en nuestras tierras, si n
 		{
 			"id": "i6",
 			"nombre": "Cofre",
+			"rompible": "true",
 			"descripcion": "Es un antiguo cofre que parece encantado. Te fascina lo bello que es.",
-			"descripcionMapa": "un precioso cofre de madera",
+			"descripcionMapa": "Justo frente al oasis, ves un cofre de madera brillante.",
 			"tomable": "false",
 			"mensajeTomable": "",
 			"mensajeNoTomable" : "El cofre tiene una extraña magia que no permite que te lo lleves... O quiza, es solo que es muy pesado.",
@@ -198,10 +252,11 @@ Seras, querido aventurero, el mas venerado por siempre en nuestras tierras, si n
 		{
 			"id": "i7",
 			"nombre": "Oro",
-			"descripcion": "Son monedas de oro relucientes.",
-			"descripcionMapa": "muchas, muchas monedas de oro!",
+			"descripcion": "Son monedas de oro relucientes, apurate y agarralas!",
+			"descripcionMapa": "Brillando junto al oasis hay muchas, muchas monedas de oro!",
 			"tomable": "true",
-			"mensajeTomable": "Sera mejor que se lo lleves a Clara, no querras que caiga sobre ti la maldicion de los ladrones...",
+			"mensajeTomable": "Sera mejor que se lo lleves a Clara, no querras que caiga sobre ti la maldicion de los ladrones... 
+ya despues de lo que viste todo puede pasar, no?",
 			"mensajeNoTomable" : "",
 		},
 		{
@@ -214,6 +269,35 @@ Todo el equipo JCovid te saluda cordialmente, valiente aventurerx.",
 			"mensajeTomable": "",
 			"mensajeNoTomable" : "Sera mejor que dejes el Easter Egg aqui.",
 		},
+		{
+			"id": "i9",
+			"nombre": "retrato",
+			"descripcion": "Es un retrato hecho en piedra, pesimamente tallado, pareciera que representa una persona clavandole una espada a un dragon.",
+			"descripcionMapa": "",
+			"tomable": "false",
+			"mensajeTomable": "",
+			"mensajeNoTomable" : "Esta cosa horrible debe pesar una tonelada!",
+		},
+		{
+			"id": "i10",
+			"nombre": "mariposa",
+			"descripcion": "Es una linda mariposa, y para tu sopresa no habla ni te ataca ni escupe fuego. Parece que existen cosas normales aqui tambien.",
+			"descripcionMapa": "Sobre el cartel horrendo de piedra, se ve una bella mariposa azul",
+			"tomable": "false",
+			"mensajeTomable": "",
+			"mensajeNoTomable" : "En tu estado, no logras alcanzarla. Necesitaras algo mas para poder capturarla.",
+		},
+		{
+			"id": "i11",
+			"tipo" : "arma",
+			"danio" : "15",
+			"nombre": "palo",
+			"descripcion": "Es un palo de madera bastante humedo y roto",
+			"descripcionMapa": "En el mostrador, hay un palo de madera a un costado.",
+			"tomable": "true",
+			"mensajeTomable": "Logras tomar el palo, sin que el almacenero lo note, y aun cuando lo notase no parece que le interese demasiado...",
+			"mensajeNoTomable" : "",
+		},
 		
 	],
 	"obstaculos":[
@@ -222,7 +306,31 @@ Todo el equipo JCovid te saluda cordialmente, valiente aventurerx.",
 			"mensaje": "De verdad quieres ir por ahi? Hay un dragon...",
 			"direccion": "norte",
 			"objeto": "n4",
-		}
+		},
+		{
+			"id": "o2",
+			"mensaje": "Tu sentido aracnido te dice que no vallas por ahi, quizas el dragon gigante que quiere comerte tenga algo que ver.",
+			"direccion": "este",
+			"objeto": "n4",
+		},
+		{
+			"id": "o3",
+			"mensaje": "Tu sentido aracnido te dice que no vallas por ahi, quizas el dragon gigante que quiere comerte tenga algo que ver.",
+			"direccion": "oeste",
+			"objeto": "n4",
+		},
+		{
+			"id": "o4",
+			"mensaje": "Para tu sorpresa el totem se mueve mas rapido de lo que aparenta y te bloque el paso. Si, el totem se mueve, todo es muy normal.",
+			"direccion": "sur",
+			"objeto": "n5",
+		},
+		{
+			"id": "o6",
+			"mensaje": "Adaksdakkkk!!!.... El duede no parece interesado en dejarte pasar, pero ya me canse de buscar bichos, pasemos a la accion.",
+			"direccion": "sur",
+			"objeto": "n6",
+		},
 
 	],
 	"npcs":[
@@ -241,12 +349,14 @@ Vamos, ¡ve! no te quedes ahi parado todo el dia... Esta en el primer piso.",
 		{
 			"id" : "n2",
 			"nombre" : "Clara",
-			"descripcion": "hay una chica joven, delgada, con la cara enrojecida por el llanto, sentada en una cama que esta justo en el medio de la precaria habitacion",
-			"hablar": "¿Quien eres? ¿Como entraste? ¡Por favor, necesito tu ayuda! Necesito que recuperes el oro que perdi en el desierto, 
-sino mi padre me matara... Lo perdi en el desierto, justo cuando un dragon me ataco!",
-			"descripcionMapa": "Cuando escucha el ruido de tus pasos, levanta la vista y te mira, dudando.",
-			"danio" : "20",
-			"salud" : "15",
+			"descripcion": "Es una chica llorando, segun el tabernero se llama Clara, no hay mucho mas que ver.",
+			"hablar": "Quien eres? Como entraste? Por favor, necesito tu ayuda! Necesito que recuperes el oro que perdi en el desierto, 
+sino mi padre me matara... Lo perdi en el desierto, justo cuando un dragon me ataco!.
+Si lo recuperas, te dire el secreto para salir de aqui!.
+Finalmente alguien que entiende que estoy atrapado!, Perfecto, ahora solo tengo que matar un dragon, que puede salir mal?",
+			"descripcionMapa": "Al fondo de la habitacion, ves a Clara llorando, porque hay tanto drama en este suenio?",
+			"danio" : "0",
+			"salud" : "0",
 		},
 		{
 			"id" : "n3",
@@ -255,9 +365,11 @@ sino mi padre me matara... Lo perdi en el desierto, justo cuando un dragon me at
 			"hablar": "Que? Ah... Quien eres? Nunca te vi por aqui... Que cosa? un dragon te ataco? Si, definitivamente no eres depor aqui... 
 Bien, te contare. Esta aldea es mas vieja de lo que cualquiera de nuestros ancestros pueda recordar. Nadie sabe realmente quien la fundo, 
 ni hace cuanto tiempo. Lo que si sabemos, es que cada cierto tiempo, el dragon que te ataco aparece, comete algunas fechorias, y asi como vino, 
-veulve a irse. No sabemos por que lo hace, o con que intenciones. Esta vez, ya se comio a dos de nuestros aldeanos,  y robo pertenencias de otros...
-Que por que no hacemos nada? Estamos muy ocupados con nuestros asuntos... Pero, si quieres hacer algo, puedes ir a la entrada de la aldea:
-dicen que en el arco hay un cartel antiguo que contiene el secreto para derrotar al dragon. Buena suerte con ello.",
+vuelve a irse. No sabemos por que lo hace, o con que intenciones. Esta vez, ya se comio a dos de nuestros aldeanos,  y robo pertenencias de otros...
+Que por que no hacemos nada? No has visto que eso es un dragon? que podriamos hacer? El unico que parece no inmutarse es nuestro totem, que por cierto, ama las mariposas.
+
+Finalmente, el almacenero termino su incomprensible platica, de la cual no entendiste casi nada y solo entiendes 
+que para mover esa roca necesitaras un bicho... no habia una mariposa en la entrada?.",
 			"descripcionMapa": "Un hombre tras el mostrador, presumiblemente el encargado del lugar, te mira fijo sin decir una palabra.",
 			"danio" : "20",
 			"salud" : "15",
@@ -267,12 +379,32 @@ dicen que en el arco hay un cartel antiguo que contiene el secreto para derrotar
 			"nombre" : "Dragon",
 			"descripcion": "El dragon es colosal, color rojo carmesi, y se agita violentamente con el cuello estirado al cielo.",
 			"hablar": "El dragon te mira furioso, y escupe una llamarada que por poco no te quema en vida."
-			"descripcionMapa": "(un dragon!?)",
+			"descripcionMapa": "Desde el norte sientes una presencia amenzante, Una criatura colosal (un dragon??!) se aproxima hacia ti, escupiendo fuego por la boca! 
+Parece que esas copas que tomaste realmente hicieron efecto.",
 			"danio" : "100",
 			"salud" : "1500",
 		},
-
-
+		{
+			"id" : "n5",
+			"nombre" : "Totem",
+			"descripcion": "Es un totem que tapa tu camino... sera que te metiste en la pelicula de una noche en el museo?",
+			"hablar": "Tonton, dame un bichon!.
+Piensas por dentro dentro, el totem habla!. 
+Luego reparas en que sería mas conveniente: instruirte en lengua antigua de totems o simplemente ignorar todo esto.
+Empiezas a extraniar al dragon... al menos no hablaba.",
+			"descripcionMapa": "",
+			"danio" : "0",
+			"salud" : "0",
+		},
+		{
+			"id" : "n6",
+			"nombre" : "Duende",
+			"descripcion": "Es un duende, algo raro? despues del Totem ya todo es bastante normal. No creo que se mueva por las buenas.",
+			"hablar": "ADcfga, asdad adsadab!!!.. Si teniamos problemas con hablar con el Totem antiguo, ni hablar de esto."
+			"descripcionMapa": "Frente nuestro, aparece un.. duende, verde, feo, si definitivamente es un duende.",
+			"danio" : "15",
+			"salud" : "30",
+		},
 	],
 	"triggers": [
 		{
@@ -290,12 +422,57 @@ la maldicion de los ladrones...",
 			"tipo" : "ataque",
 			"idObjeto" : "n4",
 			"danioLimite" : "1000",
-			"exito": "CONTRAATACAR",
-			"exitoTriggerDesc": "Has atacado al dragon! Parece extremadamente furioso!",
+			"exito": "REMOVEROBJETO",
+			"exitoTriggerDesc": "El dragon cae rendido cuando logras clavarle la espada, la cual se parte en dos.. que lastima, era una linda espada.
+Descubres que detras de el al norte hay un oasis. Que podemos perder yendo para alla?",
 			"error": "RESPONDER",
-			"errorTriggerDesc": "No puede golpear a Alf con algo tan debil... prueba encontrar y equiparte un arma.",
-			"after": "RESPONDER"
-			"afterTriggerDesc" : "Alf se para de manos, corre guachin!",
+			"errorTriggerDesc": "Tus golpes se estrellan contra la piel del dragon, que parece concreto.
+El dragon no solo no reacciona, sino que te mira confundido, no deberias estar corriendo?. Mejor hacerle caso...",
+			"after": "REMOVERARMA"
+			"afterTriggerDesc" : "",
+		},
+		{
+			"tipo": "item",
+			"idObjeto" : "i10",
+			"items": "i3",
+			"exito": "ADQUIRIROBJETO",
+			"exitoTriggerDesc": "Logras capturar a la bella mariposa, pero debes mantenerla en la red para que no se escape.",
+			"afterTriggerDesc": "",
+			"error": "RESPONDER",
+			"errorTriggerDesc": "No creo que eso te sirva para poder capturar una mariposa...",
+			"after": "REMOVERITEM",
+			"afterTriggerDesc" : "",
+		},
+		{
+			"tipo": "item",
+			"idObjeto" : "n5",
+			"items": "i10",
+			"afterTriggerDesc": "",
+			"exito": "REMOVEROBJETO",
+			"exitoTriggerDesc": "El totem parece feliz, no creo que vuelva a molestarnos para pasar.",
+			"error": "RESPONDER",
+			"errorTriggerDesc": "Tonton, eso no es un bichon!.",
+			"after": "REMOVERITEM",
+			"afterTriggerDesc" : "",
+		},
+		{
+			"tipo": "item",
+			"idObjeto" : "n2",
+			"items": "i7",
+			"afterTriggerDesc": "",
+			"exito": "REMOVEROBJETO",
+			"exitoTriggerDesc": "ENDGAMESUCCESS. Clara sonrrie y te agradece, se levanta y te da un profundo beso....
+De golpe todo parece aclararse... te sientes mareado, con nauseas y comiezas a despertar.
+'Hey, hey, estas bien?' Abres los ojos y ves a.. Clara? No se parece en nada a la chica de tu suenio.
+No entiendes que esta pasando, pero miras alrededor y parece que has vuelto al bar.
+El barman parece tenerte miedo diciendo que intentaste apuñalarlo con un cuchillo al grito de 'Muere dragoon!' 
+mientras tanto te chocas con algo y notas que en suelo ves una persona petisa algo golpeada, y hasta parece que tiene orejas puntiagudas.
+Sigues recorriendo y notas al costado de una mesa un borracho grandote con la cara del totem, que te comentan le diste una cerveza..
+Al fondo del bar aparece tu amigo y te dice, 'ya terminaste con tu aventura? vamos para casa... '",
+			"error": "RESPONDER",
+			"errorTriggerDesc": "Eso no es lo que busco!... Ademas de imaginaria, parece pretenciosa.",
+			"after": "NINGUNA",
+			"afterTriggerDesc" : "",
 		},
 		
 	]	

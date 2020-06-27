@@ -23,20 +23,20 @@ public final class Mensaje {
 			msj += "  " + lugar.getNombre() + "\n";
 			msj += encabezado;
 			msj += "\n" + lugar.getDescripcion();
-			msj += "\nObjetos: ";
-			for(Objeto obj : lugar.getObjetos())
-				msj += obj.getNombre() + " - ";
 		}
 		
 		return msj;
 	}
 	
-	public static String fueraLimite() {
-		return "No hay lugar donde ir!";
+	public static String fueraLimite(String mensajeLimite) {
+		if(mensajeLimite == null || mensajeLimite.equals(""))
+			return "No hay lugar donde ir!";
+		
+		return mensajeLimite;
 	}
 	
 	public static String noExisteObjeto() {
-		return "Ese objeto no está en este lugar.";
+		return "Ese objeto no esta en este lugar.";
 	}
 	
 	public static String tomarItem(Item item) { 
@@ -65,9 +65,9 @@ public final class Mensaje {
 		String msj = "El estado de " + personaje.getNombre() + " es: \n";
 		msj += "Salud: " + personaje.getSalud() + "\n";
 		if(armaEquipada == null)
-			msj += "Danioo: " + personaje.getDanio();
+			msj += "Danio: " + personaje.getDanio();
 		else {
-			msj += "Danioo: " + armaEquipada.getDanio();			
+			msj += "Danio: " + armaEquipada.getDanio();			
 			msj += "\nArma equipada: " + personaje.getArmaEquipada().getNombre();
 		}
 		return msj;
@@ -83,7 +83,7 @@ public final class Mensaje {
 	}
 	
 	public static String comandoErroneo() {
-		return "Comando erróneo!";
+		return "Comando erroneo!";
 	}
 	
 	public static String noExisteNPC() {
@@ -133,7 +133,7 @@ public final class Mensaje {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd_HHmmss");
 		Date today = new Date();
 		
-		return personaje.getNombre() + " ha muerto en la pelea!\n" +
+		return personaje.getNombre() + " ha muerto!\n" +
 				"Podras ver todas tus acciones en el file 'Historial_"+
 				personaje.getNombre() + "_" + formatter.format(today) + "'.";
 	}
@@ -144,6 +144,19 @@ public final class Mensaje {
 	
 	public static String pretungarJugador(String verbo) {
 		return "Que es lo que desea " + verbo + "?";
+	}
+	
+	public static String noEsRompible(String nombreObjeto) {
+		return nombreObjeto + " no se puede romper!.";
+	}
+	
+	public static String endGameSuccess(String nombrePersonaje) {
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd_HHmmss");
+		Date today = new Date();
+		
+		return nombrePersonaje + " Felicitaciones has completado la aventura!\n" +
+				"Podras ver todas tus acciones en el file 'Historial_"+
+				nombrePersonaje + "_" + formatter.format(today) + "'.";
 	}
 	
 }

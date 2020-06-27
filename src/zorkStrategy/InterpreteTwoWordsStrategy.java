@@ -54,6 +54,8 @@ public class InterpreteTwoWordsStrategy implements InterpreteStrategy{
 		if(Lexico.inDescartar(verbo))
 			cmd = new Comando(verbo, Comando.Tipo.DESCARTAR);
 		
+		
+		
 		if(cmd == null)
 			return new Comando(Comando.Tipo.INVALIDO);
 		

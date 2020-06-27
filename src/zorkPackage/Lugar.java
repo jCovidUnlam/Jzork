@@ -11,11 +11,18 @@ public class Lugar {
 	private String nombre;
 	private String descripcion;
 	private List<Objeto> objetos;
-	private List<TriggerLugar> triggers;
+	private String mensajeLimite;
 	
+	public String getMensajeLimite() {
+		return mensajeLimite;
+	}
+
+	public void setMensajeLimite(String mensajeLimite) {
+		this.mensajeLimite = mensajeLimite;
+	}
+
 	public Lugar() {
 		objetos = new ArrayList<Objeto>();
-		triggers = new ArrayList<TriggerLugar>();
 	};
 	
 	public String getNombre() {
@@ -112,6 +119,24 @@ public class Lugar {
 	public void agregarObjeto(Objeto objeto) {
 		this.objetos.add(objeto);
 		this.descripcion += objeto.getDescripcionMapa();
+	}
+	
+	public Contenedor getContenedor(String nombreObjeto) {
+		Objeto obj = getObjeto(nombreObjeto);
+		if (obj == null || !(obj instanceof Contenedor))
+			return null;
+		
+		return (Contenedor)obj;
+	}
+	
+	public String romperObjeto(Contenedor objeto) {
+		
+		for (Item item : objeto.getContenido()) {
+			this.objetos.add(item);
+		}
+		
+		removerObjeto(objeto);
+		return objeto.getDescRompible();
 	}
 
 }

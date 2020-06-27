@@ -131,7 +131,7 @@
 			"danioLimite" : "14",
 			"exito": "CONTRAATACAR",
 			"exitoTriggerDesc": "No es posible atacar a Alf, tendras que encontrar otra forma de sacarlo del medio.",
-			"error": "RESPONDER",
+			"error": "ATACAR",
 			"errorTriggerDesc": "No puede golpear a Alf con algo tan debil... prueba encontrar y equiparte un arma.",
 			"after": "RESPONDER"
 			"afterTriggerDesc" : "Alf se para de manos, corre guachin!",

@@ -56,11 +56,26 @@ public class GameMaster {
 			case ATACAR:
 				devolucion = atacarObjeto(comando);
 				break;
+			case ROMPER:
+				devolucion = romperObjeto(comando);
+				break;
 			case INVALIDO:
 			default:
 				devolucion = Mensaje.comandoErroneo();
 				break;
 			}
+		}
+		
+		if(devolucion.contains("ENDGAME.")) {
+			devolucion = devolucion.replaceAll("ENDGAME.", "");
+			this.endGame = true;
+			devolucion += "\n\n" + Mensaje.endGameMuerte(mapa.getPersonajeActual());
+		}
+		
+		if(devolucion.contains("ENDGAMESUCCESS.")) {
+			devolucion = devolucion.replaceAll("ENDGAMESUCCESS.", "");
+			this.endGame = true;
+			devolucion += "\n\n" + Mensaje.endGameSuccess(mapa.getPersonajeActual().getNombre());
 		}
 		
 		Consola.mostrar(devolucion);
@@ -206,6 +221,9 @@ public class GameMaster {
 		if (trigger != null)
 			return TriggerMaster.EjecutarTriggerAtacar(mapa, trigger, atacado);
 			
+		if(atacado.getSalud() == 0)
+			return Mensaje.noEsAtacable(atacado.getNombre());
+		
 			String msj = "";
 			mapa.getPersonajeActual().atacar(atacado);
 			msj += Mensaje.atacarObjeto(mapa.getPersonajeActual(), atacado);
@@ -228,4 +246,15 @@ public class GameMaster {
 
 			return msj;
 		}
+	
+	public String romperObjeto(Comando comando) {
+		Objeto objeto = mapa.getLugarActual().getObjeto(comando.getNombreObjeto());
+		if (objeto == null)
+			return Mensaje.noExisteObjeto();
+		
+		if(!(objeto instanceof Contenedor))
+			return Mensaje.noEsRompible(objeto.getNombre());
+		
+		return mapa.getLugarActual().romperObjeto((Contenedor)objeto);
+	}
 }

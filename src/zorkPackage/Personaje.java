@@ -8,7 +8,7 @@ public class Personaje extends Objeto{
 	private List<Item> inventario;
 	private Posicion posicionActual;
 	private Arma armaEquipada;
-	private Boolean esPrincipal ;
+	private Boolean esPrincipal;
 	
 	public Personaje(String nombre, Boolean esPrincipal) {
 		super();

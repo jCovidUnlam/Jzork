@@ -56,6 +56,7 @@ public final class Consola {
 				, "   - Movimientos: (El jugador se podra desplazar y realizar las siguientes acciones)"
 				, "      + norte, sur, este, oeste, arriba abajo"
 				, "      + ir, subir, bajar, escalar, trepar" 
+				, "      + izquierda, derecha, frente, atras" 
 				, "   - Jugador: "
 				, "      + estado, inventario, reglas"
 				, "      + equipar"
