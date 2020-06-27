@@ -115,7 +115,7 @@ public final class JsonReader {
 				returned.setObjetoID((String)entry.getValue());
 				break;
 			case "items":
-				returned.setTrigges(objetos
+				returned.setTriggerObjects(objetos
 						.stream()
 						.filter(x -> Arrays.asList(entry.getValue().toString().split(" ")).contains(x.getObjetoID()))
 						.collect(Collectors.toList()));

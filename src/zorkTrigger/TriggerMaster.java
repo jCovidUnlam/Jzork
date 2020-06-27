@@ -16,7 +16,7 @@ public final class TriggerMaster {
 			return Mensaje.noTieneEfecto(item.getNombre(), afectado.getNombre());
 		
 		//Si llego hata aca, entocnes el trigger corre!
-		if(!trigger.getTrigges().contains(item)) //Si el item que esta usando el usaurio no tiene efecto en el objeto
+		if(!trigger.getTriggersObjects().contains(item)) //Si el item que esta usando el usaurio no tiene efecto en el objeto
 		{
 			switch(trigger.error)
 			{

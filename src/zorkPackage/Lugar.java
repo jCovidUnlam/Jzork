@@ -4,14 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import zorkTrigger.TriggerLugar;
+
 public class Lugar {
 
 	private String nombre;
 	private String descripcion;
 	private List<Objeto> objetos;
-
+	private List<TriggerLugar> triggers;
+	
 	public Lugar() {
 		objetos = new ArrayList<Objeto>();
+		triggers = new ArrayList<TriggerLugar>();
 	};
 	
 	public String getNombre() {

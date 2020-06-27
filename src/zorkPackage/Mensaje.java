@@ -65,9 +65,9 @@ public final class Mensaje {
 		String msj = "El estado de " + personaje.getNombre() + " es: \n";
 		msj += "Salud: " + personaje.getSalud() + "\n";
 		if(armaEquipada == null)
-			msj += "Daño: " + personaje.getDanio();
+			msj += "Danioo: " + personaje.getDanio();
 		else {
-			msj += "Daño: " + armaEquipada.getDanio();			
+			msj += "Danioo: " + armaEquipada.getDanio();			
 			msj += "\nArma equipada: " + personaje.getArmaEquipada().getNombre();
 		}
 		return msj;
@@ -107,7 +107,7 @@ public final class Mensaje {
 	}
 	
 	public static String personajeAtacado(Personaje personaje, Objeto atacante) {
-		return atacante.getNombre() + " te ha atacado causandote un daño de " + atacante.getDanio(); 
+		return atacante.getNombre() + " te ha atacado causandote un danio de " + atacante.getDanio(); 
 	}
 	
 	public static String soltoItem(Item item) {
@@ -117,12 +117,12 @@ public final class Mensaje {
 	public static String atacarObjeto(Objeto atacante, Objeto atacado) {
 		///femenino/masculino
 		return atacante.getNombre() + " ha atacado a " + atacado.getNombre() + " causandole " 
-				+ atacante.getDanio() + " puntos de daño.";
+				+ atacante.getDanio() + " puntos de danio.";
 	}
 	
 	public static String contraAtaqueRecibido(Objeto atacante, Personaje personaje) {
 		return atacante.getNombre() + " contraataca causandote " + atacante.getDanio() +
-				" puntos de daño. Tu salud actual es de: " + personaje.getSalud() + ".";
+				" puntos de danio. Tu salud actual es de: " + personaje.getSalud() + ".";
 	}
 	
 	public static String muerteObjeto(Objeto muerto) {
@@ -130,11 +130,11 @@ public final class Mensaje {
 	}
 	
 	public static String endGameMuerte(Personaje personaje) {
-		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd_HHmmss");
 		Date today = new Date();
 		
-		return personaje.getNombre() + " has muerto en la pelea!/n" +
-				"podrás ver todas tus acciones en el file 'Historial_"+
+		return personaje.getNombre() + " ha muerto en la pelea!\n" +
+				"Podras ver todas tus acciones en el file 'Historial_"+
 				personaje.getNombre() + "_" + formatter.format(today) + "'.";
 	}
 	
@@ -143,7 +143,7 @@ public final class Mensaje {
 	}
 	
 	public static String pretungarJugador(String verbo) {
-		return "Qué es lo que desea " + verbo + "?";
+		return "Que es lo que desea " + verbo + "?";
 	}
 	
 }

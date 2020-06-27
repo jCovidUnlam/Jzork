@@ -5,11 +5,11 @@ import java.util.List;
 import zorkPackage.Item;
 import zorkPackage.Objeto;
 
-public class TriggerItem extends Trigger{
+public class TriggerLugar extends Trigger{
 
-	List<Objeto> triggerObjects;
-	
-	public TriggerItem() {};
+	private List<Objeto> triggerObjects;
+	private int contador;
+	private boolean ejecutar;
 	
 	public List<Objeto> getTriggersObjects() {
 		return triggerObjects;
@@ -22,6 +22,16 @@ public class TriggerItem extends Trigger{
 	public void addItem(Item item) {
 		this.triggerObjects.add(item);
 	}
-		
 	
+	public int getContador() {
+		return this.contador; 
+	}
+	
+	public void restarContador() {
+		this.contador--;
+	}
+	
+	public void setEjecutar(boolean flag) {
+		this.ejecutar = flag;
+	}
 }

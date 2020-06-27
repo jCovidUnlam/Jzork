@@ -47,15 +47,27 @@ public final class Consola {
 
 		String msgReglas[] = { "--------------------------------------------------------------------------------------------------------"
 				,"Estas son las reglas del juego:"    
-				,"- El juego se basa en una interacción por medio de la consola, a través de ciertos comandos específicos."
-				, "- Los comandos podrán escribirse con mayúscula o minúscula, solo importa que estén bien escritos!."
-				, "- Si un comando está mal escrito entonces se le devolverá al jugador el mesaje de 'comando erróneo'."
-				, "- Todos los comandos que involucren otro objeto deben describirlo claramente: 'Tomar palo'"
-				, "- Los posibles comandos son:"
-				, " Ver Reglas -> Se mostrarán las reglas en cualquier momento del juego"
-				, " Norte -> Moverá al jugador en la dirección Norte"
-				, " Sur   -> Moverá al jugador en la dirección Sur"
-				, " Verbo objeto   -> Aplicara la accion sobre dicho objeto"
+				,"\nEl juego se basa en una interaccion por medio de la consola, a traves de ciertos comandos especificos."
+				, "Los comandos podran escribirse con mayuscula o minuscula, solo importa que esten bien escritos!."
+				, "Si un comando esta mal escrito entonces se le devolvera al jugador el mesaje de 'comando erroneo'."
+				, "Todos los comandos que involucren otro objeto deben describirlo claramente: 'Tomar palo'"
+				, "Los posibles comandos son:"
+				, "   - Ver Reglas: (Se mostraran las reglas en cualquier momento del juego)"
+				, "   - Movimientos: (El jugador se podra desplazar y realizar las siguientes acciones)"
+				, "      + norte, sur, este, oeste, arriba abajo"
+				, "      + ir, subir, bajar, escalar, trepar" 
+				, "   - Jugador: "
+				, "      + estado, inventario, reglas"
+				, "      + equipar"
+				, "      + hablar, charlar, interactuar"
+				, "      + atacar, achurrar, darle"
+				, "   - Objetos: (ejecutar 'objeto accion' y dependiendo del tipo de objeto, el jugador podra realizar diversas acciones)"
+				, "      + tomar, obtener, agarrar, adquirir"
+				, "      + romper, destruir, golpear, patear, estallar"
+				, "      + tomar, beber, ingerir, comer"
+				, "      + insepeccionar, mirar, observar, ver"
+				, "      + usar, utilizar"
+				, "      + soltar, descartar, desechar, tirar"
 				, "\nPara volver al menu inicial presione 0."
 				};
 		imprimirEnConsola(msgReglas);
@@ -77,24 +89,17 @@ public final class Consola {
 	public static void iniciarAventura(Mapa mapa) {
 
 		int tam = mapa.getNombre().length();
-		String encabezado = "\n";
+		String encabezado = "";
 		while(tam>=-4)
 		{
 			encabezado += "-";
 			tam--;
 		}
 		
-		tam = mapa.getDescripcion().length();
-		String encabezado2 = "";
-		while(tam>=0)
-		{
-			encabezado2 += "-";
-			tam--;
-		}
-		
-		String msgMenuAventura[] = { encabezado, "  " + mapa.getNombre(), encabezado2, mapa.getDescripcion() };
+		String msgMenuAventura[] = { "\n", encabezado, "  " + mapa.getNombre(), encabezado, mapa.getDescripcion()};
 		imprimirEnConsola(msgMenuAventura);
 	}
+
 
 	public static void imprimirEnConsola(String[] mensajes) {
 

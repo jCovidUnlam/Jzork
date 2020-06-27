@@ -2,10 +2,9 @@ package zorkTrigger;
 
 public abstract class Trigger {
 	
-	//Esto lo tire para que salga lo que quiero hacer, dp habria que ver una mejor forma de hacerlo
-	
 	
 	public enum AccionExito{
+		ENDGAME,
 		REMOVEROBJETO,
 		CONTRAATACAR,
 		RESPONDER,

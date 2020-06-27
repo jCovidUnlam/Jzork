@@ -1,7 +1,6 @@
 package zorkPackage;
-
-
 import zorkEnum.EnumDireccion;
+
 
 public class Mapa {
 	

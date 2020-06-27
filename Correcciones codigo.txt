@@ -1,0 +1,6 @@
+poder agregar un nombre compuesto al pj, esto en la salida del archivo de log puede afectar.
+
+ver el tema de triggers en lugares y el tema de triggers en lineas generales para mejorarlo. Aplicar strategy aca tambien seria bueno.
+
+
+si alguien se anima, ver de modificar el JSON o la clase que genera todo.
