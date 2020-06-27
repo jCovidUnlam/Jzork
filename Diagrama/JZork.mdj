@@ -12894,17 +12894,18 @@
 									"model": {
 										"$ref": "AAAAAAFy6Jgbo/16rh0="
 									},
-									"visible": false,
 									"font": "Arial;13;0",
-									"left": 517,
+									"left": 466,
 									"top": 875,
+									"width": 102.984375,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
 									"hostEdge": {
 										"$ref": "AAAAAAFy6JgbpP1+jh8="
 									},
-									"edgePosition": 1
+									"edgePosition": 1,
+									"text": "+Se compone por"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -12999,17 +13000,18 @@
 									"model": {
 										"$ref": "AAAAAAFy6Jgbo/17wD4="
 									},
-									"visible": false,
 									"font": "Arial;13;0",
-									"left": 544,
+									"left": 541,
 									"top": 963,
+									"width": 7.22998046875,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 25,
 									"hostEdge": {
 										"$ref": "AAAAAAFy6JgbpP1+jh8="
 									},
-									"edgePosition": 2
+									"edgePosition": 2,
+									"text": "1"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -13060,16 +13062,17 @@
 									"model": {
 										"$ref": "AAAAAAFy6Jgbo/18IcA="
 									},
-									"visible": false,
 									"font": "Arial;13;0",
-									"left": 544,
+									"left": 542,
 									"top": 789,
+									"width": 5.05908203125,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 25,
 									"hostEdge": {
 										"$ref": "AAAAAAFy6JgbpP1+jh8="
-									}
+									},
+									"text": "*"
 								},
 								{
 									"_type": "UMLQualifierCompartmentView",
@@ -16556,6 +16559,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFyJakZe93qqgo="
 							},
+							"name": "Se compone por",
 							"end1": {
 								"_type": "UMLAssociationEnd",
 								"_id": "AAAAAAFy6Jgbo/17wD4=",
@@ -16564,7 +16568,8 @@
 								},
 								"reference": {
 									"$ref": "AAAAAAFyJakZe93qqgo="
-								}
+								},
+								"multiplicity": "1"
 							},
 							"end2": {
 								"_type": "UMLAssociationEnd",
@@ -16575,7 +16580,8 @@
 								"reference": {
 									"$ref": "AAAAAAFyJZpunNub4mo="
 								},
-								"aggregation": "shared"
+								"aggregation": "shared",
+								"multiplicity": "*"
 							}
 						}
 					],
