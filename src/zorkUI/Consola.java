@@ -15,35 +15,29 @@ public final class Consola {
 
 	public static void mostrarMensajeBienvenida() {
 
-		System.out.println("\n########################");
-		System.out.println("     Mundo de JZork");
-
+		String msgBienvenida[] = {
+				"---------------------------------------------------------------" 
+				,"           Bienvenido al grandioso mundo de JZork"};
+		imprimirEnConsola(msgBienvenida);
 	}
 
 	public static void mostrarMenuInicio(String name) {
 
-		String msgMenuInicio[] = { "\n########################", "Bienvenidx a JZork " + name + "!",
-				"Por favor, elija entre las siguientes opciones:\n", "1 - Iniciar Aventura", "2 - Reglas",
-				"3 - Salir" };
+		String msgMenuInicio[] = { "---------------------------------------------------------------", 
+				"Hola " + name + " gracias por elegirnos! ",
+				"Para comenzar, por favor elija entre las siguientes opciones:\n", 
+				"1 - Iniciar Aventura", "2 - Reglas", "3 - Salir" };
 		imprimirEnConsola(msgMenuInicio);
 
-//		System.out.println("\n########################\n");
-//		System.out.println("Bienvenidx a JZork " + name + "!");
-//		System.out.println("Por favor, elija entre las siguientes opciones:\n");
-//		System.out.println("1 - Iniciar Aventura");
-//		System.out.println("2 - Reglas");
-//		System.out.println("3 - Salir");
 	}
 
 	public static void imprimirMenuAventuras() {
 
-		String msgMenuAventura[] = { "\nPor favor, seleccione alguna de las Aventuras:", "1 - Aventura 1",
+		String msgMenuAventura[] = {"----------------------------------------------",
+				"Por favor, seleccione alguna de las Aventuras:", "1 - Aventura 1",
 				"2 - Aventura 2", "3 - Volver al menu inicial" };
 		imprimirEnConsola(msgMenuAventura);
-//		System.out.println("\nPor favor, seleccione alguna de las Aventuras:");
-//		System.out.println("1 - Aventura 1");
-//		System.out.println("2 - Aventura 2");
-//		System.out.println("3 - Volver al menu inicial");
+
 	}
 
 	/**
@@ -51,26 +45,20 @@ public final class Consola {
 	 */
 	public static void mostrarReglas() {
 
-		String msgReglas[] = { "\nEstas son las reglas del juego:"
-				+ "\n- El juego se basa en una interacción por medio de la consola, a través de ciertos comandos específicos."
-				+ "\n- Los comandos podrán escribirse con mayúscula o minúscula, solo importa que estén bien escritos!."
-				+ "\n- Si un comando está mal escrito entonces se le devolverá al jugador el mesaje de 'comando erróneo'."
-				+ "\n- Todos los comandos que involucren otro objeto deben describirlo claramente: 'Tomar palo'"
-				+ "\n- Los posibles comandos son:"
-				+ "\n Ver Reglas -> Se mostrarán las reglas en cualquier momento del juego"
-				+ "\n Norte -> Moverá al jugador en la dirección Norte"
-				+ "\n Sur   -> Moverá al jugador en la dirección Sur" + "" };
+		String msgReglas[] = { "--------------------------------------------------------------------------------------------------------"
+				,"Estas son las reglas del juego:"    
+				,"- El juego se basa en una interacciÃ³n por medio de la consola, a travÃ©s de ciertos comandos especÃ­ficos."
+				, "- Los comandos podrÃ¡n escribirse con mayÃºscula o minÃºscula, solo importa que estÃ©n bien escritos!."
+				, "- Si un comando estÃ¡ mal escrito entonces se le devolverÃ¡ al jugador el mesaje de 'comando errÃ³neo'."
+				, "- Todos los comandos que involucren otro objeto deben describirlo claramente: 'Tomar palo'"
+				, "- Los posibles comandos son:"
+				, " Ver Reglas -> Se mostrarÃ¡n las reglas en cualquier momento del juego"
+				, " Norte -> MoverÃ¡ al jugador en la direcciÃ³n Norte"
+				, " Sur   -> MoverÃ¡ al jugador en la direcciÃ³n Sur"
+				, " Verbo objeto   -> Aplicara la accion sobre dicho objeto"
+				, "\nPara volver al menu inicial presione 0."
+				};
 		imprimirEnConsola(msgReglas);
-
-//		System.out.println("\nEstas son las reglas del juego:"
-//				+ "\n- El juego se basa en una interacción por medio de la consola, a través de ciertos comandos específicos."
-//				+ "\n- Los comandos podrán escribirse con mayúscula o minúscula, solo importa que estén bien escritos!."
-//				+ "\n- Si un comando está mal escrito entonces se le devolverá al jugador el mesaje de 'comando erróneo'."
-//				+ "\n- Todos los comandos que involucren otro objeto deben describirlo claramente: 'Tomar palo'"
-//				+ "\n- Los posibles comandos son:"
-//				+ "\n Ver Reglas -> Se mostrarán las reglas en cualquier momento del juego"
-//				+ "\n Norte -> Moverá al jugador en la dirección Norte"
-//				+ "\n Sur   -> Moverá al jugador en la dirección Sur" + "");
 	}
 
 	// este metodo se puede integrar con imprimir en consola porque basicamente
@@ -88,14 +76,24 @@ public final class Consola {
 
 	public static void iniciarAventura(Mapa mapa) {
 
-		String msgMenuAventura[] = { "\n########################", "     " + mapa.getNombre(),
-				"########################\n", mapa.getDescripcion() };
+		int tam = mapa.getNombre().length();
+		String encabezado = "\n";
+		while(tam>=-4)
+		{
+			encabezado += "-";
+			tam--;
+		}
+		
+		tam = mapa.getDescripcion().length();
+		String encabezado2 = "";
+		while(tam>=0)
+		{
+			encabezado2 += "-";
+			tam--;
+		}
+		
+		String msgMenuAventura[] = { encabezado, "  " + mapa.getNombre(), encabezado2, mapa.getDescripcion() };
 		imprimirEnConsola(msgMenuAventura);
-
-//		System.out.println("\n########################");
-//		System.out.println("     " + mapa.getNombre());
-//		System.out.println("########################\n");
-//		System.out.println(mapa.getDescripcion());
 	}
 
 	public static void imprimirEnConsola(String[] mensajes) {
