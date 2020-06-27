@@ -19,7 +19,7 @@ fuego por la boca. Miras con desesperacion alrededor: puedes escapar al este o a
 			"y": "10",
 			"z": "0",
 			"items": "",
-			"obstaculos" : "",
+			"obstaculos" : "o1",
 			"npcs" : "n4"
 		},
 		{
@@ -78,7 +78,7 @@ Frente a ti, hay una roca con... {i2}
 			"x": "5",
 			"y": "7",
 			"z": "0",
-			"items": "i2",
+			"items": "i2 i8",
 			"obstaculos" : "",
 			"npcs" : ""
 		},
@@ -117,6 +117,17 @@ Detras de un gran mostrador, ves al almacenero, que no repara en ti en absoluto.
 			"items": "i4",
 			"obstaculos" : "",
 			"npcs" : "n3"
+		},
+		{
+			"nombre": "Oasis",
+			"descripcion": "Justo enfrente de tus ojos, se abre un oasis maravilloso donde ves {i6}: alli el 
+dragon guardaba todos los preciados tesoros que robaba a los aldeanos. Corres hacia el cofre, para ver si consigues el oro.",
+			"x": "5",
+			"y": "11",
+			"z": "0",
+			"items": "",
+			"obstaculos" : "",
+			"npcs" : ""
 		},
 		
 	],
@@ -175,10 +186,43 @@ Seras, querido aventurero, el mas venerado por siempre en nuestras tierras, si n
 			"mensajeTomable": "",
 			"mensajeNoTomable" : "No puedes tomar este cartel, esta fijado al arco.",
 		},
+		{
+			"id": "i6",
+			"nombre": "Cofre",
+			"descripcion": "Es un antiguo cofre que parece encantado. Te fascina lo bello que es.",
+			"descripcionMapa": "un precioso cofre de madera",
+			"tomable": "false",
+			"mensajeTomable": "",
+			"mensajeNoTomable" : "El cofre tiene una extraña magia que no permite que te lo lleves... O quiza, es solo que es muy pesado.",
+		},
+		{
+			"id": "i7",
+			"nombre": "Oro",
+			"descripcion": "Son monedas de oro relucientes.",
+			"descripcionMapa": "muchas, muchas monedas de oro!",
+			"tomable": "true",
+			"mensajeTomable": "Sera mejor que se lo lleves a Clara, no querras que caiga sobre ti la maldicion de los ladrones...",
+			"mensajeNoTomable" : "",
+		},
+		{
+			"id": "i8",
+			"nombre": "EasterEgg",
+			"descripcion": "Has encontrado el Easter Egg de la aventura De Dragones y Desiertos! Felicitaciones!
+Todo el equipo JCovid te saluda cordialmente, valiente aventurerx.",
+			"descripcionMapa": "",
+			"tomable": "false",
+			"mensajeTomable": "",
+			"mensajeNoTomable" : "Sera mejor que dejes el Easter Egg aqui.",
+		},
 		
 	],
 	"obstaculos":[
-
+		{
+			"id": "o1",
+			"mensaje": "De verdad quieres ir por ahi? Hay un dragon...",
+			"direccion": "norte",
+			"objeto": "n4",
+		}
 
 	],
 	"npcs":[
@@ -231,7 +275,28 @@ dicen que en el arco hay un cartel antiguo que contiene el secreto para derrotar
 
 	],
 	"triggers": [
-	
+		{
+			"tipo": "item",
+			"idObjeto" : "i6",
+			"items": "i7",
+			"afterTriggerDesc": "Dentro del cofre, encuentras el oro de Clara. Debes tomarlo y llevarselo, si no quieren que caiga sobre ti
+la maldicion de los ladrones...",
+			"exito": "REMOVEROBJETO",
+			"error": "NINGUNA",
+			"errorTriggerDesc": "error? no hay error",
+			"after": "NINGUNA"
+		},
+		{
+			"tipo" : "ataque",
+			"idObjeto" : "n4",
+			"danioLimite" : "1000",
+			"exito": "CONTRAATACAR",
+			"exitoTriggerDesc": "Has atacado al dragon! Parece extremadamente furioso!",
+			"error": "RESPONDER",
+			"errorTriggerDesc": "No puede golpear a Alf con algo tan debil... prueba encontrar y equiparte un arma.",
+			"after": "RESPONDER"
+			"afterTriggerDesc" : "Alf se para de manos, corre guachin!",
+		},
 		
 	]	
 }
