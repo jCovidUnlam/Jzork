@@ -67,11 +67,18 @@ public class Main {
 				break;
 			case "2":
 				Consola.mostrarReglas();
+				do {
+					System.out.print("\n>> ");
+					scan = (in.next());
+					if(!scan.equals("0"))
+						System.out.println("\nOpcion incorrecta, para volver al menu principal ingrese 0.");
+				}while(!scan.equals("0"));
+				Consola.mostrarMenuInicio(name);
 				break;
 			case "3":
 				if (in != null)
 					in.close();
-				System.out.println("\nAdios cobarde!");
+				System.out.println("\nAdios!");
 				break;
 			default:
 				System.out.println("\nPor favor, elija alguna de las opciones disponibles.");
