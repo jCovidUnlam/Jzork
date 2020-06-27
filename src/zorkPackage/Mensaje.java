@@ -7,16 +7,25 @@ public final class Mensaje {
 	
 	public static String mensajeLugar(Lugar lugar) {
 		String msj = "";
+		int tam = lugar.getNombre().length();
+		String encabezado = "";
+		
 		if(lugar == null)
 			msj = "No hay lugar donde ir!";
 		else {
-			msj += "\n########################\n";
-			msj += "     " + lugar.getNombre() + "\n";
-			msj += "########################\n";
+			while(tam>=-4)
+			{
+				encabezado += "-";
+				tam--;
+			}
+			encabezado += "\n";
+			msj += encabezado;
+			msj += "  " + lugar.getNombre() + "\n";
+			msj += encabezado;
 			msj += "\n" + lugar.getDescripcion();
-			//msj += "\nObjetos: ";
-			//for(Objeto obj : lugar.getObjetos())
-			//	msj += obj.getNombre() + " - ";
+			msj += "\nObjetos: ";
+			for(Objeto obj : lugar.getObjetos())
+				msj += obj.getNombre() + " - ";
 		}
 		
 		return msj;
@@ -27,7 +36,7 @@ public final class Mensaje {
 	}
 	
 	public static String noExisteObjeto() {
-		return "Ese objeto no est· en este lugar.";
+		return "Ese objeto no est√° en este lugar.";
 	}
 	
 	public static String tomarItem(Item item) { 
@@ -56,9 +65,9 @@ public final class Mensaje {
 		String msj = "El estado de " + personaje.getNombre() + " es: \n";
 		msj += "Salud: " + personaje.getSalud() + "\n";
 		if(armaEquipada == null)
-			msj += "DaÒo: " + personaje.getDanio();
+			msj += "Da√±o: " + personaje.getDanio();
 		else {
-			msj += "DaÒo: " + armaEquipada.getDanio();			
+			msj += "Da√±o: " + armaEquipada.getDanio();			
 			msj += "\nArma equipada: " + personaje.getArmaEquipada().getNombre();
 		}
 		return msj;
@@ -74,7 +83,7 @@ public final class Mensaje {
 	}
 	
 	public static String comandoErroneo() {
-		return "Comando errÛneo!";
+		return "Comando err√≥neo!";
 	}
 	
 	public static String noExisteNPC() {
@@ -98,7 +107,7 @@ public final class Mensaje {
 	}
 	
 	public static String personajeAtacado(Personaje personaje, Objeto atacante) {
-		return atacante.getNombre() + " te ha atacado causandote un daÒo de " + atacante.getDanio(); 
+		return atacante.getNombre() + " te ha atacado causandote un da√±o de " + atacante.getDanio(); 
 	}
 	
 	public static String soltoItem(Item item) {
@@ -108,12 +117,12 @@ public final class Mensaje {
 	public static String atacarObjeto(Objeto atacante, Objeto atacado) {
 		///femenino/masculino
 		return atacante.getNombre() + " ha atacado a " + atacado.getNombre() + " causandole " 
-				+ atacante.getDanio() + " puntos de daÒo.";
+				+ atacante.getDanio() + " puntos de da√±o.";
 	}
 	
 	public static String contraAtaqueRecibido(Objeto atacante, Personaje personaje) {
 		return atacante.getNombre() + " contraataca causandote " + atacante.getDanio() +
-				" puntos de daÒo. Tu salud actual es de: " + personaje.getSalud() + ".";
+				" puntos de da√±o. Tu salud actual es de: " + personaje.getSalud() + ".";
 	}
 	
 	public static String muerteObjeto(Objeto muerto) {
@@ -125,7 +134,7 @@ public final class Mensaje {
 		Date today = new Date();
 		
 		return personaje.getNombre() + " has muerto en la pelea!/n" +
-				"podr·s ver todas tus acciones en el file 'Historial_"+
+				"podr√°s ver todas tus acciones en el file 'Historial_"+
 				personaje.getNombre() + "_" + formatter.format(today) + "'.";
 	}
 	
@@ -134,7 +143,7 @@ public final class Mensaje {
 	}
 	
 	public static String pretungarJugador(String verbo) {
-		return "QuÈ es lo que desea " + verbo + "?";
+		return "Qu√© es lo que desea " + verbo + "?";
 	}
 	
 }
