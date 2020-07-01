@@ -38,7 +38,7 @@ public class Main {
 
 					switch (scan) {
 					case "1":
-						InitConfig.getMapa(name, "./Recursos/jsonPropio.txt");
+						InitConfig.getMapa(name, "./Recursos/jsonpirata.txt");
 						in.close();
 						init = true;
 						break;
