@@ -1,16 +1,16 @@
 MOVIMIENTOSIMPLE;norte;sur;este;oeste;arriba;abajo
-usuarioSimple;estado;inventario;reglas
-adquiribles;tomar;obtener;agarrar;adquirir
-rompibles;romper;destruir;golper;patear;estallar
-consumible;tomar;beber;ingerir;comer
-inspeccionable;inspeccionar;mirar;observar;ver;leer
-usable;usar;utilizar;dar
-movimiento;ir;subir;bajar;escalar;trepar
-usuario;equipar
+MOVIMIENTO;ir;subir;bajar;escalar;trepar
+USUARIOSIMPLE;estado;inventario;reglas
+USUARIO;equipar
+ADQUIRIBLES;tomar;obtener;agarrar;adquirir
+ROMPIBLES;romper;destruir;golper;patear;estallar
+CONSUMIBLES;tomar;beber;ingerir;comer
+INSPECCIONABLES;inspeccionar;mirar;observar;ver;leer
+USABLES;usar;utilizar;dar
 NPC;hablar;charlar;interactuar			
-ataque;atacar;achurrar;darle
-descartables;soltar;descartar;desechar;tirar
-atributo;el;la;ellos;ellas;hacia;a;al;en;con
+ATAQUE;atacar;achurrar;darle
+DESCARTABLES;soltar;descartar;desechar;tirar
+ATRIBUTOS;el;la;ellos;ellas;hacia;a;al;en;con
 CARACTERESESPECIALES;';/;\;|
 
 

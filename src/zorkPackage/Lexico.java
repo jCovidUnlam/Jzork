@@ -13,15 +13,15 @@ public final class Lexico {
 	
 	public static  String[] usuarioSimple;
 
-	public static  String[] adquirible;
+	public static  String[] adquiribles;
 
 	public static  String[] rompibles;
 
-	public static  String[] consumible;
+	public static  String[] consumibles;
 
-	public static  String[] inspeccionable;
+	public static  String[] inspeccionables;
 
-	public static  String[] usable; 
+	public static  String[] usables; 
 	
 	public static  String[] movimiento; 
 
@@ -62,7 +62,7 @@ public final class Lexico {
 	}
 	
 	public static boolean inAdquirible(String verbo) {
-		return Arrays.asList(adquirible).contains(verbo);
+		return Arrays.asList(adquiribles).contains(verbo);
 	}
 	
 	public static boolean inRompible(String verbo) {
@@ -70,15 +70,15 @@ public final class Lexico {
 	}
 	
 	public static boolean inConsumible(String verbo) {
-		return Arrays.asList(consumible).contains(verbo);
+		return Arrays.asList(consumibles).contains(verbo);
 	}
 	
 	public static boolean inInspeccionable(String verbo) {
-		return Arrays.asList(inspeccionable).contains(verbo);
+		return Arrays.asList(inspeccionables).contains(verbo);
 	}
 	
 	public static boolean inUsable(String verbo) {
-		return Arrays.asList(usable).contains(verbo);
+		return Arrays.asList(usables).contains(verbo);
 	}
 	
 	public static boolean inDescartar(String verbo) {
@@ -99,24 +99,24 @@ public final class Lexico {
 
 			switch (tipolexico) {
 			case ADQUIRIBLES:
-				adquirible = new String[lexico.length - 1];
-				System.arraycopy(lexico, 1, adquirible, 0, lexico.length - 1);
+				adquiribles = new String[lexico.length - 1];
+				System.arraycopy(lexico, 1, adquiribles, 0, lexico.length - 1);
 				break;
 			case ROMPIBLES:
 				rompibles = new String[lexico.length - 1];
 				System.arraycopy(lexico, 1, rompibles, 0, lexico.length - 1);
 				break;
-			case CONSUMIBLE:
-				consumible = new String[lexico.length - 1];
-				System.arraycopy(lexico, 1, consumible, 0, lexico.length - 1);
+			case CONSUMIBLES:
+				consumibles = new String[lexico.length - 1];
+				System.arraycopy(lexico, 1, consumibles, 0, lexico.length - 1);
 				break;
-			case INSPECCIONABLE:
-				inspeccionable = new String[lexico.length - 1];
-				System.arraycopy(lexico, 1, inspeccionable, 0, lexico.length - 1);
+			case INSPECCIONABLES:
+				inspeccionables = new String[lexico.length - 1];
+				System.arraycopy(lexico, 1, inspeccionables, 0, lexico.length - 1);
 				break;
-			case USABLE:
-				usable = new String[lexico.length - 1];
-				System.arraycopy(lexico, 1, usable, 0, lexico.length - 1);
+			case USABLES:
+				usables = new String[lexico.length - 1];
+				System.arraycopy(lexico, 1, usables, 0, lexico.length - 1);
 				break;
 			case MOVIMIENTO:
 				movimiento = new String[lexico.length - 1];
@@ -142,7 +142,7 @@ public final class Lexico {
 				ataque = new String[lexico.length - 1];
 				System.arraycopy(lexico, 1, ataque, 0, lexico.length - 1);
 				break;
-			case ATRIBUTO:
+			case ATRIBUTOS:
 				atributos = new String[lexico.length - 1];
 				System.arraycopy(lexico, 1, atributos, 0, lexico.length - 1);
 				break;

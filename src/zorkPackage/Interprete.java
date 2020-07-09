@@ -16,6 +16,9 @@ public final class Interprete {
 		
 		InterpreteStrategy estrategy = null;
 		
+		
+		
+		
 		if(cadena.size() == 1)
 			estrategy = new InterpreteOneWordStrategy(cadena);
 		else if(cadena.size() == 2)
