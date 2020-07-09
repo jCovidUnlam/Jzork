@@ -11,11 +11,10 @@ public final class Interprete {
 	
 	public static Comando interpretar(ArrayList<String> cadena) {
 		
-		Comando comando = new Comando(Comando.Tipo.INVALIDO);
-		InterpreteStrategy estrategy = null;
-		
 		if(cadena == null || cadena.size() == 0)
-			return comando;
+			return new Comando(Comando.Tipo.INVALIDO);
+		
+		InterpreteStrategy estrategy = null;
 		
 		if(cadena.size() == 1)
 			estrategy = new InterpreteOneWordStrategy(cadena);

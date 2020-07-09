@@ -7,10 +7,6 @@ import zorkPackage.Mapa;
 
 public final class Consola {
 
-	/**
-	 * Este metodo muestra el menu de inicio
-	 */
-
 	private final static Logger log = Logger.getLogger(Consola.class);
 
 	public static void mostrarMensajeBienvenida() {
@@ -20,7 +16,10 @@ public final class Consola {
 				,"           Bienvenido al grandioso mundo de JZork"};
 		imprimirEnConsola(msgBienvenida);
 	}
-
+	
+	/**
+	 * Este metodo muestra el menu de inicio
+	 */
 	public static void mostrarMenuInicio(String name) {
 
 		String msgMenuInicio[] = { "---------------------------------------------------------------", 
@@ -30,7 +29,7 @@ public final class Consola {
 		imprimirEnConsola(msgMenuInicio);
 
 	}
-
+	
 	public static void imprimirMenuAventuras() {
 
 		String msgMenuAventura[] = {"----------------------------------------------",
@@ -74,9 +73,7 @@ public final class Consola {
 		imprimirEnConsola(msgReglas);
 	}
 
-	// este metodo se puede integrar con imprimir en consola porque basicamente
-	// hacen lo mismo
-	// pero tenemos que cambiar como mandamos los mensajes en la consola
+
 	public static void mostrar(String msj) {
 		System.out.println("\n" + msj);
 
@@ -101,7 +98,6 @@ public final class Consola {
 		imprimirEnConsola(msgMenuAventura);
 	}
 
-
 	public static void imprimirEnConsola(String[] mensajes) {
 
 		LoggerHistory.loggerConfig();
@@ -110,7 +106,6 @@ public final class Consola {
 			System.out.println(mensaje);
 			log.info(mensaje);
 		}
-
 	}
 
 }

@@ -19,6 +19,7 @@
 			"items": "",
 			"obstaculos" : "o1 o2 o3 o4 o5 o6",
 			"npcs" : "",
+			"mensajeLimite": "",
 		},
 		{
 			"nombre": "lugar norte",
@@ -29,6 +30,7 @@
 			"items": "",
 			"obstaculos" : "o7",
 			"npcs" : "",
+			"mensajeLimite": "",
 		},
 		{
 			"nombre": "lugar norte norte",
@@ -39,6 +41,7 @@
 			"items": "",
 			"obstaculos" : "",
 			"npcs" : "",
+			"mensajeLimite": "",
 		},
 		{
 			"nombre": "lugar sur",
@@ -49,6 +52,7 @@
 			"items": "",
 			"obstaculos" : "",
 			"npcs" : "",
+			"mensajeLimite": "",
 		},
 		{
 			"nombre": "lugar este",

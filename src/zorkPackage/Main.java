@@ -14,13 +14,13 @@ public class Main {
 		Scanner in = new Scanner(System.in);
 		String scan;
 		String name;
-		Date fecha = new Date();
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyMMdd_HHmmss"); 
+
 		Consola.mostrarMensajeBienvenida();
 		System.out.print("\nIngrese su nombre: ");
 		name = (in.next());
 		
-		System.setProperty("logfilename", name +"_"+ formatter.format(fecha).toString());
+		Mensaje.setFileName(name +"_"+ new SimpleDateFormat("yyyMMdd_HHmmss").format(new Date()).toString());
+		System.setProperty("logfilename", Mensaje.getFileName());
 		
 		Consola.mostrarMenuInicio(name);
 		boolean init = false;
@@ -84,10 +84,7 @@ public class Main {
 				System.out.println("\nPor favor, elija alguna de las opciones disponibles.");
 				break;
 			}
-			/*
-			 * Si estan pensando que cortar el scanner del main, y abrir otro cuando inicie
-			 * el juego es muy cabeza, tienen que hacer esto con hilos. Buena suerte.
-			 */
+
 		} while (!scan.equals("3"));
 	}
 

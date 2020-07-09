@@ -21,7 +21,7 @@ public class TestObstaculo {
 	void init() throws IOException{
 		mapa = new Mapa();
 		mapa.setPersonajeActual(new Personaje("Tester obstaculos",true));
-		JsonReader.construirAventura(mapa, "./Recursos/testObstaculo.txt");
+		JsonReader.construirAventura(mapa, "./Recursos/TestFiles/testObstaculo.txt");
 	}
 	
 	@Test

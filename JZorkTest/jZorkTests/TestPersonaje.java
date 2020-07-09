@@ -18,7 +18,7 @@ class TestPersonaje {
 		p = new Personaje("Juanito",true);
 		mapa = new Mapa();
 		mapa.setPersonajeActual(p);
-		JsonReader.construirAventura(mapa, "./Recursos/testPersonaje.txt");
+		JsonReader.construirAventura(mapa, "./Recursos/TestFiles/testPersonaje.txt");
 	}
 
 	@Test

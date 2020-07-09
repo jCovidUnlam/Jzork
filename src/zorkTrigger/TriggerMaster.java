@@ -1,6 +1,6 @@
 package zorkTrigger;
 
-import zorkEnum.EnumDireccion;
+
 import zorkPackage.Arma;
 import zorkPackage.Item;
 import zorkPackage.Mapa;

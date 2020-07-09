@@ -4,7 +4,7 @@ import java.util.List;
 
 import zorkPackage.Comando;
 import zorkPackage.Lexico;
-import zorkPackage.Comando.Tipo;
+
 
 public class InterpreteThreeWordStrategy implements InterpreteStrategy {
 

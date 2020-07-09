@@ -34,7 +34,7 @@ public class TestInventario {
 		mapa = new Mapa();
 		personaje = new Personaje("Tester inventario",true);
 		mapa.setPersonajeActual(personaje);
-		JsonReader.construirAventura(mapa, "./Recursos/testInventario.txt");
+		JsonReader.construirAventura(mapa, "./Recursos/TestFiles/testInventario.txt");
 	}
 
 	@Test

@@ -13,7 +13,7 @@ import com.jayway.jsonpath.JsonPath;
 
 import zorkEnum.EnumDireccion;
 import zorkPackage.Arma;
-import zorkPackage.Contenedor;
+
 import zorkPackage.Item;
 import zorkPackage.Lugar;
 import zorkPackage.Mapa;
@@ -275,7 +275,10 @@ public final class JsonReader {
 			
 			//Agrego descripcion piola
 			lugar.setDescripcion(descripciones.get(i));
-			lugar.setMensajeLimite(mensajesLimite.get(i));
+			
+			//Si tiene algun mensaje custom para el limite del mapa lo agregamos
+			if(mensajesLimite != null && mensajesLimite.size() > i)
+				lugar.setMensajeLimite(mensajesLimite.get(i));
 			
 			//Lo agrego al mapa con la posicion.
 			mapa.addLugar(lugar, new Posicion(Integer.parseInt(xs.get(i)),Integer.parseInt(ys.get(i)),Integer.parseInt(zs.get(i))));

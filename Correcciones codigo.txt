@@ -2,5 +2,15 @@ poder agregar un nombre compuesto al pj, esto en la salida del archivo de log pu
 
 ver el tema de triggers en lugares y el tema de triggers en lineas generales para mejorarlo. Aplicar strategy aca tambien seria bueno.
 
-
 si alguien se anima, ver de modificar el JSON o la clase que genera todo.
+
+Cambiar para poder extraer el json de distintos archivos y hacer mas simple su carga.
+
+trigger para cambiar la descripcion de otros lugares/objetos.
+
+trigger para agregar obstaculos/objetos/items en otros lados.
+
+mensaje muerte customizable.
+
+
+

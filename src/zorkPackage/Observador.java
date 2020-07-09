@@ -22,14 +22,15 @@ public class Observador {
 		in = new Scanner(System.in);
 		Comando cmd = new Comando();
 		LoggerHistory.loggerConfig();
+		
 		do {
 			System.out.println();
 			System.out.print(">>");
-			scan = (in.nextLine());
+			scan = (in.nextLine()).toLowerCase();
 			
-			log.info(scan.toLowerCase());
+			log.info(scan);
 			
-			ArrayList<String> cadena = new ArrayList<String>(Arrays.asList(scan.toLowerCase().split(" ")));
+			ArrayList<String> cadena = new ArrayList<String>(Arrays.asList(scan.split(" ")));
 			removerErrores(cadena);
 			removerAtributos(cadena);
 			removerCaracteresEspeciales(cadena);
@@ -44,14 +45,14 @@ public class Observador {
 			
 			gameMaster.ejecutar(cmd);
 			
-		} while (!scan.equals("exit".toLowerCase()) && gameMaster.isEndGame() != true);
+		} while (!scan.equals("exit") && gameMaster.isEndGame() != true);
 
 		in.close();
 	}
 
 	private void removerErrores(ArrayList<String> cadena) {
 
-		List<String> articulos = new ArrayList<String>() {
+		List<String> errores = new ArrayList<String>() {
 			private static final long serialVersionUID = 1L;
 
 			{
@@ -60,7 +61,7 @@ public class Observador {
 			}
 		};
 
-		cadena.removeAll(articulos);
+		cadena.removeAll(errores);
 	}
 
 	private void removerAtributos(ArrayList<String> cadena) {

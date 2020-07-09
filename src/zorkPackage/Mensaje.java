@@ -5,25 +5,36 @@ import java.util.Date;
 
 public final class Mensaje {
 	
+	private static String fileName;
+	
+	public static String getFileName() {
+		return Mensaje.fileName;
+	}
+
+	public static void setFileName(String fileName) {
+		Mensaje.fileName = fileName;
+	}
+
 	public static String mensajeLugar(Lugar lugar) {
-		String msj = "";
-		int tam = lugar.getNombre().length();
-		String encabezado = "";
 		
 		if(lugar == null)
-			msj = "No hay lugar donde ir!";
-		else {
-			while(tam>=-4)
-			{
-				encabezado += "-";
-				tam--;
-			}
-			encabezado += "\n";
-			msj += encabezado;
-			msj += "  " + lugar.getNombre() + "\n";
-			msj += encabezado;
-			msj += "\n" + lugar.getDescripcion();
+			return "No hay lugar donde ir!";
+		
+		String msj = "";
+		String encabezado = "";
+		int tam = lugar.getNombre().length();
+		
+		while(tam>=-4)
+		{
+			encabezado += "-";
+			tam--;
 		}
+		encabezado += "\n";
+		msj += encabezado;
+		msj += "  " + lugar.getNombre() + "\n";
+		msj += encabezado;
+		msj += "\n" + lugar.getDescripcion();
+	
 		
 		return msj;
 	}
@@ -129,15 +140,6 @@ public final class Mensaje {
 		return muerto.getNombre() + " ha muerto!";
 	}
 	
-	public static String endGameMuerte(Personaje personaje) {
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd_HHmmss");
-		Date today = new Date();
-		
-		return personaje.getNombre() + " ha muerto!\n" +
-				"Podras ver todas tus acciones en el file 'Historial_"+
-				personaje.getNombre() + "_" + formatter.format(today) + "'.";
-	}
-	
 	public static String yaEstaMuerto(String nombreObjeto) {
 		return nombreObjeto + " ya ha muerto, puedes dejar de golpearlo? No seas sangriento.";
 	}
@@ -151,12 +153,13 @@ public final class Mensaje {
 	}
 	
 	public static String endGameSuccess(String nombrePersonaje) {
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd_HHmmss");
-		Date today = new Date();
-		
 		return nombrePersonaje + " Felicitaciones has completado la aventura!\n" +
-				"Podras ver todas tus acciones en el file 'Historial_"+
-				nombrePersonaje + "_" + formatter.format(today) + "'.";
+				"Podras ver todas tus acciones en el file: " + Mensaje.fileName;
+	}
+	
+	public static String endGameMuerte(Personaje personaje) {
+		return personaje.getNombre() + " ha muerto!\n" +
+				"Podras ver todas tus acciones en el file: " + Mensaje.fileName;
 	}
 	
 }

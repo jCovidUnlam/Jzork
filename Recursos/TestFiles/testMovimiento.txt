@@ -19,6 +19,7 @@
 			"items": "",
 			"obstaculos" : "",
 			"npcs" : "",
+			"mensajeLimite": "",
 		},
 		{
 			"nombre": "Bosque Encantado",
@@ -29,6 +30,7 @@
 			"items": "",
 			"obstaculos" : "",
 			"npcs" : "",
+			"mensajeLimite": "",
 		},
 		{
 			"nombre": "Cabania",
@@ -39,6 +41,7 @@
 			"items": "",
 			"obstaculos" : "",
 			"npcs" : "",
+			"mensajeLimite": "",
 		},
 		{
 			"nombre": "Claro templado",
@@ -49,6 +52,7 @@
 			"items": "",
 			"obstaculos" : "",
 			"npcs" : "",
+			"mensajeLimite": "",
 		},
 		{
 			"nombre": "Risco peligroso",
@@ -59,6 +63,7 @@
 			"items": "",
 			"obstaculos" : "",
 			"npcs" : "",
+			"mensajeLimite": "",
 		},
 		{
 			"nombre": "Interior cabania",
@@ -69,6 +74,7 @@
 			"items": "",
 			"obstaculos" : "",
 			"npcs" : "",
+			"mensajeLimite": "",
 		},
 		{
 			"nombre": "Sotano de cabania",
@@ -79,6 +85,7 @@
 			"items": "",
 			"obstaculos" : "",
 			"npcs" : "",
+			"mensajeLimite": "",
 		},
 		{
 			"nombre": "Atico tenebroso",
@@ -89,6 +96,7 @@
 			"items": "",
 			"obstaculos" : "",
 			"npcs" : "",
+			"mensajeLimite": "",
 		},
 		{
 			"nombre": "cuartito",
@@ -99,6 +107,7 @@
 			"items": "",
 			"obstaculos" : "",
 			"npcs" : "",
+			"mensajeLimite": "",
 		},		
 	],
 	"items" :[

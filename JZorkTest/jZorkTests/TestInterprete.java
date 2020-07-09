@@ -22,7 +22,7 @@ class TestInterprete {
 	public void setUp() throws Exception {
 		mapa = new Mapa();
 		mapa.setPersonajeActual(new Personaje("Tester Interprete",true));
-		JsonReader.construirAventura(mapa, "./Recursos/testInterprete.txt");
+		JsonReader.construirAventura(mapa, "./Recursos/TestFiles/testInterprete.txt");
 		i = new Interprete();
 		Lexico.cargarLexico();
 		frase = new ArrayList<String>();

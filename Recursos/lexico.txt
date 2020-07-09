@@ -1,4 +1,4 @@
-MOVIMIENTOSIMPLE;norte;sur;este;oeste;arriba;abajo;frente;atras;izquierda;derecha
+MOVIMIENTOSIMPLE;norte;sur;este;oeste;arriba;abajo
 usuarioSimple;estado;inventario;reglas
 adquiribles;tomar;obtener;agarrar;adquirir
 rompibles;romper;destruir;golper;patear;estallar

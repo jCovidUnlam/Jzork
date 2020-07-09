@@ -18,7 +18,8 @@
 			"z": "1",
 			"items": "i1 i2",
 			"obstaculos" : "o1",
-			"npcs" : "n1"
+			"npcs" : "n1",
+			"mensajeLimite": ""
 		},
 		{
 			"nombre": "techo",
@@ -28,7 +29,8 @@
 			"z": "2",
 			"items": "",
 			"obstaculos" : "",
-			"npcs" : ""
+			"npcs" : "",
+			"mensajeLimite": ""			
 		},
 		{
 			"nombre": "pozo",
@@ -38,7 +40,8 @@
 			"z": "0",
 			"items": "",
 			"obstaculos" : "",
-			"npcs" : ""
+			"npcs" : "",
+			"mensajeLimite": ""
 		},
 		{
 			"nombre": "taberna",
@@ -48,7 +51,8 @@
 			"z": "1",
 			"items": "",
 			"obstaculos" : "",
-			"npcs" : ""
+			"npcs" : "",
+			"mensajeLimite": ""
 		},
 		{
 			"nombre": "bosque este",
@@ -58,7 +62,8 @@
 			"z": "1",
 			"items": "",
 			"obstaculos" : "",
-			"npcs" : ""
+			"npcs" : "",
+			"mensajeLimite": ""
 		},
 		{
 			"nombre": "bosque oeste",
@@ -68,7 +73,8 @@
 			"z": "1",
 			"items": "",
 			"obstaculos" : "",
-			"npcs" : ""
+			"npcs" : "",
+			"mensajeLimite": ""
 		},
 		
 	],
@@ -119,11 +125,12 @@
 			"tipo": "item",
 			"idObjeto" : "n1",
 			"items": "i1",
-			"afterTriggerDesc": "Alf dice: - Oh!, un aperitivo!. Luego ves que toma el gato y huye hacia el bosque",
+			"exitoTriggerDesc": "Alf dice: - Oh!, un aperitivo!. Luego ves que toma el gato y huye hacia el bosque",
 			"exito": "REMOVEROBJETO",
 			"error": "ATACAR",
 			"errorTriggerDesc": "Alf responde: Que haces guachin?, y te pega un tucumano a la napia, sacandote 15 de vida.\nNo parece ser posible ganarle a mano limpia.",
-			"after": "REMOVERITEM"
+			"after": "REMOVERITEM",
+			"afterTriggerDesc": ""
 		},
 		{
 			"tipo" : "ataque",
