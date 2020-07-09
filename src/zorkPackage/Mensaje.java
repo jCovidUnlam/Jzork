@@ -1,8 +1,5 @@
 package zorkPackage;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 public final class Mensaje {
 	
 	private static String fileName;

@@ -20,7 +20,7 @@ public class Main {
 		name = (in.next());
 		
 		Mensaje.setFileName(name +"_"+ new SimpleDateFormat("yyyMMdd_HHmmss").format(new Date()).toString());
-		System.setProperty("logfilename", Mensaje.getFileName());
+		System.setProperty("logfilename", "SaveGames/" + Mensaje.getFileName());
 		
 		Consola.mostrarMenuInicio(name);
 		boolean init = false;

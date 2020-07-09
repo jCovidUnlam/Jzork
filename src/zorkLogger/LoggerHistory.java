@@ -1,6 +1,5 @@
 package zorkLogger;
 
-
 import java.io.File;
 import org.apache.log4j.xml.DOMConfigurator;
 
