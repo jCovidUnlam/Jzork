@@ -1,5 +1,7 @@
 package zorkPackage;
 
+import java.util.List;
+
 public final class Mensaje {
 	
 	private static String fileName;
@@ -154,9 +156,60 @@ public final class Mensaje {
 				"Podras ver todas tus acciones en el file: " + Mensaje.fileName;
 	}
 	
-	public static String endGameMuerte(Personaje personaje) {
-		return personaje.getNombre() + " ha muerto!\n" +
+	public static String endGameMuerte(String nombrePersonaje) {
+		return "ENDGAME." + nombrePersonaje + " ha muerto!\n" +
 				"Podras ver todas tus acciones en el file: " + Mensaje.fileName;
 	}
 	
+	public static String getReglas() {
+		return "--------------------------------------------------------------------------------------------------------" +
+			"\nEstas son las reglas del juego:"    +
+			"\nEl juego se basa en una interaccion por medio de la consola, a traves de ciertos comandos especificos." +
+			 "\nLos comandos podran escribirse con mayuscula o minuscula, solo importa que esten bien escritos!." +
+			 "\nSi un comando esta mal escrito entonces se le devolvera al jugador el mesaje de 'comando erroneo'." +
+			 "\nTodos los comandos que involucren otro objeto deben describirlo claramente: 'Tomar palo'" +
+			 "\nLos posibles comandos son:" +
+			 "\n   - Ver Reglas: (Se mostraran las reglas en cualquier momento del juego)" +
+			 "\n   - Movimientos: (El jugador se podra desplazar y realizar las siguientes acciones)" +
+			 "\n      + norte, sur, este, oeste, arriba abajo" +
+			 "\n      + ir, subir, bajar, escalar, trepar" +
+			 "\n      + izquierda, derecha, frente, atras" +
+			 "\n   - Jugador: " +
+			 "\n      + estado, inventario, reglas" +
+			 "\n      + equipar" +
+			 "\n      + hablar, charlar, interactuar" +
+			 "\n      + atacar, achurrar, darle" +
+			 "\n   - Objetos: (ejecutar 'objeto accion' y dependiendo del tipo de objeto, el jugador podra realizar diversas acciones)" +
+			 "\n      + tomar, obtener, agarrar, adquirir" +
+			 "\n      + romper, destruir, golpear, patear, estallar" +
+			 "\n      + tomar, beber, ingerir, comer" +
+			 "\n      + insepeccionar, mirar, observar, ver" +
+			 "\n      + usar, utilizar" +
+			 "\n      + soltar, descartar, desechar, tirar" +
+			 "\nPara volver al menu inicial presione 0.";
+	}
+	
+	public static String objetoDuplicado(List<Objeto> objetos) {
+		String msj = "Existe más de un objeto con ese nombre en el mapa, debes ser mas específico!\n";	
+		msj += "Los objetos son:\n";
+		for (Objeto objeto : objetos) {
+			msj += "-" + objeto.getNombre() + "\n";
+		}
+		
+		return msj;
+	}
+	
+	public static String objetoDuplicadoInventario(List<Item> objetos) {
+		String msj = "Existe más de un objeto con ese nombre en el mapa, debes ser mas específico!\n";	
+		msj += "Los objetos son:\n";
+		for (Objeto objeto : objetos) {
+			msj += "-" + objeto.getNombre() + "\n";
+		}
+		
+		return msj;
+	}
+	
+	public static String noHayNadieAtacar() {
+		return "En este lugar no hay nada parecido que puedas atacar.";
+	}
 }

@@ -1,5 +1,6 @@
 package zorkPackage;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -52,25 +53,36 @@ public class Personaje extends Objeto{
 		this.posicionActual = posicionActual;
 	}
 	
+	public Boolean getEsPrincipal() {
+		return esPrincipal;
+	}
+
+	public void setEsPrincipal(Boolean esPrincipal) {
+		this.esPrincipal = esPrincipal;
+	}
+	
 	public void ir(Posicion pos) {
 		this.posicionActual.setX(this.posicionActual.getX() + pos.getX());
 		this.posicionActual.setY(this.posicionActual.getY() + pos.getY());
 		this.posicionActual.setZ(this.posicionActual.getZ() + pos.getZ());
 	}
+		
+	public Arma desequiparArma(Arma arma) {
+		this.setDanio(this.getDanio() - this.armaEquipada.getDanio());
+		this.armaEquipada = null;
+		return arma;
+	}
 	
-	public Arma equiparArma(String nombreArma) {
-		if(inventario.size() == 0)
+	public List<Item> equiparArma(List<String> keyWords) {
+
+		List<Item> items = getObjetoInventario(keyWords);
+		if(items == null || items.size() < 1 || !(items.get(0) instanceof Arma))
 			return null;
 		
-		Arma arma = this.inventario.stream()
-			    .filter(x -> x instanceof Arma)
-			    .map (x -> (Arma) x)
-			    .filter(x -> x.getNombre().toLowerCase().equals(nombreArma))
-			    .findAny()
-				.orElse(null);
+		if(items.size() > 1)
+			return items;
 		
-		if(arma == null)
-			return null;
+		Arma arma = (Arma)items.get(0);
 		
 		if(this.armaEquipada != null)
 			desequiparArma(arma);
@@ -78,20 +90,62 @@ public class Personaje extends Objeto{
 		this.setDanio(5 + arma.getDanio());
 		this.armaEquipada = arma;
 		
-		return arma;
+		return items;
 	}
 	
-	public Arma desequiparArma(Arma arma) {
-		this.setDanio(this.getDanio() - this.armaEquipada.getDanio());
-		this.armaEquipada = null;
-		return arma;
-	}
-	
-	public Item getObjetoInventario(String nombreObjeto) {
-		return this.inventario.stream()
-			    .filter(x -> x.getNombre().toLowerCase().equals(nombreObjeto))
-				.findAny()
-				.orElse(null);
+	public List<Item> getObjetoInventario(List<String> keyWords) {
+		
+		if(this.inventario.size() == 0)
+			return null;
+		
+		List<Item> objetos = this.inventario;
+		List<Item> resultado = new ArrayList<>(objetos);
+		
+		int i = 0;
+		do {
+			
+			for (Objeto objeto : objetos) {
+				if(objeto.getKeyWordsNombre().size() <= i || !objeto.getKeyWordsNombre().get(i).equals(keyWords.get(i)))
+					resultado.remove(objeto);
+			}
+			
+			objetos = new ArrayList<>(resultado);
+
+			i++;
+			
+		}while(i < keyWords.size() && resultado.size() > 1);
+
+		
+		if(resultado.size() > 1) {
+			for (Objeto objeto : objetos)  {
+				if(objeto.getKeyWordsNombre().size() > keyWords.size())
+					resultado.remove(objeto);
+			}
+		}
+		
+		//Si ya paso y no encontro nada de nada, se fija si el usuario escribio mal y al menos existe un lugar con esas palabras...
+		//Sino lo encuentra o si encuentra mas de 1 ya esta, tampoco le vas a leer la mente.
+		if(resultado.size() == 0)
+		{
+			objetos = this.inventario;
+			resultado = new ArrayList<>(objetos);
+			i = 0;
+			
+			do {
+				
+				for (Objeto objeto : objetos) {
+					if(objeto.getKeyWordsNombre().size() <= i || !objeto.getKeyWordsNombre().contains(keyWords.get(i)))
+						resultado.remove(objeto);
+				}
+				
+				objetos = new ArrayList<>(resultado);
+
+				i++;
+				
+			}while(i < keyWords.size() && resultado.size() > 1);
+		}
+		
+		return resultado;
 	}
 	
 	public void removerDeInventario(Item removido) {

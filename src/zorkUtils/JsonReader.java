@@ -290,45 +290,8 @@ public final class JsonReader {
 	
 	private static List<Objeto> agregarItems(String jsonString){
 		List<Objeto> aux = new ArrayList<Objeto>();
-//		Configuration configuration = Configuration
-//		        .builder()
-//		        .jsonProvider(new JacksonJsonProvider())
-//		        .mappingProvider(new JacksonMappingProvider())
-//		        .build();
-//		
-//		System.out.println(Item.class);
-//		
-//		List<Item> allItems = JsonPath.using(configuration)
-//		        .parse(jsonString)
-//		        .read("$.items[*]", new TypeRef<List<Item>>() {});
-//		
-//		
-//		
-//		JSONArray items = JsonPath.read(jsonString,"$.items[*]");
-//		Gson gson = new Gson();
-//		
-//		String ss = items.toJSONString();
-
-//		
-//	for (int i = 0; i < items.toJSONString().length(); i++) {
-//			System.out.println(items.get(i));
-//		Item item = gson.fromJson(items.get(i).toString(),Item.class);			
-//	}
-//		
-//		System.out.println(items.toJSONString());
-//		
-		
-
-//		for (String a : items.toJSONString()) {
-//			String ss = (String)a;
-//		}
-		
-		//List<Map<String, Object>> objetcList = new ArrayList<Map<String, Object>>();		
 		List<Map<String, Object>> itemList = JsonPath.read(jsonString,"$.items[*]");
-		//List<Map<String, Object>> npcList = JsonPath.read(jsonString,"$.npcs[*]");
-		//objetcList.addAll(itemList);
-		//objetcList.addAll(npcList);
-		
+
 
 		for (Map<String, Object> objeto : itemList) {
 			

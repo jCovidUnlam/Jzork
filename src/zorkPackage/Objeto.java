@@ -1,6 +1,7 @@
 package zorkPackage;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import zorkTrigger.Trigger;
@@ -12,6 +13,7 @@ public class Objeto {
 	
 	private String id;
 	private String nombre;
+	private List<String> keyWordsNombre;
 	private String descripcion;
 	private String descripcionMapa;
 	private List<Trigger> triggers;
@@ -54,6 +56,14 @@ public class Objeto {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+		ArrayList<String> cadena = new ArrayList<String>(Arrays.asList(nombre.toLowerCase().split(" ")));
+		Lexico.removerAtributos(cadena);
+		Lexico.removerErrores(cadena);
+		this.keyWordsNombre = cadena;
+	}
+	
+	public List<String> getKeyWordsNombre() {
+		return keyWordsNombre;
 	}
 
 	public String getDescripcion() {

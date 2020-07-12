@@ -3,14 +3,14 @@ MOVIMIENTO;ir;subir;bajar;escalar;trepar
 USUARIOSIMPLE;estado;inventario;reglas
 USUARIO;equipar
 ADQUIRIBLES;tomar;obtener;agarrar;adquirir
-ROMPIBLES;romper;destruir;golper;patear;estallar
+ROMPIBLES;romper;destruir;estallar
 CONSUMIBLES;tomar;beber;ingerir;comer
 INSPECCIONABLES;inspeccionar;mirar;observar;ver;leer
 USABLES;usar;utilizar;dar
 NPC;hablar;charlar;interactuar			
-ATAQUE;atacar;achurrar;darle
+ATAQUE;atacar;achurrar;darle;golpear;patear
 DESCARTABLES;soltar;descartar;desechar;tirar
-ATRIBUTOS;el;la;ellos;ellas;hacia;a;al;en;con
+ATRIBUTOS;el;la;ellos;ellas;hacia;de;con
 CARACTERESESPECIALES;';/;\;|
-
+CARACTERESUNION;al;a;en;sobre;contra
 

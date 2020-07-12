@@ -1,0 +1,17 @@
+package zorkEnum;
+
+public enum EnumComando {
+	INVALIDO,
+	MOVER,
+	ADQUIRIR,
+	INSPECCIONAR,
+	ROMPER,
+	MEZCLAR,
+	USAR,
+	USUARIO,
+	NPC,
+	ATACAR,
+	OTRO,
+	DESCARTAR,
+	CONSUMIR,
+}

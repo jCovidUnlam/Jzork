@@ -1,14 +1,14 @@
 package zorkPackage;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-
-
 
 public class Lugar {
 
 	private String nombre;
+	private List<String> keyWordsNombre;
 	private String descripcion;
 	private List<Objeto> objetos;
 	private String mensajeLimite;
@@ -23,6 +23,7 @@ public class Lugar {
 
 	public Lugar() {
 		objetos = new ArrayList<Objeto>();
+		keyWordsNombre = new ArrayList<String>();
 	};
 	
 	public String getNombre() {
@@ -31,6 +32,14 @@ public class Lugar {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+		ArrayList<String> cadena = new ArrayList<String>(Arrays.asList(nombre.toLowerCase().split(" ")));
+		Lexico.removerAtributos(cadena);
+		Lexico.removerErrores(cadena);
+		this.keyWordsNombre = cadena;
+	}
+	
+	public List<String> getKeyWordsNombre() {
+		return keyWordsNombre;
 	}
 
 	public String getDescripcion() {
@@ -49,33 +58,80 @@ public class Lugar {
 		this.objetos = objetos;
 	}
 	
-	public Objeto getObjeto(String nombreObjeto) {
-		try {
-			Objeto obj = this.objetos.stream()
-					.filter(x -> x.getNombre().toLowerCase().equals(nombreObjeto))
-					.findAny()
-					.orElse(null);
-			
-			return obj;
-		} catch (NullPointerException e) {
-			return null;
-		}
-	}
-
-	public Item getItem(String nombreObjeto) {
-		Objeto obj = getObjeto(nombreObjeto);
-		if (obj == null || !(obj instanceof Item))
-			return null;
+	public List<Objeto> getObjeto(List<String> keyWords) {
 		
-		return (Item)obj;
+		List<Objeto> objetosEnLugar = this.objetos;
+		List<Objeto> resultado = new ArrayList<>(objetosEnLugar);
+		
+		int i = 0;
+		do {
+			
+			for (Objeto objeto : objetosEnLugar) {
+				if(objeto.getKeyWordsNombre() == null ||  objeto.getKeyWordsNombre().size() <= i || !objeto.getKeyWordsNombre().get(i).equals(keyWords.get(i)))
+					resultado.remove(objeto);
+			}
+			
+			objetosEnLugar = new ArrayList<>(resultado);
+
+			i++;
+			
+		}while(i < keyWords.size() && resultado.size() > 1);
+
+		
+		if(resultado.size() > 1) {
+			for (Objeto objeto : objetosEnLugar)  {
+				if(objeto.getKeyWordsNombre().size() > keyWords.size())
+					resultado.remove(objeto);
+			}
+		}
+		
+		//Si ya paso y no encontro nada de nada, se fija si el usuario escribio mal y al menos existe un lugar con esas palabras...
+		//Sino lo encuentra o si encuentra mas de 1 ya esta, tampoco le vas a leer la mente.
+		if(resultado.size() == 0)
+		{
+			objetosEnLugar = this.objetos;
+			resultado = new ArrayList<>(objetosEnLugar);
+			i = 0;
+			
+			do {
+				
+				for (Objeto objeto : objetosEnLugar) {
+					if(objeto.getKeyWordsNombre() == null  || objeto.getKeyWordsNombre().size() <= i || !objeto.getKeyWordsNombre().contains(keyWords.get(i)))
+						resultado.remove(objeto);
+				}
+				
+				objetosEnLugar = new ArrayList<>(resultado);
+
+				i++;
+				
+			}while(i < keyWords.size() && resultado.size() > 1);
+		}
+		
+		return resultado;
 	}
 	
-	public NPC getNPC(String nombreObjeto) {
-		Objeto obj = getObjeto(nombreObjeto);
-		if (obj == null || !(obj instanceof NPC))
+	public Item getItem(List<String> keyWords) {
+		List<Objeto> obj = getObjeto(keyWords);
+		if (obj == null  || obj.size() < 1 || !(obj.get(0) instanceof Item))
 			return null;
 		
-		return (NPC)obj;
+		return (Item)obj.get(0);
+	}
+	
+	public NPC getNPC(List<String> keyWords) {
+		List<Objeto> obj = getObjeto(keyWords);
+		if (obj == null  || obj.size() < 1 || !(obj.get(0) instanceof NPC))
+			return null;
+		
+		return (NPC)obj.get(0);
+	}
+	
+	public Contenedor getContenedor(List<String> keyWords) {
+		List<Objeto> obj = getObjeto(keyWords);
+		if (obj == null || obj.size() < 1 || !(obj.get(0) instanceof Contenedor))
+			return null;
+		
+		return (Contenedor)obj.get(0);
 	}
 
 	public Obstaculo getObstaculo(String direccion) {
@@ -121,14 +177,6 @@ public class Lugar {
 		this.descripcion += objeto.getDescripcionMapa();
 	}
 	
-	public Contenedor getContenedor(String nombreObjeto) {
-		Objeto obj = getObjeto(nombreObjeto);
-		if (obj == null || !(obj instanceof Contenedor))
-			return null;
-		
-		return (Contenedor)obj;
-	}
-	
 	public String romperObjeto(Contenedor objeto) {
 		
 		for (Item item : objeto.getContenido()) {
@@ -138,5 +186,7 @@ public class Lugar {
 		removerObjeto(objeto);
 		return objeto.getDescRompible();
 	}
+	
+	
 
 }

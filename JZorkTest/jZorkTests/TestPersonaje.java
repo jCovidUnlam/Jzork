@@ -2,6 +2,8 @@ package jZorkTests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Arrays;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -15,8 +17,9 @@ class TestPersonaje {
 
 	@BeforeEach
 	void setUp() throws Exception {
-		p = new Personaje("Juanito",true);
 		mapa = new Mapa();
+		Lexico.cargarLexico();
+		p = new Personaje("Juanito",true);
 		mapa.setPersonajeActual(p);
 		JsonReader.construirAventura(mapa, "./Recursos/TestFiles/testPersonaje.txt");
 	}
@@ -51,9 +54,9 @@ class TestPersonaje {
 	@Test
 	void queEquipeArma() {
 		assertNull(p.getArmaEquipada());
-		Item i = mapa.getLugarActual().getItem("palo");
+		Item i = mapa.getLugarActual().getItem(Arrays.asList("palo"));
 		p.addObjeto(i);
-		p.equiparArma("palo");
+		p.equiparArma(Arrays.asList("palo"));
 		assertEquals(i, p.getArmaEquipada());
 	}
 	
@@ -64,33 +67,31 @@ class TestPersonaje {
 	
 	@Test
 	void danioPersonajeConArma() {
-		Item i = mapa.getLugarActual().getItem("palo");
+		Item i = mapa.getLugarActual().getItem(Arrays.asList("palo"));
 		p.addObjeto(i);
-		p.equiparArma("palo");
+		p.equiparArma(Arrays.asList("palo"));
 		assertEquals(15, p.getDanio());
 	}
 	
 	@Test
-	void queNoEquipeObjeto() {
-		//No se deben equipar objetos que no son armas!
-		//Baja a ese gato!!
-		Item i = mapa.getLugarActual().getItem("gato");
+	void queNoEquipeObjetoQueNoSeaArma() {
+		Item i = mapa.getLugarActual().getItem(Arrays.asList("gato"));
 		p.addObjeto(i);
-		p.equiparArma("gato");
+		p.equiparArma(Arrays.asList("gato"));
 		assertNull(p.getArmaEquipada());
 	}
 	
 	@Test
 	void queNoEquipeArmaSiInventarioVacio() {
-		p.equiparArma("gato");
+		p.equiparArma(Arrays.asList("gato"));
 		assertNull(p.getArmaEquipada());
 	}
 	
 	@Test
 	void queDesequipeArma() {
-		Item i = mapa.getLugarActual().getItem("palo");
+		Item i = mapa.getLugarActual().getItem(Arrays.asList("palo"));
 		p.addObjeto(i);
-		p.equiparArma("palo");
+		p.equiparArma(Arrays.asList("palo"));
 		assertEquals(15, p.getDanio());
 		p.desequiparArma((Arma) i);
 		assertNull(p.getArmaEquipada());
@@ -98,9 +99,9 @@ class TestPersonaje {
 	
 	@Test
 	void queObtengaObjInvetario() {
-		Item i = mapa.getLugarActual().getItem("palo");
+		Item i = mapa.getLugarActual().getItem(Arrays.asList("palo"));
 		p.addObjeto(i);
-		assertEquals(i, p.getObjetoInventario("palo"));
+		assertEquals(i, p.getObjetoInventario(Arrays.asList("palo")).get(0));
 	}
 	
 	@Test
@@ -119,9 +120,9 @@ class TestPersonaje {
 	@Test
 	void quePersAtaqueAOtroPersConArma() {
 		Personaje otroP = new Personaje("Pedro",true);
-		Item i = mapa.getLugarActual().getItem("palo");
+		Item i = mapa.getLugarActual().getItem(Arrays.asList("palo"));
 		p.addObjeto(i);
-		p.equiparArma("palo");
+		p.equiparArma(Arrays.asList("palo"));
 		p.atacar(otroP);
 		assertEquals(85, otroP.getSalud());
 	}
