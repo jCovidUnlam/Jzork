@@ -119,10 +119,11 @@ public class ComandoUnObjetoStrategy implements ComandoStrategy{
 			if (obj.size() == 0)
 				items = mapa.getPersonajeActual().getObjetoInventario(cmd.getPalabrasClavesPrimerObjeto()); // Si no existe, busca en el inventario
 			
-			if(items.size() == 1)
+			//cuando items retornaba en null rompia. 
+			if(items!=null && items.size() == 1)
 				return Mensaje.mostrarObjeto(items.get(0));
 			
-			if(items.size() > 1)
+			if(items!=null && items.size() > 1)
 				return Mensaje.objetoDuplicadoInventario(items);
 			
 	
