@@ -2,14 +2,10 @@ package zorkUI;
 
 import org.apache.log4j.Logger;
 
-import org.junit.platform.commons.util.StringUtils;
 import zorkLogger.LoggerHistory;
 import zorkPackage.Mapa;
 
 import java.io.File;
-import java.lang.reflect.Array;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -128,7 +124,6 @@ public final class Consola {
 
 		LoggerHistory.loggerConfig();
 		for (String mensaje : mensajes) {
-
 			System.out.println(mensaje);
 			log.info(mensaje);
 		}
