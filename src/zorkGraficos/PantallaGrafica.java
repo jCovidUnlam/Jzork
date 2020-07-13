@@ -1,36 +1,38 @@
 package zorkGraficos;
 
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
 import javax.swing.JFrame;
-import net.miginfocom.swing.MigLayout;
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import javax.swing.JPanel;
+import javax.swing.JOptionPane;
 
 public class PantallaGrafica extends JFrame{
-	private JTextField txtHistorial;
-	private JTextField txtComando;
-	private JButton btnAyuda;
+	private static final long serialVersionUID = 4341998680674808445L;
+	private JPanelGraficoPrincipal panel;
+
 	public PantallaGrafica() {
-		getContentPane().setLayout(new MigLayout("", "[grow][][][][][][][]", "[][grow][][][][][][][][][]"));
+		super("JZork");
+		setResizable(false);
+		setLocationRelativeTo(null);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent arg0) {
+				confirmacionCierreVentana();
+			}
+		});
 		
-		txtHistorial = new JTextField();
-		getContentPane().add(txtHistorial, "cell 0 0 1 10,grow");
-		txtHistorial.setColumns(10);
-		
-		JPanel panel = new JPanel();
-		getContentPane().add(panel, "cell 1 1 7 9,grow");
-		
-		txtComando = new JTextField();
-		txtComando.setText("Ingrese su comando...");
-		txtComando.setToolTipText("Ingrese su comando");
-		txtComando.setColumns(10);
-		getContentPane().add(txtComando, "cell 0 10 4 1,growx");
-		
-		btnAyuda = new JButton("Ayuda");
-		getContentPane().add(btnAyuda, "cell 4 10 4 1,growx");
-		
+		panel = new JPanelGraficoPrincipal();
+		setContentPane(panel);
 	
+	}
+	
+	private void confirmacionCierreVentana() {
+		if (JOptionPane.showConfirmDialog(rootPane, "¿Desea salir?", "Salir",
+				JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+			dispose();
+		}
 	}
 	
 }
