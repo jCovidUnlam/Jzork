@@ -13,7 +13,7 @@ import com.jayway.jsonpath.JsonPath;
 
 import zorkEnum.EnumDireccion;
 import zorkPackage.Arma;
-
+import zorkPackage.Contenedor;
 import zorkPackage.Item;
 import zorkPackage.Lugar;
 import zorkPackage.Mapa;
@@ -312,11 +312,20 @@ public final class JsonReader {
 						pocion.setPuntosSaludRecuperados(Double.parseDouble(objeto.get("puntosSalud").toString()));
 						newItem = pocion;
 						break;
-
 					default:
 						break;
 					}
-
+					break;
+				case "contenedor":
+					Contenedor contenedor = new Contenedor();
+					List<String> ids = Arrays.asList(objeto.get("contenido").toString().split(" "));
+				    for (Objeto obj : aux) {
+				    	if(ids.contains(obj.getObjetoID()) && obj instanceof Item)
+				    		contenedor.addContenido((Item)obj);
+					}
+				    newItem = contenedor;
+				
+					break;
 				}
 			}
 			
@@ -345,6 +354,12 @@ public final class JsonReader {
 					break;
 				case "mensajeNoTomable":
 					newItem.setMensajeNoTomable((String)entry.getValue());
+					break;
+				case "rompible":
+					newItem.setRompible(Boolean.parseBoolean((String)entry.getValue()));
+					break;
+				case "mensajeRompible":
+					newItem.setMensajeRompible((String)entry.getValue());
 					break;
 				default:
 					break;

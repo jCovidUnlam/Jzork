@@ -7,6 +7,7 @@ import zorkPackage.Arma;
 import zorkPackage.Buscador;
 import zorkPackage.Comando;
 import zorkPackage.Consumible;
+import zorkPackage.Contenedor;
 import zorkPackage.Item;
 import zorkPackage.Mapa;
 import zorkPackage.Mensaje;
@@ -57,6 +58,10 @@ public class ComandoUnObjetoStrategy implements ComandoStrategy{
 			break;
 		case CONSUMIR:
 			resultado = ejecutarConsumirObjeto(cmd);
+			break;
+		case ROMPER:
+			resultado = ejecutarRomperObjeto(cmd);
+			break;
 		}
 		
 		
@@ -219,26 +224,30 @@ public class ComandoUnObjetoStrategy implements ComandoStrategy{
 		return "";
 	}
 
-	public String romperObjeto(Comando comando) {
-		List<Objeto> objetos = mapa.getLugarActual().getObjeto(comando.getPalabrasClavesPrimerObjeto());
-		if (objetos == null || objetos.size() == 0)
-			return Mensaje.noExisteObjeto();
+	public String ejecutarRomperObjeto(Comando cmd) {
+		String msj = "";
+		Objeto buscado = Buscador.buscarObjetoLugar(cmd, mapa.getLugarActual(), msj);
 		
-		if(objetos.size() > 1)
-			return Mensaje.objetoDuplicado(objetos);
+		if(buscado == null)
+			return msj;
 		
-		//Objeto obj = objetos.get(0);
+		if(buscado.isRompible() == false)
+			return Mensaje.noEsRompible(buscado.getNombre());
 		
+		if(buscado instanceof Contenedor)
+			for (Item item : ((Contenedor) buscado).getContenido()) {
+					mapa.getPersonajeActual().addObjeto(item);				
+			}
 		
-		//if(!(objeto instanceof Contenedor))
-			//return Mensaje.noEsRompible(objeto.getNombre());
-		return "";
-		//return mapa.getLugarActual().romperObjeto((Contenedor)objeto);
+		mapa.getLugarActual().removerObjeto(buscado);
+
+		return buscado.getMensajeRompible();
+
 	}
 	
 	public String ejecutarConsumirObjeto(Comando cmd) {
 		String msj = "";
-		Consumible buscado = Buscador.buscarConsumible(cmd, mapa, msj);
+		Consumible buscado = Buscador.buscarConsumible(cmd, mapa.getPersonajeActual(), msj);
 		
 		if(buscado == null)
 			return msj;
