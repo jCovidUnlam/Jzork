@@ -14,12 +14,13 @@ lo suficiente como para aparecer en el medio del desierto sin la nocion de que h
 		{
 			"nombre": "Desierto",
 			"descripcion": "A tu alrededor, solo puede ver arena en todos lados, al sur ves lo que parece ser una aldea.
-{n4}",
+{n4}
+{i12}",
 			"x": "5",
 			"y": "10",
 			"z": "0",
 			"mensajeLimite": "",
-			"items": "",
+			"items": "i12 i2",
 			"obstaculos" : "o1",
 			"npcs" : "n4",
 		},
@@ -47,7 +48,7 @@ arena movediza comienza a absorberte y, sin que puedas hacer nada, caes y caes s
 			"npcs" : ""
 		},
 		{
-			"nombre": "Desierto abrazador",
+			"nombre": "Desierto este",
 			"descripcion": "Huyes hacia el este, el dragon sigue persiguiendote y no parece nada cansado, no ves mas salida que seguir corriendo y ver si logras perderlo.",
 			"x": "6",
 			"y": "10",
@@ -72,7 +73,7 @@ arena movediza comienza a absorberte y, sin que puedas hacer nada, caes y caes s
 			"nombre": "Entrada aldea",
 			"descripcion": "Llegas a una especie de arco que hace las veces de entrada a lo que parece una vieja aldea. 
 Mas alla del arco, que parece tener siglos de antiguedad se ve la aldea. Un temblor te recorre la espalda. 
-Puedes ver que a un costado, hay una especie de cartel tallado en piedra y al lado una especie de retrato, para variar, tambien tallado en piedra.
+Puedes ver que a un costado, hay una especie de cartel escrito con una letra horrenda y al lado una especie de retrato hecho en piedra, quien hace un cartel de piedra en el 2020???
 {i10}.
 Al sur parece estar la aldea.",
 			"x": "5",
@@ -155,7 +156,7 @@ Al llegar al final de la escalera, te encuentras en una habitacion mas iluminada
 			"nombre": "Almacen",
 			"descripcion": "Te sorprende lo grande que es aquel lugar. Entra luz natural desde el techo, se ve mucho polvo flotando alrededor.
 {i4}.
-Detras de un gran mostrador, ves al almacenero, que no repara en ti en absoluto.
+Detras de un gran mostrador, ves a un almacenero que tiene un cartel medio despegado con el nombre 'Jorge'. No parece interesarle tu presencia..
 {i11}",
 			"x": "4",
 			"y": "8",
@@ -221,7 +222,7 @@ Se nota que el lugar desborda de alegria...",
 		},
 		{
 			"id": "i5",
-			"nombre": "cartel",
+			"nombre": "cartel de papel",
 			"descripcion": "El cartel reza lo siguiente:
 Seas bienvenido, oh aventurero! a esta aldea tan antigua como el mismisimo Adan y la mismisima Eva. 
 Siempre aqui seras bien recibido entre nosotros.
@@ -241,16 +242,6 @@ Tu te sigues preguntando que le pusieron tus amigos a tu bebida anoche...",
 		},
 		{
 			"id": "i6",
-			"nombre": "Cofre",
-			"rompible": "true",
-			"descripcion": "Es un antiguo cofre que parece encantado. Te fascina lo bello que es.",
-			"descripcionMapa": "Justo frente al oasis, ves un cofre de madera brillante.",
-			"tomable": "false",
-			"mensajeTomable": "",
-			"mensajeNoTomable" : "El cofre tiene una extraña magia que no permite que te lo lleves... O quiza, es solo que es muy pesado.",
-		},
-		{
-			"id": "i7",
 			"nombre": "Oro",
 			"descripcion": "Son monedas de oro relucientes, apurate y agarralas!",
 			"descripcionMapa": "Brillando junto al oasis hay muchas, muchas monedas de oro!",
@@ -258,6 +249,20 @@ Tu te sigues preguntando que le pusieron tus amigos a tu bebida anoche...",
 			"mensajeTomable": "Sera mejor que se lo lleves a Clara, no querras que caiga sobre ti la maldicion de los ladrones... 
 ya despues de lo que viste todo puede pasar, no?",
 			"mensajeNoTomable" : "",
+		},
+		{
+			"id": "i7",
+			"nombre": "Cofre",
+			"tipo": "contenedor",
+			"contenido": "i6",
+			"rompible": "true",
+			"mensajeRompible": "En un ataque de ira por querer irte de este lugar, destrozas el cobre con furia y no paras hasta hacerlo pedazos.
+Claro esta, ademas de romper cosas, tambien tomas el oro que lleva adentro.",
+			"descripcion": "Es un antiguo cofre que parece encantado. Te fascina lo bello que es.",
+			"descripcionMapa": "Justo frente al oasis, ves un cofre de madera brillante.",
+			"tomable": "false",
+			"mensajeTomable": "",
+			"mensajeNoTomable" : "El cofre tiene una extrania magia que no permite que te lo lleves... O quiza, es solo que es muy pesado.",
 		},
 		{
 			"id": "i8",
@@ -271,7 +276,7 @@ Todo el equipo JCovid te saluda cordialmente, valiente aventurerx.",
 		},
 		{
 			"id": "i9",
-			"nombre": "retrato",
+			"nombre": "cartel de piedra",
 			"descripcion": "Es un retrato hecho en piedra, pesimamente tallado, pareciera que representa una persona clavandole una espada a un dragon.",
 			"descripcionMapa": "",
 			"tomable": "false",
@@ -291,11 +296,23 @@ Todo el equipo JCovid te saluda cordialmente, valiente aventurerx.",
 			"id": "i11",
 			"tipo" : "arma",
 			"danio" : "15",
-			"nombre": "palo",
+			"nombre": "palo de madera",
 			"descripcion": "Es un palo de madera bastante humedo y roto",
 			"descripcionMapa": "En el mostrador, hay un palo de madera a un costado.",
 			"tomable": "true",
 			"mensajeTomable": "Logras tomar el palo, sin que el almacenero lo note, y aun cuando lo notase no parece que le interese demasiado...",
+			"mensajeNoTomable" : "",
+		},
+		{
+			"id": "i12",
+			"tipo" : "consumible",
+			"subtipo": "pocionSalud",
+			"puntosSalud" : "30",
+			"nombre": "Pocion de Salud mediana",
+			"descripcion": "Es una pocion con la que recuperas 30 puntos de salud.",
+			"descripcionMapa": "Ves un frasco rojo tirado en el suelo.",
+			"tomable": "true",
+			"mensajeTomable": "Metes una pocion en tu inventario!",
 			"mensajeNoTomable" : "",
 		},
 		
@@ -360,7 +377,7 @@ Finalmente alguien que entiende que estoy atrapado!, Perfecto, ahora solo tengo 
 		},
 		{
 			"id" : "n3",
-			"nombre" : "Almacenero",
+			"nombre" : "Almacenero Jorge",
 			"descripcion": "Es un hombre alto, delgado, con algunas canas que delataban su edad, no demasiado avanzada.",
 			"hablar": "Que? Ah... Quien eres? Nunca te vi por aqui... Que cosa? un dragon te ataco? Si, definitivamente no eres depor aqui... 
 Bien, te contare. Esta aldea es mas vieja de lo que cualquiera de nuestros ancestros pueda recordar. Nadie sabe realmente quien la fundo, 

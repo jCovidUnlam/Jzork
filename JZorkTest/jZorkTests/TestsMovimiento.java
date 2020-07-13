@@ -3,11 +3,13 @@ package jZorkTests;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import zorkEnum.EnumDireccion;
+import zorkPackage.Lexico;
 import zorkPackage.Mapa;
 import zorkPackage.Personaje;
 import zorkPackage.Posicion;
@@ -20,6 +22,7 @@ class TestsMovimiento {
 	@BeforeEach
 	void init() throws IOException{
 		mapa = new Mapa();
+		Lexico.cargarLexico();
 		mapa.setPersonajeActual(new Personaje("Tester movimiento",true));
 		JsonReader.construirAventura(mapa, "./Recursos/TestFiles/testMovimiento.txt");
 	}
@@ -120,25 +123,25 @@ class TestsMovimiento {
 	
 	@Test
 	void testIrHaciaNorte() {
-		mapa.irHacia("cabania");
+		mapa.irHacia(Arrays.asList("cabania"));
 		assertEquals(new Posicion(5,6,1), mapa.getPosicionActual());
 	}
 	
 	@Test
 	void testIrHaciaSur() {
-		mapa.irHacia("bosque encantado");
+		mapa.irHacia(Arrays.asList("bosque encantado".split(" ")));
 		assertEquals(new Posicion(5,4,1), mapa.getPosicionActual());
 	}
 	
 	@Test
 	void testIrHaciaOeste() {
-		mapa.irHacia("claro templado");
+		mapa.irHacia(Arrays.asList("claro templado".split(" ")));
 		assertEquals(new Posicion(4,5,1), mapa.getPosicionActual());
 	}
 	
 	@Test
 	void testIrHaciaEste() {
-		mapa.irHacia("risco peligroso");
+		mapa.irHacia(Arrays.asList("risco peligroso".split(" ")));
 		assertEquals(new Posicion(6,5,1), mapa.getPosicionActual());
 	}
 	
@@ -149,7 +152,7 @@ class TestsMovimiento {
 		assertEquals(new Posicion(5,6,1), mapa.getPosicionActual());
 		mapa.mover(EnumDireccion.NORTE.getValue());
 		assertEquals(new Posicion(5,7,1), mapa.getPosicionActual());
-		mapa.irHacia("sotano de cabania");
+		mapa.irHacia(Arrays.asList("sotano de cabania".split(" ")));
 		assertEquals(new Posicion(5,7,0), mapa.getPosicionActual());
 	}
 	
@@ -160,7 +163,7 @@ class TestsMovimiento {
 		assertEquals(new Posicion(5,6,1), mapa.getPosicionActual());
 		mapa.mover(EnumDireccion.NORTE.getValue());
 		assertEquals(new Posicion(5,7,1), mapa.getPosicionActual());
-		mapa.irHacia("atico tenebroso");
+		mapa.irHacia(Arrays.asList("atico tenebroso".split(" ")));
 		assertEquals(new Posicion(5,7,2), mapa.getPosicionActual());
 	}
 	
@@ -199,28 +202,28 @@ class TestsMovimiento {
 		assertEquals(new Posicion(5,7,1), mapa.getPosicionActual());
 		mapa.mover(EnumDireccion.ARRIBA.getValue());
 		assertEquals(new Posicion(5,7,2), mapa.getPosicionActual());
-		mapa.irHacia("interior cabania");
+		mapa.irHacia(Arrays.asList("interior cabania".split(" ")));
 		assertEquals(new Posicion(5,7,1), mapa.getPosicionActual());
 	}
 	
 	@Test
 	void testIrNoExisteLugar() {
 		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
-		mapa.irHacia("");
+		mapa.irHacia(Arrays.asList(""));
 		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
 	}
 	
 	@Test
 	void testIrNoSaltearLugares() {
 		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
-		mapa.irHacia("interior cabania");
+		mapa.irHacia(Arrays.asList("interior cabania".split(" ")));
 		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
 	}
 	
 	@Test
 	void testIrHaciaLugarActual() {
 		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
-		mapa.irHacia("bosque");
+		mapa.irHacia(Arrays.asList("bosque"));
 		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
 	}
 }

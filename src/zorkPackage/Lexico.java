@@ -3,7 +3,10 @@ package zorkPackage;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import zorkEnum.EnumTipoLexico;
 
@@ -36,6 +39,8 @@ public final class Lexico {
 	public static String [] descartables;
 	
 	public static String [] caracteresEspeciales;
+	
+	public static String [] caracteresUnion;
 
 	public static boolean inMovimientoSimple(String verbo) {
 		return Arrays.asList(movimientoSimple).contains(verbo);
@@ -142,6 +147,10 @@ public final class Lexico {
 				ataque = new String[lexico.length - 1];
 				System.arraycopy(lexico, 1, ataque, 0, lexico.length - 1);
 				break;
+			case DESCARTABLES:
+				descartables = new String[lexico.length - 1];
+				System.arraycopy(lexico, 1, descartables, 0, lexico.length - 1);
+				break;	
 			case ATRIBUTOS:
 				atributos = new String[lexico.length - 1];
 				System.arraycopy(lexico, 1, atributos, 0, lexico.length - 1);
@@ -150,10 +159,10 @@ public final class Lexico {
 				caracteresEspeciales = new String[lexico.length - 1];
 				System.arraycopy(lexico, 1, caracteresEspeciales, 0, lexico.length - 1);
 				break;
-			case DESCARTABLES:
-				descartables = new String[lexico.length - 1];
-				System.arraycopy(lexico, 1, descartables, 0, lexico.length - 1);
-				break;	
+			case CARACTERESUNION:
+				caracteresUnion = new String[lexico.length - 1];
+				System.arraycopy(lexico, 1, caracteresUnion, 0, lexico.length - 1);
+				break;
 
 			default:
 				break;
@@ -163,5 +172,37 @@ public final class Lexico {
 
 		bf.close();
 	}
+
+	public static void removerErrores(List<String> cadena) {
+
+		List<String> errores = new ArrayList<String>() {
+			private static final long serialVersionUID = 1L;
+
+			{
+				add(" ");
+				add("");
+			}
+		};
+
+		cadena.removeAll(errores);
+	}
+
+	public static void removerAtributos(List<String> cadena) {
+		cadena.removeAll(Arrays.asList(Lexico.atributos));
+	}
+	
+	public static void removerCaracteresEspeciales(List<String> cadena) {
+		cadena.removeAll(Arrays.asList(Lexico.caracteresEspeciales));
+	}
+	
+	public static boolean noPoseeCaracterDeUnion(List<String> cadena) {
+		return Collections.disjoint(cadena, Arrays.asList(Lexico.caracteresUnion));
+	}
+	
+	public static void removerCaracterDeUnion(List<String> cadena) {
+		cadena.removeAll(Arrays.asList(Lexico.caracteresUnion));
+	}
+
+
 }
 

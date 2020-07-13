@@ -3,12 +3,16 @@ package jZorkTests;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import zorkEnum.EnumDireccion;
+import zorkPackage.Lexico;
 import zorkPackage.Mapa;
+import zorkPackage.Objeto;
 import zorkPackage.Personaje;
 import zorkPackage.Posicion;
 import zorkUtils.JsonReader;
@@ -20,6 +24,7 @@ public class TestObstaculo {
 	@BeforeEach
 	void init() throws IOException{
 		mapa = new Mapa();
+		Lexico.cargarLexico();
 		mapa.setPersonajeActual(new Personaje("Tester obstaculos",true));
 		JsonReader.construirAventura(mapa, "./Recursos/TestFiles/testObstaculo.txt");
 	}
@@ -69,7 +74,7 @@ public class TestObstaculo {
 	@Test
 	void removerObstaculoNorteYavanzar() {
 		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
-		mapa.getLugarActual().removerObjeto(mapa.getLugarActual().getObjeto("puerta"));
+		mapa.getLugarActual().removerObjeto(mapa.getLugarActual().getObjeto(Arrays.asList("puerta")).get(0));
 		mapa.mover(EnumDireccion.NORTE.getValue());
 		assertEquals(new Posicion(5,6,1), mapa.getPosicionActual());
 	}
@@ -77,7 +82,8 @@ public class TestObstaculo {
 	@Test
 	void removerObstaculoSurYavanzar() {
 		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
-		mapa.getLugarActual().removerObjeto(mapa.getLugarActual().getObjeto("puerta sur"));
+		List<Objeto> obj = mapa.getLugarActual().getObjeto(Arrays.asList("puerta sur".split(" ")));
+		mapa.getLugarActual().removerObjeto(obj.get(0));
 		mapa.mover(EnumDireccion.SUR.getValue());
 		assertEquals(new Posicion(5,4,1), mapa.getPosicionActual());
 	}
@@ -85,7 +91,8 @@ public class TestObstaculo {
 	@Test
 	void removerObstaculoEsteYavanzar() {
 		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
-		mapa.getLugarActual().removerObjeto(mapa.getLugarActual().getObjeto("puerta este"));
+		List<Objeto> obj = mapa.getLugarActual().getObjeto(Arrays.asList("puerta este".split(" ")));
+		mapa.getLugarActual().removerObjeto(obj.get(0));
 		mapa.mover(EnumDireccion.ESTE.getValue());
 		assertEquals(new Posicion(6,5,1), mapa.getPosicionActual());
 	}
@@ -93,7 +100,8 @@ public class TestObstaculo {
 	@Test
 	void removerObstaculoOesteYavanzar() {
 		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
-		mapa.getLugarActual().removerObjeto(mapa.getLugarActual().getObjeto("puerta oeste"));
+		List<Objeto> obj = mapa.getLugarActual().getObjeto(Arrays.asList("puerta oeste".split(" ")));
+		mapa.getLugarActual().removerObjeto(obj.get(0));
 		mapa.mover(EnumDireccion.OESTE.getValue());
 		assertEquals(new Posicion(4,5,1), mapa.getPosicionActual());
 	}
@@ -101,7 +109,8 @@ public class TestObstaculo {
 	@Test
 	void removerObstaculoArribaYavanzar() {
 		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
-		mapa.getLugarActual().removerObjeto(mapa.getLugarActual().getObjeto("puerta arriba"));
+		List<Objeto> obj = mapa.getLugarActual().getObjeto(Arrays.asList("puerta arriba".split(" ")));
+		mapa.getLugarActual().removerObjeto(obj.get(0));
 		mapa.mover(EnumDireccion.ARRIBA.getValue());
 		assertEquals(new Posicion(5,5,2), mapa.getPosicionActual());
 	}
@@ -109,7 +118,8 @@ public class TestObstaculo {
 	@Test
 	void removerObstaculoAbajoYavanzar() {
 		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
-		mapa.getLugarActual().removerObjeto(mapa.getLugarActual().getObjeto("puerta abajo"));
+		List<Objeto> obj = mapa.getLugarActual().getObjeto(Arrays.asList("puerta abajo".split(" ")));
+		mapa.getLugarActual().removerObjeto(obj.get(0));
 		mapa.mover(EnumDireccion.ABAJO.getValue());
 		assertEquals(new Posicion(5,5,0), mapa.getPosicionActual());
 	}
@@ -117,7 +127,8 @@ public class TestObstaculo {
 	@Test
 	void removerObstaculoSurYnoOtro() {
 		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
-		mapa.getLugarActual().removerObjeto(mapa.getLugarActual().getObjeto("puerta sur"));
+		List<Objeto> obj = mapa.getLugarActual().getObjeto(Arrays.asList("puerta sur".split(" ")));
+		mapa.getLugarActual().removerObjeto(obj.get(0));
 		mapa.mover(EnumDireccion.NORTE.getValue());
 		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
 		mapa.mover(EnumDireccion.ESTE.getValue());
@@ -135,7 +146,7 @@ public class TestObstaculo {
 	@Test
 	void removerObstaculoNorteYnoOtro() {
 		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
-		mapa.getLugarActual().removerObjeto(mapa.getLugarActual().getObjeto("puerta"));
+		mapa.getLugarActual().removerObjeto(mapa.getLugarActual().getObjeto(Arrays.asList("puerta")).get(0));
 		mapa.mover(EnumDireccion.SUR.getValue());
 		assertEquals(new Posicion(5,5,1), mapa.getPosicionActual());
 		mapa.mover(EnumDireccion.ESTE.getValue());

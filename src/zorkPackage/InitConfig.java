@@ -8,9 +8,9 @@ public final class InitConfig {
 
 	public static void getMapa (String characterName, String path) throws IOException {
 		Mapa mapa =  new Mapa();
+		Lexico.cargarLexico();
 		mapa.setPersonajeActual( new Personaje(characterName,true));
 		mapa = JsonReader.construirAventura(mapa, path);
-		Lexico.cargarLexico();
 		//mapa.verMapa();
 		//Consola.iniciarAventura(mapa);
 		Aventura gm = new Aventura(mapa);

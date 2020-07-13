@@ -1,5 +1,6 @@
 package zorkPackage;
 
+import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -36,25 +37,23 @@ public class Main {
 					System.out.print("\n>> ");
 					scan = (in.next());
 
-					switch (scan) {
-					case "1":
-						InitConfig.getMapa(name, "./Recursos/jsonpirata.txt");
-						in.close();
-						init = true;
-						break;
-					case "2":
-						InitConfig.getMapa(name, "./Recursos/deDragonesYDesiertos.txt");
-						in.close();
-						init = true;
-						break;
-					case "3":
+					if(scan == "3") {
 						Consola.mostrarMenuInicio(name);
-						break;
-					default:
-						System.out.println("\nPor favor, elija alguna de las opciones disponibles.");
-						break;
-					}
+					} else {
+						File[] files = new File("./Recursos/Aventuras/").listFiles();
+						for (File file : files) {
+							if(file.getName().contains(scan)) {
+								InitConfig.getMapa(name, "./Recursos/Aventuras/" + file.getName());
+								in.close();
+								init = true;
+								break;
+							}
+						}
 
+						if(!init) {
+							System.out.println("\nPor favor, elija alguna de las opciones disponibles.");
+						}
+					}
 				} while (!scan.equals("3") && init == false);
 
 				if (init == true) {

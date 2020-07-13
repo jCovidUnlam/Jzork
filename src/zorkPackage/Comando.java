@@ -1,94 +1,149 @@
 package zorkPackage;
 
-import zorkEnum.EnumTipoLexico;
+import java.util.List;
+
+import zorkEnum.EnumComando;
 
 public class Comando {
 	
-	public enum Tipo {
-		INVALIDO,
-		MOVER,
-		ADQUIRIR,
-		INSPECCIONAR,
-		ROMPER,
-		MEZCLAR,
-		USAR,
-		USUARIO,
-		NPC,
-		TRIGGER,
-		ATACAR,
-		OTRO,
-		DESCARTAR,
-	}
-	
-	private String nombre;
-	private String nombreObjeto;
-	private String nombreAfectado;
-	private Tipo tipo;
+	private String verbo;
+	private EnumComando tipo;
 	private boolean reEscanear;
-
+	private int cantidadObjetos;
+	private List<String> palabrasClavesPrimerObjeto;
+	private List<String> palabrasClavesSegundoObjeto;
 	
 	public Comando() {
 		super();
 	}
 
-	public Comando(Tipo tipo) {
+	public Comando(EnumComando tipo) {
 		super();
 		this.tipo = tipo;
 	}
 	
-	public Comando(String nombre, Tipo tipo) {
+	public Comando(String verbo, EnumComando tipo) {
 		super();
-		this.nombre = nombre;
+		this.verbo = verbo;
 		this.tipo = tipo;
 	}
 	
-	public Comando(String nombre, String nombreObjeto, Tipo tipo) {
+	public Comando(String verbo, EnumComando tipo, int cantidadObjetos) {
 		super();
-		this.nombre = nombre;
-		this.nombreObjeto = nombreObjeto;
+		this.verbo = verbo;
 		this.tipo = tipo;
-		this.nombreAfectado = "";
+		this.cantidadObjetos = cantidadObjetos;
 	}
 	
-	public Comando(String nombre, String nombreObjeto, String nombreAfectado, Tipo tipo) {
+	public Comando(String verbo, EnumComando tipo, List<String> palabrasClavesPrimerObjeto) {
 		super();
-		this.nombre = nombre;
-		this.nombreObjeto = nombreObjeto;
+		this.verbo = verbo;
 		this.tipo = tipo;
-		this.nombreAfectado = nombreAfectado;
+		this.cantidadObjetos = 1;
+		this.palabrasClavesPrimerObjeto = palabrasClavesPrimerObjeto;
 	}
 	
+	public Comando(String verbo, EnumComando tipo, List<String> palabrasClavesPrimerObjeto,
+			List<String> palabrasClavesSegundoObjeto) {
+		super();
+		this.verbo = verbo;
+		this.tipo = tipo;
+		this.cantidadObjetos = 2;
+		this.palabrasClavesPrimerObjeto = palabrasClavesPrimerObjeto;
+		this.palabrasClavesSegundoObjeto = palabrasClavesSegundoObjeto;
+	}
+	
+
 	public boolean isReEscanear() {
 		return reEscanear;
 	}
 	public void setReEscanear(boolean reEscanear) {
 		this.reEscanear = reEscanear;
 	}
-	public String getNombre() {
-		return nombre;
+	public String getVerbo() {
+		return verbo;
 	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setVerbo(String nombre) {
+		this.verbo = nombre;
 	}
-	public String getNombreObjeto() {
-		return nombreObjeto;
-	}
-	public void setNombreObjeto(String nombreObjeto) {
-		this.nombreObjeto = nombreObjeto;
-	}
-	public Tipo getTipo() {
+
+	public EnumComando getTipo() {
 		return tipo;
 	}
-	public void setTipo(Tipo tipo) {
+	public void setTipo(EnumComando tipo) {
 		this.tipo = tipo;
 	}
-	public String getNombreAfectado() {
-		return nombreAfectado;
-	}
-	public void setNombreAfectado(String nombreAfectado) {
-		this.nombreAfectado = nombreAfectado;
+	public List<String> getPalabrasClavesPrimerObjeto() {
+		return palabrasClavesPrimerObjeto;
 	}
 
+	public void setPalabrasClavesPrimerObjeto(List<String> palabrasClavesPrimerObjeto) {
+		this.palabrasClavesPrimerObjeto = palabrasClavesPrimerObjeto;
+	}
+	
+	public List<String> getPalabrasClavesSegundoObjeto() {
+		return palabrasClavesSegundoObjeto;
+	}
 
+	public void setPalabrasClavesSegundoObjeto(List<String> palabrasClavesSegundoObjeto) {
+		this.palabrasClavesSegundoObjeto = palabrasClavesSegundoObjeto;
+	}
+
+	public int getCantidadObjetos() {
+		return cantidadObjetos;
+	}
+
+	public void setCantidadObjetos(int cantidadObjetos) {
+		this.cantidadObjetos = cantidadObjetos;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + cantidadObjetos;
+		result = prime * result + ((palabrasClavesPrimerObjeto == null) ? 0 : palabrasClavesPrimerObjeto.hashCode());
+		result = prime * result + ((palabrasClavesSegundoObjeto == null) ? 0 : palabrasClavesSegundoObjeto.hashCode());
+		result = prime * result + (reEscanear ? 1231 : 1237);
+		result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
+		result = prime * result + ((verbo == null) ? 0 : verbo.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Comando other = (Comando) obj;
+		if (cantidadObjetos != other.cantidadObjetos)
+			return false;
+		if (palabrasClavesPrimerObjeto == null) {
+			if (other.palabrasClavesPrimerObjeto != null)
+				return false;
+		} else if (!palabrasClavesPrimerObjeto.equals(other.palabrasClavesPrimerObjeto))
+			return false;
+		if (palabrasClavesSegundoObjeto == null) {
+			if (other.palabrasClavesSegundoObjeto != null)
+				return false;
+		} else if (!palabrasClavesSegundoObjeto.equals(other.palabrasClavesSegundoObjeto))
+			return false;
+		if (reEscanear != other.reEscanear)
+			return false;
+		if (tipo != other.tipo)
+			return false;
+		if (verbo == null) {
+			if (other.verbo != null)
+				return false;
+		} else if (!verbo.equals(other.verbo))
+			return false;
+		return true;
+	}
+
+	
+	
 	
 }

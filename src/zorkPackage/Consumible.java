@@ -1,31 +1,20 @@
 package zorkPackage;
 
-public class Consumible{
+import zorkEnum.EnumConsumible;
 
-	public enum TipoConsumible{
-		
-		CURACION,
-		MEZCLA,
-		
-	}
-	
-	private TipoConsumible tipo;
+public abstract class Consumible extends Item{
 
+	private EnumConsumible tipo;
 
-	public TipoConsumible getTipo() {
+	public EnumConsumible getTipo() {
 		return tipo;
 	}
 
-
-	public void setTipo(TipoConsumible tipo) {
+	public void setTipo(EnumConsumible tipo) {
 		this.tipo = tipo;
 	}
 
-	public Consumible(TipoConsumible tipo) {
-		super();
-		this.tipo = tipo;
-	}
-	
+	public abstract String consumir(Personaje pj);
 	
 
 }

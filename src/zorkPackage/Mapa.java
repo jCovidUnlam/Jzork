@@ -1,7 +1,8 @@
 package zorkPackage;
+
+import java.util.ArrayList;
+import java.util.List;
 import zorkEnum.EnumDireccion;
-
-
 
 public class Mapa {
 	
@@ -124,44 +125,121 @@ public class Mapa {
 		
 		this.cantidadMovimientos++;
 		this.personajeActual.ir(pos);
+		
+		///ACA PUEDE IR EL CAMBIAR IMAGEN DEL LUGAR.
+		
 		return Mensaje.mensajeLugar(lugar);
 	}
 	
-	public String irHacia(String nombreLugar) {
+	public String irHacia(List<String> keyWordsLugar) {
 		
-		if(getLugarActual().getNombre().equals(nombreLugar))
+		//ir mismo lugar
+		if(getLugarActual().getKeyWordsNombre().equals(keyWordsLugar))
 			return "Ya te encuentras en este lugar!";
 		
-		Posicion pos = posicionDireccion(nombreLugar);
+		//ir sur/ir norte/ir este....
+		Posicion pos = posicionDireccion(keyWordsLugar.get(0));
 		if(pos != null)
-			return mover(nombreLugar);
+			return mover(keyWordsLugar.get(0));
+		
+		List<Limitrofe> limitrofes = listarLimitrofes();
+		List<Limitrofe> resultado = new ArrayList<Limitrofe>(limitrofes);
+		
+		int i = 0;
+		do {
+			
+			for (Limitrofe limitrofe : limitrofes) {
+				if(limitrofe.getLugar().getKeyWordsNombre().size() <= i || !limitrofe.getLugar().getKeyWordsNombre().get(i).equals(keyWordsLugar.get(i)))
+					resultado.remove(limitrofe);
+			}
+			
+			limitrofes = new ArrayList<>(resultado);
+
+			i++;
+			
+		}while(i < keyWordsLugar.size() && resultado.size() > 1);
+		
+		
+		
+		if(resultado.size() > 1) {
+			for (Limitrofe limitrofe : limitrofes)  {
+				if(limitrofe.getLugar().getKeyWordsNombre().size() > keyWordsLugar.size())
+					resultado.remove(limitrofe);
+			}
+		}
+		
+		//Si ya paso y no encontro nada de nada, se fija si el usuario escribio mal y al menos existe un lugar con esas palabras...
+		//Sino lo encuentra o si encuentra mas de 1 ya esta, tampoco le vas a leer la mente.
+		if(resultado.size() == 0)
+		{
+			limitrofes = listarLimitrofes();
+			resultado = new ArrayList<>(limitrofes);
+			i = 0;
+			
+			do {
+				
+				for (Limitrofe limitrofe : limitrofes) {
+					if(limitrofe.getLugar().getKeyWordsNombre().size() <= i || !limitrofe.getLugar().getKeyWordsNombre().contains(keyWordsLugar.get(i)))
+						resultado.remove(limitrofe);
+				}
+				
+				limitrofes = new ArrayList<>(resultado);
+
+				i++;
+				
+			}while(i < keyWordsLugar.size() && resultado.size() > 1);
+			
+		}
+
+		
+		if(resultado.size() > 1)
+			return "Por favor, sea mas específico con el nombre del lugar.";
+		
+		if(resultado.size() == 0 )
+			return "No existe ese lugar!";
+			
+		return mover(resultado.get(0).getDireccion().getValue());			
+			
+	}
+	
+	private List<Limitrofe> listarLimitrofes(){
+		
+		List<Limitrofe> returned = new ArrayList<Limitrofe>();
 		
 		Lugar lugar;
 		
 		lugar = getLugar(posicionDireccion(EnumDireccion.NORTE.getValue()));
-		if(lugar != null && lugar.getNombre().toLowerCase().equals(nombreLugar))
-			return mover(EnumDireccion.NORTE.getValue());
+		if(lugar != null)
+			returned.add(new Limitrofe(EnumDireccion.NORTE, lugar));
 		
 		lugar = getLugar(posicionDireccion(EnumDireccion.SUR.getValue()));
-		if(lugar != null && lugar.getNombre().toLowerCase().equals(nombreLugar))
-			return mover(EnumDireccion.SUR.getValue());
+		if(lugar != null)
+			returned.add(new Limitrofe(EnumDireccion.SUR, lugar));
 		
 		lugar = getLugar(posicionDireccion(EnumDireccion.ESTE.getValue()));
-		if(lugar != null && lugar.getNombre().toLowerCase().equals(nombreLugar))
-			return mover(EnumDireccion.ESTE.getValue());
+		if(lugar != null)
+			returned.add(new Limitrofe(EnumDireccion.ESTE, lugar));
 		
 		lugar = getLugar(posicionDireccion(EnumDireccion.OESTE.getValue()));
-		if(lugar != null && lugar.getNombre().toLowerCase().equals(nombreLugar))
-			return mover(EnumDireccion.OESTE.getValue());
+		if(lugar != null)
+			returned.add(new Limitrofe(EnumDireccion.OESTE, lugar));
 		
 		lugar = getLugar(posicionDireccion(EnumDireccion.ABAJO.getValue()));
-		if(lugar != null && lugar.getNombre().toLowerCase().equals(nombreLugar))
-			return mover(EnumDireccion.ABAJO.getValue());
+		if(lugar != null)
+			returned.add(new Limitrofe(EnumDireccion.ABAJO, lugar));
 		
 		lugar = getLugar(posicionDireccion(EnumDireccion.ARRIBA.getValue()));
-		if(lugar != null && lugar.getNombre().toLowerCase().equals(nombreLugar))
-			return mover(EnumDireccion.ARRIBA.getValue());
+		if(lugar != null)
+			returned.add(new Limitrofe(EnumDireccion.ARRIBA, lugar));
 		
-		return "No existe ese lugar!";
+		return returned;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 }
