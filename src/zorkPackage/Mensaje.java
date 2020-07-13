@@ -212,4 +212,8 @@ public final class Mensaje {
 	public static String noHayNadieAtacar() {
 		return "En este lugar no hay nada parecido que puedas atacar.";
 	}
+	
+	public static String consumirPocionSalud(double puntosSalud) {
+		return "Has consumido una pocion de salud para recuperar " + puntosSalud + " puntos de salud!.\n";
+	}
 }

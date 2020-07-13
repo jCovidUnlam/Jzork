@@ -20,6 +20,7 @@ import zorkPackage.Mapa;
 import zorkPackage.NPC;
 import zorkPackage.Objeto;
 import zorkPackage.Obstaculo;
+import zorkPackage.PocionSalud;
 import zorkPackage.Posicion;
 import zorkTrigger.Trigger;
 import zorkTrigger.TriggerAtaque;
@@ -304,6 +305,18 @@ public final class JsonReader {
 					newItem = new Arma();
 					newItem.setDanio(Double.parseDouble(objeto.get("danio").toString()));
 					break;
+				case "consumible":
+					switch (objeto.get("subtipo").toString()) {
+					case "pocionSalud":
+						PocionSalud pocion = new PocionSalud();
+						pocion.setPuntosSaludRecuperados(Double.parseDouble(objeto.get("puntosSalud").toString()));
+						newItem = pocion;
+						break;
+
+					default:
+						break;
+					}
+
 				}
 			}
 			

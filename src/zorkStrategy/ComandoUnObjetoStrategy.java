@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import zorkPackage.Arma;
+import zorkPackage.Buscador;
 import zorkPackage.Comando;
+import zorkPackage.Consumible;
 import zorkPackage.Item;
 import zorkPackage.Mapa;
 import zorkPackage.Mensaje;
@@ -53,11 +55,15 @@ public class ComandoUnObjetoStrategy implements ComandoStrategy{
 		case USAR:
 			resultado = ejectuarUsarObjeto(cmd);
 			break;
+		case CONSUMIR:
+			resultado = ejecutarConsumirObjeto(cmd);
 		}
 		
 		
 		return resultado;
 	}
+	
+
 	
 	public String ejecutarComandoMover(Comando cmd) {
 		return mapa.irHacia(cmd.getPalabrasClavesPrimerObjeto());
@@ -228,5 +234,17 @@ public class ComandoUnObjetoStrategy implements ComandoStrategy{
 			//return Mensaje.noEsRompible(objeto.getNombre());
 		return "";
 		//return mapa.getLugarActual().romperObjeto((Contenedor)objeto);
+	}
+	
+	public String ejecutarConsumirObjeto(Comando cmd) {
+		String msj = "";
+		Consumible buscado = Buscador.buscarConsumible(cmd, mapa, msj);
+		
+		if(buscado == null)
+			return msj;
+		
+		msj = buscado.consumir(mapa.getPersonajeActual());
+		msj += Mensaje.estadoPersonaje(mapa.getPersonajeActual());
+		return msj;
 	}
 }

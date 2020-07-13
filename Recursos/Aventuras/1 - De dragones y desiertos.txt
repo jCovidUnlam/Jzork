@@ -14,12 +14,13 @@ lo suficiente como para aparecer en el medio del desierto sin la nocion de que h
 		{
 			"nombre": "Desierto",
 			"descripcion": "A tu alrededor, solo puede ver arena en todos lados, al sur ves lo que parece ser una aldea.
-{n4}",
+{n4}
+{i12}",
 			"x": "5",
 			"y": "10",
 			"z": "0",
 			"mensajeLimite": "",
-			"items": "",
+			"items": "i12",
 			"obstaculos" : "o1",
 			"npcs" : "n4",
 		},
@@ -298,6 +299,18 @@ Todo el equipo JCovid te saluda cordialmente, valiente aventurerx.",
 			"mensajeTomable": "Logras tomar el palo, sin que el almacenero lo note, y aun cuando lo notase no parece que le interese demasiado...",
 			"mensajeNoTomable" : "",
 		},
+		{
+			"id": "i12",
+			"tipo" : "consumible",
+			"subtipo": "pocionSalud",
+			"puntosSalud" : "30",
+			"nombre": "Pocion de Salud mediana",
+			"descripcion": "Es una pocion con la que recuperas 30 puntos de salud.",
+			"descripcionMapa": "Ves un frasco rojo tirado en el suelo.",
+			"tomable": "true",
+			"mensajeTomable": "Metes una pocion en tu inventario!",
+			"mensajeNoTomable" : "",
+		}
 		
 	],
 	"obstaculos":[
