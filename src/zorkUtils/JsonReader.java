@@ -13,13 +13,14 @@ import com.jayway.jsonpath.JsonPath;
 
 import zorkEnum.EnumDireccion;
 import zorkPackage.Arma;
-
+import zorkPackage.Contenedor;
 import zorkPackage.Item;
 import zorkPackage.Lugar;
 import zorkPackage.Mapa;
 import zorkPackage.NPC;
 import zorkPackage.Objeto;
 import zorkPackage.Obstaculo;
+import zorkPackage.PocionSalud;
 import zorkPackage.Posicion;
 import zorkTrigger.Trigger;
 import zorkTrigger.TriggerAtaque;
@@ -304,6 +305,27 @@ public final class JsonReader {
 					newItem = new Arma();
 					newItem.setDanio(Double.parseDouble(objeto.get("danio").toString()));
 					break;
+				case "consumible":
+					switch (objeto.get("subtipo").toString()) {
+					case "pocionSalud":
+						PocionSalud pocion = new PocionSalud();
+						pocion.setPuntosSaludRecuperados(Double.parseDouble(objeto.get("puntosSalud").toString()));
+						newItem = pocion;
+						break;
+					default:
+						break;
+					}
+					break;
+				case "contenedor":
+					Contenedor contenedor = new Contenedor();
+					List<String> ids = Arrays.asList(objeto.get("contenido").toString().split(" "));
+				    for (Objeto obj : aux) {
+				    	if(ids.contains(obj.getObjetoID()) && obj instanceof Item)
+				    		contenedor.addContenido((Item)obj);
+					}
+				    newItem = contenedor;
+				
+					break;
 				}
 			}
 			
@@ -332,6 +354,12 @@ public final class JsonReader {
 					break;
 				case "mensajeNoTomable":
 					newItem.setMensajeNoTomable((String)entry.getValue());
+					break;
+				case "rompible":
+					newItem.setRompible(Boolean.parseBoolean((String)entry.getValue()));
+					break;
+				case "mensajeRompible":
+					newItem.setMensajeRompible((String)entry.getValue());
 					break;
 				default:
 					break;

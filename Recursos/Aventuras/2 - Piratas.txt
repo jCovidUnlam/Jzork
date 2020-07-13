@@ -11,8 +11,8 @@
 	},
 	"lugares" :[
 		{
-			"nombre": "Muelle",
-			"descripcion":"EstÃ¡s en un muelle",
+			"nombre": "muelle",
+			"descripcion":"Estas en un muelle.Al oeste hay una taberna.",
 			"x": "5",
 			"y": "10",
 			"z": "0",
@@ -23,7 +23,7 @@
 		},
 		{
 			"nombre": "taberna",
-			"descripcion": "EstÃ¡s en una sucia taberna",
+			"descripcion": "ENDGAMESUCCESS. ¡Enhorabuena! Llegaste a la taberna, donde te espera una noche de borrachera con Grog y otros colegas piratas.",
 			"x": "4",
 			"y": "10",
 			"z": "0",
@@ -31,80 +31,74 @@
 			"items": "",
 			"obstaculos" : "",
 			"npcs" : "",
-		}
+		},
 	],
 	"items" :[
 		{
 			"id": "i1",
 			"nombre": "barreta",
-			"descripcion": "",
-			"descripcionMapa": "",
+			"descripcion": "Es una barreta llena de agua!",
+			"descripcionMapa": "Ves una barreta en el suelo",
 			"tomable": "true",
-			"mensajeTomable": "",
+			"mensajeTomable": "Tienes una barreta en tu inventario",
 			"mensajeNoTomable" : "",
 		},
 		{
 			"id": "i2",
-			"nombre": "rociador con cerveza de raiz",
-			"tipo" : "arma",
-			"danio" : "1500",
-			"descripcion": "",
-			"descripcionMapa": "",
+			"nombre": "rociador",
+			"descripcion": "Es un rociador con cerveza de maiz",
+			"descripcionMapa": "hay un rociador",
 			"tomable": "true",
-			"mensajeTomable": "",
+			"mensajeTomable": "Tienes un rociador en tu inventario",
 			"mensajeNoTomable" : "",
 		},
 		{
 			"id": "i3",
 			"nombre": "espejo",
-			"descripcion": "",
-			"descripcionMapa": "",
+			"descripcion": "ENDGAME. ¡Oh, no! Acabas de descubrir que tú también eres un pirata fantasma... ¡el horror!",
+			"descripcionMapa": "y un espejo",
 			"tomable": "true",
-			"mensajeTomable": "",
+			"mensajeTomable": "Tienes un espejo en tu inventario",
 			"mensajeNoTomable" : "",
 		},
-		{
-			"id": "i4",
-			"nombre": "cartel",
-			"descripcion": "El cartel dice 'Almacen NO TENGO TIEMPO' fijado en una columna del almacen.
-Se nota que el lugar desborda de alegria...",
-			"descripcionMapa": "Hay un viejo cartel fijado a una columna del almacen.",
-			"tomable": "false",
-			"mensajeTomable": "",
-			"mensajeNoTomable" : "No puedes agarrarlo, esta fuertemente agarrado a la columna. Tampoco sirve de nada...",
-		}
 	],
 	"obstaculos":[
 		{
 			"id": "o1",
-			"mensaje": "'Â¡No puedes pasar!' El pirata fantasma no te dejarÃ¡ pasar",
+			"mensaje": "¡No puedes pasar! El pirata fantasma no te dejara pasar",
 			"direccion": "oeste",
 			"objeto": "n1",
-		}
+		},
 
 	],
 	"npcs":[
 		{
 			"id" : "n1",
-			"nombre" : "pirata fantasma",
-			"descripcion": "",
-			"hablar": "Â¡No hay nada que me digas que me haga cambiar de opiniÃ³n!",
-			"descripcionMapa": "",
+			"nombre" : "pirata",
+			"descripcion": "Soy un pirata fantasma!",
+			"hablar": "¡No hay nada que me digas que me haga cambiar de opinion!",
+			"descripcionMapa": "Soy un piratita!",
 			"danio" : "10",
-			"salud" : "15",
-		}
+			"salud" : "1500",
+		},
 	],
 	"triggers": [
 		{
+		
 			"tipo": "item",
-			"idObjeto" : "i2",
-			"items": "n1",
-			"afterTriggerDesc": "Â¡Me encanta la cerveza de raiz!' El pirata fantasma se veÃ­a entusiasmado por tu ofrecimiento... sin embargo, cuando lo rociaste comenzÃ³ a desintegrarse. La mitad de arriba de su cuerpo se desvaneciÃ³, y las piernas inmediatamente echaron a correr.",
+			"idObjeto" : "n1",
+			"items": "i2",
+			"afterTriggerDesc": "",
 			"exito": "REMOVEROBJETO",
-			"error": "NINGUNA",
-			"errorTriggerDesc": "error? no hay error",
-			"after": "NINGUNA"
-		}
+			"exitoTriggerDesc": "¡Me encanta la cerveza de raiz!' El pirata fantasma se veia entusiasmado por tu ofrecimiento... sin embargo, cuando lo rociaste comenzo a desintegrarse. La mitad de arriba de su cuerpo se desvanecia, y las piernas inmediatamente echaron a correr.",
+			"error": "RESPONDER",
+			"errorTriggerDesc": "Eso no ha servido de nada.",
+			"after": "REMOVERITEM",
+			"afterTriggerDesc" : "",
+		
+			
+		
+		},,
 		
 	]	
 }

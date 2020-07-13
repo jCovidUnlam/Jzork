@@ -21,13 +21,16 @@ public class Objeto {
 	private double danio;
 	private boolean muerto;
 	private boolean matable;
+	private boolean rompible;
+	private String mensajeRompible;
 	
 	public Objeto(){
 		this.triggers = new ArrayList<Trigger>();
-		this.salud = 1; // Salud por defecto
-		this.danio = 0; // danio por defecto de cualquier objeto
-		this.muerto = false;// los objetos deberian comenzar vivos
-		this.matable = false;// los objetos no deberian ser matables a menos que se indique lo contratio.
+		this.salud = 1;
+		this.danio = 0;
+		this.muerto = false;
+		this.matable = false;
+		this.rompible = false;
 	};
 		
 	public Objeto(String objetoID, String nombre, String descripcion, String descripcionMapa) {
@@ -126,6 +129,22 @@ public class Objeto {
 		this.restarSalud(danio);
 	}
 	
+	public boolean isRompible() {
+		return rompible;
+	}
+
+	public void setRompible(boolean rompible) {
+		this.rompible = rompible;
+	}
+	
+	public String getMensajeRompible() {
+		return mensajeRompible;
+	}
+
+	public void setMensajeRompible(String mensajeRompible) {
+		this.mensajeRompible = mensajeRompible;
+	}
+
 	public TriggerAtaque getTriggerAtaque() {
 		//Lo primero que hace es buscar si tiene un trigger de ataque
 		return this.triggers.stream()

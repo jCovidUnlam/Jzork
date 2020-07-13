@@ -184,7 +184,7 @@ public class Lugar {
 		}
 		
 		removerObjeto(objeto);
-		return objeto.getDescRompible();
+		return objeto.getMensajeRompible();
 	}
 	
 	
