@@ -9,9 +9,10 @@ lo suficiente como para aparecer en el medio del desierto sin la nocion de que h
 		"x": "5",
 		"y": "10",
 		"z": "0",
-	},
+	}, 
 	"lugares" :[
 		{
+			"id": "l1",
 			"nombre": "Desierto",
 			"descripcion": "A tu alrededor, solo puede ver arena en todos lados, al sur ves lo que parece ser una aldea.
 {n4}
@@ -23,8 +24,10 @@ lo suficiente como para aparecer en el medio del desierto sin la nocion de que h
 			"items": "i12 i2",
 			"obstaculos" : "o1",
 			"npcs" : "n4",
+			"path": "",
 		},
 		{
+			"id": "l2",
 			"nombre": "Desierto oeste",
 			"descripcion": "Huyes hacia el oeste pero el dragon no ha dejado de perseguirte y te bloquea el paso, no ves ninguna salida salvo seguir corriendo hacia el norte.",
 			"x": "4",
@@ -34,8 +37,10 @@ lo suficiente como para aparecer en el medio del desierto sin la nocion de que h
 			"items": "",
 			"obstaculos" : "o2",
 			"npcs" : "n4",
+			"path": "",
 		},
 		{
+			"id": "l3",
 			"nombre": "Arena movediza",
 			"descripcion": "ENDGAME.Huyes hacia el oeste, pero cuando crees que por fin estas a salvo, te encuentras con algo peor: un enorme banco de 
 arena movediza comienza a absorberte y, sin que puedas hacer nada, caes y caes sin fin.",
@@ -46,8 +51,10 @@ arena movediza comienza a absorberte y, sin que puedas hacer nada, caes y caes s
 			"items": "",
 			"obstaculos" : "",
 			"npcs" : ""
+			"path": "",
 		},
 		{
+			"id": "l4",
 			"nombre": "Desierto este",
 			"descripcion": "Huyes hacia el este, el dragon sigue persiguiendote y no parece nada cansado, no ves mas salida que seguir corriendo y ver si logras perderlo.",
 			"x": "6",
@@ -56,9 +63,11 @@ arena movediza comienza a absorberte y, sin que puedas hacer nada, caes y caes s
 			"mensajeLimite": "Solo ves arena, no puedes huir por el dragon si vas por este camino!",
 			"items": "",
 			"obstaculos" : "o3",
-			"npcs" : "n4"
+			"npcs" : "n4",
+			"path": "",
 		},
 		{
+			"id": "l5",
 			"nombre": "Medanos",
 			"descripcion": "ENDGAME.Finalmente, crees haber perdido al dragon, pero te encuentras muy cansado y no puedes mantenerte en pie.... no parece que vayas a salir de esta.",
 			"x": "7",
@@ -67,9 +76,11 @@ arena movediza comienza a absorberte y, sin que puedas hacer nada, caes y caes s
 			"mensajeLimite": "",
 			"items": "",
 			"obstaculos" : "o3",
-			"npcs" : "n4"
+			"npcs" : "n4",
+			"path": "",
 		},
 		{
+			"id": "l6",
 			"nombre": "Entrada aldea",
 			"descripcion": "Llegas a una especie de arco que hace las veces de entrada a lo que parece una vieja aldea. 
 Mas alla del arco, que parece tener siglos de antiguedad se ve la aldea. Un temblor te recorre la espalda. 
@@ -82,9 +93,11 @@ Al sur parece estar la aldea.",
 			"mensajeLimite": "Solo logras ver ruinas y arena, no tendria sentido ir por este camino.",
 			"items": "i5 i9 i10",
 			"obstaculos" : "",
-			"npcs" : ""
+			"npcs" : "",
+			"path": "",
 		},
 		{
+			"id": "l7",
 			"nombre": "Aldea",
 			"descripcion": "La aldea es un lugar casi tan vacio como el desierto, a excepcion de unos pocos lugares que parecen estar habitados. 
 A la derecha de la calle principal ves una taberna, y a la izquierda un almacen, al frente tuyo ves una especie de totem que jurarias te esta mirando.
@@ -95,9 +108,11 @@ A la derecha de la calle principal ves una taberna, y a la izquierda un almacen,
 			"mensajeLimite": "",
 			"items": "i3",
 			"obstaculos" : "o4",
-			"npcs" : "n5"
+			"npcs" : "n5",
+			"path": "",
 		},
-				{
+		{
+			"id": "l8",
 			"nombre": "Bosque",
 			"descripcion": "Pasando la Aldea, llegas a un bosque que parece salido de un cuento de hadas.
 La brisa es agradable, no hace el calor abrazador que sentias en el desierto.
@@ -108,9 +123,11 @@ La brisa es agradable, no hace el calor abrazador que sentias en el desierto.
 			"mensajeLimite": "Solo hay mas arboles, no es posible pasar por este camino.",
 			"items": "",
 			"obstaculos" : "o6",
-			"npcs" : "n6"
+			"npcs" : "n6",
+			"path": "",
 		},
 		{
+			"id": "l9",
 			"nombre": "Claro",
 			"descripcion": "Luego d perder la nocion de cuantas horas habias caminado en una direccion incierta, llegas a un
 pequenio claro al final del bosque. 
@@ -123,10 +140,11 @@ Frente a ti, hay una roca{i2}.",
 			"mensajeLimite": "",
 			"items": "i2 i8",
 			"obstaculos" : "Solo hay mas arboles, no es posible pasar por este camino.",
-			"npcs" : ""
+			"npcs" : "",
+			"path": "",
 		},
-		
 		{
+			"id": "l10",
 			"nombre": "Taberna",
 			"descripcion": "Esto si que no se parece nada al bar de anoche, es un lugar con sombrio, y con algunos esqueletos sentados... 
 Para tu sorpresa, existen mas personas en esta pesadilla, y logras ver al tabernero que se fija en ti. 
@@ -137,9 +155,11 @@ A lo lejos se escucha el llanto de una mujer que no ayuda para nada a tu resaca,
 			"mensajeLimite": "El Tabernero exclada, a donde vas?? Parece que ademas de raro mi suenio no tiene buen humor.",
 			"items": "",
 			"obstaculos" : "",
-			"npcs" : "n1"
+			"npcs" : "n1",
+			"path": "",
 		},
 		{
+			"id": "l11",
 			"nombre": "Atico",
 			"descripcion": "Subes por la escalera y, a cada paso que das, escuchas como el sollozo se intensifica, casi tanto como tu dolor de cabeza.
 Al llegar al final de la escalera, te encuentras en una habitacion mas iluminada que la que acabas de abandonar, y sin tantos esqueletos, solo algunos.
@@ -150,9 +170,11 @@ Al llegar al final de la escalera, te encuentras en una habitacion mas iluminada
 			"mensajeLimite": "No tienes donde ir, solo puedes bajar hacia la Taberna nuevamente.",
 			"items": "",
 			"obstaculos" : "",
-			"npcs" : "n2"
+			"npcs" : "n2",
+			"path": "",
 		},
 		{
+			"id": "l12",
 			"nombre": "Almacen",
 			"descripcion": "Te sorprende lo grande que es aquel lugar. Entra luz natural desde el techo, se ve mucho polvo flotando alrededor.
 {i4}.
@@ -164,9 +186,11 @@ Detras de un gran mostrador, ves a un almacenero que tiene un cartel medio despe
 			"mensajeLimite": "No hay mucho lugar donde ir, aunque al almacenero parece no importarle.",
 			"items": "i4 i11",
 			"obstaculos" : "",
-			"npcs" : "n3"
+			"npcs" : "n3",
+			"path": "",
 		},
 		{
+			"id": "l13",
 			"nombre": "Oasis",
 			"descripcion": "Justo enfrente de tus ojos, se abre un oasis maravilloso. {i7}",
 			"x": "5",
@@ -175,7 +199,8 @@ Detras de un gran mostrador, ves a un almacenero que tiene un cartel medio despe
 			"mensajeLimite": "No tienes tiempo que perder caminando por la arena, tienes que despertar!",
 			"items": "i7",
 			"obstaculos" : "",
-			"npcs" : ""
+			"npcs" : "",
+			"path": "",
 		},
 		
 	],
@@ -188,6 +213,9 @@ Detras de un gran mostrador, ves a un almacenero que tiene un cartel medio despe
 			"tomable": "false",
 			"mensajeTomable": "",
 			"mensajeNoTomable" : "Se ve que la resaca te hace pensar cosas demenciales, como vas a agarrar a un dragon!?",
+			"path" : "",
+			"x": "1",
+			"y": "1",
 		},
 		{
 			"id": "i2",
@@ -200,6 +228,9 @@ Detras de un gran mostrador, ves a un almacenero que tiene un cartel medio despe
 			"mensajeTomable": "Para tu sorpresa, logras sacarla de la piedra con facilidad. Es muy pesada, dudas de tener un buen control de ella.
 La espada tiene una leyenda que dice 'equipame'. Creo que mi propio suenio me trata de tonto.",
 			"mensajeNoTomable" : "",
+			"path" : "",
+			"x": "1",
+			"y": "1",
 		},
 		{
 			"id": "i3",
@@ -209,6 +240,9 @@ La espada tiene una leyenda que dice 'equipame'. Creo que mi propio suenio me tr
 			"tomable": "true",
 			"mensajeTomable": "Cuando la agarras, te llenas las manos te arena. Maldices por lo bajo, porque me esta pasando esto? donde quedo mi fernet?.",
 			"mensajeNoTomable" : "",
+			"path" : "",
+			"x": "1",
+			"y": "1",
 		},
 		{
 			"id": "i4",
@@ -219,6 +253,9 @@ Se nota que el lugar desborda de alegria...",
 			"tomable": "false",
 			"mensajeTomable": "",
 			"mensajeNoTomable" : "No puedes agarrarlo, esta fuertemente agarrado a la columna. Tampoco sirve de nada...",
+			"path" : "",
+			"x": "1",
+			"y": "1",
 		},
 		{
 			"id": "i5",
@@ -239,6 +276,9 @@ Tu te sigues preguntando que le pusieron tus amigos a tu bebida anoche...",
 			"tomable": "false",
 			"mensajeTomable": "",
 			"mensajeNoTomable" : "No puedes tomar este cartel, esta fijado al arco.",
+			"path" : "",
+			"x": "1",
+			"y": "1",
 		},
 		{
 			"id": "i6",
@@ -249,6 +289,9 @@ Tu te sigues preguntando que le pusieron tus amigos a tu bebida anoche...",
 			"mensajeTomable": "Sera mejor que se lo lleves a Clara, no querras que caiga sobre ti la maldicion de los ladrones... 
 ya despues de lo que viste todo puede pasar, no?",
 			"mensajeNoTomable" : "",
+			"path" : "",
+			"x": "1",
+			"y": "1",
 		},
 		{
 			"id": "i7",
@@ -263,6 +306,9 @@ Claro esta, ademas de romper cosas, tambien tomas el oro que lleva adentro.",
 			"tomable": "false",
 			"mensajeTomable": "",
 			"mensajeNoTomable" : "El cofre tiene una extrania magia que no permite que te lo lleves... O quiza, es solo que es muy pesado.",
+			"path" : "",
+			"x": "1",
+			"y": "1",
 		},
 		{
 			"id": "i8",
@@ -273,6 +319,9 @@ Todo el equipo JCovid te saluda cordialmente, valiente aventurerx.",
 			"tomable": "false",
 			"mensajeTomable": "",
 			"mensajeNoTomable" : "Sera mejor que dejes el Easter Egg aqui.",
+			"path" : "",
+			"x": "1",
+			"y": "1",
 		},
 		{
 			"id": "i9",
@@ -282,6 +331,9 @@ Todo el equipo JCovid te saluda cordialmente, valiente aventurerx.",
 			"tomable": "false",
 			"mensajeTomable": "",
 			"mensajeNoTomable" : "Esta cosa horrible debe pesar una tonelada!",
+			"path" : "",
+			"x": "1",
+			"y": "1",
 		},
 		{
 			"id": "i10",
@@ -291,6 +343,9 @@ Todo el equipo JCovid te saluda cordialmente, valiente aventurerx.",
 			"tomable": "false",
 			"mensajeTomable": "",
 			"mensajeNoTomable" : "En tu estado, no logras alcanzarla. Necesitaras algo mas para poder capturarla.",
+			"path" : "",
+			"x": "1",
+			"y": "1",
 		},
 		{
 			"id": "i11",
@@ -302,6 +357,9 @@ Todo el equipo JCovid te saluda cordialmente, valiente aventurerx.",
 			"tomable": "true",
 			"mensajeTomable": "Logras tomar el palo, sin que el almacenero lo note, y aun cuando lo notase no parece que le interese demasiado...",
 			"mensajeNoTomable" : "",
+			"path" : "",
+			"x": "1",
+			"y": "1",
 		},
 		{
 			"id": "i12",
@@ -314,6 +372,9 @@ Todo el equipo JCovid te saluda cordialmente, valiente aventurerx.",
 			"tomable": "true",
 			"mensajeTomable": "Metes una pocion en tu inventario!",
 			"mensajeNoTomable" : "",
+			"path" : "",
+			"x": "1",
+			"y": "1",
 		},
 		
 	],
@@ -362,6 +423,9 @@ Vamos, ¡ve! no te quedes ahi parado todo el dia... Esta en el primer piso.",
 			"descripcionMapa": "El tabernero repara en ti, y te mira con curiosidad y algo de desconfianza.",
 			"danio" : "10",
 			"salud" : "15",
+			"path" : "",
+			"x": "1",
+			"y": "1",
 		},
 		{
 			"id" : "n2",
@@ -374,6 +438,9 @@ Finalmente alguien que entiende que estoy atrapado!, Perfecto, ahora solo tengo 
 			"descripcionMapa": "Al fondo de la habitacion, ves a Clara llorando, porque hay tanto drama en este suenio?",
 			"danio" : "0",
 			"salud" : "0",
+			"path" : "",
+			"x": "1",
+			"y": "1",
 		},
 		{
 			"id" : "n3",
@@ -390,6 +457,9 @@ que para mover esa roca necesitaras un bicho... no habia una mariposa en la entr
 			"descripcionMapa": "Un hombre tras el mostrador, presumiblemente el encargado del lugar, te mira fijo sin decir una palabra.",
 			"danio" : "20",
 			"salud" : "15",
+			"path" : "",
+			"x": "1",
+			"y": "1",
 		},
 		{
 			"id" : "n4",
@@ -400,6 +470,9 @@ que para mover esa roca necesitaras un bicho... no habia una mariposa en la entr
 Parece que esas copas que tomaste realmente hicieron efecto.",
 			"danio" : "100",
 			"salud" : "1500",
+			"path" : "",
+			"x": "1",
+			"y": "1",
 		},
 		{
 			"id" : "n5",
@@ -412,6 +485,9 @@ Empiezas a extraniar al dragon... al menos no hablaba.",
 			"descripcionMapa": "",
 			"danio" : "0",
 			"salud" : "0",
+			"path" : "",
+			"x": "1",
+			"y": "1",
 		},
 		{
 			"id" : "n6",
@@ -421,6 +497,9 @@ Empiezas a extraniar al dragon... al menos no hablaba.",
 			"descripcionMapa": "Frente nuestro, aparece un.. duende, verde, feo, si definitivamente es un duende.",
 			"danio" : "15",
 			"salud" : "30",
+			"path" : "",
+			"x": "1",
+			"y": "1",
 		},
 	],
 	"triggers": [

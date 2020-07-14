@@ -12,6 +12,8 @@ import org.json.simple.parser.JSONParser;
 import com.jayway.jsonpath.JsonPath;
 
 import zorkEnum.EnumDireccion;
+import zorkGraficos.LugarGrafico;
+import zorkGraficos.ObjetoGrafico;
 import zorkPackage.Arma;
 import zorkPackage.Contenedor;
 import zorkPackage.Item;
@@ -237,6 +239,8 @@ public final class JsonReader {
 		List<String> xs = JsonPath.read(jsonString,"$.lugares[*].x");
 		List<String> ys = JsonPath.read(jsonString,"$.lugares[*].y");
 		List<String> zs = JsonPath.read(jsonString,"$.lugares[*].z");
+		List<String> paths = JsonPath.read(jsonString,"$.lugares[*].path");
+		List<String> idsLugares = JsonPath.read(jsonString,"$.lugares[*].id");
 		
 		int i = 0;
 		for (String nombre : nombres) {
@@ -245,13 +249,14 @@ public final class JsonReader {
 			ArrayList<String> ids = new ArrayList<String>();
 			
 			Lugar lugar = new Lugar();
+			LugarGrafico grafica = new LugarGrafico(idsLugares.get(i),paths.get(i));
 			lugar.setNombre(nombre);
 			
 			//Agrego todos los items
 		    String cadenaIds = JsonPath.read(jsonString, "$.lugares[" + i + "].items");
-		    cadenaIds += " ";//Esto separa... una villereada mas, una menos
+		    cadenaIds += " ";
 		    cadenaIds += JsonPath.read(jsonString, "$.lugares[" + i + "].obstaculos");
-		    cadenaIds += " ";//Esto separa... una villereada mas, una menos
+		    cadenaIds += " ";
 		    cadenaIds += JsonPath.read(jsonString, "$.lugares[" + i + "].npcs");
 			ids.addAll(Arrays.asList(cadenaIds.split(" ")));
 			
@@ -270,8 +275,11 @@ public final class JsonReader {
 				}
 				
 				//finalmente, agrego el objeto al lugar
-				if(ids.contains(objeto.getObjetoID()))
-					lugar.agregarObjeto(objeto);	
+				if(ids.contains(objeto.getObjetoID())) {
+					lugar.agregarObjeto(objeto);
+					if(!(objeto instanceof Obstaculo))
+						grafica.addSprite(objeto.getGrafica());
+				}
 			}
 			
 			//Agrego descripcion piola
@@ -280,6 +288,8 @@ public final class JsonReader {
 			//Si tiene algun mensaje custom para el limite del mapa lo agregamos
 			if(mensajesLimite != null && mensajesLimite.size() > i)
 				lugar.setMensajeLimite(mensajesLimite.get(i));
+			
+			lugar.setGrafica(grafica);
 			
 			//Lo agrego al mapa con la posicion.
 			mapa.addLugar(lugar, new Posicion(Integer.parseInt(xs.get(i)),Integer.parseInt(ys.get(i)),Integer.parseInt(zs.get(i))));
@@ -297,6 +307,7 @@ public final class JsonReader {
 		for (Map<String, Object> objeto : itemList) {
 			
 			Item newItem = new Item();
+			ObjetoGrafico grafico = new ObjetoGrafico();
 			
 			if(objeto.get("tipo") != null)
 			{
@@ -361,11 +372,21 @@ public final class JsonReader {
 				case "mensajeRompible":
 					newItem.setMensajeRompible((String)entry.getValue());
 					break;
+				case "path":
+					grafico.setPath((String)entry.getValue());
+					break;
+				case "x":
+					grafico.setX(Integer.parseInt((String)entry.getValue()));
+					break;
+				case "y":
+					grafico.setY(Integer.parseInt((String)entry.getValue()));
+					break;
 				default:
 					break;
 				}	
 			}
 			
+			newItem.setGrafica(grafico);
 			aux.add(newItem);
 		}
 		
@@ -382,6 +403,7 @@ public final class JsonReader {
 		for (Map<String, Object> objeto : objectList) {
 			
 			NPC newObject = new NPC();
+			ObjetoGrafico grafico = new ObjetoGrafico();
 			
 			for (Map.Entry<String,Object> entry : objeto.entrySet()) {
 				
@@ -408,11 +430,21 @@ public final class JsonReader {
 					newObject.setSalud(Double.parseDouble(entry.getValue().toString()));
 					newObject.setMatable(true);//Si le agrego salud, puede morir.
 					break;
+				case "path":
+					grafico.setPath((String)entry.getValue());
+					break;
+				case "x":
+					grafico.setX(Integer.parseInt((String)entry.getValue()));
+					break;
+				case "y":
+					grafico.setY(Integer.parseInt((String)entry.getValue()));
+					break;
 				default:
 					break;
 				}	
 			}
 
+			newObject.setGrafica(grafico);
 			aux.add(newObject);
 		}
 		return aux;

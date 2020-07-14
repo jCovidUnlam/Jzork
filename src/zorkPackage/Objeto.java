@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import zorkGraficos.ObjetoGrafico;
 import zorkTrigger.Trigger;
 import zorkTrigger.TriggerAtaque;
 import zorkTrigger.TriggerItem;
@@ -23,7 +24,8 @@ public class Objeto {
 	private boolean matable;
 	private boolean rompible;
 	private String mensajeRompible;
-	
+	private ObjetoGrafico grafica;
+
 	public Objeto(){
 		this.triggers = new ArrayList<Trigger>();
 		this.salud = 1;
@@ -143,6 +145,14 @@ public class Objeto {
 
 	public void setMensajeRompible(String mensajeRompible) {
 		this.mensajeRompible = mensajeRompible;
+	}
+	
+	public ObjetoGrafico getGrafica() {
+		return grafica;
+	}
+
+	public void setGrafica(ObjetoGrafico grafica) {
+		this.grafica = grafica;
 	}
 
 	public TriggerAtaque getTriggerAtaque() {

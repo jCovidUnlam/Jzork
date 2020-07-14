@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import zorkGraficos.LugarGrafico;
+
 public class Lugar {
 
 	private String nombre;
@@ -12,7 +14,16 @@ public class Lugar {
 	private String descripcion;
 	private List<Objeto> objetos;
 	private String mensajeLimite;
+	private LugarGrafico grafica;
 	
+	public LugarGrafico getGrafica() {
+		return grafica;
+	}
+
+	public void setGrafica(LugarGrafico grafica) {
+		this.grafica = grafica;
+	}
+
 	public String getMensajeLimite() {
 		return mensajeLimite;
 	}
