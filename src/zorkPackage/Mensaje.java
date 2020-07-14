@@ -150,19 +150,22 @@ public final class Mensaje {
 		return nombreObjeto + " no se puede romper!.";
 	}
 	
-	public static String endGameSuccess(String nombrePersonaje) {
+	public static String endGameSuccess(String nombrePersonaje, int cantidadMovimientos) {
 		return nombrePersonaje + " Felicitaciones has completado la aventura!\n" +
-				"Podras ver todas tus acciones en el file: " + Mensaje.fileName;
+				"Podras ver todas tus acciones en el file: " + Mensaje.fileName +
+				"\nTu cantidad de movimientos ha sido de: " + cantidadMovimientos;
 	}
 	
-	public static String endGameMuerte(String nombrePersonaje) {
+	public static String endGameMuerte(String nombrePersonaje, int cantidadMovimientos) {
 		return nombrePersonaje + " ha muerto!\n" +
-				"Podras ver todas tus acciones en el file: " + Mensaje.fileName;
+				"Podras ver todas tus acciones en el file: " + Mensaje.fileName +
+				"\nTu cantidad de movimientos ha sido de: " + cantidadMovimientos;
 	}
 	
-	public static String endGameSalida(String nombrePersonaje) {
+	public static String endGameSalida(String nombrePersonaje, int cantidadMovimientos) {
 		return nombrePersonaje + " ha abandonado como un cobarde!\n" +
-				"Aun asi, te dejaremos ver todas tus acciones en el file: " + Mensaje.fileName;
+				"Aun asi, te dejaremos ver todas tus acciones en el file: " + Mensaje.fileName +
+				"\nTu cantidad de movimientos ha sido de: " + cantidadMovimientos;
 	}
 	
 	public static String getReglas() {

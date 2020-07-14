@@ -209,7 +209,7 @@ public class ComandoUnObjetoStrategy implements ComandoStrategy{
 			msj += Mensaje.contraAtaqueRecibido(atacado, mapa.getPersonajeActual());
 			if(mapa.getPersonajeActual().isMuerto()) {
 				msj += "\n";
-				msj += Mensaje.endGameMuerte(mapa.getPersonajeActual().getNombre());
+				msj += "ENDGAME.";
 			}
 		}
 

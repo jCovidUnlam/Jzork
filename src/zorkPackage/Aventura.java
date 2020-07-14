@@ -56,6 +56,7 @@ public class Aventura {
 			break;
 		}
 				
+		this.mapa.setCantidadMovimientos(this.mapa.getCantidadMovimientos() + 1);
 		String respuesta = strategy.ejectuar(cmd);
 		respuesta = evaluarEndGame(respuesta);
 		
@@ -67,19 +68,19 @@ public class Aventura {
 		if(cadena.contains("ENDGAMESALIDA.")) {
 			cadena = cadena.replaceAll("ENDGAMESALIDA.", "");
 			this.endGame = true;
-			cadena += "\n\n" + Mensaje.endGameSalida(mapa.getPersonajeActual().getNombre());
+			cadena += "\n\n" + Mensaje.endGameSalida(mapa.getPersonajeActual().getNombre(), mapa.getCantidadMovimientos());
 		}
 		
 		if(cadena.contains("ENDGAME.")) {
 			cadena = cadena.replaceAll("ENDGAME.", "");
 			this.endGame = true;
-			cadena += "\n\n" + Mensaje.endGameMuerte(mapa.getPersonajeActual().getNombre());
+			cadena += "\n\n" + Mensaje.endGameMuerte(mapa.getPersonajeActual().getNombre(), mapa.getCantidadMovimientos());
 		}
 		
 		if(cadena.contains("ENDGAMESUCCESS.")) {
 			cadena = cadena.replaceAll("ENDGAMESUCCESS.", "");
 			this.endGame = true;
-			cadena += "\n\n" + Mensaje.endGameSuccess(mapa.getPersonajeActual().getNombre());
+			cadena += "\n\n" + Mensaje.endGameSuccess(mapa.getPersonajeActual().getNombre(), mapa.getCantidadMovimientos());
 		}
 		
 		return cadena;

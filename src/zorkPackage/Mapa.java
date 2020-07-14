@@ -11,9 +11,9 @@ public class Mapa {
 	private Lugar[][][] lugares;
 	private Personaje personajeActual;
 	private int cantidadMovimientos;
-	
+
 	public Mapa() {
-		this.cantidadMovimientos = 0;
+		this.cantidadMovimientos = -1;
 	}
 	
 	public String getNombre() {
@@ -34,6 +34,10 @@ public class Mapa {
 	
 	public int getCantidadMovimientos() {
 		return cantidadMovimientos;
+	}
+	
+	public void setCantidadMovimientos(int cantidadMovimientos) {
+		this.cantidadMovimientos = cantidadMovimientos;
 	}
 	
 	public void setPersonajeActual(Personaje personaje) {
@@ -197,9 +201,9 @@ public class Mapa {
 		
 		if(resultado.size() == 0 )
 			return "No existe ese lugar!";
-			
+		
+		this.cantidadMovimientos++;
 		return mover(resultado.get(0).getDireccion().getValue());			
-			
 	}
 	
 	private List<Limitrofe> listarLimitrofes(){

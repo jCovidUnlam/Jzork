@@ -18,9 +18,9 @@ public class Main {
 
 		Consola.mostrarMensajeBienvenida();
 		System.out.print("\nIngrese su nombre: ");
-		name = (in.next());
+		name = (in.nextLine());
 		
-		Mensaje.setFileName(name +"_"+ new SimpleDateFormat("yyyMMdd_HHmmss").format(new Date()).toString());
+		Mensaje.setFileName(name.replace(" ","_") + "_" + new SimpleDateFormat("yyyMMdd_HHmmss").format(new Date()).toString());
 		System.setProperty("logfilename", "SaveGames/" + Mensaje.getFileName());
 		
 		Consola.mostrarMenuInicio(name);
