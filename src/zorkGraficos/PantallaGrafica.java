@@ -13,8 +13,9 @@ public class PantallaGrafica extends JFrame{
 	public PantallaGrafica() {
 		super("JZork");
 		setResizable(false);
-		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		setBounds(0, 0, 500, 500);
+		setLocationRelativeTo(null);
 		
 		addWindowListener(new WindowAdapter() {
 			@Override
@@ -25,6 +26,8 @@ public class PantallaGrafica extends JFrame{
 		
 		panel = new JPanelGraficoPrincipal();
 		setContentPane(panel);
+		
+		setVisible(true);
 	
 	}
 	
@@ -35,4 +38,7 @@ public class PantallaGrafica extends JFrame{
 		}
 	}
 	
+	public static void main(String[] args) {
+		PantallaGrafica p = new PantallaGrafica();
+	}
 }
