@@ -249,7 +249,7 @@ public final class JsonReader {
 			ArrayList<String> ids = new ArrayList<String>();
 			
 			Lugar lugar = new Lugar();
-			LugarGrafico grafica = new LugarGrafico(idsLugares.get(i),paths.get(i));
+			LugarGrafico grafica = new LugarGrafico(paths.get(i));
 			lugar.setNombre(nombre);
 			
 			//Agrego todos los items

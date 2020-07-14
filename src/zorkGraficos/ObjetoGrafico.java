@@ -54,7 +54,7 @@ public class ObjetoGrafico {
 		else
 			this.path = path;
 		
-		sprite = new ImageIcon(path);
+		sprite = new ImageIcon(this.path);
 		this.anchoImg = sprite.getIconWidth();
 		this.altoImg = sprite.getIconHeight();
 		this.isAnimado = false;

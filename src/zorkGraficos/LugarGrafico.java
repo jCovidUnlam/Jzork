@@ -11,13 +11,14 @@ public class LugarGrafico {
 	private String path;
 	private List<ObjetoGrafico> sprites;
 		
-	public LugarGrafico(String idLugar, String path) {
+	public LugarGrafico(String path) {
 		super();
 		sprites = new ArrayList<ObjetoGrafico>();
+
 		if(path == null || path.equals(""))
 			this.path = rutaImagenes + imagenPorDefecto;
 		else
-			this.path = rutaImagenes + idLugar + "/" + path;
+			this.path = path;
 	}
 	
 	public String getPath() {
