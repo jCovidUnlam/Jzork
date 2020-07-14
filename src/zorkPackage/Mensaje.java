@@ -125,7 +125,6 @@ public final class Mensaje {
 	}
 	
 	public static String atacarObjeto(Objeto atacante, Objeto atacado) {
-		///femenino/masculino
 		return atacante.getNombre() + " ha atacado a " + atacado.getNombre() + " causandole " 
 				+ atacante.getDanio() + " puntos de danio.";
 	}

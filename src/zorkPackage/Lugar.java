@@ -176,6 +176,7 @@ public class Lugar {
 		if(objeto.getDescripcionMapa() != null)
 			cambiarDescripcion(objeto);
 	
+		this.getGrafica().removeSprite(objeto.getGrafica());
 		this.objetos.remove(objeto);
 	}
 	

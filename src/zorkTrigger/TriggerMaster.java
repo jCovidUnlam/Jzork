@@ -144,4 +144,10 @@ public final class TriggerMaster {
 		return msj;
 	}
 	
+	public static String ejecutarTriggerConversacion(Mapa mapa, TriggerConversacion trigger) {
+		
+		return "";
+		
+	}
+	
 }
