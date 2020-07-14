@@ -52,7 +52,7 @@ public class Observador {
 			
 			gameMaster.ejecutar2(cmd);
 			
-		} while (!scan.equals("exit") && gameMaster.isEndGame() != true);
+		} while (gameMaster.isEndGame() != true);
 
 		in.close();
 	}	

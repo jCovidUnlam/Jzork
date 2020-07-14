@@ -34,9 +34,11 @@ public final class Lexico {
 	
 	public static  String[] ataque;
 	
-	public static String [] atributos;
-	
 	public static String [] descartables;
+
+	public static String [] salida;
+	
+	public static String [] atributos;
 	
 	public static String [] caracteresEspeciales;
 	
@@ -88,6 +90,10 @@ public final class Lexico {
 	
 	public static boolean inDescartar(String verbo) {
 		return Arrays.asList(descartables).contains(verbo);
+	}
+	
+	public static boolean inSalida(String verbo) {
+		return Arrays.asList(salida).contains(verbo);
 	}
 	
 	public static void cargarLexico() throws IOException {
@@ -150,7 +156,11 @@ public final class Lexico {
 			case DESCARTABLES:
 				descartables = new String[lexico.length - 1];
 				System.arraycopy(lexico, 1, descartables, 0, lexico.length - 1);
-				break;	
+				break;
+			case SALIDA:
+				salida = new String[lexico.length - 1];
+				System.arraycopy(lexico, 1, salida, 0, lexico.length - 1);
+				break;
 			case ATRIBUTOS:
 				atributos = new String[lexico.length - 1];
 				System.arraycopy(lexico, 1, atributos, 0, lexico.length - 1);

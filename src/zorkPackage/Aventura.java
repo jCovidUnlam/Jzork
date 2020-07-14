@@ -57,12 +57,19 @@ public class Aventura {
 		}
 				
 		String respuesta = strategy.ejectuar(cmd);
-		evaluarEndGame(respuesta);
+		respuesta = evaluarEndGame(respuesta);
 		
 		Consola.mostrar(respuesta);
 	}
 	
 	private String evaluarEndGame(String cadena) {
+		
+		if(cadena.contains("ENDGAMESALIDA.")) {
+			cadena = cadena.replaceAll("ENDGAMESALIDA.", "");
+			this.endGame = true;
+			cadena += "\n\n" + Mensaje.endGameSalida(mapa.getPersonajeActual().getNombre());
+		}
+		
 		if(cadena.contains("ENDGAME.")) {
 			cadena = cadena.replaceAll("ENDGAME.", "");
 			this.endGame = true;

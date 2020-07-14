@@ -157,8 +157,13 @@ public final class Mensaje {
 	}
 	
 	public static String endGameMuerte(String nombrePersonaje) {
-		return "ENDGAME." + nombrePersonaje + " ha muerto!\n" +
+		return nombrePersonaje + " ha muerto!\n" +
 				"Podras ver todas tus acciones en el file: " + Mensaje.fileName;
+	}
+	
+	public static String endGameSalida(String nombrePersonaje) {
+		return nombrePersonaje + " ha abandonado como un cobarde!\n" +
+				"Aun asi, te dejaremos ver todas tus acciones en el file: " + Mensaje.fileName;
 	}
 	
 	public static String getReglas() {

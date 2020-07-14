@@ -48,6 +48,9 @@ public final class Interprete {
 		
 		String verbo = cadena.get(0);
 		
+		if(Lexico.inSalida(verbo))
+			return new Comando(verbo, EnumComando.SALIDA, 0);
+			
 		if(Lexico.inMovimientoSimple(verbo))
 			return new Comando(verbo, EnumComando.MOVER, 0);
 		

@@ -10,6 +10,7 @@ USABLES;usar;utilizar;dar
 NPC;hablar;charlar;interactuar			
 ATAQUE;atacar;achurrar;darle;golpear;patear
 DESCARTABLES;soltar;descartar;desechar;tirar
+SALIDA;exit
 ATRIBUTOS;el;la;ellos;ellas;hacia;de;con
 CARACTERESESPECIALES;';/;\;|
 CARACTERESUNION;al;a;en;sobre;contra

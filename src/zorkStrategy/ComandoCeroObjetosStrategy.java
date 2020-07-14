@@ -25,6 +25,9 @@ public class ComandoCeroObjetosStrategy implements ComandoStrategy{
 		case USUARIO:
 			resultado = ejecutarComandoSimpleUsuario(cmd);
 			break;
+		case SALIDA:
+			resultado = ejecutarExitGame(cmd);
+			break;
 		default:
 			break;
 		}
@@ -48,6 +51,10 @@ public class ComandoCeroObjetosStrategy implements ComandoStrategy{
 	
 	private String ejecutarComandoSimpleMover(Comando cmd) {
 		return this.mapa.mover(cmd.getVerbo());
+	}
+	
+	private String ejecutarExitGame(Comando cmd) {
+		return "ENDGAMESALIDA.";
 	}
 	
 	
