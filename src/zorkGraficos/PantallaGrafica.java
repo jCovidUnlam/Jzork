@@ -32,7 +32,7 @@ public class PantallaGrafica extends JFrame{
 	}
 	
 	private void confirmacionCierreVentana() {
-		if (JOptionPane.showConfirmDialog(rootPane, "¿Desea salir?", "Salir",
+		if (JOptionPane.showConfirmDialog(rootPane, "¿Desea cerrar la pantalla gráfica?", "Salir",
 				JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 			dispose();
 		}
