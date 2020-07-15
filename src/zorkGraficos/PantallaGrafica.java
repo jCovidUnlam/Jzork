@@ -9,12 +9,13 @@ import javax.swing.JOptionPane;
 public class PantallaGrafica extends JFrame{
 	private static final long serialVersionUID = 4341998680674808445L;
 	private JPanelGraficoPrincipal panel;
+	//private LugarGrafico lugarActual;
 
-	public PantallaGrafica() {
+	public PantallaGrafica(LugarGrafico lugarActual) {
 		super("JZork");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		setBounds(0, 0, 500, 500);
+		setBounds(0, 0, 480, 320);
 		setLocationRelativeTo(null);
 		
 		addWindowListener(new WindowAdapter() {
@@ -24,9 +25,8 @@ public class PantallaGrafica extends JFrame{
 			}
 		});
 		
-		panel = new JPanelGraficoPrincipal();
+		panel = new JPanelGraficoPrincipal(lugarActual);
 		setContentPane(panel);
-		
 		setVisible(true);
 	
 	}
@@ -37,8 +37,5 @@ public class PantallaGrafica extends JFrame{
 			dispose();
 		}
 	}
-	
-	public static void main(String[] args) {
-		PantallaGrafica p = new PantallaGrafica();
-	}
+
 }
