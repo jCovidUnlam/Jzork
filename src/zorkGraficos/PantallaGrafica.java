@@ -9,12 +9,13 @@ import javax.swing.JOptionPane;
 public class PantallaGrafica extends JFrame{
 	private static final long serialVersionUID = 4341998680674808445L;
 	private JPanelGraficoPrincipal panel;
+	//private LugarGrafico lugarActual;
 
-	public PantallaGrafica() {
+	public PantallaGrafica(LugarGrafico lugarActual) {
 		super("JZork");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		setBounds(0, 0, 500, 500);
+		setBounds(0, 0, 480, 320);
 		setLocationRelativeTo(null);
 		
 		addWindowListener(new WindowAdapter() {
@@ -24,21 +25,17 @@ public class PantallaGrafica extends JFrame{
 			}
 		});
 		
-		panel = new JPanelGraficoPrincipal();
+		panel = new JPanelGraficoPrincipal(lugarActual);
 		setContentPane(panel);
-		
 		setVisible(true);
 	
 	}
 	
 	private void confirmacionCierreVentana() {
-		if (JOptionPane.showConfirmDialog(rootPane, "¿Desea salir?", "Salir",
+		if (JOptionPane.showConfirmDialog(rootPane, "¿Desea cerrar la pantalla gráfica?", "Salir",
 				JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 			dispose();
 		}
 	}
-	
-	public static void main(String[] args) {
-		PantallaGrafica p = new PantallaGrafica();
-	}
+
 }

@@ -1,6 +1,7 @@
 package zorkPackage;
 
 import zorkEnum.EnumComando;
+import zorkGraficos.PantallaGrafica;
 import zorkStrategy.ComandoCeroObjetosStrategy;
 import zorkStrategy.ComandoDosObjetosStrategy;
 import zorkStrategy.ComandoStrategy;
@@ -11,6 +12,7 @@ public class Aventura {
 
 	private Mapa mapa;
 	private boolean endGame;
+	private PantallaGrafica pantalla;
 	
 	public Aventura(Mapa mapa) {
 		super();
@@ -18,6 +20,7 @@ public class Aventura {
 		endGame = false;
 		Consola.iniciarAventura(mapa);
 		Consola.mostrar(Mensaje.mensajeLugar(mapa.getLugarActual()));
+		pantalla = new PantallaGrafica(mapa.getLugarActual().getGrafica());
 	}
 	
 	public boolean isEndGame() {

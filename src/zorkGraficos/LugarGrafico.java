@@ -9,6 +9,10 @@ public class LugarGrafico {
 	private static final String imagenPorDefecto = "defaultLugar.jpg";
 	
 	private String path;
+	public List<ObjetoGrafico> getSprites() {
+		return sprites;
+	}
+
 	private List<ObjetoGrafico> sprites;
 		
 	public LugarGrafico(String path) {
