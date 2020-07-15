@@ -1,6 +1,8 @@
 package zorkTrigger;
 
 
+import java.util.Scanner;
+
 import zorkPackage.Arma;
 import zorkPackage.Item;
 import zorkPackage.Mapa;
@@ -146,7 +148,36 @@ public final class TriggerMaster {
 	
 	public static String ejecutarTriggerConversacion(Mapa mapa, TriggerConversacion trigger) {
 		
-		return "";
+		Scanner scan = new Scanner(System.in);
+		int in;
+		String msj = trigger.getTitulo();
+		OpcionDialogo primerOpt = trigger.getOpciones().get(0);
+		for (OpcionDialogo opt : trigger.getOpciones()) {
+			msj += opt.getNumero() + "- " + opt.getTexto() + "\n"; 
+		}
+		
+		int i = 1;
+		boolean exit = false;
+		
+		do {
+			try {
+				in = scan.nextInt();				
+			}
+			catch (Exception e) {
+				//msj 
+			}
+			
+		
+		}while(exit == false);
+		
+		
+		System.out.print(">> ");
+		
+		
+		
+		
+		
+		return msj;
 		
 	}
 	
