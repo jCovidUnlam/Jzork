@@ -21,6 +21,7 @@ public class Aventura {
 		Consola.iniciarAventura(mapa);
 		Consola.mostrar(Mensaje.mensajeLugar(mapa.getLugarActual()));
 		pantalla = new PantallaGrafica(mapa.getLugarActual().getGrafica());
+		//pantalla.setAlwaysOnTop(true);
 	}
 	
 	public boolean isEndGame() {

@@ -26,9 +26,11 @@ public class PantallaGrafica extends JFrame{
 		panel = new JPanelGraficoPrincipal(lugarActual);
 		setContentPane(panel);
 		setBounds(0, 0, panel.getWidth(), panel.getHeight() + 10);
+		setAlwaysOnTop(true);
 		setVisible(true);
 	
 	}
+	
 	
 	private void confirmacionCierreVentana() {
 		if (JOptionPane.showConfirmDialog(rootPane, "¿Desea cerrar la pantalla gráfica?", "Salir",
