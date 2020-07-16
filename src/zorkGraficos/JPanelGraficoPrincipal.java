@@ -20,6 +20,7 @@ public class JPanelGraficoPrincipal extends JPanel{
 	
 	public JPanelGraficoPrincipal(LugarGrafico lugarActual) {
 		super();
+		setBounds(0, 0, 480, 320);
 		this.lugarActual = lugarActual;
 	}
 
@@ -34,14 +35,9 @@ public class JPanelGraficoPrincipal extends JPanel{
 		List<ObjetoGrafico> objetos = new ArrayList<ObjetoGrafico>();
 		objetos = lugarActual.getSprites();
 		for(ObjetoGrafico o : objetos) {
-			BufferedImage aux = null;
-			try {
-				aux = ImageIO.read(new File(o.getPath()));
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
+			ImageIcon aux = getSprite(o);
 			
-			g.drawImage(aux, o.getX(), o.getY(), aux.getWidth(), aux.getHeight(), null);
+			g.drawImage(aux.getImage(), o.getX(), o.getY(), aux.getIconWidth(), aux.getIconHeight(), null);
 		}		
 	}
 
@@ -54,21 +50,25 @@ public class JPanelGraficoPrincipal extends JPanel{
 			e.printStackTrace();
 		}
 		
-		g.drawImage(aux, 0, 0, 480, 320, null);
+		g.drawImage(aux, 0, 0, getWidth(), getHeight(), null);
 		
 	}
 	
-	public ImageIcon getSprite(int x, int y) {
+	public ImageIcon getSprite(ObjetoGrafico o) {
 		BufferedImage aux = null;
 		try {
-			aux = ImageIO.read(new File("./imagenes/deDragonesYDesiertos/taberna/sprites/esqueleto.png"));
+			aux = ImageIO.read(new File(o.getPath()));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
-		ImageIcon res = new ImageIcon(aux.getSubimage(0, 0, 60, 60));
+		ImageIcon res = new ImageIcon(aux.getSubimage(0, 0, aux.getWidth(), aux.getHeight()));
 		
 		return res;
+	}
+	
+	public void actualizarPantalla() {
+		repaint();
 	}
 
 }

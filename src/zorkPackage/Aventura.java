@@ -21,8 +21,17 @@ public class Aventura {
 		Consola.iniciarAventura(mapa);
 		Consola.mostrar(Mensaje.mensajeLugar(mapa.getLugarActual()));
 		pantalla = new PantallaGrafica(mapa.getLugarActual().getGrafica());
+		//pantalla.setAlwaysOnTop(true);
 	}
 	
+	public PantallaGrafica getPantalla() {
+		return pantalla;
+	}
+
+	public void setPantalla(PantallaGrafica pantalla) {
+		this.pantalla = pantalla;
+	}
+
 	public boolean isEndGame() {
 		return endGame;
 	}
@@ -88,5 +97,6 @@ public class Aventura {
 		
 		return cadena;
 	}
+
 
 }

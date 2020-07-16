@@ -7,15 +7,24 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class PantallaGrafica extends JFrame{
+	
+	public JPanelGraficoPrincipal getPanel() {
+		return panel;
+	}
+
+
+	public void setPanel(JPanelGraficoPrincipal panel) {
+		this.panel = panel;
+	}
+
+
 	private static final long serialVersionUID = 4341998680674808445L;
 	private JPanelGraficoPrincipal panel;
-	//private LugarGrafico lugarActual;
 
 	public PantallaGrafica(LugarGrafico lugarActual) {
 		super("JZork");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-		setBounds(0, 0, 480, 320);
 		setLocationRelativeTo(null);
 		
 		addWindowListener(new WindowAdapter() {
@@ -27,9 +36,12 @@ public class PantallaGrafica extends JFrame{
 		
 		panel = new JPanelGraficoPrincipal(lugarActual);
 		setContentPane(panel);
+		setBounds(0, 0, panel.getWidth(), panel.getHeight() + 10);
+		setAlwaysOnTop(true);
 		setVisible(true);
 	
 	}
+	
 	
 	private void confirmacionCierreVentana() {
 		if (JOptionPane.showConfirmDialog(rootPane, "¿Desea cerrar la pantalla gráfica?", "Salir",

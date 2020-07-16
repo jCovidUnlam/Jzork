@@ -16,6 +16,8 @@ import zorkPackage.Objeto;
 import zorkTrigger.TriggerAtaque;
 import zorkTrigger.TriggerConversacion;
 import zorkTrigger.TriggerMaster;
+import zorkPackage.InitConfig;
+
 
 public class ComandoUnObjetoStrategy implements ComandoStrategy{
 	
@@ -145,6 +147,8 @@ public class ComandoUnObjetoStrategy implements ComandoStrategy{
 
 		mapa.getLugarActual().removerObjeto(item);
 		mapa.getPersonajeActual().addObjeto(item);
+		
+		InitConfig.getGm().getPantalla().getPanel().actualizarPantalla();
 		return item.getMensajeTomable();
 	}
 
@@ -160,6 +164,8 @@ public class ComandoUnObjetoStrategy implements ComandoStrategy{
 
 		mapa.getPersonajeActual().removerDeInventario(items.get(0));
 		mapa.getLugarActual().agregarObjeto(items.get(0));
+		
+		InitConfig.getGm().getPantalla().getPanel().actualizarPantalla();
 
 		return Mensaje.soltoItem(items.get(0));
 	}

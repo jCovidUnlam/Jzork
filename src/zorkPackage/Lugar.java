@@ -178,6 +178,7 @@ public class Lugar {
 	
 		this.getGrafica().removeSprite(objeto.getGrafica());
 		this.objetos.remove(objeto);
+		
 	}
 	
 	private void cambiarDescripcion(Objeto objetoReferencia) {

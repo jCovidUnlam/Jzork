@@ -21,7 +21,7 @@
 			"items": "i1 i2 i3",
 			"obstaculos" : "o1",
 			"npcs" : "n1",
-			"path": "",
+			"path": "./imagenes/piratas/muelle/fondo/muelle.jpg",
 		},
 		{
 			"id": "l2",
@@ -46,9 +46,9 @@
 			"tomable": "true",
 			"mensajeTomable": "Tienes una barreta en tu inventario",
 			"mensajeNoTomable" : "",
-			"path" : "",
-			"x": "1",
-			"y": "1",
+			"path" : ".\imagenes\piratas\muelle\sprites\i1.png",
+			"x": "320",
+			"y": "16",
 		},
 		{
 			"id": "i2",
@@ -58,9 +58,9 @@
 			"tomable": "true",
 			"mensajeTomable": "Tienes un rociador en tu inventario",
 			"mensajeNoTomable" : "",
-			"path" : "",
-			"x": "1",
-			"y": "1",
+			"path" : ".\imagenes\piratas\Muelle\sprites\i2.png",
+			"x": "360",
+			"y": "16",
 		},
 		{
 			"id": "i3",
@@ -93,6 +93,9 @@
 			"descripcionMapa": "Soy un piratita!",
 			"danio" : "10",
 			"salud" : "1500",
+			"path" : "",
+			"x": "1",
+			"y": "1",
 		},
 	],
 	"triggers": [
@@ -111,7 +114,7 @@
 		
 			
 		
-		},,
+		},
 		
 	]	
 }

@@ -9,12 +9,19 @@ public class LugarGrafico {
 	private static final String imagenPorDefecto = "defaultLugar.jpg";
 	
 	private String path;
+	
+	private List<ObjetoGrafico> sprites;
+	
+	public LugarGrafico(String path, List<ObjetoGrafico> sprites) {
+		super();
+		this.path = path;
+		this.sprites = sprites;
+	}
+
 	public List<ObjetoGrafico> getSprites() {
 		return sprites;
 	}
 
-	private List<ObjetoGrafico> sprites;
-		
 	public LugarGrafico(String path) {
 		super();
 		sprites = new ArrayList<ObjetoGrafico>();
@@ -36,7 +43,4 @@ public class LugarGrafico {
 	public void removeSprite(ObjetoGrafico sprite) {
 		this.sprites.remove(sprite);
 	}
-	
-	
-
 }
