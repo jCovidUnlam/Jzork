@@ -7,6 +7,17 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class PantallaGrafica extends JFrame{
+	
+	public JPanelGraficoPrincipal getPanel() {
+		return panel;
+	}
+
+
+	public void setPanel(JPanelGraficoPrincipal panel) {
+		this.panel = panel;
+	}
+
+
 	private static final long serialVersionUID = 4341998680674808445L;
 	private JPanelGraficoPrincipal panel;
 

@@ -24,6 +24,14 @@ public class Aventura {
 		//pantalla.setAlwaysOnTop(true);
 	}
 	
+	public PantallaGrafica getPantalla() {
+		return pantalla;
+	}
+
+	public void setPantalla(PantallaGrafica pantalla) {
+		this.pantalla = pantalla;
+	}
+
 	public boolean isEndGame() {
 		return endGame;
 	}

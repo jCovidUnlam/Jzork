@@ -5,6 +5,7 @@ import java.io.IOException;
 import zorkUtils.JsonReader;
 
 public final class InitConfig {
+	static Aventura gm;
 
 	public static void getMapa (String characterName, String path) throws IOException {
 		Mapa mapa =  new Mapa();
@@ -13,8 +14,18 @@ public final class InitConfig {
 		mapa = JsonReader.construirAventura(mapa, path);
 		//mapa.verMapa();
 		//Consola.iniciarAventura(mapa);
-		Aventura gm = new Aventura(mapa);
+		gm = new Aventura(mapa);
 		new Observador(gm);
 		
 	}
+
+	public static Aventura getGm() {
+		return gm;
+	}
+
+	public static void setGm(Aventura gm) {
+		InitConfig.gm = gm;
+	}
+	
+	
 }

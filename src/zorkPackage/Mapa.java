@@ -131,6 +131,7 @@ public class Mapa {
 		this.personajeActual.ir(pos);
 		
 		///ACA PUEDE IR EL CAMBIAR IMAGEN DEL LUGAR.
+		//InitConfig.getGm().getPantalla().getPanel().actualizarPantalla();
 		
 		return Mensaje.mensajeLugar(lugar);
 	}
