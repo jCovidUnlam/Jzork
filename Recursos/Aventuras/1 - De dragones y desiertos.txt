@@ -570,6 +570,25 @@ Al fondo del bar aparece tu amigo y te dice, 'ya terminaste con tu aventura? vam
 			"after": "NINGUNA",
 			"afterTriggerDesc" : "",
 		},
+		{
+			"tipo": "conversacion",
+			"idObjeto": "n3"
+			"titulo": "Hola chico! que deseas saber?",
+			"opciones":{
+				"1":{
+					"texto": "Hola",
+					"respuesta": "chau",
+				}				
+				"2":{
+					"texto": "seeeee",
+					"respuesta": "naaaaa",
+				}			
+				"3":{
+					"texto": "yyyyy",
+					"respuesta": "aaaa",
+				}			
+			}
+		}
 		
 	]	
 }

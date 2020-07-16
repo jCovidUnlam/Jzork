@@ -14,6 +14,7 @@ import zorkPackage.Mensaje;
 import zorkPackage.NPC;
 import zorkPackage.Objeto;
 import zorkTrigger.TriggerAtaque;
+import zorkTrigger.TriggerConversacion;
 import zorkTrigger.TriggerMaster;
 
 public class ComandoUnObjetoStrategy implements ComandoStrategy{
@@ -168,6 +169,10 @@ public class ComandoUnObjetoStrategy implements ComandoStrategy{
 		NPC npc = mapa.getLugarActual().getNPC(cmd.getPalabrasClavesPrimerObjeto());
 		if (npc == null)
 			return Mensaje.noExisteNPC();
+		
+		TriggerConversacion trigger = npc.getTriggerConversacion();
+		if (trigger != null)
+			return TriggerMaster.ejecutarTriggerConversacion(mapa, trigger, npc);
 
 		return Mensaje.ncpMensaje(npc);
 	}

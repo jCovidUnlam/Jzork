@@ -2,6 +2,7 @@ package zorkPackage;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 import org.apache.log4j.Logger;
@@ -33,27 +34,38 @@ public class Observador {
 			Lexico.removerAtributos(cadena);
 			Lexico.removerCaracteresEspeciales(cadena);
 			
-			if(cmd.isReEscanear() == false) {
-				cmd = Interprete.interpretar(cadena);
-			}
-			else {
-				try {
-					cmd.setVerbo(cadena.get(0));
-					cmd.setReEscanear(false);
-					cmd.setPalabrasClavesPrimerObjeto(cadena.subList(0, cadena.size()));
-					if(cmd.getPalabrasClavesPrimerObjeto().size() == 0)
-						cmd.setReEscanear(true);
-				}
-				catch (Exception e) {
-					Consola.mostrar("Por favor, ingrese a al NPC con el que desea hablar.");
-					cmd.setReEscanear(true);
-				}
-			}
 			
-			gameMaster.ejecutar2(cmd);
+			
+			
+			if(cmd.isReEscanear() == false) 
+				cmd = Interprete.interpretar(cadena);
+			else 
+				reEscanear(cmd, cadena);
+			
+			
+			gameMaster.ejecutar(cmd);
 			
 		} while (gameMaster.isEndGame() != true);
 
 		in.close();
-	}	
+	}
+	
+	private void reEscanear(Comando cmd, List<String> cadena) {
+		
+		try {
+			cmd.setVerbo(cadena.get(0));
+			cmd.setReEscanear(false);
+			cmd.setPalabrasClavesPrimerObjeto(cadena.subList(0, cadena.size()));
+			if(cmd.getPalabrasClavesPrimerObjeto().size() == 0)
+				cmd.setReEscanear(true);
+		}
+		catch (Exception e) {
+			Consola.mostrar("Por favor, ingrese el objeo con el que desea interactuar.");
+			cmd.setReEscanear(true);
+		}
+		
+	}
+	
+
+	
 }

@@ -7,6 +7,7 @@ import java.util.List;
 import zorkGraficos.ObjetoGrafico;
 import zorkTrigger.Trigger;
 import zorkTrigger.TriggerAtaque;
+import zorkTrigger.TriggerConversacion;
 import zorkTrigger.TriggerItem;
 import zorkTrigger.TriggerLugar;
 
@@ -181,4 +182,13 @@ public class Objeto {
 			    .findAny()// Esto devuelve si existe al menos un obstaculo. Por favor que no haya mas de 1 en una misma direccion jaja
 				.orElse(null);//Sino encuentra, retorna null.
 	}
+	
+	public TriggerConversacion getTriggerConversacion() {
+		return this.triggers.stream()
+			    .filter(x -> x instanceof TriggerConversacion)
+			    .map (x -> (TriggerConversacion) x)
+			    .findAny()
+				.orElse(null);
+	}
+	
 }

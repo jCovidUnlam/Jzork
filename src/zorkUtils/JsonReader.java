@@ -24,8 +24,10 @@ import zorkPackage.Objeto;
 import zorkPackage.Obstaculo;
 import zorkPackage.PocionSalud;
 import zorkPackage.Posicion;
+import zorkTrigger.OpcionDialogo;
 import zorkTrigger.Trigger;
 import zorkTrigger.TriggerAtaque;
+import zorkTrigger.TriggerConversacion;
 import zorkTrigger.TriggerItem;
 import zorkTrigger.TriggerLugar;
 
@@ -104,6 +106,9 @@ public final class JsonReader {
 				break;
 			case "movimiento":
 				newTrigger = addNewLugarTrigger(trigger);
+				break;
+			case "conversacion":
+				newTrigger = addNewConversacionTrigger(trigger);
 				break;
 			default:
 				newTrigger = null;
@@ -230,6 +235,45 @@ public final class JsonReader {
 		return returned;
 	}
 	
+	private static TriggerConversacion addNewConversacionTrigger(Map<String,Object> trigger) {
+		TriggerConversacion returned = new TriggerConversacion();
+		
+		for (Map.Entry<String,Object> entry : trigger.entrySet()) {
+			
+			switch (entry.getKey()) {
+			case "idObjeto":
+				returned.setObjetoID((String)entry.getValue());
+				break;
+			case "titulo":
+				returned.setTitulo((String)entry.getValue());
+				break;
+			case "opciones":
+				cargarOpciones((Map<String,Map<String,String>>)entry.getValue(), returned);
+				break;
+
+			default:
+				break;
+			}	
+		}
+		
+		return returned;
+	}
+	
+	private static void cargarOpciones(Map<String,Map<String,String>> valores, TriggerConversacion trigger) {
+		
+		for (Map.Entry<String,Map<String,String>> entry : valores.entrySet()) {
+			OpcionDialogo opt = new OpcionDialogo();
+			opt.setNumero(Integer.parseInt(entry.getKey()));
+			for (Map.Entry<String,String> entryty : entry.getValue().entrySet()) {
+				if(entryty.getKey().equals("texto"))
+					opt.setTexto(entryty.getValue());
+				else
+					opt.setRespuesta(entryty.getValue());
+			}
+			trigger.addOpcion(opt);
+		}	
+	}
+	
 	private static void agregarLugares(Mapa mapa, String jsonString, List<Objeto> objetos, List<Trigger> triggers) {
 		
 		//Listo todo lo referente a todos los lugares.
@@ -296,8 +340,6 @@ public final class JsonReader {
 			i++;
 		}
 	}
-	
-	
 	
 	private static List<Objeto> agregarItems(String jsonString){
 		List<Objeto> aux = new ArrayList<Objeto>();
@@ -393,8 +435,6 @@ public final class JsonReader {
 		return aux;
 	}
 		
-
-	
 	private static List<Objeto> agregarNPCs(String jsonString){
 		List<Objeto> aux = new ArrayList<Objeto>();
 		List<Map<String, Object>> objectList = JsonPath.read(jsonString,"$.npcs[*]");
@@ -450,7 +490,6 @@ public final class JsonReader {
 		return aux;
 	}
 		
-	
 	private static List<Objeto> agregarObstaculos(String jsonString, List<Objeto> objetos){
 		List<Objeto> aux = new ArrayList<Objeto>();
 		List<Map<String, Object>> objectList = JsonPath.read(jsonString,"$.obstaculos[*]");

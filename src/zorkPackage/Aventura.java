@@ -27,7 +27,7 @@ public class Aventura {
 		return endGame;
 	}
 	
-	public void ejecutar2(Comando cmd) {
+	public void ejecutar(Comando cmd) {
 		
 		if(cmd.getTipo() == EnumComando.INVALIDO) {
 			Consola.mostrar(Mensaje.comandoErroneo());
