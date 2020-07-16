@@ -45,11 +45,9 @@ public class ComandoUnObjetoStrategy implements ComandoStrategy{
 			break;
 		case ADQUIRIR:
 			resultado = ejecutarTomarItem(cmd);
-			InitConfig.getGm().getPantalla().getPanel().actualizarPantalla();
 			break;
 		case DESCARTAR:
 			resultado = ejectuarSoltarItem(cmd);
-			InitConfig.getGm().getPantalla().getPanel().actualizarPantalla();
 			break;
 		case NPC:
 			resultado = ejecutarHablarNPC(cmd);
@@ -149,7 +147,7 @@ public class ComandoUnObjetoStrategy implements ComandoStrategy{
 		mapa.getLugarActual().removerObjeto(item);
 		mapa.getPersonajeActual().addObjeto(item);
 		
-		//InitConfig.getGm().getPantalla().getPanel().actualizarPantalla();
+		InitConfig.getGm().getPantalla().getPanel().actualizarPantalla();
 		return item.getMensajeTomable();
 	}
 
@@ -166,7 +164,7 @@ public class ComandoUnObjetoStrategy implements ComandoStrategy{
 		mapa.getPersonajeActual().removerDeInventario(items.get(0));
 		mapa.getLugarActual().agregarObjeto(items.get(0));
 		
-		//InitConfig.getGm().getPantalla().getPanel().actualizarPantalla();
+		InitConfig.getGm().getPantalla().getPanel().actualizarPantalla();
 
 		return Mensaje.soltoItem(items.get(0));
 	}
