@@ -7,7 +7,7 @@ lo suficiente como para aparecer en el medio del desierto sin la nocion de que h
 		"ySize": "20",
 		"zSize": "3",
 		"x": "5",
-		"y": "9",
+		"y": "10",
 		"z": "0",
 	}, 
 	"lugares" :[
