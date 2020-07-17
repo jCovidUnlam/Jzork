@@ -177,8 +177,10 @@ public class ComandoUnObjetoStrategy implements ComandoStrategy{
 			return Mensaje.noExisteNPC();
 		
 		TriggerConversacion trigger = npc.getTriggerConversacion();
-		if (trigger != null)
-			return TriggerMaster.ejecutarTriggerConversacion(mapa, trigger, npc);
+		if (trigger != null) {
+			cmd.setTrigger(trigger);
+			return trigger.getTitulo();
+		}
 
 		return Mensaje.ncpMensaje(npc);
 	}

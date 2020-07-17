@@ -3,6 +3,8 @@ package zorkPackage;
 import java.util.List;
 
 import zorkEnum.EnumComando;
+import zorkTrigger.Trigger;
+import zorkTrigger.TriggerConversacion;
 
 public class Comando {
 	
@@ -12,6 +14,7 @@ public class Comando {
 	private int cantidadObjetos;
 	private List<String> palabrasClavesPrimerObjeto;
 	private List<String> palabrasClavesSegundoObjeto;
+	private TriggerConversacion trigger;
 	
 	public Comando() {
 		super();
@@ -95,6 +98,14 @@ public class Comando {
 
 	public void setCantidadObjetos(int cantidadObjetos) {
 		this.cantidadObjetos = cantidadObjetos;
+	}
+	
+	public TriggerConversacion getTrigger() {
+		return trigger;
+	}
+
+	public void setTrigger(TriggerConversacion trigger) {
+		this.trigger = trigger;
 	}
 
 	@Override

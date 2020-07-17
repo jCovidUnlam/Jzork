@@ -8,6 +8,8 @@ import java.util.Scanner;
 import org.apache.log4j.Logger;
 
 import zorkLogger.LoggerHistory;
+import zorkTrigger.OpcionDialogo;
+import zorkTrigger.TriggerConversacion;
 import zorkUI.Consola;
 
 public class Observador {
@@ -23,6 +25,10 @@ public class Observador {
 		LoggerHistory.loggerConfig();
 		
 		do {
+			
+			if(cmd.getTrigger() != null)
+				ejecutarTriggerDialogo(in, cmd);
+			
 			System.out.println();
 			System.out.print(">>");
 			scan = (in.nextLine()).toLowerCase();
@@ -33,9 +39,6 @@ public class Observador {
 			Lexico.removerErrores(cadena);
 			Lexico.removerAtributos(cadena);
 			Lexico.removerCaracteresEspeciales(cadena);
-			
-			
-			
 			
 			if(cmd.isReEscanear() == false) 
 				cmd = Interprete.interpretar(cadena);
@@ -64,6 +67,55 @@ public class Observador {
 			cmd.setReEscanear(true);
 		}
 		
+	}
+	
+	private static void ejecutarTriggerDialogo(Scanner in, Comando cmd) {
+		
+		String scan = "";
+		String msj = "";
+	
+		for (OpcionDialogo opt : cmd.getTrigger().getOpciones()) {
+			msj += opt.getNumero() + "- " + opt.getTexto() + "\n"; 
+		}
+		
+		boolean exit = false;
+		
+		do {
+			
+			Consola.mostrar(msj);
+			System.out.print(">> ");
+			
+			scan = in.next();
+			Consola.mostrar(evaluarSeleccion(scan,cmd.getTrigger()));
+			
+			if(scan.equals("0")) {
+				exit = true;
+				Consola.mostrar(cmd.getTrigger().getMensajeSalida());
+			}
+		
+			
+		}while(exit == false);
+		
+		cmd.setTrigger(null);
+	}
+	
+	private static String evaluarSeleccion(String scan, TriggerConversacion trigger) {
+		
+		int result;
+		
+		try {
+			result = Integer.parseInt(scan);
+		}
+		catch(Exception e) {
+			return "No existe esa opcion, no confundas al pobre NPC!";
+		}
+		
+		String response = trigger.getOpciones().stream().filter(x -> x.getNumero() == result).map(x -> x.getRespuesta()).findAny().orElse(null);
+		
+		if(response == null)
+			return "No existe esa opcion, no confundas al pobre NPC!";
+		
+		return response;
 	}
 	
 

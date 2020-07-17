@@ -146,43 +146,6 @@ public final class TriggerMaster {
 		
 		return msj;
 	}
-	
-	public static String ejecutarTriggerConversacion(Mapa mapa, TriggerConversacion trigger, Objeto npc) {
-		
-		Scanner scan2 = new Scanner(System.in);
-		int in = 0;
-		String msj = trigger.getTitulo() + "\n";
-	
-		for (OpcionDialogo opt : trigger.getOpciones()) {
-			msj += opt.getNumero() + "- " + opt.getTexto() + "\n"; 
-		}
-		
-		boolean exit = false;
-		
-		do {
-			
-			Consola.mostrar(msj);
-			System.out.print(">> ");
-			
-			if(in == 0)
-				exit = true;
-			
-			in = scan2.nextInt();
-			try {
-				
-			}
-			catch (Exception e) {
-				exit = false;
-				Consola.mostrar("Debes ingresar una de las opciones o 0 para salir!.");
-			}
-			
-		
-		}while(exit == false);
-		
-		scan2.close();
-		
-		
-		return "OK";
-	}
+
 	
 }

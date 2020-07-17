@@ -244,8 +244,11 @@ public final class JsonReader {
 			case "idObjeto":
 				returned.setObjetoID((String)entry.getValue());
 				break;
-			case "titulo":
-				returned.setTitulo((String)entry.getValue());
+			case "mensajeInicial":
+				returned.setMensajeInicial((String)entry.getValue());
+				break;
+			case "mensajeSalida":
+				returned.setMensajeSalida((String)entry.getValue());
 				break;
 			case "opciones":
 				cargarOpciones((Map<String,Map<String,String>>)entry.getValue(), returned);

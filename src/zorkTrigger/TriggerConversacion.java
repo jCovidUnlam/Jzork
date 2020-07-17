@@ -5,21 +5,29 @@ import java.util.List;
 
 public class TriggerConversacion extends Trigger{
 
-	private String titulo;
+	private String mensajeInicial;
 	private List<OpcionDialogo> opciones;
-
+	private String mensajeSalida;
 	
 	public TriggerConversacion() {
 		super();
 		this.opciones = new ArrayList<OpcionDialogo>();
 	}
 	
-	public String getTitulo() {
-		return titulo;
+	public String getMensajeInicial() {
+		return mensajeInicial;
 	}
 
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
+	public void setMensajeInicial(String mensajeInicial) {
+		this.mensajeInicial = mensajeInicial;
+	}
+
+	public String getMensajeSalida() {
+		return mensajeSalida;
+	}
+
+	public void setMensajeSalida(String mensajeSalida) {
+		this.mensajeSalida = mensajeSalida;
 	}
 
 	public List<OpcionDialogo> getOpciones() {
