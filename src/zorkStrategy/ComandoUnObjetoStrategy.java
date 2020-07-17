@@ -180,8 +180,9 @@ public class ComandoUnObjetoStrategy implements ComandoStrategy{
 		
 		TriggerConversacion trigger = npc.getTriggerConversacion();
 		if (trigger != null) {
+			trigger.setNombreNpc(npc.getNombre());
 			cmd.setTrigger(trigger);
-			return trigger.getMensajeInicial();
+			return "";
 		}
 
 		return Mensaje.ncpMensaje(npc);

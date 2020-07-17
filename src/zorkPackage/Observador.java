@@ -26,28 +26,30 @@ public class Observador {
 		
 		do {
 			
-			if(cmd.getTrigger() != null)
-				ejecutarTriggerDialogo(in, cmd);
-			
-			System.out.println();
-			System.out.print(">>");
-			scan = (in.nextLine()).toLowerCase();
-			
-			log.info(scan);
-			
-			ArrayList<String> cadena = new ArrayList<String>(Arrays.asList(scan.split(" ")));
-			Lexico.removerErrores(cadena);
-			Lexico.removerAtributos(cadena);
-			Lexico.removerCaracteresEspeciales(cadena);
-			
-			if(cmd.isReEscanear() == false) 
-				cmd = Interprete.interpretar(cadena);
-			else 
-				reEscanear(cmd, cadena);
-			
-			
-			gameMaster.ejecutar(cmd);
-			
+			if(cmd.getTrigger() != null) {
+				if(ejecutarTriggerDialogo(in, cmd) == true)
+					continue;
+			}
+			else {
+				System.out.println();
+				System.out.print(">>");
+				scan = (in.nextLine()).toLowerCase();
+				
+				log.info(scan);
+				
+				ArrayList<String> cadena = new ArrayList<String>(Arrays.asList(scan.split(" ")));
+				Lexico.removerErrores(cadena);
+				Lexico.removerAtributos(cadena);
+				Lexico.removerCaracteresEspeciales(cadena);
+				
+				if(cmd.isReEscanear() == false) 
+					cmd = Interprete.interpretar(cadena);
+				else 
+					reEscanear(cmd, cadena);
+				
+				
+				gameMaster.ejecutar(cmd);
+			}
 		} while (gameMaster.isEndGame() != true);
 
 		in.close();
@@ -69,10 +71,10 @@ public class Observador {
 		
 	}
 	
-	private static void ejecutarTriggerDialogo(Scanner in, Comando cmd) {
+	private static boolean ejecutarTriggerDialogo(Scanner in, Comando cmd) {
 		
 		String scan = "";
-		String msj = "";
+		String msj = cmd.getTrigger().getMensajeInicial() + "\n\n";
 	
 		for (OpcionDialogo opt : cmd.getTrigger().getOpciones()) {
 			msj += opt.getNumero() + "- " + opt.getTexto() + "\n"; 
@@ -81,22 +83,24 @@ public class Observador {
 		boolean exit = false;
 		
 		do {
-			
+
 			Consola.mostrar(msj);
 			System.out.print(">> ");
 			
 			scan = in.next();
-			Consola.mostrar(evaluarSeleccion(scan,cmd.getTrigger()));
-			
 			if(scan.equals("0")) {
 				exit = true;
-				Consola.mostrar(cmd.getTrigger().getMensajeSalida());
 			}
+			
+			Consola.mostrar(evaluarSeleccion(scan,cmd.getTrigger()));
+			
+
 		
 			
 		}while(exit == false);
-		
+		in.nextLine();
 		cmd.setTrigger(null);
+		return exit;
 	}
 	
 	private static String evaluarSeleccion(String scan, TriggerConversacion trigger) {
@@ -107,15 +111,18 @@ public class Observador {
 			result = Integer.parseInt(scan);
 		}
 		catch(Exception e) {
-			return "No existe esa opcion, no confundas al pobre NPC!";
+			return "No existe esa opcion, no confundas al pobre " + trigger.getNombreNpc() + "!";
 		}
 		
 		String response = trigger.getOpciones().stream().filter(x -> x.getNumero() == result).map(x -> x.getRespuesta()).findAny().orElse(null);
 		
 		if(response == null)
-			return "No existe esa opcion, no confundas al pobre NPC!";
+			return "No existe esa opcion, no confundas al pobre " + trigger.getNombreNpc() + "!";
 		
-		return response;
+		if(scan.equals("0"))
+			return trigger.getMensajeSalida();
+		
+		return trigger.getNombreNpc() + " responde: " + response;
 	}
 	
 

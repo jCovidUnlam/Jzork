@@ -1,15 +1,12 @@
 package zorkTrigger;
 
-
-import java.util.Scanner;
-
 import zorkPackage.Arma;
 import zorkPackage.Item;
 import zorkPackage.Mapa;
 import zorkPackage.Mensaje;
 import zorkPackage.Objeto;
 import zorkPackage.Personaje;
-import zorkUI.Consola;
+
 
 public final class TriggerMaster {
 

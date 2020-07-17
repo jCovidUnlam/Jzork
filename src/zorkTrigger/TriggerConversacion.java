@@ -8,7 +8,8 @@ public class TriggerConversacion extends Trigger{
 	private String mensajeInicial;
 	private List<OpcionDialogo> opciones;
 	private String mensajeSalida;
-	
+	private String nombreNpc;
+
 	public TriggerConversacion() {
 		super();
 		this.opciones = new ArrayList<OpcionDialogo>();
@@ -40,5 +41,13 @@ public class TriggerConversacion extends Trigger{
 
 	public void addOpcion(OpcionDialogo opt) {
 		this.opciones.add(opt);
+	}
+	
+	public String getNombreNpc() {
+		return nombreNpc;
+	}
+
+	public void setNombreNpc(String nombreNpc) {
+		this.nombreNpc = nombreNpc;
 	}
 }

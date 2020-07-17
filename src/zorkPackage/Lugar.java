@@ -2,12 +2,10 @@ package zorkPackage;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import zorkGraficos.LugarGrafico;
-import zorkGraficos.ObjetoGrafico;
+
 
 public class Lugar {
 
@@ -17,7 +15,6 @@ public class Lugar {
 	private List<Objeto> objetos;
 	private String mensajeLimite;
 	private LugarGrafico grafica;
-	//private List<Objeto> objAux = new ArrayList<Objeto>();
 
 	public LugarGrafico getGrafica() {
 		return grafica;
