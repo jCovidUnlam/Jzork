@@ -37,12 +37,12 @@ lo suficiente como para aparecer en el medio del desierto sin la nocion de que h
 			"items": "",
 			"obstaculos" : "o2",
 			"npcs" : "n4",
-			"path": "",
+			"path": "./imagenes/deDragonesYDesiertos/desiertoOeste/fondo/desiertoBackground.jpg",
 		},
 		{
 			"id": "l3",
 			"nombre": "Arena movediza",
-			"descripcion": "ENDGAME.Huyes hacia el oeste, pero cuando crees que por fin estas a salvo, te encuentras con algo peor: un enorme banco de 
+			"descripcion": "ENDGAME.Huyes hacia el oeste, pero cuando crees que por fin estas a salvo, te encuentras con algo peor: un enorme banco de
 arena movediza comienza a absorberte y, sin que puedas hacer nada, caes y caes sin fin.",
 			"x": "3",
 			"y": "10",
@@ -51,7 +51,7 @@ arena movediza comienza a absorberte y, sin que puedas hacer nada, caes y caes s
 			"items": "",
 			"obstaculos" : "",
 			"npcs" : ""
-			"path": "",
+			"path": "./imagenes/deDragonesYDesiertos/desiertoOeste/arenaMovediza/arena.png",
 		},
 		{
 			"id": "l4",
@@ -64,7 +64,7 @@ arena movediza comienza a absorberte y, sin que puedas hacer nada, caes y caes s
 			"items": "",
 			"obstaculos" : "o3",
 			"npcs" : "n4",
-			"path": "",
+			"path": "./imagenes/deDragonesYDesiertos/desiertoEste/fondo/desiertoBackground.jpg",
 		},
 		{
 			"id": "l5",
@@ -240,9 +240,9 @@ La espada tiene una leyenda que dice 'equipame'. Creo que mi propio suenio me tr
 			"tomable": "true",
 			"mensajeTomable": "Cuando la agarras, te llenas las manos te arena. Maldices por lo bajo, porque me esta pasando esto? donde quedo mi fernet?.",
 			"mensajeNoTomable" : "",
-			"path" : "",
-			"x": "1",
-			"y": "1",
+			"path" : "./imagenes/deDragonesYDesiertos/aldea/sprites/i3.png",
+			"x": "250",
+			"y": "220",
 		},
 		{
 			"id": "i4",
@@ -387,7 +387,7 @@ Todo el equipo JCovid te saluda cordialmente, valiente aventurerx.",
 		},
 		{
 			"id": "o2",
-			"mensaje": "Tu sentido aracnido te dice que no vallas por ahi, quizas el dragon gigante que quiere comerte tenga algo que ver.",
+			"mensaje": "Tu sentido aracnido te dice que no vayas por ahi, quizas el dragon gigante que quiere comerte tenga algo que ver.",
 			"direccion": "este",
 			"objeto": "n4",
 		},
