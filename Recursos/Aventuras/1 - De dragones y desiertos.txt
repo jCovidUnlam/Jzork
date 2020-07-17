@@ -51,7 +51,7 @@ arena movediza comienza a absorberte y, sin que puedas hacer nada, caes y caes s
 			"items": "",
 			"obstaculos" : "",
 			"npcs" : ""
-			"path": "./imagenes/deDragonesYDesiertos/desiertoOeste/arenaMovediza/arena.png",
+			"path": "./imagenes/deDragonesYDesiertos/arenaMovediza/fondo/arena.png",
 		},
 		{
 			"id": "l4",
@@ -393,7 +393,7 @@ Todo el equipo JCovid te saluda cordialmente, valiente aventurerx.",
 		},
 		{
 			"id": "o3",
-			"mensaje": "Tu sentido aracnido te dice que no vallas por ahi, quizas el dragon gigante que quiere comerte tenga algo que ver.",
+			"mensaje": "Tu sentido aracnido te dice que no vayas por ahi, quizas el dragon gigante que quiere comerte tenga algo que ver.",
 			"direccion": "oeste",
 			"objeto": "n4",
 		},
