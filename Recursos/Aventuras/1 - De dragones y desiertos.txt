@@ -487,7 +487,7 @@ Empiezas a extraniar al dragon... al menos no hablaba.",
 			"salud" : "0",
 			"path" : "./imagenes/deDragonesYDesiertos/aldea/sprites/n5.png",
 			"x": "90",
-			"y": "1",
+			"y": "90",
 		},
 		{
 			"id" : "n6",
