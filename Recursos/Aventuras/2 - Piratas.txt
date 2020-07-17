@@ -34,7 +34,7 @@
 			"items": "",
 			"obstaculos" : "",
 			"npcs" : "",
-			"path": "",
+			"path": "./imagenes/piratas/taberna/fondo/taberna.png",
 		},
 	],
 	"items" :[

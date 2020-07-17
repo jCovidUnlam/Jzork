@@ -130,8 +130,10 @@ public class Mapa {
 		this.cantidadMovimientos++;
 		this.personajeActual.ir(pos);
 		
+		InitConfig.getGm().getPantalla().getPanel().setLugarActual(this.getLugarActual().getGrafica());
+		
 		///ACA PUEDE IR EL CAMBIAR IMAGEN DEL LUGAR.
-		//InitConfig.getGm().getPantalla().getPanel().actualizarPantalla();
+		InitConfig.getGm().getPantalla().getPanel().actualizarPantalla();
 		
 		return Mensaje.mensajeLugar(lugar);
 	}

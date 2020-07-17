@@ -8,16 +8,6 @@ import javax.swing.JOptionPane;
 
 public class PantallaGrafica extends JFrame{
 	
-	public JPanelGraficoPrincipal getPanel() {
-		return panel;
-	}
-
-
-	public void setPanel(JPanelGraficoPrincipal panel) {
-		this.panel = panel;
-	}
-
-
 	private static final long serialVersionUID = 4341998680674808445L;
 	private JPanelGraficoPrincipal panel;
 
@@ -36,6 +26,7 @@ public class PantallaGrafica extends JFrame{
 		
 		panel = new JPanelGraficoPrincipal(lugarActual);
 		setContentPane(panel);
+		
 		setBounds(0, 0, panel.getWidth(), panel.getHeight() + 10);
 		setAlwaysOnTop(true);
 		setVisible(true);
@@ -48,6 +39,15 @@ public class PantallaGrafica extends JFrame{
 				JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 			dispose();
 		}
+	}
+	
+	public JPanelGraficoPrincipal getPanel() {
+		return panel;
+	}
+
+
+	public void setPanel(JPanelGraficoPrincipal panel) {
+		this.panel = panel;
 	}
 
 }

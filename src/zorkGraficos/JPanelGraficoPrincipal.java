@@ -70,5 +70,13 @@ public class JPanelGraficoPrincipal extends JPanel{
 	public void actualizarPantalla() {
 		repaint();
 	}
+	
+	public LugarGrafico getLugarActual() {
+		return lugarActual;
+	}
+
+	public void setLugarActual(LugarGrafico lugarActual) {
+		this.lugarActual = lugarActual;
+	}
 
 }

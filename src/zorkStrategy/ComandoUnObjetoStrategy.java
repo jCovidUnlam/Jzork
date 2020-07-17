@@ -164,7 +164,7 @@ public class ComandoUnObjetoStrategy implements ComandoStrategy{
 
 		mapa.getPersonajeActual().removerDeInventario(items.get(0));
 		mapa.getLugarActual().agregarObjeto(items.get(0));
-		
+		mapa.getLugarActual().agregarSprite(items.get(0));
 		InitConfig.getGm().getPantalla().getPanel().actualizarPantalla();
 
 		return Mensaje.soltoItem(items.get(0));

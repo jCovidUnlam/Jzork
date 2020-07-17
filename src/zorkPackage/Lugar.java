@@ -2,10 +2,12 @@ package zorkPackage;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import zorkGraficos.LugarGrafico;
+import zorkGraficos.ObjetoGrafico;
 
 public class Lugar {
 
@@ -15,6 +17,7 @@ public class Lugar {
 	private List<Objeto> objetos;
 	private String mensajeLimite;
 	private LugarGrafico grafica;
+	List<Objeto> objAux = new ArrayList<Objeto>();
 	
 	public LugarGrafico getGrafica() {
 		return grafica;
@@ -176,6 +179,9 @@ public class Lugar {
 		if(objeto.getDescripcionMapa() != null)
 			cambiarDescripcion(objeto);
 	
+		//objetoAux.setGrafica(this.getGrafica().getSprites().get(0));
+		 
+		objAux.add(objeto);
 		this.getGrafica().removeSprite(objeto.getGrafica());
 		this.objetos.remove(objeto);
 		
@@ -190,6 +196,13 @@ public class Lugar {
 		this.descripcion += objeto.getDescripcionMapa();
 	}
 	
+	public void agregarSprite(Objeto objeto) {
+		for(Objeto obj : objAux) {
+			if(obj.getObjetoID() == objeto.getObjetoID()) {
+				this.getGrafica().addSprite(obj.getGrafica());
+			}
+		}
+	}
 	public String romperObjeto(Contenedor objeto) {
 		
 		for (Item item : objeto.getContenido()) {
