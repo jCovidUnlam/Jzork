@@ -17,7 +17,7 @@ public class Lugar {
 	private List<Objeto> objetos;
 	private String mensajeLimite;
 	private LugarGrafico grafica;
-	private List<Objeto> objAux = new ArrayList<Objeto>();
+	//private List<Objeto> objAux = new ArrayList<Objeto>();
 
 	public LugarGrafico getGrafica() {
 		return grafica;
@@ -172,9 +172,6 @@ public class Lugar {
 		if (objeto.getDescripcionMapa() != null)
 			cambiarDescripcion(objeto);
 
-		// objetoAux.setGrafica(this.getGrafica().getSprites().get(0));
-
-		objAux.add(objeto);
 		this.getGrafica().removeSprite(objeto.getGrafica());
 		this.objetos.remove(objeto);
 
@@ -189,8 +186,8 @@ public class Lugar {
 		this.descripcion += objeto.getDescripcionMapa();
 	}
 
-	public void agregarSprite(Objeto objeto) {
-		
+	public void agregarSprite(List<Objeto> objAux, Objeto objeto) {
+	//recibe una lista de objetos eliminados en la que va a buscar el 2do parametro objeto
 		boolean blEncontro = false;
 		
 		for (Objeto obj : objAux) {

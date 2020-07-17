@@ -73,6 +73,8 @@ public class Aventura {
 		respuesta = evaluarEndGame(respuesta);
 		
 		Consola.mostrar(respuesta);
+		
+		InitConfig.getGm().getPantalla().getPanel().actualizarPantalla();
 	}
 	
 	private String evaluarEndGame(String cadena) {

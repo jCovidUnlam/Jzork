@@ -66,8 +66,7 @@ public class ComandoUnObjetoStrategy implements ComandoStrategy{
 			resultado = ejecutarRomperObjeto(cmd);
 			break;
 		}
-		
-		
+				
 		return resultado;
 	}
 	
@@ -129,6 +128,8 @@ public class ComandoUnObjetoStrategy implements ComandoStrategy{
 			if(items!=null && items.size() > 1)
 				return Mensaje.objetoDuplicadoInventario(items);
 			
+			InitConfig.getGm().getPantalla().getPanel().actualizarPantalla();
+			
 	
 			return Mensaje.noExisteObjeto();
 		}
@@ -144,11 +145,14 @@ public class ComandoUnObjetoStrategy implements ComandoStrategy{
 
 		if (item.isTomable() == false)
 			return item.getMensajeNoTomable();
+		
+		//el item que tome lo guardo en memoria para no perderlo
+		mapa.getObjAux().add(item);
 
 		mapa.getLugarActual().removerObjeto(item);
 		mapa.getPersonajeActual().addObjeto(item);
 		
-		InitConfig.getGm().getPantalla().getPanel().actualizarPantalla();
+		//InitConfig.getGm().getPantalla().getPanel().actualizarPantalla();
 		return item.getMensajeTomable();
 	}
 
@@ -161,11 +165,9 @@ public class ComandoUnObjetoStrategy implements ComandoStrategy{
 		if(items.size() > 1)
 			return Mensaje.objetoDuplicadoInventario(items);
 		
-
 		mapa.getPersonajeActual().removerDeInventario(items.get(0));
 		mapa.getLugarActual().agregarObjeto(items.get(0));
-		mapa.getLugarActual().agregarSprite(items.get(0));
-		InitConfig.getGm().getPantalla().getPanel().actualizarPantalla();
+		mapa.getLugarActual().agregarSprite(mapa.getObjAux(),items.get(0));
 
 		return Mensaje.soltoItem(items.get(0));
 	}
@@ -270,4 +272,7 @@ public class ComandoUnObjetoStrategy implements ComandoStrategy{
 		msj += Mensaje.estadoPersonaje(mapa.getPersonajeActual());
 		return msj;
 	}
+	
+	
+	
 }

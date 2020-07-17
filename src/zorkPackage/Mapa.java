@@ -11,11 +11,20 @@ public class Mapa {
 	private Lugar[][][] lugares;
 	private Personaje personajeActual;
 	private int cantidadMovimientos;
-
+	private List<Objeto> objAux = new ArrayList<Objeto>();
+	
 	public Mapa() {
 		this.cantidadMovimientos = -1;
 	}
 	
+	public List<Objeto> getObjAux() {
+		return objAux;
+	}
+
+	public void setObjAux(List<Objeto> objAux) {
+		this.objAux = objAux;
+	}
+
 	public String getNombre() {
 		return nombre;
 	}
@@ -241,12 +250,6 @@ public class Mapa {
 		
 		return returned;
 	}
-	
-	
-	
-	
-	
-	
 	
 	
 }
