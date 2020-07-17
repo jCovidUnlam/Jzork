@@ -480,7 +480,7 @@ Parece que esas copas que tomaste realmente hicieron efecto.",
 			"descripcion": "Es un totem que tapa tu camino... sera que te metiste en la pelicula de una noche en el museo?",
 			"hablar": "Tonton, dame un bichon!.
 Piensas por dentro dentro, el totem habla!. 
-Luego reparas en que sería mas conveniente: instruirte en lengua antigua de totems o simplemente ignorar todo esto.
+Luego reparas en que seria mas conveniente: instruirte en lengua antigua de totems o simplemente ignorar todo esto.
 Empiezas a extraniar al dragon... al menos no hablaba.",
 			"descripcionMapa": "",
 			"danio" : "0",
@@ -573,24 +573,35 @@ Al fondo del bar aparece tu amigo y te dice, 'ya terminaste con tu aventura? vam
 		{
 			"tipo": "conversacion",
 			"idObjeto": "n3"
-			"mensajeInicial": "Hola chico! que deseas saber?",
+			"mensajeInicial": "El almacenero te mira como preguntandote, porque molestas mi siesta?...",
+			"mensajeSalida": "El almacenero vuelve a su estado de siesta petrificado.\nCuanta alegria despliega este suenio...",
 			"opciones":{
 				"0":{
 					"texto": "Salir de la conversacion",
 					"respuesta": "..... el almacenero vuelve a su estado de petrificacion, estara bien esta gente?",
-				}
+				},
 				"1":{
-					"texto": "Hola",
-					"respuesta": "chau",
-				}				
+					"texto": "Donde estoy?",
+					"respuesta": "Estas en una aldea, no lo ves?.. \nSe nota que ni tu suenio sabe que responderte.",
+				},				
 				"2":{
-					"texto": "seeeee",
-					"respuesta": "naaaaa",
-				}			
+					"texto": "Quien sos?",
+					"respuesta": "Un bombero, por?.. \nAl menos alguien tiene sentido del humor.",
+				},			
 				"3":{
-					"texto": "yyyyy",
-					"respuesta": "aaaa",
-				}			
+					"texto": "Hay un dragon alla afuera!",
+					"respuesta": "No me digas, en serio? Por si no lo notaste ese dragon ha estado durante mas de 100 anios. \nClaro.. ahora me quedo mas tranquilo, el dragon parece un ciudadano mas.",
+				},
+				"4":{
+					"texto": "Como mato al dragon?",
+					"respuesta": "Simple, tienes que encontrar una espada perdida desde hace siglos.\nPorque preguntare cosas tan obvias, no?."
+				},
+				"5":{
+					"texto": "Como salgo de aqui?",
+					"respuesta": "Bueno, eso no lose, pero creo que Clara, la hija del tabernero habia salido antes.\nFinalmente, una respuesta coherente, estare despertando?",
+				}
+				
+				
 			}
 		}
 		

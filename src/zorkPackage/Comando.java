@@ -1,9 +1,7 @@
 package zorkPackage;
 
 import java.util.List;
-
 import zorkEnum.EnumComando;
-import zorkTrigger.Trigger;
 import zorkTrigger.TriggerConversacion;
 
 public class Comando {

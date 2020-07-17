@@ -74,7 +74,7 @@ public class Observador {
 	private static boolean ejecutarTriggerDialogo(Scanner in, Comando cmd) {
 		
 		String scan = "";
-		String msj = "";
+		String msj = cmd.getTrigger().getMensajeInicial() + "\n\n";
 	
 		for (OpcionDialogo opt : cmd.getTrigger().getOpciones()) {
 			msj += opt.getNumero() + "- " + opt.getTexto() + "\n"; 
@@ -83,16 +83,18 @@ public class Observador {
 		boolean exit = false;
 		
 		do {
-			
+
 			Consola.mostrar(msj);
 			System.out.print(">> ");
 			
 			scan = in.next();
-			Consola.mostrar(evaluarSeleccion(scan,cmd.getTrigger()));
-			
 			if(scan.equals("0")) {
 				exit = true;
 			}
+			
+			Consola.mostrar(evaluarSeleccion(scan,cmd.getTrigger()));
+			
+
 		
 			
 		}while(exit == false);
@@ -109,15 +111,18 @@ public class Observador {
 			result = Integer.parseInt(scan);
 		}
 		catch(Exception e) {
-			return "No existe esa opcion, no confundas al pobre NPC!";
+			return "No existe esa opcion, no confundas al pobre " + trigger.getNombreNpc() + "!";
 		}
 		
 		String response = trigger.getOpciones().stream().filter(x -> x.getNumero() == result).map(x -> x.getRespuesta()).findAny().orElse(null);
 		
 		if(response == null)
-			return "No existe esa opcion, no confundas al pobre NPC!";
+			return "No existe esa opcion, no confundas al pobre " + trigger.getNombreNpc() + "!";
 		
-		return response;
+		if(scan.equals("0"))
+			return trigger.getMensajeSalida();
+		
+		return trigger.getNombreNpc() + " responde: " + response;
 	}
 	
 

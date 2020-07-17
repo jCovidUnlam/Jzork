@@ -235,6 +235,7 @@ public final class JsonReader {
 		return returned;
 	}
 	
+	@SuppressWarnings("unchecked")
 	private static TriggerConversacion addNewConversacionTrigger(Map<String,Object> trigger) {
 		TriggerConversacion returned = new TriggerConversacion();
 		
@@ -287,7 +288,7 @@ public final class JsonReader {
 		List<String> ys = JsonPath.read(jsonString,"$.lugares[*].y");
 		List<String> zs = JsonPath.read(jsonString,"$.lugares[*].z");
 		List<String> paths = JsonPath.read(jsonString,"$.lugares[*].path");
-		List<String> idsLugares = JsonPath.read(jsonString,"$.lugares[*].id");
+		//List<String> idsLugares = JsonPath.read(jsonString,"$.lugares[*].id");
 		
 		int i = 0;
 		for (String nombre : nombres) {
