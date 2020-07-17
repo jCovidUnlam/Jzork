@@ -26,28 +26,30 @@ public class Observador {
 		
 		do {
 			
-			if(cmd.getTrigger() != null)
-				ejecutarTriggerDialogo(in, cmd);
-			
-			System.out.println();
-			System.out.print(">>");
-			scan = (in.nextLine()).toLowerCase();
-			
-			log.info(scan);
-			
-			ArrayList<String> cadena = new ArrayList<String>(Arrays.asList(scan.split(" ")));
-			Lexico.removerErrores(cadena);
-			Lexico.removerAtributos(cadena);
-			Lexico.removerCaracteresEspeciales(cadena);
-			
-			if(cmd.isReEscanear() == false) 
-				cmd = Interprete.interpretar(cadena);
-			else 
-				reEscanear(cmd, cadena);
-			
-			
-			gameMaster.ejecutar(cmd);
-			
+			if(cmd.getTrigger() != null) {
+				if(ejecutarTriggerDialogo(in, cmd) == true)
+					continue;
+			}
+			else {
+				System.out.println();
+				System.out.print(">>");
+				scan = (in.nextLine()).toLowerCase();
+				
+				log.info(scan);
+				
+				ArrayList<String> cadena = new ArrayList<String>(Arrays.asList(scan.split(" ")));
+				Lexico.removerErrores(cadena);
+				Lexico.removerAtributos(cadena);
+				Lexico.removerCaracteresEspeciales(cadena);
+				
+				if(cmd.isReEscanear() == false) 
+					cmd = Interprete.interpretar(cadena);
+				else 
+					reEscanear(cmd, cadena);
+				
+				
+				gameMaster.ejecutar(cmd);
+			}
 		} while (gameMaster.isEndGame() != true);
 
 		in.close();
@@ -69,7 +71,7 @@ public class Observador {
 		
 	}
 	
-	private static void ejecutarTriggerDialogo(Scanner in, Comando cmd) {
+	private static boolean ejecutarTriggerDialogo(Scanner in, Comando cmd) {
 		
 		String scan = "";
 		String msj = "";
@@ -90,13 +92,13 @@ public class Observador {
 			
 			if(scan.equals("0")) {
 				exit = true;
-				Consola.mostrar(cmd.getTrigger().getMensajeSalida());
 			}
 		
 			
 		}while(exit == false);
-		
+		in.nextLine();
 		cmd.setTrigger(null);
+		return exit;
 	}
 	
 	private static String evaluarSeleccion(String scan, TriggerConversacion trigger) {

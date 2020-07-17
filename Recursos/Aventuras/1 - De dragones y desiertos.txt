@@ -573,8 +573,12 @@ Al fondo del bar aparece tu amigo y te dice, 'ya terminaste con tu aventura? vam
 		{
 			"tipo": "conversacion",
 			"idObjeto": "n3"
-			"titulo": "Hola chico! que deseas saber?",
+			"mensajeInicial": "Hola chico! que deseas saber?",
 			"opciones":{
+				"0":{
+					"texto": "Salir de la conversacion",
+					"respuesta": "..... el almacenero vuelve a su estado de petrificacion, estara bien esta gente?",
+				}
 				"1":{
 					"texto": "Hola",
 					"respuesta": "chau",
