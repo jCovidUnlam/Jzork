@@ -15,5 +15,6 @@ public enum EnumComando {
 	DESCARTAR,
 	CONSUMIR,
 	ADQUIRIR_CONSUMIR,
+	ABRIR,
 	SALIDA,
 }

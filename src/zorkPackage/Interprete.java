@@ -87,6 +87,9 @@ public final class Interprete {
 		if(Lexico.inRompible(verbo))
 			return new Comando(verbo, EnumComando.ROMPER, 1);
 		
+		if(Lexico.inAbrirbles(verbo))
+			return new Comando(verbo, EnumComando.ABRIR, 1);
+		
 		if(Lexico.inUsable(verbo))
 			return new Comando(verbo, EnumComando.USAR, evaluarCantidadPalabras(cadena));
 		

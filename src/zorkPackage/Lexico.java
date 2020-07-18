@@ -38,6 +38,8 @@ public final class Lexico {
 	
 	public static String [] adquirible_consumible;
 
+	public static String [] abribles;
+	
 	public static String [] salida;
 	
 	public static String [] atributos;
@@ -92,6 +94,10 @@ public final class Lexico {
 	
 	public static boolean inDescartar(String verbo) {
 		return Arrays.asList(descartables).contains(verbo);
+	}
+	
+	public static boolean inAbrirbles(String verbo) {
+		return Arrays.asList(abribles).contains(verbo);
 	}
 	
 	public static boolean inAdquiribles_Consumibles(String verbo) {
@@ -162,6 +168,10 @@ public final class Lexico {
 			case DESCARTABLES:
 				descartables = new String[lexico.length - 1];
 				System.arraycopy(lexico, 1, descartables, 0, lexico.length - 1);
+				break;
+			case ABRIBLE:
+				abribles = new String[lexico.length - 1];
+				System.arraycopy(lexico, 1, abribles, 0, lexico.length - 1);
 				break;
 			case ADQUIRIBLE_CONSUMIBLE:
 				adquirible_consumible = new String[lexico.length - 1];

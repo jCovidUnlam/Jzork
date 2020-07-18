@@ -1,9 +1,10 @@
-MOVIMIENTOSIMPLE;norte;sur;este;oeste;arriba;abajo
-MOVIMIENTO;ir;subir;bajar;escalar;trepar
+MOVIMIENTOSIMPLE;norte;sur;este;oeste;subir;bajar;arriba;abajo
+MOVIMIENTO;ir;escalar;trepar
 USUARIOSIMPLE;estado;inventario;reglas
 USUARIO;equipar
 ADQUIRIBLES;tomar;obtener;agarrar;adquirir
 ROMPIBLES;romper;destruir;estallar
+ABRIBLE;abrir
 CONSUMIBLES;tomar;beber;ingerir;comer;consumir
 INSPECCIONABLES;inspeccionar;mirar;observar;ver;leer
 USABLES;usar;utilizar;dar

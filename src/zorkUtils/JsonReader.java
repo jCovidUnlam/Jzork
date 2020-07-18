@@ -338,6 +338,8 @@ public final class JsonReader {
 				    	if(ids.contains(obj.getObjetoID()) && obj instanceof Item)
 				    		contenedor.addContenido((Item)obj);
 					}
+				    contenedor.setAbrible(Boolean.parseBoolean(objeto.get("abrible").toString()));
+				    contenedor.setMensajeAbrible(objeto.get("mensajeAbrible").toString());
 				    newItem = contenedor;
 				
 					break;

@@ -67,6 +67,9 @@ public class ComandoUnObjetoStrategy implements ComandoStrategy{
 		case ROMPER:
 			resultado = ejecutarRomperObjeto(cmd);
 			break;
+		case ABRIR:
+			resultado = ejecutarAbrirObjeto(cmd);
+			break;
 		default:
 			resultado = Mensaje.comandoErroneo();
 			break;
@@ -109,6 +112,8 @@ public class ComandoUnObjetoStrategy implements ComandoStrategy{
 			return Mensaje.getReglas();
 		case "inventario":
 			return Mensaje.mostrarInventario(mapa.getPersonajeActual());
+		case "estado":
+			return Mensaje.estadoPersonaje(mapa.getPersonajeActual());
 		default:
 			List<Objeto> obj = new ArrayList<Objeto>(); 
 			List<Item> items = new ArrayList<Item>();
@@ -253,6 +258,9 @@ public class ComandoUnObjetoStrategy implements ComandoStrategy{
 		if(buscado == null)
 			return msj;
 		
+		//if(cmd.getVerbo().equals("abrir"))
+			//return "No es posible abrir este objeto";
+		
 		if(buscado.isRompible() == false)
 			return Mensaje.noEsRompible(buscado.getNombre());
 		
@@ -298,12 +306,12 @@ public class ComandoUnObjetoStrategy implements ComandoStrategy{
 			Objeto obj = objetos.get(0);
 			
 			if(!(obj instanceof Item))
-				return Mensaje.noTomable((Item)obj);
+				return "De verdad piensas tomar eso? Mejor no...";
 			
 			Item item = (Item)obj;
 			
 			if (item.isTomable() == false)
-				return item.getMensajeNoTomable();
+				return Mensaje.noTomable(item);
 			
 			mapa.getObjAux().add(item);
 
@@ -342,6 +350,33 @@ public class ComandoUnObjetoStrategy implements ComandoStrategy{
 		
 
 		return Mensaje.noExisteObjeto();		
+	}
+	
+	public String ejecutarAbrirObjeto(Comando cmd) {
+		String msj = "";
+		Objeto buscado = Buscador.buscarObjetoLugar(cmd, mapa.getLugarActual(), msj);
+		
+		if(buscado == null)
+			return msj;
+		
+		if(!(buscado instanceof Contenedor))
+			return "No es posible abrir este objeto";
+		
+		Contenedor contenedor = (Contenedor)buscado;
+		
+		if(contenedor.isAbrible() == false)
+			return contenedor.getMensajeAbrible();
+		
+		if(buscado instanceof Contenedor)
+			for (Item item : ((Contenedor) buscado).getContenido()) {
+					mapa.getPersonajeActual().addObjeto(item);
+					mapa.getObjAux().add(item);
+					mapa.getPersonajeActual().removerDeInventario(item);
+					mapa.getLugarActual().agregarObjeto(item);
+					mapa.getLugarActual().agregarSprite(mapa.getObjAux(),item);
+			}
+		
+		return contenedor.getMensajeAbrible();
 	}
 	
 	
