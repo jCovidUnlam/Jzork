@@ -41,6 +41,7 @@ public final class TriggerMaster {
 				mapa.getPersonajeActual().removerDeInventario(item);
 				break;
 			case ADQUIRIROBJETO:
+				mapa.getLugarActual().removerObjeto(afectado);
 				mapa.getPersonajeActual().addObjeto((Item)afectado);
 				break;
 			default:

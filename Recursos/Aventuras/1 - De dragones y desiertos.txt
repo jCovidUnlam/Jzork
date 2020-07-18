@@ -554,7 +554,7 @@ El dragon no solo no reacciona, sino que te mira confundido, no deberias estar c
 		{
 			"tipo": "item",
 			"idObjeto" : "n2",
-			"items": "i7",
+			"items": "i6",
 			"afterTriggerDesc": "",
 			"exito": "REMOVEROBJETO",
 			"exitoTriggerDesc": "ENDGAMESUCCESS. Clara sonrrie y te agradece, se levanta y te da un profundo beso....
