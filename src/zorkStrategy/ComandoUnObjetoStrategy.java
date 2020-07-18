@@ -253,11 +253,15 @@ public class ComandoUnObjetoStrategy implements ComandoStrategy{
 		
 		if(buscado instanceof Contenedor)
 			for (Item item : ((Contenedor) buscado).getContenido()) {
-					mapa.getPersonajeActual().addObjeto(item);				
+					mapa.getPersonajeActual().addObjeto(item);
+					mapa.getObjAux().add(item);
+					mapa.getPersonajeActual().removerDeInventario(item);
+					mapa.getLugarActual().agregarObjeto(item);
+					mapa.getLugarActual().agregarSprite(mapa.getObjAux(),item);
 			}
 		
 		mapa.getLugarActual().removerObjeto(buscado);
-
+		
 		return buscado.getMensajeRompible();
 
 	}
