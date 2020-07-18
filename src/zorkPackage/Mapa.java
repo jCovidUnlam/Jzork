@@ -10,11 +10,10 @@ public class Mapa {
 	private String descripcion;
 	private Lugar[][][] lugares;
 	private Personaje personajeActual;
-	private int cantidadMovimientos;
 	private List<Objeto> objAux = new ArrayList<Objeto>();
 	
 	public Mapa() {
-		this.cantidadMovimientos = -1;
+
 	}
 	
 	public List<Objeto> getObjAux() {
@@ -39,14 +38,6 @@ public class Mapa {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
-	}
-	
-	public int getCantidadMovimientos() {
-		return cantidadMovimientos;
-	}
-	
-	public void setCantidadMovimientos(int cantidadMovimientos) {
-		this.cantidadMovimientos = cantidadMovimientos;
 	}
 	
 	public void setPersonajeActual(Personaje personaje) {
@@ -135,8 +126,6 @@ public class Mapa {
 		if(obstaculo != null)
 			return Mensaje.existeObstaculo(obstaculo);
 		
-		
-		this.cantidadMovimientos++;
 		this.personajeActual.ir(pos);
 		
 		InitConfig.getGm().getPantalla().getPanel().setLugarActual(this.getLugarActual().getGrafica());
@@ -214,7 +203,6 @@ public class Mapa {
 		if(resultado.size() == 0 )
 			return "No existe ese lugar!";
 		
-		this.cantidadMovimientos++;
 		return mover(resultado.get(0).getDireccion().getValue());			
 	}
 	

@@ -18,7 +18,4 @@ public class PocionSalud extends Consumible{
 		pj.removerDeInventario(this);
 		return Mensaje.consumirPocionSalud(this.puntosSaludRecuperados);
 	}
-
-	
-	
 }

@@ -13,6 +13,7 @@ public class Aventura {
 	private Mapa mapa;
 	private boolean endGame;
 	private PantallaGrafica pantalla;
+	private int cantidadMovimientos;
 	
 	public Aventura(Mapa mapa) {
 		super();
@@ -21,6 +22,7 @@ public class Aventura {
 		Consola.iniciarAventura(mapa);
 		Consola.mostrar(Mensaje.mensajeLugar(mapa.getLugarActual()));
 		pantalla = new PantallaGrafica(mapa.getLugarActual().getGrafica());
+		cantidadMovimientos = 0;
 		//pantalla.setAlwaysOnTop(true);
 	}
 	
@@ -68,7 +70,7 @@ public class Aventura {
 			break;
 		}
 				
-		this.mapa.setCantidadMovimientos(this.mapa.getCantidadMovimientos() + 1);
+		this.cantidadMovimientos++;
 		String respuesta = strategy.ejectuar(cmd);
 		respuesta = evaluarEndGame(respuesta);
 		
@@ -82,19 +84,19 @@ public class Aventura {
 		if(cadena.contains("ENDGAMESALIDA.")) {
 			cadena = cadena.replaceAll("ENDGAMESALIDA.", "");
 			this.endGame = true;
-			cadena += "\n\n" + Mensaje.endGameSalida(mapa.getPersonajeActual().getNombre(), mapa.getCantidadMovimientos());
+			cadena += "\n\n" + Mensaje.endGameSalida(mapa.getPersonajeActual().getNombre(), this.cantidadMovimientos);
 		}
 		
 		if(cadena.contains("ENDGAME.")) {
 			cadena = cadena.replaceAll("ENDGAME.", "");
 			this.endGame = true;
-			cadena += "\n\n" + Mensaje.endGameMuerte(mapa.getPersonajeActual().getNombre(), mapa.getCantidadMovimientos());
+			cadena += "\n\n" + Mensaje.endGameMuerte(mapa.getPersonajeActual().getNombre(), this.cantidadMovimientos);
 		}
 		
 		if(cadena.contains("ENDGAMESUCCESS.")) {
 			cadena = cadena.replaceAll("ENDGAMESUCCESS.", "");
 			this.endGame = true;
-			cadena += "\n\n" + Mensaje.endGameSuccess(mapa.getPersonajeActual().getNombre(), mapa.getCantidadMovimientos());
+			cadena += "\n\n" + Mensaje.endGameSuccess(mapa.getPersonajeActual().getNombre(), this.cantidadMovimientos);
 		}
 		
 		return cadena;

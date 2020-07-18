@@ -75,8 +75,8 @@ arena movediza comienza a absorberte y, sin que puedas hacer nada, caes y caes s
 			"z": "0",
 			"mensajeLimite": "",
 			"items": "",
-			"obstaculos" : "o3",
-			"npcs" : "n4",
+			"obstaculos" : "",
+			"npcs" : "",
 			"path": "./imagenes/deDragonesYDesiertos/medanos/fondo/medanos.png",
 		},
 		{
