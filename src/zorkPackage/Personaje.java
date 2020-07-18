@@ -123,8 +123,6 @@ public class Personaje extends Objeto{
 			}
 		}
 		
-		//Si ya paso y no encontro nada de nada, se fija si el usuario escribio mal y al menos existe un lugar con esas palabras...
-		//Sino lo encuentra o si encuentra mas de 1 ya esta, tampoco le vas a leer la mente.
 		if(resultado.size() == 0)
 		{
 			objetos = this.inventario;

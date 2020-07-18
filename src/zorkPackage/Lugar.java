@@ -96,10 +96,6 @@ public class Lugar {
 			}
 		}
 
-		// Si ya paso y no encontro nada de nada, se fija si el usuario escribio mal y
-		// al menos existe un lugar con esas palabras...
-		// Sino lo encuentra o si encuentra mas de 1 ya esta, tampoco le vas a leer la
-		// mente.
 		if (resultado.size() == 0) {
 			objetosEnLugar = this.objetos;
 			resultado = new ArrayList<>(objetosEnLugar);
@@ -184,7 +180,6 @@ public class Lugar {
 	}
 
 	public void agregarSprite(List<Objeto> objAux, Objeto objeto) {
-	//recibe una lista de objetos eliminados en la que va a buscar el 2do parametro objeto
 		boolean blEncontro = false;
 		
 		for (Objeto obj : objAux) {
@@ -193,8 +188,7 @@ public class Lugar {
 				blEncontro = true;
 			}
 		}
-		
-		//Si pudo encontrar el objeto entonces ya lo borro del array de eliminados
+
 		if(blEncontro) 
 			objAux.remove(objeto);
 	}

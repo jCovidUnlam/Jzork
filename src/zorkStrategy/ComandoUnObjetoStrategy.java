@@ -151,7 +151,7 @@ public class ComandoUnObjetoStrategy implements ComandoStrategy{
 		if (item.isTomable() == false)
 			return item.getMensajeNoTomable();
 		
-		//el item que tome lo guardo en memoria para no perderlo
+
 		mapa.getObjAux().add(item);
 
 		mapa.getLugarActual().removerObjeto(item);
@@ -214,7 +214,7 @@ public class ComandoUnObjetoStrategy implements ComandoStrategy{
 		if (trigger != null)
 			return TriggerMaster.ejecutarTriggerAtacar(mapa, trigger, atacado);
 			
-		// Si no hay ninguna secuencia loca al atacar, es simplemente ida y vuelta de golpes.
+
 		String msj = "";
 		mapa.getPersonajeActual().atacar(atacado);
 		msj += Mensaje.atacarObjeto(mapa.getPersonajeActual(), atacado);
@@ -309,7 +309,7 @@ public class ComandoUnObjetoStrategy implements ComandoStrategy{
 
 			mapa.getLugarActual().removerObjeto(item);
 			mapa.getPersonajeActual().addObjeto(item);
-			InitConfig.getGm().getPantalla().getPanel().actualizarPantalla();
+			//InitConfig.getGm().getPantalla().getPanel().actualizarPantalla();
 
 			return item.getMensajeTomable();
 		}

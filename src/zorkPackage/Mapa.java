@@ -64,21 +64,6 @@ public class Mapa {
 		this.lugares[posicion.getX()][posicion.getY()][posicion.getZ()] = lugar;
 	}
 	
-	//BORRAR
-	public void verMapa() {
-		
-		for (int i = 0; i < 19; i++) {
-			System.out.println();
-			for (int j = 0; j < 19; j++) {
-				if(lugares[j][i][0] == null)
-					System.out.format("%10s", " ");
-				else {
-					System.out.print("[ " + lugares[j][i][0].getNombre() +" ]");
-				}
-			}
-		}
-	}
-	
 	public Lugar getLugarActual() {
 		Posicion actual = this.personajeActual.getPosicionActual();
 		return lugares[actual.getX()][actual.getY()][actual.getZ()];
@@ -129,8 +114,6 @@ public class Mapa {
 		this.personajeActual.ir(pos);
 		
 		InitConfig.getGm().getPantalla().getPanel().setLugarActual(this.getLugarActual().getGrafica());
-		
-		///ACA PUEDE IR EL CAMBIAR IMAGEN DEL LUGAR.
 		InitConfig.getGm().getPantalla().getPanel().actualizarPantalla();
 		
 		return Mensaje.mensajeLugar(lugar);
@@ -138,11 +121,9 @@ public class Mapa {
 	
 	public String irHacia(List<String> keyWordsLugar) {
 		
-		//ir mismo lugar
 		if(getLugarActual().getKeyWordsNombre().equals(keyWordsLugar))
 			return "Ya te encuentras en este lugar!";
 		
-		//ir sur/ir norte/ir este....
 		Posicion pos = posicionDireccion(keyWordsLugar.get(0));
 		if(pos != null)
 			return mover(keyWordsLugar.get(0));
@@ -173,8 +154,6 @@ public class Mapa {
 			}
 		}
 		
-		//Si ya paso y no encontro nada de nada, se fija si el usuario escribio mal y al menos existe un lugar con esas palabras...
-		//Sino lo encuentra o si encuentra mas de 1 ya esta, tampoco le vas a leer la mente.
 		if(resultado.size() == 0)
 		{
 			limitrofes = listarLimitrofes();

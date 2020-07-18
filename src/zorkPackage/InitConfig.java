@@ -12,8 +12,6 @@ public final class InitConfig {
 		Lexico.cargarLexico();
 		mapa.setPersonajeActual( new Personaje(characterName,true));
 		mapa = JsonReader.construirAventura(mapa, path);
-		//mapa.verMapa();
-		//Consola.iniciarAventura(mapa);
 		gm = new Aventura(mapa);
 		new Observador(gm);
 		

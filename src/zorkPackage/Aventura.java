@@ -23,7 +23,6 @@ public class Aventura {
 		Consola.mostrar(Mensaje.mensajeLugar(mapa.getLugarActual()));
 		pantalla = new PantallaGrafica(mapa.getLugarActual().getGrafica());
 		cantidadMovimientos = 0;
-		//pantalla.setAlwaysOnTop(true);
 	}
 	
 	public PantallaGrafica getPantalla() {
