@@ -42,7 +42,9 @@ public class ComandoUnObjetoStrategy implements ComandoStrategy{
 			break;
 		case INSPECCIONAR:
 			resultado = ejecutarComandoInspeccionar(cmd);
-		default:
+			break;
+		case ADQUIRIR_CONSUMIR:
+			resultado = ejecutarAdquirir_Consumir(cmd);
 			break;
 		case ADQUIRIR:
 			resultado = ejecutarTomarItem(cmd);
@@ -64,6 +66,9 @@ public class ComandoUnObjetoStrategy implements ComandoStrategy{
 			break;
 		case ROMPER:
 			resultado = ejecutarRomperObjeto(cmd);
+			break;
+		default:
+			resultado = Mensaje.comandoErroneo();
 			break;
 		}
 				
@@ -276,6 +281,67 @@ public class ComandoUnObjetoStrategy implements ComandoStrategy{
 		msj = buscado.consumir(mapa.getPersonajeActual());
 		msj += Mensaje.estadoPersonaje(mapa.getPersonajeActual());
 		return msj;
+	}
+	
+	public String ejecutarAdquirir_Consumir(Comando cmd) {
+		
+		List<Objeto> objetos = new ArrayList<Objeto>(); 
+		List<Item> items = new ArrayList<Item>();
+		
+		objetos = mapa.getLugarActual().getObjeto(cmd.getPalabrasClavesPrimerObjeto());
+		
+		if(objetos.size() > 1)
+			return Mensaje.objetoDuplicado(objetos);
+		
+		if(objetos.size() == 1) {
+			
+			Objeto obj = objetos.get(0);
+			
+			if(!(obj instanceof Item))
+				return Mensaje.noTomable((Item)obj);
+			
+			Item item = (Item)obj;
+			
+			if (item.isTomable() == false)
+				return item.getMensajeNoTomable();
+			
+			mapa.getObjAux().add(item);
+
+			mapa.getLugarActual().removerObjeto(item);
+			mapa.getPersonajeActual().addObjeto(item);
+			InitConfig.getGm().getPantalla().getPanel().actualizarPantalla();
+
+			return item.getMensajeTomable();
+		}
+		
+		if (objetos.size() == 0)
+			items = mapa.getPersonajeActual().getObjetoInventario(cmd.getPalabrasClavesPrimerObjeto()); 
+		
+		if(items == null || items.size() == 0)
+			return Mensaje.noExisteObjeto();
+		
+		if(items.size() > 1)
+			return Mensaje.objetoDuplicadoInventario(items);
+		
+		if(items.size() == 1) {
+			
+			Item item = items.get(0);
+			
+			if(!(item instanceof Consumible)) {
+				return "No es posible consumir este item!";
+			}
+			
+			Consumible c = (Consumible)item;
+			
+			String msj = "";
+			msj = c.consumir(mapa.getPersonajeActual());
+			msj += Mensaje.estadoPersonaje(mapa.getPersonajeActual());
+			return msj;
+		}
+
+		
+
+		return Mensaje.noExisteObjeto();		
 	}
 	
 	

@@ -35,6 +35,8 @@ public final class Lexico {
 	public static  String[] ataque;
 	
 	public static String [] descartables;
+	
+	public static String [] adquirible_consumible;
 
 	public static String [] salida;
 	
@@ -90,6 +92,10 @@ public final class Lexico {
 	
 	public static boolean inDescartar(String verbo) {
 		return Arrays.asList(descartables).contains(verbo);
+	}
+	
+	public static boolean inAdquiribles_Consumibles(String verbo) {
+		return Arrays.asList(adquirible_consumible).contains(verbo);
 	}
 	
 	public static boolean inSalida(String verbo) {
@@ -156,6 +162,10 @@ public final class Lexico {
 			case DESCARTABLES:
 				descartables = new String[lexico.length - 1];
 				System.arraycopy(lexico, 1, descartables, 0, lexico.length - 1);
+				break;
+			case ADQUIRIBLE_CONSUMIBLE:
+				adquirible_consumible = new String[lexico.length - 1];
+				System.arraycopy(lexico, 1, adquirible_consumible, 0, lexico.length - 1);
 				break;
 			case SALIDA:
 				salida = new String[lexico.length - 1];

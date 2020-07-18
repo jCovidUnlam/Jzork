@@ -60,6 +60,9 @@ public final class Interprete {
 		if(Lexico.inMovimiento(verbo))
 			return new Comando(verbo, EnumComando.MOVER, 1);
 		
+		if(Lexico.inAdquiribles_Consumibles(verbo))
+			return new Comando(verbo, EnumComando.ADQUIRIR_CONSUMIR, 1);
+		
 		if(Lexico.inAdquirible(verbo))
 			return new Comando(verbo, EnumComando.ADQUIRIR, 1);
 		

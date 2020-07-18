@@ -14,5 +14,6 @@ public enum EnumComando {
 	OTRO,
 	DESCARTAR,
 	CONSUMIR,
+	ADQUIRIR_CONSUMIR,
 	SALIDA,
 }

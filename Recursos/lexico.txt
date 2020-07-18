@@ -4,12 +4,13 @@ USUARIOSIMPLE;estado;inventario;reglas
 USUARIO;equipar
 ADQUIRIBLES;tomar;obtener;agarrar;adquirir
 ROMPIBLES;romper;destruir;estallar
-CONSUMIBLES;tomar;beber;ingerir;comer
+CONSUMIBLES;tomar;beber;ingerir;comer;consumir
 INSPECCIONABLES;inspeccionar;mirar;observar;ver;leer
 USABLES;usar;utilizar;dar
 NPC;hablar;charlar;interactuar			
 ATAQUE;atacar;achurrar;darle;golpear;patear
 DESCARTABLES;soltar;descartar;desechar;tirar
+ADQUIRIBLE_CONSUMIBLE;tomar
 SALIDA;exit
 ATRIBUTOS;el;la;ellos;ellas;hacia;de;con
 CARACTERESESPECIALES;';/;\;|

@@ -15,6 +15,7 @@ public class PocionSalud extends Consumible{
 	@Override
 	public String consumir(Personaje pj) {
 		pj.setSalud(pj.getSalud() + this.puntosSaludRecuperados);
+		pj.removerDeInventario(this);
 		return Mensaje.consumirPocionSalud(this.puntosSaludRecuperados);
 	}
 
