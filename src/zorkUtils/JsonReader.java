@@ -472,7 +472,10 @@ public final class JsonReader {
 					break;
 				case "salud":
 					newObject.setSalud(Double.parseDouble(entry.getValue().toString()));
-					newObject.setMatable(true);//Si le agrego salud, puede morir.
+					newObject.setMatable(true);
+					break;
+				case "matable":
+					newObject.setMatable(Boolean.parseBoolean((String)entry.getValue()));
 					break;
 				case "path":
 					grafico.setPath((String)entry.getValue());

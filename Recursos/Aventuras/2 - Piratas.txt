@@ -6,7 +6,7 @@
 		"ySize": "20",
 		"zSize": "3",
 		"x": "5",
-		"y": "9",
+		"y": "10",
 		"z": "0",
 	},
 	"lugares" :[
@@ -93,6 +93,7 @@
 			"descripcionMapa": "ARGH ARGH ARGHH!",
 			"danio" : "10",
 			"salud" : "1500",
+			"matable" : "false",
 			"path" : "./imagenes/piratas/Muelle/sprites/n1.png",
 			"x": "215",
 			"y": "125",
