@@ -2,6 +2,8 @@ package zorkPackage;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import zorkEnum.EnumDireccion;
 
 public class Mapa {
@@ -177,7 +179,7 @@ public class Mapa {
 
 		
 		if(resultado.size() > 1)
-			return "Por favor, sea mas específico con el nombre del lugar.";
+			return Mensaje.lugarDuplicado(resultado.stream().map(x -> x.getLugar().getNombre()).collect(Collectors.toList()));
 		
 		if(resultado.size() == 0 )
 			return "No existe ese lugar!";

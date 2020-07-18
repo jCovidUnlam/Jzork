@@ -13,7 +13,7 @@ lo suficiente como para aparecer en el medio del desierto sin la nocion de que h
 	"lugares" :[
 		{
 			"id": "l1",
-			"nombre": "Desierto",
+			"nombre": "Inicio",
 			"descripcion": "A tu alrededor, solo puede ver arena en todos lados, al sur ves lo que parece ser una aldea.
 {n4}
 {i12}",
@@ -100,7 +100,7 @@ Al sur parece estar la aldea.",
 			"id": "l7",
 			"nombre": "Aldea",
 			"descripcion": "La aldea es un lugar casi tan vacio como el desierto, a excepcion de unos pocos lugares que parecen estar habitados. 
-A la derecha de la calle principal ves una taberna, y a la izquierda un almacen, al frente tuyo ves una especie de totem que jurarias te esta mirando.
+Al oeste de la calle principal ves una taberna, y al este un almacen, al frente tuyo ves una especie de totem que jurarias te esta mirando.
 {i3}",
 			"x": "5",
 			"y": "8",

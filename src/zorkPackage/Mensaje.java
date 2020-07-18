@@ -223,4 +223,14 @@ public final class Mensaje {
 	public static String consumirPocionSalud(double puntosSalud) {
 		return "Has consumido una pocion de salud para recuperar " + puntosSalud + " puntos de salud!.\n";
 	}
+	
+	public static String lugarDuplicado(List<String> lugares) {
+		String msj = "Existe más de un lugar con ese nombre a donde ir, debes ser mas específico!\n";	
+		msj += "Los lugares son:\n";
+		for (String lugar : lugares) {
+			msj += "-" + lugar + "\n";
+		}
+		
+		return msj;
+	}
 }
