@@ -8,10 +8,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.json.simple.parser.JSONParser;
-
 import com.jayway.jsonpath.JsonPath;
 
-import zorkEnum.EnumDireccion;
 import zorkGraficos.LugarGrafico;
 import zorkGraficos.ObjetoGrafico;
 import zorkPackage.Arma;
@@ -29,7 +27,6 @@ import zorkTrigger.Trigger;
 import zorkTrigger.TriggerAtaque;
 import zorkTrigger.TriggerConversacion;
 import zorkTrigger.TriggerItem;
-import zorkTrigger.TriggerLugar;
 
 
 public final class JsonReader {
@@ -103,9 +100,6 @@ public final class JsonReader {
 				break;
 			case "ataque":
 				newTrigger = addNewAtaqueTrigger(trigger);
-				break;
-			case "movimiento":
-				newTrigger = addNewLugarTrigger(trigger);
 				break;
 			case "conversacion":
 				newTrigger = addNewConversacionTrigger(trigger);
@@ -198,42 +192,6 @@ public final class JsonReader {
 		return returned;
 	}
 
-	private static TriggerLugar addNewLugarTrigger(Map<String,Object> trigger) {
-		TriggerLugar returned = new TriggerLugar();
-		
-		for (Map.Entry<String,Object> entry : trigger.entrySet()) {
-			
-			switch (entry.getKey()) {
-			case "idObjeto":
-				returned.setObjetoID((String)entry.getValue());
-				break;
-			case "afterTriggerDesc":
-				returned.setAfterTriggerDesc((String)entry.getValue());
-				break;
-			case "exito":
-				returned.setExito(Trigger.AccionExito.valueOf((String)entry.getValue().toString().toUpperCase()));
-				break;
-			case "exitoTriggerDesc":
-				returned.setExitoTriggerDesc((String)entry.getValue());
-				break;
-			case "error":
-				returned.setError(Trigger.AccionError.valueOf((String)entry.getValue().toString().toUpperCase()));
-				break;
-			case "after":
-				returned.setAfter(Trigger.AccionFinal.valueOf((String)entry.getValue().toString().toUpperCase()));
-				break;
-			case "errorTriggerDesc":
-				returned.setErrorTriggerDesc((String)entry.getValue());
-				break;
-			case "movimiento":
-				returned.setDireccion(EnumDireccion.valueOf((String)entry.getValue().toString().toUpperCase()));
-			default:
-				break;
-			}	
-		}
-		
-		return returned;
-	}
 	
 	@SuppressWarnings("unchecked")
 	private static TriggerConversacion addNewConversacionTrigger(Map<String,Object> trigger) {

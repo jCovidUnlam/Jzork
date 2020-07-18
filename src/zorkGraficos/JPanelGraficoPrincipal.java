@@ -11,7 +11,6 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-import zorkPackage.Mapa;
 
 public class JPanelGraficoPrincipal extends JPanel{
 	private static final long serialVersionUID = 8514865478625775753L;

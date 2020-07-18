@@ -10,7 +10,7 @@ import zorkPackage.Personaje;
 
 public final class TriggerMaster {
 
-	public static String EjecutarTriggerItem(Mapa mapa, Objeto afectado, Item item ) {
+	public static String ejecutarTriggerItem(Mapa mapa, Objeto afectado, Item item ) {
 
 		TriggerItem trigger = afectado.getTriggerItem();
 		
@@ -66,7 +66,7 @@ public final class TriggerMaster {
 		}
 	}
 	
-	public static String EjecutarTriggerAtacar(Mapa mapa, TriggerAtaque trigger, Objeto atacado) {
+	public static String ejecutarTriggerAtacar(Mapa mapa, TriggerAtaque trigger, Objeto atacado) {
 		
 		String msj = "";
 		Personaje pj = mapa.getPersonajeActual();
@@ -128,22 +128,5 @@ public final class TriggerMaster {
 		
 		return msj;
 	}
-	
-	public static String EjecutarTriggerMovimiento(Mapa mapa, TriggerLugar trigger) {
 		
-		String msj = "";
-			
-		switch(trigger.exito)
-		{
-		case RESPONDER:
-			msj += trigger.exitoTriggerDesc;
-			break;
-		default:
-			break;
-		}
-		
-		return msj;
-	}
-
-	
 }

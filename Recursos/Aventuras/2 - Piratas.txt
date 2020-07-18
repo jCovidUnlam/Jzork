@@ -87,7 +87,7 @@
 	"npcs":[
 		{
 			"id" : "n1",
-			"nombre" : "pirata",
+			"nombre" : "pirata fantasma",
 			"descripcion": "Soy un pirata fantasma!",
 			"hablar": "¡No hay nada que me digas que me haga cambiar de opinion!",
 			"descripcionMapa": "ARGH ARGH ARGHH!",

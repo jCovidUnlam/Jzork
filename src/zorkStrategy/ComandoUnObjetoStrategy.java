@@ -207,7 +207,7 @@ public class ComandoUnObjetoStrategy implements ComandoStrategy{
 
 		TriggerAtaque trigger = atacado.getTriggerAtaque();
 		if (trigger != null)
-			return TriggerMaster.EjecutarTriggerAtacar(mapa, trigger, atacado);
+			return TriggerMaster.ejecutarTriggerAtacar(mapa, trigger, atacado);
 			
 		// Si no hay ninguna secuencia loca al atacar, es simplemente ida y vuelta de golpes.
 		String msj = "";

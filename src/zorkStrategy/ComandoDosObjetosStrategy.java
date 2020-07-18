@@ -54,7 +54,7 @@ public class ComandoDosObjetosStrategy implements ComandoStrategy{
 		if(afectado.size() > 1)
 			return Mensaje.objetoDuplicado(afectado);
 
-		return TriggerMaster.EjecutarTriggerItem(mapa, afectado.get(0), item.get(0));
+		return TriggerMaster.ejecutarTriggerItem(mapa, afectado.get(0), item.get(0));
 	}
 	
 }

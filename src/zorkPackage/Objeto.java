@@ -9,7 +9,6 @@ import zorkTrigger.Trigger;
 import zorkTrigger.TriggerAtaque;
 import zorkTrigger.TriggerConversacion;
 import zorkTrigger.TriggerItem;
-import zorkTrigger.TriggerLugar;
 
 public class Objeto {
 	
@@ -157,31 +156,21 @@ public class Objeto {
 	}
 
 	public TriggerAtaque getTriggerAtaque() {
-		//Lo primero que hace es buscar si tiene un trigger de ataque
 		return this.triggers.stream()
-			    .filter(x -> x instanceof TriggerAtaque)//Esto pregunta para q filter por tipo
-			    .map (x -> (TriggerAtaque) x)//Esto castea
-			    .findAny()// Esto devuelve si existe al menos un trigger. Por favor que no haya mas de 1 porque me vuelvo puto
-				.orElse(null);//Sino encuentra, retorna null.
+			    .filter(x -> x instanceof TriggerAtaque)
+			    .map (x -> (TriggerAtaque) x)
+			    .findAny()
+				.orElse(null);
 	}
 
 	public TriggerItem getTriggerItem() {
-		//Si tiene mas de un triggerItem, hay q pensar como separarlo............ ni en pedo.
 		return this.triggers.stream()
-			    .filter(x -> x instanceof TriggerItem)//Esto pregunta si es un obstaculo
-			    .map (x -> (TriggerItem) x)//Esto castea
-			    .findAny()// Esto devuelve si existe al menos un obstaculo. Por favor que no haya mas de 1 en una misma direccion jaja
-				.orElse(null);//Sino encuentra, retorna null.
+			    .filter(x -> x instanceof TriggerItem)
+			    .map (x -> (TriggerItem) x)
+			    .findAny()
+				.orElse(null);
 	}
 	
-	public TriggerLugar getTriggerMovimiento() {
-		//Si tiene mas de un triggerItem, hay q pensar como separarlo............ ni en pedo.
-		return this.triggers.stream()
-			    .filter(x -> x instanceof TriggerLugar)//Esto pregunta si es un obstaculo
-			    .map (x -> (TriggerLugar) x)//Esto castea
-			    .findAny()// Esto devuelve si existe al menos un obstaculo. Por favor que no haya mas de 1 en una misma direccion jaja
-				.orElse(null);//Sino encuentra, retorna null.
-	}
 	
 	public TriggerConversacion getTriggerConversacion() {
 		return this.triggers.stream()
