@@ -17,16 +17,16 @@ public final class TriggerMaster {
 		if(trigger == null)
 			return Mensaje.noTieneEfecto(item.getNombre(), afectado.getNombre());
 		
-		//Si llego hata aca, entocnes el trigger corre!
-		if(!trigger.getTriggersObjects().contains(item)) //Si el item que esta usando el usaurio no tiene efecto en el objeto
+
+		if(!trigger.getTriggersObjects().contains(item)) 
 		{
 			switch(trigger.error)
 			{
 			case RESPONDER:
 				return trigger.getErrorTriggerDesc();
 			case ATACAR:
-				afectado.atacar(mapa.getPersonajeActual());// Alf ataca
-				return trigger.getErrorTriggerDesc();// Retorna mensaje
+				afectado.atacar(mapa.getPersonajeActual());
+				return trigger.getErrorTriggerDesc();
 			default:
 				return trigger.getErrorTriggerDesc();
 			}
@@ -95,12 +95,12 @@ public final class TriggerMaster {
 			atacado.atacar(mapa.getPersonajeActual());
 			msj += Mensaje.atacarObjeto(mapa.getPersonajeActual(),atacado);
 			if(atacado.isMuerto()) {
-				//Si el atacado muere, se va del lugar... esto podriamos ver como hacerlo.
+	
 				mapa.getLugarActual().removerObjeto(atacado);
 				return msj += Mensaje.muerteObjeto(atacado);
 			}
 			else {
-				//Sino se muere, te la da.
+	
 				atacado.atacar(mapa.getPersonajeActual());
 				return Mensaje.personajeAtacado(mapa.getPersonajeActual(), atacado);
 			}
